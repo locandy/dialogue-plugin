@@ -1,0 +1,15 @@
+{
+"START":{
+    "text":"Hallo! Ich bin Diana!", 
+    "audio":null, 
+    "answers":[
+        {"text":"Hallo!", "effectId":null, "nextId":"END" },
+        {"text":"Kannst du mir Geld borgen?", "effectId":"d_receive_1gold", "nextId":"END" },
+        {"text":"Gib Diana 10 Gold!", "effectId":"d_give_10gold", "nextId":"END" },
+    ]},
+"END":{
+    "text":"Ich mag das nicht. Ciao!", 
+    "audio":null, 
+    "answers":[]
+    }
+}
