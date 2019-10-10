@@ -1,7 +1,7 @@
 {
 "START":{
     "text":"Hallo! Ich bin Diana!", 
-    "audio":null, 
+    "audioId":null, 
     "answers":[
         {"text":"Hallo!", "effectId":null, "nextId":"END" },
         {"text":"Kannst du mir Geld borgen?", "effectId":"d_receive_1gold", "nextId":"END" },
@@ -9,7 +9,7 @@
     ]},
 "END":{
     "text":"Ich mag das nicht. Ciao!", 
-    "audio":null, 
+    "audioId":null, 
     "answers":[]
     }
 }
