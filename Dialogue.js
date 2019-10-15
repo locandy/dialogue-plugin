@@ -23,8 +23,12 @@ locandy.player.plugins.Dialogue = function(spot, json)
             ? json.correctIndex 
             : 0;
     	
-    	// read-only model properties    	
-    	this.question = json.question;
+    	// read-only model properties
+
+	this.activeDialogueId = "START";
+	this.dialogue = json.dialogue;
+	this.question="";
+
         this.buttonText = json.buttonText;   
     	
     	// read-write runtime properties
@@ -56,10 +60,22 @@ locandy.player.plugins.Dialogue.getSkeleton = function()
             "showIf":[],
             "section":"contents",
             "type":"Dialogue",
-            "correctIndex":0,
-            "question":null,
-            "answers":[],
-            "dialogueTreeJson":""
+	        "activeDialogueId": "START",
+	        "dialogue": {
+                "START":{
+                    "text":"Hallo! Ich bin Diana!", 
+                    "audioId":null, 
+                    "answers":[
+                    {"text":"Hallo!", "effectId":null, "nextId":"END" },
+                    {"text":"Kannst du mir Geld borgen?", "effectId":"d_receive_1gold", "nextId":"END" },
+                    {"text":"Gib Diana 10 Gold!", "effectId":"d_give_10gold", "nextId":"END" },
+                    ]},
+                "END":{
+                    "text":"Ich mag das nicht. Ciao!", 
+                    "audioId":null, 
+                    "answers":[]
+                    }
+            },
         };
     };
 
@@ -73,26 +89,47 @@ locandy.player.plugins.Dialogue.writeEffectToModel = function(effectModel,effect
 /** @function {static} addAnswerToModel */
 locandy.player.plugins.Dialogue.addAnswerToModel = function(pluginModel)
     {
-        if( pluginModel.hasOwnProperty("answers") )
-        {
-            if( pluginModel.answers instanceof Array )
-            {
-                pluginModel.answers.push({
-                    "effect":"",
-                    "text":null
-                });
-            }
-        }
+        pluginModel.dialogue[pluginModel.activeDialogueId].answers.push({
+            "text": "blah",
+            "effectId": null,
+            "nextId": null,
+        })
+        // return  '<div class="col-xs-5 left"> \
+        //                 <div class="radio"> \
+        //                     <label> \
+        //                         <input \
+        //                             type="radio" \
+        //                             name="answers" \
+        //                             class="indicator" \
+        //                             data-ng-value="$index" \
+        //                             data-ng-model="pluginModel.correctIndex"> \
+        //                         <div class="icon"><span class="holder"></span></div> \
+        //                     </label> \
+        //                 </div> \
+        //                 <div class="holder"> \
+        //                     <input \
+        //                         type="text" \
+        //                         class="form-control text" \
+        //                         data-ng-model="answer.text" \
+        //                         data-focus-element="!answer.text" \
+        //                         placeholder="{{\'Answer #%s\'|i18nP:\'editor_plugin_multiplechoice_label_answer\':($index+1)}}"> \
+        //                 </div> \
+        //             </div>';
+
     };
 
 /** @function {static} addAnswerToModel */
-locandy.player.plugins.Dialogue.removeAnswerFromModel = function(pluginModel,answer)
+locandy.player.plugins.Dialogue.removeAnswerFromModel = function(pluginModel, activeDialogueId, answer)
     {
-        if( pluginModel.hasOwnProperty("answers") )
+        if (pluginModel.dialogue[activeDialogueId].answers)
         {
-            if( pluginModel.answers instanceof Array )
-                locandy.utilities.removeArrayItem(pluginModel.answers,answer);
-        }        
+            locandy.utilities.removeArrayItem(pluginModel.dialogue[activeDialogueId].answers, answer);
+        }
+        // if( pluginModel.hasOwnProperty("answers") )
+        // {
+        //     if( pluginModel.answers instanceof Array )
+        //         locandy.utilities.removeArrayItem(pluginModel.answers,answer);
+        // }        
     };
 
 /** @function {static} getTemplate @inheritdesc */    
@@ -130,39 +167,41 @@ locandy.player.plugins.Dialogue.getTemplate = function()
 /** @function {static} getEditTemplate @inheritdesc */
 locandy.player.plugins.Dialogue.getEditTemplate = function()
     {
-        return '<p class="description"> \
-                    <span>{{"Ask player a question to be answered by choosing one:"|i18n:"editor_plugin_multiplechoice_text"}}</span><br> \
-                    <small>{{"Set correct answer and invoke an optional effect per answer."|i18n:"editor_plugin_multiplechoice_helptext"}}</small> \
+        return '<div> \
+                <select data-ng-model="pluginModel.dialogue" class="form-control full-border ng-pristine ng-valid ng-touched" ng-options="dialogue as dialogue.text for pluginModel" \
+                    <option value class="ng-binding" selected="selected">--- dialogueId ---</option> \
+                </select> \
+                </div> \
+                <p class="description"> \
+                    <span>{{"Ask player a question:"|i18n:"editor_plugin_multiplechoice_text"}}</span><br> \
+                    <small>{{"Set text of agend and invoke an optional effect per answer."|i18n:"editor_plugin_multiplechoice_helptext"}}</small> \
                 </p> \
                 <div class="form-group"> \
                     <input \
                         type="text" \
                         class="form-control question" \
-                        data-ng-model="pluginModel.question" \
+                        data-ng-model="pluginModel.dialogue[pluginModel.activeDialogueId].text" \
                         data-focus-element="!pluginModel.question" \
-                        placeholder="{{\'Question\'|i18n:\'editor_plugin_multiplechoice_label_question\'}}"> \
+                        placeholder="{{\'Agent spricht\'|i18n:\'editor_plugin_multiplechoice_label_question\'}}"> \
+                <hr> \
+                <div> \
+                    id:{{pluginModel.activeDialogueId}} \
+                </div> \
+                <div> \
+                    {{pluginModel.dialogue[pluginModel.activeDialogueId]}} \
+                </div> \
+                <hr> \
                 </div> \
                 <div \
                     class="alert alert-info" \
-                    data-ng-if="pluginModel.answers.length===0"> \
+                    data-ng-if="pluginModel.dialogue[pluginModel.activeDialogueId].answers.length===0"> \
                     {{"You\'ve not provided any answers for this plugin yet."|i18n:"editor_plugin_multiplechoice_no_answers"}} \
                 </div>\
                 <div \
                     class="answer form-group row small" \
-                    data-ng-if="pluginModel.answers.length > 0" \
-                    data-ng-repeat="answer in pluginModel.answers"> \
+                    data-ng-if="pluginModel.dialogue[pluginModel.activeDialogueId].answers.length > 0" \
+                    data-ng-repeat="answer in pluginModel.dialogue[pluginModel.activeDialogueId].answers"> \
                     <div class="col-xs-5 left"> \
-                        <div class="radio"> \
-                            <label> \
-                                <input \
-                                    type="radio" \
-                                    name="answers" \
-                                    class="indicator" \
-                                    data-ng-value="$index" \
-                                    data-ng-model="pluginModel.correctIndex"> \
-                                <div class="icon"><span class="holder"></span></div> \
-                            </label> \
-                        </div> \
                         <div class="holder"> \
                             <input \
                                 type="text" \
@@ -175,7 +214,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                     <div class="col-xs-7 right"> \
                         <button \
                             class="btn btn-fancy btn-medium btn-default" \
-                            data-button-handler="global.locandy.player.plugins.Dialogue.removeAnswerFromModel(pluginModel,answer)">\
+                            data-button-handler="global.locandy.player.plugins.Dialogue.removeAnswerFromModel(pluginModel, pluginModel.activeDialogueId, answer)">\
                             <span class="icon-minus-circle2 reusable-color-danger"></span>\
                         </button> \
                         <span \
@@ -187,6 +226,14 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                             }" \
                             data-ng-include="effectPopOverPartialUrl">\
                         </span> \
+                        <div> \
+                        <select data-ng-model="selectedOption" class="form-control full-border ng-pristine ng-valid ng-touched" > \
+                            <option ng-repeat="dialogue in pluginModel.dialogue" ng-value="dialogue.id">--- dialogueId ---</option> \
+                        </select> \
+                        <!--<select data-ng-model="selectedOption" class="form-control full-border ng-pristine ng-valid ng-touched" ng-options="key as key for (key, value) in options">--> \
+                            <!--<option value class="ng-binding" selected="selected">--- dialogueId ---</option>--> \
+                        <!--</select>--> \
+                        </div> \
                         <small class="connection" data-ng-if="!answer.effect"> \
                             <span class="icon-notification2 reusable-color-warning"></span> \
                             <span class="label-for-icon">{{"No effect connected"|i18n:"editor_text_effect_not_connected"}}</span> \
@@ -221,18 +268,11 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
 locandy.player.plugins.Dialogue.prototype.persist = function()
     {        
         var storedObject={
-            answeredCorrectly: this.answeredCorrectly,            
-            selectedIndex: null, // clears property!
-            message: null, // clears property!
-            answers: []
+            dialogue: this.dialogue,  
+	    activeDialogueId: this.activeDialogueId,
         };
 
-        for( var idx in this.answers )
-        {
-            var answer = this.answers[idx];
-            var disabled = answer.disabled||false;
-            storedObject.answers.push({disabled:disabled});                
-        }
+        
         
         return storedObject;
     };
@@ -278,11 +318,12 @@ locandy.player.plugins.Dialogue.prototype.selectAnswer = function(index)
 locandy.player.plugins.Dialogue.prototype.evaluateAnswer = function()
     {
         // 1) check if quiz was already solved
-        if( this.answeredCorrectly === true )
+	/*        
+	if( this.answeredCorrectly === true )
         {
             this.showMessage(this.localizerService.get("The question is already done!"));
             return;
-        }
+        }*/
         
         // 2) no answer was selected yet
         if( this.selectedIndex === null )
@@ -292,7 +333,8 @@ locandy.player.plugins.Dialogue.prototype.evaluateAnswer = function()
         }
         
         // 3) check if quiz is already finished now 
-        var selectedAnswer = this.answers[this.selectedIndex];
+	/*        
+	var selectedAnswer = this.answers[this.selectedIndex];
         if(this.selectedIndex !== this.correctIndex)
         {
             // 3a) the answer wasn't correctly,
@@ -306,12 +348,14 @@ locandy.player.plugins.Dialogue.prototype.evaluateAnswer = function()
             this.answeredCorrectly = true;            
             for( var idx in this.answers )
                 this.answers[idx].disabled = true;    
-        }
+        }*/
+
+	var selectedAnswer = this.dialogue[this.activeDialogueId].answers[this.selectedIndex];
 
         // 4) fetch the currently selected answer from plugin
         // and perform the effect of this answer from json 
         // AFTER answer's state change in 3) - persistence!
-        new locandy.player.Effect(this.spot.quest, selectedAnswer.effect).execute();
+        new locandy.player.Effect(this.spot.quest, selectedAnswer.effectId).execute();
         
         // 5) reset members to get fresh state for
         // template when user tries another answer
@@ -325,6 +369,10 @@ locandy.player.plugins.Dialogue.prototype.evaluateAnswer = function()
 locandy.player.plugins.Dialogue.prototype.verifyBeforePublish = function()
     {
 
+	// 1. check if text is not empty for all nodes
+
+
+	/*
         if(this.answers.length<2){
             return "editor_warn_multiplechoice_two_answers_needed_before_publish";
         }
@@ -341,6 +389,7 @@ locandy.player.plugins.Dialogue.prototype.verifyBeforePublish = function()
                 return "editor_warn_add_effect_before_publish";
             }
         }
+	*/
         
         return false; // no problem!
     };
