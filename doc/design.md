@@ -14,5 +14,11 @@ UI wie MultipleChoice
 Vorlage für Dialog: gleich beim Constructor einbauen
 Ein Start Punkt muss immer vorhanden sein -> Start
 
+Funktion ins Dialogue-Plugin: um css zu übergeben
+  -> Konstruktor ruft Funktion auf
+  (add css mit javascript)
 
+css:
+#editor. dialogue-plugin
+#player. dialogue-plugin
 
