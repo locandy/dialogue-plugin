@@ -22,3 +22,4 @@ css:
 #editor. dialogue-plugin
 #player. dialogue-plugin
 
+DEBUG_Quest.scope.currentSpot.getPlugins()
