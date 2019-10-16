@@ -25,9 +25,9 @@ locandy.player.plugins.Dialogue = function(spot, json)
     	
     	// read-only model properties
 
-	this.activeDialogueId = "START";
-	this.dialogue = json.dialogue;
-	this.question="";
+        this.activeDialogueId = "START";
+        this.dialogue = json.dialogue;
+        this.question="";
 
         this.buttonText = json.buttonText;   
     	
@@ -60,7 +60,7 @@ locandy.player.plugins.Dialogue.getSkeleton = function()
             "showIf":[],
             "section":"contents",
             "type":"Dialogue",
-	        "activeDialogueId": "START",
+            "activeDialogueId": "START",
 	        "dialogue": {
                 "START":{
                     "text":"Hallo! Ich bin Diana!", 
@@ -94,29 +94,18 @@ locandy.player.plugins.Dialogue.addAnswerToModel = function(pluginModel)
             "effectId": null,
             "nextId": null,
         })
-        // return  '<div class="col-xs-5 left"> \
-        //                 <div class="radio"> \
-        //                     <label> \
-        //                         <input \
-        //                             type="radio" \
-        //                             name="answers" \
-        //                             class="indicator" \
-        //                             data-ng-value="$index" \
-        //                             data-ng-model="pluginModel.correctIndex"> \
-        //                         <div class="icon"><span class="holder"></span></div> \
-        //                     </label> \
-        //                 </div> \
-        //                 <div class="holder"> \
-        //                     <input \
-        //                         type="text" \
-        //                         class="form-control text" \
-        //                         data-ng-model="answer.text" \
-        //                         data-focus-element="!answer.text" \
-        //                         placeholder="{{\'Answer #%s\'|i18nP:\'editor_plugin_multiplechoice_label_answer\':($index+1)}}"> \
-        //                 </div> \
-        //             </div>';
+    };  
 
-    };
+
+/** @function {static} addDialogueToModel */
+locandy.player.plugins.Dialogue.addDialogueToModel = function(pluginModel)
+    {
+        pluginModel.dialogue.push({
+            "text": "blah",
+            "audioId": null,
+            "answers": null
+        })
+    };      
 
 /** @function {static} addAnswerToModel */
 locandy.player.plugins.Dialogue.removeAnswerFromModel = function(pluginModel, activeDialogueId, answer)
@@ -168,9 +157,15 @@ locandy.player.plugins.Dialogue.getTemplate = function()
 locandy.player.plugins.Dialogue.getEditTemplate = function()
     {
         return '<div> \
-                <select data-ng-model="pluginModel.dialogue" class="form-control full-border ng-pristine ng-valid ng-touched" ng-options="dialogue as dialogue.text for pluginModel" \
-                    <option value class="ng-binding" selected="selected">--- dialogueId ---</option> \
+                <select data-ng-model="pluginModel.activeDialogueId" class="form-control full-border ng-pristine ng-valid ng-touched" > \
+                    <option data-ng-repeat="x in pluginModel.dialogue" value="{{x}}">{{x.text}}</option> \
                 </select> \
+                <button \
+                    class="btn btn-fancy btn-medium btn-default" \
+                    data-button-handler="global.locandy.player.plugins.Dialogue.addDialogueToModel(pluginModel)">\
+                    <span class="icon-plus-circle2 reusable-color-success"></span> \
+                    <span class="label-for-icon">{{"New"|i18n:"system_label_add"}}</span> \
+                </button> \
                 </div> \
                 <p class="description"> \
                     <span>{{"Ask player a question:"|i18n:"editor_plugin_multiplechoice_text"}}</span><br> \
