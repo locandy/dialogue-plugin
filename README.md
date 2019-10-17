@@ -7,3 +7,6 @@
   * Wie unterscheidet sich YUTSI von unserem Design?
   * Sollen wir was übernehmen/verbessern?
   
+# Dateien
+ DialogueTest.js -> Aktuellste Version von Dialogue
+ DialogueZwischenstand -> Zwischenstand für Test-Zwecke
