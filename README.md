@@ -8,5 +8,5 @@
   * Sollen wir was übernehmen/verbessern?
   
 # Dateien
- DialogueTest.js -> Aktuellste Version von Dialogue
- DialogueZwischenstand -> Zwischenstand für Test-Zwecke
+ * DialogueTest.js -> Aktuellste Version von Dialogue
+ * DialogueZwischenstand -> Zwischenstand für Test-Zwecke
