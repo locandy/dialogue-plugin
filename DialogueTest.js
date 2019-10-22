@@ -17,27 +17,16 @@ locandy.player.plugins.Dialogue = function(spot, json)
         // inject localizer service
         this.localizerService = locandy.player.playerMainSingleton.injector.get("localizerService");
 
-        // fix correctIndex (if answers has been removed)
-        json.correctIndex = json.answers[json.correctIndex] 
-            ? json.correctIndex 
-            : 0;
 
         // dialogue properties
         this.activeDialogueId = "START";
         this.dialogue = json.dialogue;
-
-    	// read-only model properties    	
-    	this.question = json.question;
-        this.buttonText = json.buttonText;   
+  
 
     	// read-write runtime properties
-        this.correctIndex = json.correctIndex;
-        this.answers = angular.copy(json.answers);
+        this.answers = null;
 
-    	// plugin-specific runtime properties
-    	this.answeredCorrectly = false; // saves the current quiz state
-    	this.selectedIndex = null; // avoids lots of data in persist()
-    	this.message = null; // saves the current displayed message
+    	// this.message = null; // saves the current displayed message
     };    
 
 locandy.utilities.inherit(locandy.player.plugins.Dialogue,locandy.player.plugins.Abstract);
@@ -59,11 +48,9 @@ locandy.player.plugins.Dialogue.getSkeleton = function()
             "showIf":[],
             "section":"contents",
             "type":"Dialogue",
-            "correctIndex":0,
             "activeDialogueId": "START",
 	        "dialogue": {
                 "START":{
-                    "dId": "START",
                     "text":"Hallo! Ich bin Diana!", 
                     "audioId":null, 
                     "answers":[
@@ -72,15 +59,11 @@ locandy.player.plugins.Dialogue.getSkeleton = function()
                     {"text":"Gib Diana 10 Gold!", "effectId":"d_give_10gold", "nextId":"END" },
                     ]},
                 "END":{
-                    "dId": "END",
                     "text":"Ich mag das nicht. Ciao!", 
                     "audioId":null, 
                     "answers":[]
                     }
             },
-            "question":null,
-            "answers":[],
-            "dialogueTreeJson":""
         };
     };
 
@@ -116,14 +99,10 @@ locandy.player.plugins.Dialogue.addDialogueToModel = function(pluginModel)
         // var parsedJson = JSON.parse(oldJson);
         // parsedJson.TEST = {"dId": "TEST", "text": "new Dialogue", "audioId": null, "answers": null}
         // pluginModel.dialogue = JSON.stringify(parsedJson);
-
-        pluginModel.dialogue.push({
-            "TEST":{
-            "dId": "TEST",
+        pluginModel.dialogue["TEST"] = {
             "text": "blah",
             "audioId": null,
             "answers": null}
-        })
     };  
 
 /** @function {static} addAnswerToModel */
@@ -139,28 +118,48 @@ locandy.player.plugins.Dialogue.removeAnswerFromModel = function(pluginModel,ans
 /** @function {static} getTemplate @inheritdesc */    
 locandy.player.plugins.Dialogue.getTemplate = function()
     {               
-        return '<div <!--data-ng-if="plugin.isHidden()" data-ng-class="{visible:plugin.isHidden()}"-->> \
-                    <p class="question">{{plugin.dialogue[plugin.activeDialogueId].text}}</p> \
-                    <div data-ng-if="plugin.message" class="message alert alert-info"> \
-                        <button type="button" class="close" data-button-handler="plugin.hideMessage()">&times;</button> \
-                        <span>{{plugin.message}}</span> \
+        return '<div> \
+                    <select data-ng-model="plugin.activeDialogueId" class="form-control full-border ng-pristine ng-valid ng-touched" > \
+                        <option data-ng-repeat="x in plugin.dialogue" value="{{x.dId}}">{{x.dId}}</option> \
+                    </select> \
+                    <div class="question"> \
+                        <p>{{plugin.dialogue[plugin.activeDialogueId].text}}</p> \
+                    </div> \
+                    <div> \
+                        <p>SelectedIndex: {{plugin.selectedIndex}}</p>\
                     </div> \
                     <div class="answers"> \
-                        <a \
-                            href="javascript:void(0);" \
-                            data-ng-show="answer.text" \
+                        <a href="javascript:void(0);" \
+                            data-ng-show="answer.text"  \
                             data-ng-repeat="answer in plugin.dialogue[plugin.activeDialogueId].answers" \
-                            data-button-handler="plugin.selectAnswer($index)" \
-                            data-ng-class="{\
-                                disabled:answer.disabled,\
-                                selected:plugin.selectedIndex==$index,\
-                                success:answer.disabled && $index==plugin.correctIndex,\
-                                failure:answer.disabled && $index!=plugin.correctIndex \
-                            }"> \
-                            <span class="label-for-icon">{{answer.text}}</span> \
+                            data-button-handler="plugin.selectAnswer(answer)"> \
+                        <span class="label-for-icon">{{answer.text}}</span> \
                         </a> \
                     </div> \
                 </div>';
+
+        // return '<div> \
+        //             <p class="question">{{plugin.dialogue[plugin.activeDialogueId].text}}</p> \
+        //             <div data-ng-if="plugin.message" class="message alert alert-info"> \
+        //                 <button type="button" class="close" data-button-handler="plugin.hideMessage()">&times;</button> \
+        //                 <span>{{plugin.message}}</span> \
+        //             </div> \
+        //             <div class="answers"> \
+        //                 <a \
+        //                     href="javascript:void(0);" \
+        //                     data-ng-show="answer.text" \
+        //                     data-ng-repeat="answer in plugin.dialogue[plugin.activeDialogueId].answers" \
+        //                     data-button-handler="plugin.selectAnswer($index)" \
+        //                     data-ng-class="{\
+        //                         disabled:answer.disabled,\
+        //                         selected:plugin.selectedIndex==$index,\
+        //                         success:answer.disabled && $index==plugin.correctIndex,\
+        //                         failure:answer.disabled && $index!=plugin.correctIndex \
+        //                     }"> \
+        //                     <span class="label-for-icon">{{answer.text}}</span> \
+        //                 </a> \
+        //             </div> \
+        //         </div>';
     };
 
 /** @function {static} getEditTemplate @inheritdesc */
@@ -168,7 +167,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
     {
         return '<div> \
                     <select data-ng-model="pluginModel.activeDialogueId" class="form-control full-border ng-pristine ng-valid ng-touched" > \
-                        <option data-ng-repeat="x in pluginModel.dialogue" value="{{x.dId}}">{{x.dId}}</option> \
+                        <option data-ng-repeat="(key, value) in pluginModel.dialogue">{{key}}</option> \
                     </select> \
                     <button \
                         class="btn btn-fancy btn-medium btn-default" \
@@ -186,6 +185,10 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                         {{pluginModel.dialogue[pluginModel.activeDialogueId]}} \
                     </div> \
                     <hr> \
+                    <div> \
+                    Id: {{pluginModel.activeDialogueId}} \
+                    <hr> \
+                    </div> \
                 </div> \
                 <div class="form-group"> \
                     <input \
@@ -280,21 +283,22 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
     */
 locandy.player.plugins.Dialogue.prototype.persist = function()
     {        
-        var storedObject={
-            answeredCorrectly: this.answeredCorrectly,            
-            selectedIndex: null, // clears property!
-            message: null, // clears property!
-            answers: []
-        };
+        // var storedObject={
+        //     answeredCorrectly: this.answeredCorrectly,            
+        //     selectedIndex: null, // clears property!
+        //     message: null, // clears property!
+        //     answers: []
+        // };
 
-        for( var idx in this.answers )
-        {
-            var answer = this.answers[idx];
-            var disabled = answer.disabled||false;
-            storedObject.answers.push({disabled:disabled});                
-        }
+        // for( var idx in this.answers )
+        // {
+        //     var answer = this.answers[idx];
+        //     var disabled = answer.disabled||false;
+        //     storedObject.answers.push({disabled:disabled});                
+        // }
 
-        return storedObject;
+        // return storedObject;
+        return 
     };
 
 /** @function {public} persist @inheritdesc
@@ -317,67 +321,23 @@ locandy.player.plugins.Dialogue.prototype.showMessage = function(message)
     };
 
 /** @function {public} selectAnswers Selects an answer by its index. */
-locandy.player.plugins.Dialogue.prototype.selectAnswer = function(index)
-    {   
-        // fetch the answer from plugin if possible
-        var answer = this.answers[index] || null;
-        if( !answer || answer.disabled ) return;
-
-        // toggle selection if it's current one
-        if( this.selectedIndex === index )
-        {
-            this.selectedIndex = null;
-            return;
-        }
-
-        // and check answer if not disabled
-        this.selectedIndex = index;
-    };
-
-/** @function {public} evaluateAnswer Checks if the chosen answer is correct and performs effect afterwards. */
-locandy.player.plugins.Dialogue.prototype.evaluateAnswer = function()
+locandy.player.plugins.Dialogue.prototype.selectAnswer = function(answer)
     {
-        // 1) check if quiz was already solved
-        if( this.answeredCorrectly === true )
-        {
-            this.showMessage(this.localizerService.get("The question is already done!"));
-            return;
-        }
+        //var answer = this.dialogue[this.activeDialogueId].answers[index];
 
-        // 2) no answer was selected yet
-        if( this.selectedIndex === null )
-        {
-            this.showMessage(this.localizerService.get("Please choose an answer first!"));
-            return;
-        }
-
-        // 3) check if quiz is already finished now 
-        var selectedAnswer = this.answers[this.selectedIndex];
-        if(this.selectedIndex !== this.correctIndex)
-        {
-            // 3a) the answer wasn't correctly,
-            // only disable the selected answer
-            selectedAnswer.disabled = true;
-        }
-        else
-        {
-            // 3b) the answer is correct, set quiz
-            // flag and disable all other answers
-            this.answeredCorrectly = true;            
-            for( var idx in this.answers )
-                this.answers[idx].disabled = true;    
-        }
-
-        // 4) fetch the currently selected answer from plugin
-        // and perform the effect of this answer from json 
-        // AFTER answer's state change in 3) - persistence!
-        new locandy.player.Effect(this.spot.quest, selectedAnswer.effect).execute();
-
-        // 5) reset members to get fresh state for
-        // template when user tries another answer
-        this.selectedIndex = null;        
-        this.message = null;
+        console.log(answer);
+        new locandy.player.Effect(this.spot.quest, answer.effect).execute();
     };
+
+// /** @function {public} evaluateAnswer Checks if the chosen answer is correct and performs effect afterwards. */
+// locandy.player.plugins.Dialogue.prototype.executeAnswer = function()
+//     {
+//         // 4) fetch the currently selected answer from plugin
+//         // and perform the effect of this answer from json 
+//         // AFTER answer's state change in 3) - persistence!
+//         new locandy.player.Effect(this.spot.quest, selectedAnswer.effect).execute();
+
+//     };
 
 
 /** @function {public Array} ? verifies integrity of quest before publish in Editor.
