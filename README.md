@@ -13,6 +13,6 @@
  
  # Fragen an Thomas:
  * Dialogue-Dropdown: Funktioniert nicht über die ids. Mit weitererem Attribut dId würde es funktionieren .
- * Funktion: addDialogueToModel: wie kann ich neue Dialogabschnitte einfügen? (Mit dialogue.push gibt es einen TypeError)
- * Import von JSON Text
+ * (Funktion: addDialogueToModel: wie kann ich neue Dialogabschnitte einfügen? (Mit dialogue.push gibt es einen TypeError))
+ * Import von JSON Text -> addDialogueToModel
  * Funktionen getTemplate - getEditTemplate: Warum greif ich beim einen mit plugin und beim anderen mit pluginModel zu?
