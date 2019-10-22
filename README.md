@@ -8,5 +8,10 @@
   * Sollen wir was übernehmen/verbessern?
   
 # Dateien
- * DialogueTest.js -> Aktuellste Version von Dialogue
- * DialogueZwischenstand -> Zwischenstand für Test-Zwecke
+ * DialogueTest.js -> TestDatei: aktuellste Version von Dialogue
+ * DialogueZwischenstand -> Zwischenstand: akuellste lauffähige Version
+ 
+ # Fragen an Thomas:
+ * Dialogue-Dropdown: Funktioniert nicht über die ids. Mit weitererem Attribut dId würde es funktionieren .
+ * Funktion: addDialogueToModel: wie kann ich neue Dialogabschnitte einfügen? (Mit dialogue.push gibt es einen TypeError)
+ * Import von JSON Text
