@@ -101,13 +101,28 @@ locandy.player.plugins.Dialogue.addAnswerToModel = function(pluginModel)
         })
     };
 
+/** @function {static} importDialogueToModel */
+locandy.player.plugins.Dialogue.importDialogueToModel = function(pluginModel)
+{
+    pluginModel.dialogue = pluginModel.dialogueTreeJson;
+};
+
+    
+
 /** @function {static} addDialogueToModel */
 locandy.player.plugins.Dialogue.addDialogueToModel = function(pluginModel)
     {
+        // var oldJson = pluginModel.dialogue;
+        // var parsedJson = JSON.parse(oldJson);
+        // parsedJson.TEST = {"dId": "TEST", "text": "new Dialogue", "audioId": null, "answers": null}
+        // pluginModel.dialogue = JSON.stringify(parsedJson);
+
         pluginModel.dialogue.push({
+            "TEST":{
+            "dId": "TEST",
             "text": "blah",
             "audioId": null,
-            "answers": null
+            "answers": null}
         })
     };  
 
@@ -116,8 +131,8 @@ locandy.player.plugins.Dialogue.removeAnswerFromModel = function(pluginModel,ans
     {
         if( pluginModel.hasOwnProperty("answers") )
         {
-            if( pluginModel.answers instanceof Array )
-                locandy.utilities.removeArrayItem(pluginModel.answers,answer);
+            if( pluginModel.dialogue[pluginModel.activeDialogueId].answers instanceof Array )
+                locandy.utilities.removeArrayItem(pluginModel.dialogue[pluginModel.activeDialogueId].answers,answer);
         }        
     };
 
@@ -125,7 +140,7 @@ locandy.player.plugins.Dialogue.removeAnswerFromModel = function(pluginModel,ans
 locandy.player.plugins.Dialogue.getTemplate = function()
     {               
         return '<div <!--data-ng-if="plugin.isHidden()" data-ng-class="{visible:plugin.isHidden()}"-->> \
-                    <p class="question">{{plugin.dialogue[pluginModel.activeDialogueId].text}}</p> \
+                    <p class="question">{{plugin.dialogue[plugin.activeDialogueId].text}}</p> \
                     <div data-ng-if="plugin.message" class="message alert alert-info"> \
                         <button type="button" class="close" data-button-handler="plugin.hideMessage()">&times;</button> \
                         <span>{{plugin.message}}</span> \
@@ -134,7 +149,7 @@ locandy.player.plugins.Dialogue.getTemplate = function()
                         <a \
                             href="javascript:void(0);" \
                             data-ng-show="answer.text" \
-                            data-ng-repeat="answer in plugin.answers" \
+                            data-ng-repeat="answer in plugin.dialogue[plugin.activeDialogueId].answers" \
                             data-button-handler="plugin.selectAnswer($index)" \
                             data-ng-class="{\
                                 disabled:answer.disabled,\
@@ -142,15 +157,9 @@ locandy.player.plugins.Dialogue.getTemplate = function()
                                 success:answer.disabled && $index==plugin.correctIndex,\
                                 failure:answer.disabled && $index!=plugin.correctIndex \
                             }"> \
-                            <span data-ng-class="{\
-                                \'icon-radio-unchecked\':plugin.selectedIndex!=$index&&!answer.disabled||plugin.correctIndex!=$index&&answer.disabled,\
-                                \'icon-radio-checked\':plugin.selectedIndex==$index&&!answer.disabled||plugin.correctIndex==$index&&answer.disabled \
-                            }"> \
-                            </span> \
                             <span class="label-for-icon">{{answer.text}}</span> \
                         </a> \
                     </div> \
-                    <button class="evaluate btn btn-large btn-block" href="javascript:void(0);" data-ng-if="plugin.answers.length>1" data-button-handler="plugin.evaluateAnswer()">{{"Check answer"|localize}}</button> \
                 </div>';
     };
 
@@ -188,7 +197,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                 </div> \
                 <div \
                     class="alert alert-info" \
-                    data-ng-if="pluginModel.answers.length===0"> \
+                    data-ng-if="pluginModel.dialogue[pluginModel.activeDialogueId].answers.length===0"> \
                     {{"You\'ve not provided any answers for this plugin yet."|i18n:"editor_plugin_multiplechoice_no_answers"}} \
                 </div>\
                 <div \
@@ -243,7 +252,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                     class="btn btn-fancy btn-medium btn-default" \
                     data-button-handler="global.locandy.player.plugins.Dialogue.addAnswerToModel(pluginModel)"> \
                     <span class="icon-plus-circle2 reusable-color-success"></span> \
-                    <span class="label-for-icon">{{"Add"|i18n:"system_label_add"}}</span> \
+                    <span class="label-for-icon">{{"Add answer"|i18n:"system_label_add"}}</span> \
                 </button>\
                 <div class="form-group"> \
                     <textarea \
@@ -251,6 +260,19 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                         rows="3" \
                         data-ng-model="pluginModel.dialogueTreeJson" \
                         placeholder="Dialogue Tree JSON"/> \
+                <button \
+                    class="btn btn-fancy btn-medium btn-default" \
+                    data-button-handler="global.locandy.player.plugins.Dialogue.importDialogueToModel(pluginModel)"> \
+                    <span class="icon-plus-circle2 reusable-color-success"></span> \
+                    <span class="label-for-icon">{{"Import json"|i18n:"system_label_add"}}</span> \
+                </button>\
+                <div> \
+                    <hr> \
+                    <div> \
+                        {{pluginModel.dialogueTreeJson}} \
+                    </div> \
+                    <hr> \
+                </div> \
                 </div>';
     };
 
