@@ -29,3 +29,6 @@
         }
  
  * Funktionen getTemplate - getEditTemplate: Warum greif ich beim einen mit plugin und beim anderen mit pluginModel zu?
+
+
+Locandy Wanderausstellung: https://www.locandy.com/q/slwa1/edit/readonly
