@@ -1,0 +1,33 @@
+{
+"START":{
+    "text":"You don't look like you're from around here.", 
+    "audioId":null, 
+    "answers":[
+        {"text":"I've lived here all my life!", "effectId":null, "nextId":"P1" },
+        {"text":"I came here from Newton", "effectId":null, "nextId":"P2" }
+    ]},
+"P1":{
+    "text":"Oh really? Then you must know Mr. Bowler.",
+    "audioId":null, 
+    "answers":[
+        {"text":"Mr. Bowler is a good friend of mine!", "effectId":null, "nextId":"P3" },
+        {"text":"Who?", "effectId":null, "nextId":"P4" }
+    ]},
+"P2":{
+    "text":"Newton, eh? I heard there's trouble brewing down there.",
+    "audioId":null, 
+    "answers":[
+        {"text":"I haven't heard about any trouble.", "effectId":null, "nextId":"P4" },
+        {"text":"Did I say Newton? I'm actually from Springville", "effectId":null, "nextId":"P1" }
+    ]},
+"P3":{
+    "text":"You liar! There ain't no Mr. Bowler, I made him up!", 
+    "audioId":null, 
+    "answers":[]
+    },
+"P4":{
+    "text":"Don't you worry about it. Say do you have something to eat? I'm starving", 
+    "audioId":null, 
+    "answers":[]
+    }
+}

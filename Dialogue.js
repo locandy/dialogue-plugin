@@ -103,6 +103,20 @@ locandy.player.plugins.Dialogue.importDialogueToModel = function(pluginModel, js
     pluginModel.dialogueTreeJson = "";
 };
 
+/** @function {static} exportDialogueToClipboard */
+locandy.player.plugins.Dialogue.exportDialogueToClipboard = function(pluginModel)
+{
+   var copyElement = document.createElement('textarea');
+   copyElement.value = JSON.stringify(pluginModel.dialogue);
+   copyElement.setAttribute('readonly', '');
+   copyElement.style = {position: 'absolute', left: '-9999px'};
+   document.body.appendChild(copyElement);
+   copyElement.select();
+   document.execCommand('copy');
+   document.body.removeChild(copyElement);
+};
+
+
     
 
 /** @function {static} addDialogueToModel */
@@ -138,41 +152,15 @@ locandy.player.plugins.Dialogue.getTemplate = function()
                     <div class="question"> \
                         <p>{{plugin.dialogue[plugin.activeDialogueId].text}}</p> \
                     </div> \
-                    <div> \
-                        <p>SelectedIndex: {{plugin.selectedIndex}}</p>\
-                    </div> \
                     <div class="answers"> \
                         <a href="javascript:void(0);" \
                             data-ng-show="answer.text"  \
                             data-ng-repeat="answer in plugin.dialogue[plugin.activeDialogueId].answers" \
-                            data-button-handler="plugin.selectAnswer(answer)"> \
+                            data-button-handler="plugin.executeAnswer(answer)"> \
                         <span class="label-for-icon">{{answer.text}}</span> \
                         </a> \
                     </div> \
                 </div>';
-
-        // return '<div> \
-        //             <p class="question">{{plugin.dialogue[plugin.activeDialogueId].text}}</p> \
-        //             <div data-ng-if="plugin.message" class="message alert alert-info"> \
-        //                 <button type="button" class="close" data-button-handler="plugin.hideMessage()">&times;</button> \
-        //                 <span>{{plugin.message}}</span> \
-        //             </div> \
-        //             <div class="answers"> \
-        //                 <a \
-        //                     href="javascript:void(0);" \
-        //                     data-ng-show="answer.text" \
-        //                     data-ng-repeat="answer in plugin.dialogue[plugin.activeDialogueId].answers" \
-        //                     data-button-handler="plugin.selectAnswer($index)" \
-        //                     data-ng-class="{\
-        //                         disabled:answer.disabled,\
-        //                         selected:plugin.selectedIndex==$index,\
-        //                         success:answer.disabled && $index==plugin.correctIndex,\
-        //                         failure:answer.disabled && $index!=plugin.correctIndex \
-        //                     }"> \
-        //                     <span class="label-for-icon">{{answer.text}}</span> \
-        //                 </a> \
-        //             </div> \
-        //         </div>';
     };
 
 /** @function {static} getEditTemplate @inheritdesc */
@@ -278,6 +266,15 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                         <span class="label-for-icon">{{"Import json"|i18n:"system_label_add"}}</span> \
                     </button>\
                 </div> \
+                <hr> \
+                <div> \
+                    <button \
+                        class="btn btn-fancy btn-medium btn-default" \
+                        data-button-handler="global.locandy.player.plugins.Dialogue.exportDialogueToClipboard(pluginModel)"> \
+                        <span class="icon-plus-circle2 reusable-color-success"></span> \
+                        <span class="label-for-icon">{{"Copy json to clipboard"|i18n:"system_label_add"}}</span> \
+                    </button>\
+                </div> \
                 <div> \
                     <hr> \
                     <div> \
@@ -332,47 +329,44 @@ locandy.player.plugins.Dialogue.prototype.showMessage = function(message)
         this.message = message;
     };
 
-/** @function {public} selectAnswers Selects an answer by its index. */
-locandy.player.plugins.Dialogue.prototype.selectAnswer = function(answer)
+/** @function {public} executeAnswer. performs effect if existing and goes to next dialogue-point */
+locandy.player.plugins.Dialogue.prototype.executeAnswer = function(answer)
     {
-        //var answer = this.dialogue[this.activeDialogueId].answers[index];
-
         console.log(answer);
-        new locandy.player.Effect(this.spot.quest, answer.effect).execute();
+        if (answer.effect != null) {
+            new locandy.player.Effect(this.spot.quest, answer.effect).execute();
+        }
+
+        this.activeDialogueId = answer.nextId;
     };
-
-// /** @function {public} evaluateAnswer Checks if the chosen answer is correct and performs effect afterwards. */
-// locandy.player.plugins.Dialogue.prototype.executeAnswer = function()
-//     {
-//         // 4) fetch the currently selected answer from plugin
-//         // and perform the effect of this answer from json 
-//         // AFTER answer's state change in 3) - persistence!
-//         new locandy.player.Effect(this.spot.quest, selectedAnswer.effect).execute();
-
-//     };
 
 
 /** @function {public Array} ? verifies integrity of quest before publish in Editor.
     */
 locandy.player.plugins.Dialogue.prototype.verifyBeforePublish = function()
     {
-
-        if(this.answers.length<2){
-            return "editor_warn_multiplechoice_two_answers_needed_before_publish";
-        }
-
-        for( var idx in this.answers )
-        {
-            if (!(this.answers[idx].text) || this.answers[idx].text.trim() === "")
-            {
-                return "editor_warn_labeled_before_publish";
-            }
-            var effect = this.answers[idx].effect;
-            if (effect == null || effect === "")
-            {
-                return "editor_warn_add_effect_before_publish";
+        for (var d in this.dialogue){
+            if (d.text.trim() === "" || d.text == null){
+                return "editor_warn_dialogueTexts_need_not_be_empty_or_null";
             }
         }
 
-        return false; // no problem!
+        // if(this.answers.length<2){
+        //     return "editor_warn_multiplechoice_two_answers_needed_before_publish";
+        // }
+
+        // for( var idx in this.answers )
+        // {
+        //     if (!(this.answers[idx].text) || this.answers[idx].text.trim() === "")
+        //     {
+        //         return "editor_warn_labeled_before_publish";
+        //     }
+        //     var effect = this.answers[idx].effect;
+        //     if (effect == null || effect === "")
+        //     {
+        //         return "editor_warn_add_effect_before_publish";
+        //     }
+        // }
+
+        // return false; // no problem!
     };
