@@ -9,26 +9,11 @@
   
 # Dateien
  * DialogueTest.js -> TestDatei: aktuellste Version von Dialogue
- * DialogueZwischenstand -> Zwischenstand: akuellste lauffähige Version
+ * Dialogue -> Zwischenstand: akuellste lauffähige Version
  
  # Fragen an Thomas:
- * Dialogue-Dropdown: Funktioniert nicht über die ids. Mit weitererem Attribut dId würde es funktionieren .
- * (Funktion: addDialogueToModel: wie kann ich neue Dialogabschnitte einfügen? (Mit dialogue.push gibt es einen TypeError))
  * Import von JSON Text -> addDialogueToModel
- -> siehe SpriteSheet Plugin
- 
-         try
-        {
-            if(json.clickMapJson != "") // empty value
-                this.clickMap = angular.fromJson(json.clickMapJson);
-        }
-        catch(e)
-        {
-            this.clickMap = null;
-            alert("SpriteSheet clickMapJson Parese Error in JSON Spec!\nPlease delete JSON or fix it!\n" + e);
-        }
- 
- * Funktionen getTemplate - getEditTemplate: Warum greif ich beim einen mit plugin und beim anderen mit pluginModel zu?
+   -> siehe SpriteSheet Plugin
 
 
 Locandy Wanderausstellung: https://www.locandy.com/q/slwa1/edit/readonly
