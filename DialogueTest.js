@@ -21,6 +21,8 @@ locandy.player.plugins.Dialogue = function(spot, json)
         // dialogue properties
         this.activeDialogueId = "START";
         this.dialogue = json.dialogue;
+        this.dialogueTreeJson = "";
+        this.newDialogueId = "";
   
 
     	// read-write runtime properties
@@ -85,9 +87,20 @@ locandy.player.plugins.Dialogue.addAnswerToModel = function(pluginModel)
     };
 
 /** @function {static} importDialogueToModel */
-locandy.player.plugins.Dialogue.importDialogueToModel = function(pluginModel)
+locandy.player.plugins.Dialogue.importDialogueToModel = function(pluginModel, json)
 {
-    pluginModel.dialogue = pluginModel.dialogueTreeJson;
+    try
+        {
+            if(json != "") { // empty value
+                pluginModel.dialogue = angular.fromJson(json);
+            }
+        }
+    catch(e)
+        {
+            pluginModel.dialogue = null;
+            alert("Dialogue Parese Error in JSON Spec!\nPlease delete JSON or fix it!\n" + e);
+        }
+    pluginModel.dialogueTreeJson = "";
 };
 
     
@@ -95,14 +108,17 @@ locandy.player.plugins.Dialogue.importDialogueToModel = function(pluginModel)
 /** @function {static} addDialogueToModel */
 locandy.player.plugins.Dialogue.addDialogueToModel = function(pluginModel)
     {
-        // var oldJson = pluginModel.dialogue;
-        // var parsedJson = JSON.parse(oldJson);
-        // parsedJson.TEST = {"dId": "TEST", "text": "new Dialogue", "audioId": null, "answers": null}
-        // pluginModel.dialogue = JSON.stringify(parsedJson);
-        pluginModel.dialogue["TEST"] = {
-            "text": "blah",
-            "audioId": null,
-            "answers": null}
+        // check if key is already used
+        if (!(pluginModel.newDialogueId in pluginModel.dialogue)){
+            pluginModel.dialogue[pluginModel.newDialogueId] = {
+                "text": null,
+                "audioId": null,
+                "answers": []};
+            pluginModel.newDialogueId = "";
+        } else {
+            alert("Id is alredy used");
+        }
+
     };  
 
 /** @function {static} addAnswerToModel */
@@ -119,9 +135,6 @@ locandy.player.plugins.Dialogue.removeAnswerFromModel = function(pluginModel,ans
 locandy.player.plugins.Dialogue.getTemplate = function()
     {               
         return '<div> \
-                    <select data-ng-model="plugin.activeDialogueId" class="form-control full-border ng-pristine ng-valid ng-touched" > \
-                        <option data-ng-repeat="x in plugin.dialogue" value="{{x.dId}}">{{x.dId}}</option> \
-                    </select> \
                     <div class="question"> \
                         <p>{{plugin.dialogue[plugin.activeDialogueId].text}}</p> \
                     </div> \
@@ -169,27 +182,21 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                     <select data-ng-model="pluginModel.activeDialogueId" class="form-control full-border ng-pristine ng-valid ng-touched" > \
                         <option data-ng-repeat="(key, value) in pluginModel.dialogue">{{key}}</option> \
                     </select> \
-                    <button \
-                        class="btn btn-fancy btn-medium btn-default" \
-                        data-button-handler="global.locandy.player.plugins.Dialogue.addDialogueToModel(pluginModel)">\
-                        <span class="icon-plus-circle2 reusable-color-success"></span> \
-                        <span class="label-for-icon">{{"New"|i18n:"system_label_add"}}</span> \
-                    </button> \
-                </div> \
-                <p class="description"> \
-                    <span>{{"Edit Dialogue:"|i18n:"editor_plugin_multiplechoice_text"}}</span><br> \
-                </p> \
-                <div> \
                     <hr> \
                     <div> \
-                        {{pluginModel.dialogue[pluginModel.activeDialogueId]}} \
-                    </div> \
-                    <hr> \
-                    <div> \
-                    Id: {{pluginModel.activeDialogueId}} \
-                    <hr> \
+                        <textarea \
+                            id="newDialogueId" class="form-control" rows="1" \
+                            data-ng-model="pluginModel.newDialogueId" \
+                            placeholder="New Dialogue Id"/> \
+                        <button \
+                            class="btn btn-fancy btn-medium btn-default" \
+                            data-button-handler="global.locandy.player.plugins.Dialogue.addDialogueToModel(pluginModel)">\
+                            <span class="icon-plus-circle2 reusable-color-success"></span> \
+                            <span class="label-for-icon">{{"New"|i18n:"system_label_add"}}</span> \
+                        </button> \
                     </div> \
                 </div> \
+                <hr> \
                 <div class="form-group"> \
                     <input \
                         type="text" \
@@ -233,8 +240,8 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                             data-ng-include="effectPopOverPartialUrl">\
                         </span> \
                         <div> \
-                            <select data-ng-model="answer.nextId" class="ng-pristine ng-valid ng-touched" > \
-                                <option data-ng-repeat="x in pluginModel.dialogue" value="{{x.dId}}">{{x.dId}}</option> \
+                            <select data-ng-model="answer.nextId" class="form-control full-border ng-pristine ng-valid ng-touched"> \
+                                <option data-ng-repeat="(key, value) in pluginModel.dialogue">{{key}}</option> \
                             </select> \
                         </div> \
                         <small class="connection" data-ng-if="!answer.effect"> \
@@ -257,25 +264,30 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                     <span class="icon-plus-circle2 reusable-color-success"></span> \
                     <span class="label-for-icon">{{"Add answer"|i18n:"system_label_add"}}</span> \
                 </button>\
+                <hr> \
                 <div class="form-group"> \
                     <textarea \
                         class="form-control" \
                         rows="3" \
                         data-ng-model="pluginModel.dialogueTreeJson" \
                         placeholder="Dialogue Tree JSON"/> \
-                <button \
-                    class="btn btn-fancy btn-medium btn-default" \
-                    data-button-handler="global.locandy.player.plugins.Dialogue.importDialogueToModel(pluginModel)"> \
-                    <span class="icon-plus-circle2 reusable-color-success"></span> \
-                    <span class="label-for-icon">{{"Import json"|i18n:"system_label_add"}}</span> \
-                </button>\
+                    <button \
+                        class="btn btn-fancy btn-medium btn-default" \
+                        data-button-handler="global.locandy.player.plugins.Dialogue.importDialogueToModel(pluginModel, pluginModel.dialogueTreeJson)"> \
+                        <span class="icon-plus-circle2 reusable-color-success"></span> \
+                        <span class="label-for-icon">{{"Import json"|i18n:"system_label_add"}}</span> \
+                    </button>\
+                </div> \
                 <div> \
                     <hr> \
                     <div> \
-                        {{pluginModel.dialogueTreeJson}} \
+                    Id: {{pluginModel.activeDialogueId}} \
+                    <hr> \
+                    </div> \
+                    <div> \
+                        {{pluginModel.dialogue[pluginModel.activeDialogueId]}} \
                     </div> \
                     <hr> \
-                </div> \
                 </div>';
     };
 

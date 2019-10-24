@@ -1,6 +1,5 @@
 {
 "START":{
-    "dId":"START",
     "text":"Hallo! Ich bin Diana!", 
     "audioId":null, 
     "answers":[
@@ -9,25 +8,20 @@
         {"text":"Gib Diana 10 Gold!", "effectId":"d_give_10gold", "nextId":"END" }
     ]},
 "P1":{
-    "dId":"P1",
     "text":"Also ...",
     "audioId":null, 
     "answers":[
         {"text":"Dann...", "effectId":null, "nextId":"END" },
         {"text":"Oder...", "effectId":null, "nextId":"END" }
-    ]
-},
+    ]},
 "P2":{
-    "dId":"P2",
     "text":"Ich will Gold ...",
     "audioId":null, 
     "answers":[
         {"text":"Ok geb ich dir...", "effectId":null, "nextId":"END" },
         {"text":"Hab leider nichts dabei...", "effectId":null, "nextId":"END" }
-    ]
-},
+    ]},
 "END":{
-    "dId":"END",
     "text":"Ich mag das nicht. Ciao!", 
     "audioId":null, 
     "answers":[]
