@@ -83,7 +83,7 @@ locandy.player.plugins.Dialogue.writeEffectToModel = function(effectModel, effec
 locandy.player.plugins.Dialogue.addAnswerToModel = function(pluginModel)
     {
         pluginModel.dialogue[pluginModel.activeDialogueId].answers.push({
-            "text": "blah",
+            "text": "",
             "effectId": null,
             "nextId": null,
         })
@@ -141,7 +141,7 @@ locandy.player.plugins.Dialogue.addDialogueToModel = function(pluginModel)
 /** @function {static} addAnswerToModel */
 locandy.player.plugins.Dialogue.removeAnswerFromModel = function(pluginModel,answer)
     {
-        if( pluginModel.hasOwnProperty("answers") )
+        if( pluginModel.dialogue[pluginModel.activeDialogueId].hasOwnProperty("answers") )
         {
             if( pluginModel.dialogue[pluginModel.activeDialogueId].answers instanceof Array )
                 locandy.utilities.removeArrayItem(pluginModel.dialogue[pluginModel.activeDialogueId].answers,answer);
