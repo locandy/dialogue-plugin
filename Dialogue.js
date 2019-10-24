@@ -70,10 +70,13 @@ locandy.player.plugins.Dialogue.getSkeleton = function()
     };
 
 /** @function {static} getSkeleton @inheritdesc */
-locandy.player.plugins.Dialogue.writeEffectToModel = function(effectModel,effectId)
+locandy.player.plugins.Dialogue.writeEffectToModel = function(effectModel, effectId)
     {
-        if( effectModel.hasOwnProperty('effect') )
-            effectModel.effect = effectId;
+        console.log(effectId);
+        console.log(effectModel);
+        if( effectModel.hasOwnProperty('effectId')){
+            effectModel.effectId = effectId;
+        }
     };
 
 /** @function {static} addAnswerToModel */
@@ -222,28 +225,28 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                             class="effect" \
                             data-ng-init="popOverConfig={ \
                                 callbackPassThrough:answer, \
-                                selectedOption:answer.effect, \
+                                selectedOption:answer.effectId, \
                                 updatePluginStaticMethodName:global.locandy.player.plugins.Dialogue.writeEffectToModel \
                             }" \
                             data-ng-include="effectPopOverPartialUrl">\
                         </span> \
+                        <small class="connection" data-ng-if="!answer.effectId"> \
+                            <span class="icon-notification2 reusable-color-warning"></span> \
+                            <span class="label-for-icon">{{"No effect connected"|i18n:"editor_text_effect_not_connected"}}</span> \
+                        </small> \
+                        <small class="connection" data-ng-if="answer.effectId && mrmResource.effects[answer.effectId]"> \
+                            <span class="icon-checkmark reusable-color-success"></span> \
+                            <span class="label-for-icon"><button class="btn btn-fancy btn-success" data-button-handler="showEffectModal(answer.effectId)">{{answer.effectId}}</button></span> \
+                        </small> \
+                        <small class="connection" data-ng-if="answer.effectId && !mrmResource.effects[answer.effectId]"> \
+                            <span class="icon-notification2 reusable-color-danger"></span> \
+                            <span class="label-for-icon">{{"Connection corrupted"|i18n:"editor_text_effect_not_connected_correctly"}}</span> \
+                        </small> \
                         <div> \
                             <select data-ng-model="answer.nextId" class="form-control full-border ng-pristine ng-valid ng-touched"> \
                                 <option data-ng-repeat="(key, value) in pluginModel.dialogue">{{key}}</option> \
                             </select> \
                         </div> \
-                        <small class="connection" data-ng-if="!answer.effect"> \
-                            <span class="icon-notification2 reusable-color-warning"></span> \
-                            <span class="label-for-icon">{{"No effect connected"|i18n:"editor_text_effect_not_connected"}}</span> \
-                        </small> \
-                        <small class="connection" data-ng-if="answer.effect && mrmResource.effects[answer.effect]"> \
-                            <span class="icon-checkmark reusable-color-success"></span> \
-                            <span class="label-for-icon"><button class="btn btn-fancy btn-success" data-button-handler="showEffectModal(answer.effect)">{{answer.effect}}</button></span> \
-                        </small> \
-                        <small class="connection" data-ng-if="answer.effect && !mrmResource.effects[answer.effect]"> \
-                            <span class="icon-notification2 reusable-color-danger"></span> \
-                            <span class="label-for-icon">{{"Connection corrupted"|i18n:"editor_text_effect_not_connected_correctly"}}</span> \
-                        </small> \
                     </div> \
                 </div> \
                 <button \
@@ -333,8 +336,8 @@ locandy.player.plugins.Dialogue.prototype.showMessage = function(message)
 locandy.player.plugins.Dialogue.prototype.executeAnswer = function(answer)
     {
         console.log(answer);
-        if (answer.effect != null) {
-            new locandy.player.Effect(this.spot.quest, answer.effect).execute();
+        if (answer.effectId != null) {
+            new locandy.player.Effect(this.spot.quest, answer.effectId).execute();
         }
 
         this.activeDialogueId = answer.nextId;
