@@ -253,7 +253,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                     class="btn btn-fancy btn-medium btn-default" \
                     data-button-handler="global.locandy.player.plugins.Dialogue.addAnswerToModel(pluginModel)"> \
                     <span class="icon-plus-circle2 reusable-color-success"></span> \
-                    <span class="label-for-icon">{{"Add answer"|i18n:"system_label_add"}}</span> \
+                    <span class="label-for-icon">{{"Add answer"|i18n:"editor_plugin_dialogue_answer_add"}}</span> \
                 </button>\
                 <hr> \
                 <div class="form-group"> \
