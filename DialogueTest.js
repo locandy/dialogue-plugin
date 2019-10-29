@@ -23,12 +23,27 @@ locandy.player.plugins.Dialogue = function(spot, json)
         this.dialogue = json.dialogue;
         this.dialogueTreeJson = "";
         this.newDialogueId = "";
+
+
+        // image properties (resolve uuid via resourceResolver service!)
+        this.url = null;
+        this.mimetype = "";
+        if(this.resources && this.resources.url)
+        {
+            this.url = locandy.player.playerMainSingleton.resourceResolverService.getUrl(this.resources.url.uuid);
+            if(this.resources.url.mimetype)
+                this.mimetype = this.resources.url.mimetype;
+        }
+        
+        if(this.mimetype == "image/gif")
+        {
+            this.gifRandom = 1;
+            if(json.animationDuration)
+                this.animationDuration = Math.max(1000, json.animationDuration);
+            else
+                this.animationDuration = 1000;
+        }
   
-
-    	// read-write runtime properties
-        this.answers = null;
-
-    	// this.message = null; // saves the current displayed message
     };    
 
 locandy.utilities.inherit(locandy.player.plugins.Dialogue,locandy.player.plugins.Abstract);
@@ -42,6 +57,13 @@ locandy.player.plugins.Dialogue.groupLabel = "Tasks";
 
 /** @prop {static} groupTag @inheritdesc */
 locandy.player.plugins.Dialogue.groupTag = "editor_plugin_label_group_tasks";
+
+/** @prop {static String} returns title for editor */
+locandy.player.plugins.Dialogue.getEditorTitleForModel = function(pluginModel, translatedClassname)
+    {
+        var label = pluginModel.label ? pluginModel.label : "";
+        return '<span class="icon-file-picture reusable-color-danger"></span> ' + label;
+    }
 
 /** @function {static} getSkeleton @inheritdesc */
 locandy.player.plugins.Dialogue.getSkeleton = function()
@@ -79,6 +101,12 @@ locandy.player.plugins.Dialogue.writeEffectToModel = function(effectModel, effec
         }
     };
 
+/** @function {static} writeRescourceToModel @inheritdesc */
+locandy.player.plugins.Dialogue.writeRescourceToModel = function(pluginModel,serverResponse)
+    {
+        locandy.player.plugins.Abstract.writeRescourceToModel(pluginModel,serverResponse,"url");
+    };    
+
 /** @function {static} addAnswerToModel */
 locandy.player.plugins.Dialogue.addAnswerToModel = function(pluginModel)
     {
@@ -110,7 +138,7 @@ locandy.player.plugins.Dialogue.importDialogueToModel = function(pluginModel, js
 locandy.player.plugins.Dialogue.exportDialogueToClipboard = function(pluginModel)
 {
    var copyElement = document.createElement('textarea');
-   copyElement.value = JSON.stringify(pluginModel.dialogue);
+   copyElement.value = JSON.stringify(pluginModel.dialogue, null, 2);
    copyElement.setAttribute('readonly', '');
    copyElement.style = {position: 'absolute', left: '-9999px'};
    document.body.appendChild(copyElement);
@@ -152,8 +180,19 @@ locandy.player.plugins.Dialogue.removeAnswerFromModel = function(pluginModel,ans
 locandy.player.plugins.Dialogue.getTemplate = function()
     {               
         return '<div> \
-                    <div class="question"> \
-                        <p>{{plugin.dialogue[plugin.activeDialogueId].text}}</p> \
+                    <div> \
+                        <div style="float:left; width:33%"> \
+                            <div class="image" data-ng-show="plugin.isHidden()&&plugin.url" data-ng-class="{visible:plugin.isHidden()&&plugin.url}"> \
+                                <div class="thumbnail"> \
+                                    <img data-ng-src="{{plugin.getURL()}}"/> \
+                                </div> \
+                            </div> \
+                        </div> \
+                        <div style="margin-left:35%"> \
+                            <div class="question"> \
+                                <p>{{plugin.dialogue[plugin.activeDialogueId].text}}</p> \
+                            </div> \
+                        </div> \
                     </div> \
                     <div class="answers"> \
                         <a href="javascript:void(0);" \
@@ -174,20 +213,43 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                         <option data-ng-repeat="(key, value) in pluginModel.dialogue">{{key}}</option> \
                     </select> \
                     <hr> \
-                    <div> \
-                        <textarea \
-                            id="newDialogueId" class="form-control" rows="1" \
-                            data-ng-model="pluginModel.newDialogueId" \
-                            placeholder="New Dialogue Id"/> \
-                        <button \
-                            class="btn btn-fancy btn-medium btn-default" \
-                            data-button-handler="global.locandy.player.plugins.Dialogue.addDialogueToModel(pluginModel)">\
-                            <span class="icon-plus-circle2 reusable-color-success"></span> \
-                            <span class="label-for-icon">{{"New"|i18n:"system_label_add"}}</span> \
-                        </button> \
-                    </div> \
                 </div> \
-                <hr> \
+                <div \
+                    data-fine-uploader \
+                    data-omit-drop-zone \
+                    data-omit-file-input \
+                    data-fetch-url="uploadFetchUrl" \
+                    data-fine-uploader-options="imagePluginUploadOptions" \
+                    data-fine-uploader-callback-pass-through="pluginModel" \
+                    data-fine-uploader-callback-on-complete="updatePluginResource(fineUploaderCallbackPassThrough,responseJSON)"> \
+                    <div class="form-group">\
+                        <div \
+                            ng-disabled="{{readOnly}}"\
+                            class="upload" \
+                            data-fine-uploader-file-input \
+                            data-is-multiple="imagePluginUploadOptions.multiple"> \
+                            <span class="icon-upload3 reusable-color-success"></span> \
+                            <span class="label-for-icon">{{"Upload"|i18n:"system_label_upload"}}</span> \
+                        </div> \
+                        <small class="connection" data-ng-if="!pluginModel.resources.url"> \
+                            <span class="icon-notification2 reusable-color-warning"></span> \
+                            <span class="label-for-icon">{{"No file connected"|i18n:"editor_text_file_not_connected"}}</span> \
+                        </small> \
+                        <small class="connection" data-ng-if="pluginModel.resources.url"> \
+                            <span class="icon-checkmark reusable-color-success"></span> \
+                            <span class="label-for-icon">{{"File connected"|i18n:"editor_text_file_connected"}}</span> \
+                            <img height="32" data-ng-src="{{pluginModel.resources.url.uuid}}"> \
+                        </small> \
+                    </div>\
+                    <div data-ng-if="pluginModel.resources.url.mimetype==\'image/gif\'" class="form-group"> \
+                        <input \
+                            type="number" min="1000"\
+                            class="form-control" \
+                            data-ng-model="pluginModel.animationDuration" \
+                            maxlength="5" \
+                            placeholder="GIF animation duration milliseconds"> \
+                    </div>\
+                </div> \
                 <div class="form-group"> \
                     <input \
                         type="text" \
@@ -196,6 +258,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                         data-focus-element="!pluginModel.question" \
                         placeholder="{{\'Text Agent\'|i18n:\'editor_plugin_multiplechoice_label_question\'}}"> \
                 </div> \
+                <hr> \
                 <div \
                     class="alert alert-info" \
                     data-ng-if="pluginModel.dialogue[pluginModel.activeDialogueId].answers.length===0"> \
@@ -205,17 +268,24 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                     class="answer form-group row small" \
                     data-ng-if="pluginModel.dialogue[pluginModel.activeDialogueId].answers.length > 0" \
                     data-ng-repeat="answer in pluginModel.dialogue[pluginModel.activeDialogueId].answers"> \
-                    <div class="col-xs-5 left"> \
-                        <div class="holder"> \
-                            <input \
-                                type="text" \
-                                class="form-control text" \
-                                data-ng-model="answer.text" \
-                                data-focus-element="!answer.text" \
-                                placeholder="{{\'Answer #%s\'|i18nP:\'editor_plugin_multiplechoice_label_answer\':($index+1)}}"> \
+                    <div> \
+                        <div class="col-xs-9 left"> \
+                            <input  type="text" \
+                                    class="form-control text" \
+                                    data-ng-model="answer.text" \
+                                    data-focus-element="!answer.text" \
+                                    placeholder="{{\'Answer #%s\'|i18nP:\'editor_plugin_multiplechoice_label_answer\':($index+1)}}"> \
+                        </div> \
+                        <div style="float: left"> \
+                            <select data-ng-model="answer.nextId" class="form-control full-border ng-pristine ng-valid ng-touched"> \
+                                <option data-ng-repeat="(key, value) in pluginModel.dialogue">{{key}}</option> \
+                            </select> \
                         </div> \
                     </div> \
-                    <div class="col-xs-7 right"> \
+                    <div> \
+                        <div class="col-xs-2"> \
+                        </div> \
+                        <div> \
                         <button \
                             class="btn btn-fancy btn-medium btn-default" \
                             data-button-handler="global.locandy.player.plugins.Dialogue.removeAnswerFromModel(pluginModel,answer)">\
@@ -242,19 +312,32 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                             <span class="icon-notification2 reusable-color-danger"></span> \
                             <span class="label-for-icon">{{"Connection corrupted"|i18n:"editor_text_effect_not_connected_correctly"}}</span> \
                         </small> \
-                        <div> \
-                            <select data-ng-model="answer.nextId" class="form-control full-border ng-pristine ng-valid ng-touched"> \
-                                <option data-ng-repeat="(key, value) in pluginModel.dialogue">{{key}}</option> \
-                            </select> \
-                        </div> \
+                    </div> \
                     </div> \
                 </div> \
                 <button \
                     class="btn btn-fancy btn-medium btn-default" \
                     data-button-handler="global.locandy.player.plugins.Dialogue.addAnswerToModel(pluginModel)"> \
                     <span class="icon-plus-circle2 reusable-color-success"></span> \
-                    <span class="label-for-icon">{{"Add answer"|i18n:"system_label_add"}}</span> \
+                    <span class="label-for-icon">{{"Add answer"|i18n:"editor_plugin_dialogue_answer_add"}}</span> \
                 </button>\
+                <hr> \
+                <div style="float: left; width:50%; margin-right: 10px"> \
+                    <textarea \
+                    id="newDialogueId" class="form-control" rows="1" style="float:left; width=100px" \
+                    data-ng-model="pluginModel.newDialogueId" \
+                    placeholder="New Dialogue Id"/> \
+                </div> \
+                <div> \
+                    <button \
+                    class="btn btn-fancy btn-medium btn-default" \
+                    data-button-handler="global.locandy.player.plugins.Dialogue.addDialogueToModel(pluginModel)">\
+                    <span class="icon-plus-circle2 reusable-color-success"></span> \
+                    <span class="label-for-icon">{{"New"|i18n:"system_label_add"}}</span> \
+                    </button> \
+                </div> \
+                <div> \
+                    </div> \
                 <hr> \
                 <div class="form-group"> \
                     <textarea \
@@ -262,32 +345,24 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                         rows="3" \
                         data-ng-model="pluginModel.dialogueTreeJson" \
                         placeholder="Dialogue Tree JSON"/> \
-                    <button \
-                        class="btn btn-fancy btn-medium btn-default" \
-                        data-button-handler="global.locandy.player.plugins.Dialogue.importDialogueToModel(pluginModel, pluginModel.dialogueTreeJson)"> \
-                        <span class="icon-plus-circle2 reusable-color-success"></span> \
-                        <span class="label-for-icon">{{"Import json"|i18n:"system_label_add"}}</span> \
-                    </button>\
-                </div> \
-                <hr> \
-                <div> \
-                    <button \
-                        class="btn btn-fancy btn-medium btn-default" \
-                        data-button-handler="global.locandy.player.plugins.Dialogue.exportDialogueToClipboard(pluginModel)"> \
-                        <span class="icon-plus-circle2 reusable-color-success"></span> \
-                        <span class="label-for-icon">{{"Copy json to clipboard"|i18n:"system_label_add"}}</span> \
-                    </button>\
                 </div> \
                 <div> \
-                    <hr> \
-                    <div> \
-                    Id: {{pluginModel.activeDialogueId}} \
-                    <hr> \
+                    <div style="float:left"> \
+                        <button \
+                            class="btn btn-fancy btn-medium btn-default" \
+                            data-button-handler="global.locandy.player.plugins.Dialogue.importDialogueToModel(pluginModel, pluginModel.dialogueTreeJson)"> \
+                            <span class="icon-plus-circle2 reusable-color-success"></span> \
+                            <span class="label-for-icon">{{"Import json"|i18n:"system_label_add"}}</span> \
+                        </button>\
                     </div> \
-                    <div> \
-                        {{pluginModel.dialogue[pluginModel.activeDialogueId]}} \
+                    <div style="float:right"> \
+                        <button \
+                            class="btn btn-fancy btn-medium btn-default" \
+                            data-button-handler="global.locandy.player.plugins.Dialogue.exportDialogueToClipboard(pluginModel)"> \
+                            <span class="icon-plus-circle2 reusable-color-success"></span> \
+                            <span class="label-for-icon">{{"Copy json to clipboard"|i18n:"system_label_add"}}</span> \
+                        </button>\
                     </div> \
-                    <hr> \
                 </div>';
     };
 
@@ -295,29 +370,18 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
     */
 locandy.player.plugins.Dialogue.prototype.persist = function()
     {        
-        // var storedObject={
-        //     answeredCorrectly: this.answeredCorrectly,            
-        //     selectedIndex: null, // clears property!
-        //     message: null, // clears property!
-        //     answers: []
-        // };
+        var storedObject = {
+            activeDialogueId: this.activeDialogueId
+        };
 
-        // for( var idx in this.answers )
-        // {
-        //     var answer = this.answers[idx];
-        //     var disabled = answer.disabled||false;
-        //     storedObject.answers.push({disabled:disabled});                
-        // }
-
-        // return storedObject;
-        return 
+        return storedObject;
     };
 
 /** @function {public} persist @inheritdesc
   */
 locandy.player.plugins.Dialogue.prototype.desist = function(storedObject)
     {
-        locandy.utilities.mixin(storedObject, this);
+        this.activeDialogueId = storedObject.activeDialogueId;
     };
 
 /** @function {public} showMessage Displays a message between question and answers. */
@@ -343,6 +407,27 @@ locandy.player.plugins.Dialogue.prototype.executeAnswer = function(answer)
         this.activeDialogueId = answer.nextId;
     };
 
+locandy.player.plugins.Dialogue.prototype.getURL = function()
+{
+    if(false === this.isHidden()) // isHidden returns true if plugin is visible! redisplay animated gifs
+        return "";
+    
+    if(this.gifRandom !== undefined)
+    {
+        // animated GIFs (not looping) must be restarted when the scope changes or they become visible
+        // the only way to do this is to change the URL and force the browser to reload the same image
+        // to display the animation again
+        var me = this;
+        if(!this._timeout)
+            this._timeout = setTimeout(function(){ me.gifRandom++; me._timeout = null;}, this.animationDuration);
+        
+        var u = this.url + "?" + this.gifRandom;
+        console.log("GR:", u);
+        return u;
+    }
+    
+    return this.url;
+};    
 
 /** @function {public Array} ? verifies integrity of quest before publish in Editor.
     */
