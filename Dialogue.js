@@ -110,7 +110,7 @@ locandy.player.plugins.Dialogue.importDialogueToModel = function(pluginModel, js
 locandy.player.plugins.Dialogue.exportDialogueToClipboard = function(pluginModel)
 {
    var copyElement = document.createElement('textarea');
-   copyElement.value = JSON.stringify(pluginModel.dialogue);
+   copyElement.value = JSON.stringify(pluginModel.dialogue, null, 2);
    copyElement.setAttribute('readonly', '');
    copyElement.style = {position: 'absolute', left: '-9999px'};
    document.body.appendChild(copyElement);
@@ -310,14 +310,17 @@ locandy.player.plugins.Dialogue.prototype.persist = function()
         // }
 
         // return storedObject;
-        return 
+        return {
+            activeDialogueId: this.activeDialogueId
+        };
     };
 
 /** @function {public} persist @inheritdesc
   */
 locandy.player.plugins.Dialogue.prototype.desist = function(storedObject)
     {
-        locandy.utilities.mixin(storedObject, this);
+        //locandy.utilities.mixin(storedObject, this);
+        this.activeDialogueId = storedObject.activeDialogueId;
     };
 
 /** @function {public} showMessage Displays a message between question and answers. */
