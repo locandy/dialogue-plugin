@@ -268,29 +268,23 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                     class="answer form-group row small" \
                     data-ng-if="pluginModel.dialogue[pluginModel.activeDialogueId].answers.length > 0" \
                     data-ng-repeat="answer in pluginModel.dialogue[pluginModel.activeDialogueId].answers"> \
+                    <div class="form-group"> \
+                        <input  type="text" \
+                                class="form-control question" \
+                                data-ng-model="answer.text" \
+                                data-focus-element="!answer.text" \
+                                placeholder="{{\'Answer #%s\'|i18nP:\'editor_plugin_multiplechoice_label_answer\':($index+1)}}"> \
+                    </div> \
                     <div> \
-                        <div class="col-xs-9 left"> \
-                            <input  type="text" \
-                                    class="form-control text" \
-                                    data-ng-model="answer.text" \
-                                    data-focus-element="!answer.text" \
-                                    placeholder="{{\'Answer #%s\'|i18nP:\'editor_plugin_multiplechoice_label_answer\':($index+1)}}"> \
+                        <div style="float: left; margin-left:10%"> \
+                            <p>&rarr;</p> \
                         </div> \
-                        <div style="float: left"> \
+                        <div style="float:left; width:20%; padding-right:3px"> \
                             <select data-ng-model="answer.nextId" class="form-control full-border ng-pristine ng-valid ng-touched"> \
                                 <option data-ng-repeat="(key, value) in pluginModel.dialogue">{{key}}</option> \
                             </select> \
                         </div> \
-                    </div> \
-                    <div> \
-                        <div class="col-xs-2"> \
-                        </div> \
                         <div> \
-                        <button \
-                            class="btn btn-fancy btn-medium btn-default" \
-                            data-button-handler="global.locandy.player.plugins.Dialogue.removeAnswerFromModel(pluginModel,answer)">\
-                            <span class="icon-minus-circle2 reusable-color-danger"></span>\
-                        </button> \
                         <span \
                             class="effect" \
                             data-ng-init="popOverConfig={ \
@@ -312,6 +306,12 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                             <span class="icon-notification2 reusable-color-danger"></span> \
                             <span class="label-for-icon">{{"Connection corrupted"|i18n:"editor_text_effect_not_connected_correctly"}}</span> \
                         </small> \
+                        <button \
+                            class="btn btn-fancy btn-medium btn-default" \
+                            style="float:right" \
+                            data-button-handler="global.locandy.player.plugins.Dialogue.removeAnswerFromModel(pluginModel,answer)">\
+                            <span class="icon-minus-circle2 reusable-color-danger"></span>\
+                        </button> \
                     </div> \
                     </div> \
                 </div> \
