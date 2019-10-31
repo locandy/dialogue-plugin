@@ -8,16 +8,27 @@
      * Zeile 2: NEXT dropdown, Effekt Interface
      * Übersetzungen (i18n Filter): Tags anpassen z.B. {{"Add answer"|i18n:"editor_plugin_dialogue_answer_add"}} und alle verwendeten neuen Tags mit dialogue_* hier auflisten (siehe Neue Übersetzungen) - sonst werden im Deutschen Interface alle Button-Labels falsch angezeigt, wenn das Label nicht existiert wird der englische Text verwendet.
      * DialogNode löschen Button mit JS confirm()
-     1. Neuen Dialog-bereich nach unten verschieben
-     1. Audio einbauen
-     1. JSON-Buttons in einer zeile
-     1. Save-und Reset Funktion einbauen: persist und desist
+     * Neuen Dialog-bereich nach unten verschieben
+     * Audio einbauen
+     * JSON-Buttons in einer zeile
+     * Save-und Reset Funktion einbauen: persist und desist
   1. Bild des Agents einfügen (siehe Image Plugin), das Bild sollte 1/3 des Bildschirms breit (z.B. CSS: float:left?) sein und der Text den es sagt sollte rechts daneben sein.
      * Das Agent wird in Zukunft mehrere Bilder haben können (verschiedene Personen oder Stimmungen des Agents) - ob wir das mittels Effekt oder direkt im DialogNode (als Attribut) umschalten, ist noch unentschieden.
   1. (Agent-Bild (siehe Image-Plugin) -> später UI für hochladen und zuweisen mehrer Bilder)
 
 # Neue Übersetzungen i18n
+  * "Upload image"|i18n:"editor_plugin_dialogue_agent_image_upload"
+  * "No file connected"|i18n:"editor_plugin_dialogue_file_not_connected"
+  * "File connected"|i18n:"editor_plugin_dialogue_file_connected"
+  * 'Text Agent\'|i18n:\'editor_plugin_dialogue_agent_text\'
+  * "You\'ve not provided any answers for this dialogue yet."|i18n:"editor_plugin_dialogue_no_answers"
+  * 'Answer #%s\'|i18nP:\'editor_plugin_dialogue_label_answer\':($index+1)
+  * "No effect connected"|i18n:"editor_plugin_dialogue_effect_not_connected"
+  * "Connection corrupted"|i18n:"editor_plugin_dialogue_effect_not_connected_correctly"
   * "Add answer"|i18n:"editor_plugin_dialogue_answer_add"
+  * "New dialogue"|i18n:"editor_plugin_dialogue_add"
+  * "Import json"|i18n:"editor_plugin_dialogue_json_import"
+  * "Copy json to clipboard"|i18n:"editor_plugin_dialogue_json_export"
   *  SHARED multiplechoice:
      * "You\'ve not provided any answers for this plugin yet."|i18n:"editor_plugin_multiplechoice_no_answers"
 
