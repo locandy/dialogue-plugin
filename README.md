@@ -42,10 +42,10 @@
    * Soll ein Multi-Upload möglich sein?
    * Bilder werden beim Upload nach kurzer Zeit gemerged. Kann ich das verhindern?
    * Wie soll der Upload Bereich genau ausschauen? mit Popup-Menü?
+   * Soll es eine Möglichkeit geben allen Dialogen das gleiche Bild zuzuweisen?
  * Audio:
    * Soll es einen Erneut-Abspielen Button geben?
-   * (Wie kann ich eine Audio-Datei abspielen?)
-
+   * Wie kann ich eine Audio-Datei abspielen? Kann ich dafür in Effect.js nachschauen?
 # Yutsi Dialogue Generator
  Here’s a simple Angular UI for generating interactive text-based dialogue that outputs to JSON format: yutsi.com/dialoguegenerator. Check out the repo for instructions as well as an importable JSON sample. This has proven a very useful tool in the development of HTML5 video games, especially when using Phaser.js, which is a wonderful library but can be tedious when dealing with interactive text. http://yutsi.com/2016/08/14/dialogue-generator?da=true
 
