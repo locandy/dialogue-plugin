@@ -37,10 +37,15 @@
  * Dialogue -> Zwischenstand: akuellste lauffähige Version
 
 # Fragen Thomas
- * Soll die Audio-Datei beim Agent mit einem Effekt oder mit einem Upload angebunden werden? Wenn Upload:
-   * Wo ist die Funktion implementiert: updatePluginResource(fineUploaderCallbackPassThrough,responseJSON) --> kommt in Audio.js vor
- * Ich hab das Agent-Bild jetzt eingebaut. Soll ich mit dem Feature mehrere Bilder hochzuladen noch warten? Oder kann ich mit einem Attribut im Plugin mal anfangen?
-
+ * Agent-Bilder: 
+   * Grundprinzip von Upload und Speicherung richtig?
+   * Soll ein Multi-Upload möglich sein?
+   * Bilder werden beim Upload nach kurzer Zeit gemerged. Kann ich das verhindern?
+   * Wie soll der Upload Bereich genau ausschauen? mit Popup-Menü?
+   * Soll es eine Möglichkeit geben allen Dialogen das gleiche Bild zuzuweisen?
+ * Audio:
+   * Soll es einen Erneut-Abspielen Button geben?
+   * Wie kann ich eine Audio-Datei abspielen? Kann ich dafür in Effect.js nachschauen?
 # Yutsi Dialogue Generator
  Here’s a simple Angular UI for generating interactive text-based dialogue that outputs to JSON format: yutsi.com/dialoguegenerator. Check out the repo for instructions as well as an importable JSON sample. This has proven a very useful tool in the development of HTML5 video games, especially when using Phaser.js, which is a wonderful library but can be tedious when dealing with interactive text. http://yutsi.com/2016/08/14/dialogue-generator?da=true
 
