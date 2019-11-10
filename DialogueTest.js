@@ -215,12 +215,20 @@ locandy.player.plugins.Dialogue.prototype.getImageUrl = function()
 
 locandy.player.plugins.Dialogue.addImageToModel = function(pluginModel)
 {
-    pluginModel.resources[pluginModel.imageId] = {
-        "url": locandy.player.playerMainSingleton.resourceResolverService.getUrl(pluginModel.resources.url.uuid),
-        "uuid": pluginModel.resources.url.uuid,
-        "mimetype": pluginModel.resources.url.mimetype
+    if (!(pluginModel.imageId in pluginModel.resources))
+    {
+        pluginModel.resources[pluginModel.imageId] = {
+            "url": locandy.player.playerMainSingleton.resourceResolverService.getUrl(pluginModel.resources.url.uuid),
+            "uuid": pluginModel.resources.url.uuid,
+            "mimetype": pluginModel.resources.url.mimetype
+        }
+        pluginModel.imageId = "";
     }
-    pluginModel.imageId = "";
+    else
+    {
+        // TODO: show error message
+        console.log("imageId already in use");
+    }
 }
 
 /** @function {static} getTemplate @inheritdesc */    
@@ -436,7 +444,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                             data-ng-model="pluginModel.dialogueTreeJson" \
                             placeholder="Dialogue Tree JSON"/> \
                     </div> \
-                    <div> \
+                    <div style="overflow: hidden"> \
                         <div style="float:left"> \
                             <button \
                                 class="btn btn-fancy btn-medium btn-default" \
@@ -454,7 +462,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                             </button>\
                         </div> \
                     </div> \
-                </div>';
+                </div><div>{{pluginModel.dialogue}}</div>';
     };
 
 /** @function {public} desist @inheritdesc
@@ -496,10 +504,15 @@ locandy.player.plugins.Dialogue.prototype.executeAnswer = function(answer)
         }
 
         this.activeDialogueId = answer.nextId;
+
+        // execute Sound of next Dialogue
+        if(this.dialogue[this.activeDialogueId].audioId != null || this.dialogue[this.activeDialogueId].audioId != ""){
+            // TODO: play sound
+        }
     };
 
 /** @function {public} executeSound */
-locandy.player.plugins.Dialogue.prototype.executeSound = function()
+locandy.player.plugins.Dialogue.prototype.executeSound = function(audioId)
     {
         // TODO
         // if (answer.effectId != null) {
