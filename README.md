@@ -39,6 +39,7 @@
 # Fragen Thomas
  * Agent-Bilder: 
    * Grundprinzip von Upload und Speicherung richtig?
+   * Soll ein Multi-Upload möglich sein?
    * Bilder werden beim Upload nach kurzer Zeit gemerged. Kann ich das verhindern?
    * Wie soll der Upload Bereich genau ausschauen? mit Popup-Menü?
  * Audio:
