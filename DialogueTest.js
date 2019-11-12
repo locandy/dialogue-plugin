@@ -500,7 +500,7 @@ locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDia
 {
     this.activeDialogueId = activeDialogueId;
     // tests machen: falls nicht existiert null zuweisen
-    if (this.dialogue[this.activeDialogueId].imageId != null && this.resources[dialogue[this.activeDialogueId].imageId].uuid){
+    if (this.dialogue[this.activeDialogueId].imageId != null && this.resources[this.dialogue[this.activeDialogueId].imageId].uuid){
         this.imageUrl = locandy.player.playerMainSingleton.resourceResolverService.getUrl(this.resources[this.dialogue[this.activeDialogueId].imageId].uuid); //this.resources[this.dialogue[this.activeDialogueId].imageId].url;
     }
     else 
