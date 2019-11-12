@@ -17,32 +17,34 @@ locandy.player.plugins.Dialogue = function(spot, json)
         // inject localizer service
         this.localizerService = locandy.player.playerMainSingleton.injector.get("localizerService");
 
+        DEBUG_dialogue = this;
 
         // dialogue properties
-        this.activeDialogueId = "START";
         this.dialogue = json.dialogue;
         this.dialogueTreeJson = "";
         this.newDialogueId = "";
 
+        this.setActiveDialogue("START");
+
         // image properties
-        this.url = null;
-        this.mimetype = "";
-        if(this.resources && this.resources.url)
-        {
-            this.url = locandy.player.playerMainSingleton.resourceResolverService.getUrl(this.resources.url.uuid);
-            if(this.resources.url.mimetype)
-                this.mimetype = this.resources.url.mimetype;
-        }
+        // this.url = null;
+        // this.mimetype = "";
+        // if(this.resources && this.resources.url)
+        // {
+        //     this.url = locandy.player.playerMainSingleton.resourceResolverService.getUrl(this.resources.url.uuid);
+        //     if(this.resources.url.mimetype)
+        //         this.mimetype = this.resources.url.mimetype;
+        // }
 
         
-        if(this.mimetype == "image/gif")
-        {
-            this.gifRandom = 1;
-            if(json.animationDuration)
-                this.animationDuration = Math.max(1000, json.animationDuration);
-            else
-                this.animationDuration = 1000;
-        }
+        // if(this.mimetype == "image/gif")
+        // {
+        //     this.gifRandom = 1;
+        //     if(json.animationDuration)
+        //         this.animationDuration = Math.max(1000, json.animationDuration);
+        //     else
+        //         this.animationDuration = 1000;
+        // }
 
         this.imageId = null;
     };    
@@ -209,26 +211,31 @@ locandy.player.plugins.Dialogue.prototype.getImageUrl = function()
     //     console.log("GR:", u);
     //     return u;
     // }
-    
+    console.log(this);
     return this.resources[this.dialogue[this.activeDialogueId].imageId].url;
 }; 
 
-locandy.player.plugins.Dialogue.addImageToModel = function(pluginModel)
+locandy.player.plugins.Dialogue.writeRescourceToModel = function(pluginModel, serverResponse)
 {
-    if (!(pluginModel.imageId in pluginModel.resources))
-    {
-        pluginModel.resources[pluginModel.imageId] = {
-            "url": locandy.player.playerMainSingleton.resourceResolverService.getUrl(pluginModel.resources.url.uuid),
-            "uuid": pluginModel.resources.url.uuid,
-            "mimetype": pluginModel.resources.url.mimetype
-        }
-        pluginModel.imageId = "";
-    }
-    else
-    {
-        // TODO: show error message
-        console.log("imageId already in use");
-    }
+    locandy.player.plugins.Abstract.writeRescourceToModel(pluginModel, serverResponse, pluginModel.imageId);
+}
+
+locandy.player.plugins.Dialogue.addRescourceToModel = function(pluginModel, serverResponse)
+{
+    // if (!(pluginModel.imageId in pluginModel.resources))
+    // {
+    //     pluginModel.resources[pluginModel.imageId] = {
+    //         "url": locandy.player.playerMainSingleton.resourceResolverService.getUrl(pluginModel.resources.url.uuid),
+    //         "uuid": pluginModel.resources.url.uuid,
+    //         "mimetype": pluginModel.resources.url.mimetype
+    //     }
+    //     pluginModel.imageId = "";
+    // }
+    // else
+    // {
+    //     // TODO: show error message
+    //     console.log("imageId already in use");
+    // }
 }
 
 /** @function {static} getTemplate @inheritdesc */    
@@ -236,9 +243,9 @@ locandy.player.plugins.Dialogue.getTemplate = function()
     {               
         return '<div> \
                     <div style="float:left; width:33%"> \
-                        <div class="image" data-ng-show="plugin.isHidden()&&plugin.url" data-ng-class="{visible:plugin.isHidden()&&plugin.url}"> \
+                        <div class="image" data-ng-show="plugin.isHidden()&&plugin.imageUrl" data-ng-class="{visible:plugin.isHidden()&&plugin.imageUrl}"> \
                             <div class="thumbnail"> \
-                                <img data-ng-src="{{plugin.getImageUrl()}}"/> \
+                                <img data-ng-src="{{plugin.imageUrl}}"/> \
                             </div> \
                         </div> \
                     </div> \
@@ -317,13 +324,6 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                                         maxlength="5" \
                                         placeholder="GIF animation duration milliseconds"> \
                                 </div>\
-                            </div> \
-                            <div style="margin-left:30%; width:25%"> \
-                                <button class="btn btn-fancy btn-medium btn-default" \
-                                        data-button-handler="global.locandy.player.plugins.Dialogue.addImageToModel(pluginModel)">\
-                                        <span class="icon-upload3 reusable-color-success"></span> \
-                                        <span class="label-for-icon">{{"Upload"|i18n:"system_label_upload"}}</span> \
-                                </button> \
                             </div> \
                         </div> \
                         <hr> \
@@ -496,6 +496,22 @@ locandy.player.plugins.Dialogue.prototype.showMessage = function(message)
     };
 
 /** @function {public} executeAnswer. performs effect if existing and goes to next dialogue-point */
+locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDialogueId)
+{
+    this.activeDialogueId = activeDialogueId;
+    // tests machen: falls nicht existiert null zuweisen
+    this.imageUrl = locandy.player.playerMainSingleton.resourceResolverService.getUrl(this.resources[this.dialogue[this.activeDialogueId].imageId].uuid); //this.resources[this.dialogue[this.activeDialogueId].imageId].url;
+    //this.dialogue[this.activeDialogueId].audioId;
+    console.log(this);
+
+    // execute Sound of next Dialogue
+    if(this.dialogue[this.activeDialogueId].audioId != null || this.dialogue[this.activeDialogueId].audioId != ""){
+        // TODO: play sound
+        this.executeSound(this.dialogue[this.activeDialogueId].audioId);
+    }
+};
+
+/** @function {public} executeAnswer. performs effect if existing and goes to next dialogue-point */
 locandy.player.plugins.Dialogue.prototype.executeAnswer = function(answer)
     {
         console.log(answer);
@@ -503,17 +519,25 @@ locandy.player.plugins.Dialogue.prototype.executeAnswer = function(answer)
             new locandy.player.Effect(this.spot.quest, answer.effectId).execute();
         }
 
-        this.activeDialogueId = answer.nextId;
+        this.setActiveDialogue(answer.nextId);
+        //this.activeDialogueId = answer.nextId;
 
-        // execute Sound of next Dialogue
-        if(this.dialogue[this.activeDialogueId].audioId != null || this.dialogue[this.activeDialogueId].audioId != ""){
-            // TODO: play sound
-        }
+
     };
 
 /** @function {public} executeSound */
 locandy.player.plugins.Dialogue.prototype.executeSound = function(audioId)
     {
+        console.log(this);
+        var sound = this.quest.getResource(audioId);
+
+        if(sound)
+        {
+            locandy.player.plugins.Media.updateCurrentMediaInstance(null);
+            sound.play();
+        }
+        else
+            return "ERROR: Missing upload for sound-effect: " + value;
         // TODO
         // if (answer.effectId != null) {
         //     new locandy.player.Effect(this.spot.quest, answer.effectId).execute();
