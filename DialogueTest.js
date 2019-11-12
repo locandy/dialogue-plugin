@@ -141,16 +141,16 @@ locandy.player.plugins.Dialogue.importDialogueToModel = function(pluginModel, js
 
 /** @function {static} exportDialogueToClipboard */
 locandy.player.plugins.Dialogue.exportDialogueToClipboard = function(pluginModel)
-{
-   var copyElement = document.createElement('textarea');
-   copyElement.value = JSON.stringify(pluginModel.dialogue, null, 2);
-   copyElement.setAttribute('readonly', '');
-   copyElement.style = {position: 'absolute', left: '-9999px'};
-   document.body.appendChild(copyElement);
-   copyElement.select();
-   document.execCommand('copy');
-   document.body.removeChild(copyElement);
-};
+    {
+        var copyElement = document.createElement('textarea');
+        copyElement.value = JSON.stringify(pluginModel.dialogue, null, 2);
+        copyElement.setAttribute('readonly', '');
+        copyElement.style = {position: 'absolute', left: '-9999px'};
+        document.body.appendChild(copyElement);
+        copyElement.select();
+        document.execCommand('copy');
+        document.body.removeChild(copyElement);
+    };
 
 
     
@@ -181,62 +181,12 @@ locandy.player.plugins.Dialogue.removeAnswerFromModel = function(pluginModel,ans
         }        
     };
 
-// /** @function {static} addAnswerToModel */
-// locandy.player.plugins.Dialogue.setImage = function(pluginModel, url)
-//     {
-//         pluginModel.urlImage = url;
-//         // if( pluginModel.dialogue[pluginModel.activeDialogueId].hasOwnProperty("answers") )
-//         // {
-//         //     if( pluginModel.dialogue[pluginModel.activeDialogueId].answers instanceof Array )
-//         //         locandy.utilities.removeArrayItem(pluginModel.dialogue[pluginModel.activeDialogueId].answers,answer);
-//         // }        
-//     }; 
-
-
-locandy.player.plugins.Dialogue.prototype.getImageUrl = function()
-{
-    if(false === this.isHidden()) // isHidden returns true if plugin is visible! redisplay animated gifs
-        return "";
-    
-    // if(this.gifRandom !== undefined)
-    // {
-    //     // animated GIFs (not looping) must be restarted when the scope changes or they become visible
-    //     // the only way to do this is to change the URL and force the browser to reload the same image
-    //     // to display the animation again
-    //     var me = this;
-    //     if(!this._timeout)
-    //         this._timeout = setTimeout(function(){ me.gifRandom++; me._timeout = null;}, this.animationDuration);
-        
-    //     var u = this.url + "?" + this.gifRandom;
-    //     console.log("GR:", u);
-    //     return u;
-    // }
-    console.log(this);
-    return this.resources[this.dialogue[this.activeDialogueId].imageId].url;
-}; 
 
 locandy.player.plugins.Dialogue.writeRescourceToModel = function(pluginModel, serverResponse)
-{
-    locandy.player.plugins.Abstract.writeRescourceToModel(pluginModel, serverResponse, pluginModel.imageId);
-}
+    {
+        locandy.player.plugins.Abstract.writeRescourceToModel(pluginModel, serverResponse, pluginModel.imageId);
+    }
 
-locandy.player.plugins.Dialogue.addRescourceToModel = function(pluginModel, serverResponse)
-{
-    // if (!(pluginModel.imageId in pluginModel.resources))
-    // {
-    //     pluginModel.resources[pluginModel.imageId] = {
-    //         "url": locandy.player.playerMainSingleton.resourceResolverService.getUrl(pluginModel.resources.url.uuid),
-    //         "uuid": pluginModel.resources.url.uuid,
-    //         "mimetype": pluginModel.resources.url.mimetype
-    //     }
-    //     pluginModel.imageId = "";
-    // }
-    // else
-    // {
-    //     // TODO: show error message
-    //     console.log("imageId already in use");
-    // }
-}
 
 /** @function {static} getTemplate @inheritdesc */    
 locandy.player.plugins.Dialogue.getTemplate = function()
@@ -280,52 +230,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                             <option data-ng-repeat="(key, value) in pluginModel.dialogue">{{key}}</option> \
                         </select> \
                     </div> \
-                    <hr> \
                     <div> \
-                        <div> \
-                            <div style="float: left; width:25%; margin-right: 10px"> \
-                                <textarea \
-                                id="newImageId" class="form-control" rows="1" style="float:left; width=100px" \
-                                data-ng-model="pluginModel.imageId" \
-                                placeholder="Image Id"/> \
-                            </div> \
-                            <div \
-                                style="margin-left:30%" \
-                                data-fine-uploader \
-                                data-omit-drop-zone \
-                                data-omit-file-input \
-                                data-fetch-url="uploadFetchUrl" \
-                                data-fine-uploader-options="imagePluginUploadOptions" \
-                                data-fine-uploader-callback-pass-through="pluginModel" \
-                                data-fine-uploader-callback-on-complete="updatePluginResource(fineUploaderCallbackPassThrough,responseJSON)"> \
-                                <div class="form-group">\
-                                    <div \
-                                        ng-disabled="{{readOnly}}"\
-                                        class="upload" \
-                                        data-fine-uploader-file-input \
-                                        data-is-multiple="imagePluginUploadOptions.multiple"> \
-                                        <span class="label-for-icon">{{"Select"|i18n:"system_label_upload"}}</span> \
-                                    </div> \
-                                    <small class="connection" data-ng-if="!pluginModel.resources.url"> \
-                                        <span class="icon-notification2 reusable-color-warning"></span> \
-                                        <span class="label-for-icon">{{"No file connected"|i18n:"editor_text_file_not_connected"}}</span> \
-                                    </small> \
-                                    <small class="connection" data-ng-if="pluginModel.resources.url"> \
-                                        <span class="icon-checkmark reusable-color-success"></span> \
-                                        <span class="label-for-icon">{{"File connected"|i18n:"editor_text_file_connected"}}</span> \
-                                        <img height="32" data-ng-src="{{pluginModel.resources.url.uuid}}"> \
-                                    </small> \
-                                </div>\
-                                <div data-ng-if="pluginModel.resources.url.mimetype==\'image/gif\'" class="form-group"> \
-                                    <input \
-                                        type="number" min="1000"\
-                                        class="form-control" \
-                                        data-ng-model="pluginModel.animationDuration" \
-                                        maxlength="5" \
-                                        placeholder="GIF animation duration milliseconds"> \
-                                </div>\
-                            </div> \
-                        </div> \
                         <hr> \
                         <div class="form-group"> \
                             <input \
@@ -434,8 +339,51 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                         <span class="label-for-icon">{{"New dialogue"|i18n:"editor_plugin_dialogue_add"}}</span> \
                         </button> \
                     </div> \
+                    <hr> \
                     <div> \
+                        <div style="float: left; width:25%; margin-right: 10px"> \
+                            <textarea \
+                            id="newImageId" class="form-control" rows="1" style="float:left; width=100px" \
+                            data-ng-model="pluginModel.imageId" \
+                            placeholder="Image Id"/> \
                         </div> \
+                        <div \
+                            style="margin-left:30%" \
+                            data-fine-uploader \
+                            data-omit-drop-zone \
+                            data-omit-file-input \
+                            data-fetch-url="uploadFetchUrl" \
+                            data-fine-uploader-options="imagePluginUploadOptions" \
+                            data-fine-uploader-callback-pass-through="pluginModel" \
+                            data-fine-uploader-callback-on-complete="updatePluginResource(fineUploaderCallbackPassThrough,responseJSON)"> \
+                            <div class="form-group">\
+                                <div \
+                                    ng-disabled="{{readOnly}}"\
+                                    class="upload" \
+                                    data-fine-uploader-file-input \
+                                    data-is-multiple="imagePluginUploadOptions.multiple"> \
+                                    <span class="label-for-icon">{{"Upload"|i18n:"system_label_upload"}}</span> \
+                                </div> \
+                                <small class="connection" data-ng-if="!pluginModel.resources.url"> \
+                                    <span class="icon-notification2 reusable-color-warning"></span> \
+                                    <span class="label-for-icon">{{"No file connected"|i18n:"editor_text_file_not_connected"}}</span> \
+                                </small> \
+                                <small class="connection" data-ng-if="pluginModel.resources.url"> \
+                                    <span class="icon-checkmark reusable-color-success"></span> \
+                                    <span class="label-for-icon">{{"File connected"|i18n:"editor_text_file_connected"}}</span> \
+                                    <img height="32" data-ng-src="{{pluginModel.resources.url.uuid}}"> \
+                                </small> \
+                            </div>\
+                            <div data-ng-if="pluginModel.resources.url.mimetype==\'image/gif\'" class="form-group"> \
+                                <input \
+                                    type="number" min="1000"\
+                                    class="form-control" \
+                                    data-ng-model="pluginModel.animationDuration" \
+                                    maxlength="5" \
+                                    placeholder="GIF animation duration milliseconds"> \
+                            </div>\
+                        </div> \
+                    </div> \
                     <hr> \
                     <div class="form-group"> \
                         <textarea \
@@ -495,24 +443,22 @@ locandy.player.plugins.Dialogue.prototype.showMessage = function(message)
         this.message = message;
     };
 
-/** @function {public} executeAnswer. performs effect if existing and goes to next dialogue-point */
+/** @function {public} setActiveDialogue. updated activeDialogueId and executes sound of next dialogue */
 locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDialogueId)
 {
     this.activeDialogueId = activeDialogueId;
-    // tests machen: falls nicht existiert null zuweisen
+
     if (this.dialogue[this.activeDialogueId].imageId != null && this.resources[this.dialogue[this.activeDialogueId].imageId].uuid){
         this.imageUrl = locandy.player.playerMainSingleton.resourceResolverService.getUrl(this.resources[this.dialogue[this.activeDialogueId].imageId].uuid); //this.resources[this.dialogue[this.activeDialogueId].imageId].url;
     }
     else 
     {
-        this.imageId = null;
+        this.imageUrl = null;
     }
-    //this.dialogue[this.activeDialogueId].audioId;
     console.log(this);
 
-    // execute Sound of next Dialogue
+    // execute sound of next dialogue
     if(this.dialogue[this.activeDialogueId].audioId !== undefined || this.dialogue[this.activeDialogueId].audioId != null){
-        // TODO: play sound
         this.executeSound(this.dialogue[this.activeDialogueId].audioId);
     }
 };
@@ -521,20 +467,20 @@ locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDia
 locandy.player.plugins.Dialogue.prototype.executeAnswer = function(answer)
     {
         console.log(answer);
+
+        // execute effect
         if (answer.effectId != null) {
             new locandy.player.Effect(this.spot.quest, answer.effectId).execute();
         }
 
         this.setActiveDialogue(answer.nextId);
-        //this.activeDialogueId = answer.nextId;
-
-
     };
 
 /** @function {public} executeSound */
 locandy.player.plugins.Dialogue.prototype.executeSound = function(audioId)
     {
         console.log(this);
+
         var sound = this.spot.quest.getResource(audioId);
 
         if(sound)
@@ -544,15 +490,35 @@ locandy.player.plugins.Dialogue.prototype.executeSound = function(audioId)
         }
         else
             return "ERROR: Missing upload for sound-effect: " + audioId;
-        // TODO
-        // if (answer.effectId != null) {
-        //     new locandy.player.Effect(this.spot.quest, answer.effectId).execute();
-        // }
-
-        // this.activeDialogueId = answer.nextId;
     };
     
- 
+
+locandy.player.plugins.Dialogue.prototype.getImageUrl = function()
+    {
+        console.log(this);
+
+        if(false === this.isHidden()) // isHidden returns true if plugin is visible! redisplay animated gifs
+            return "";
+        
+        // if(this.gifRandom !== undefined)
+        // {
+        //     // animated GIFs (not looping) must be restarted when the scope changes or they become visible
+        //     // the only way to do this is to change the URL and force the browser to reload the same image
+        //     // to display the animation again
+        //     var me = this;
+        //     if(!this._timeout)
+        //         this._timeout = setTimeout(function(){ me.gifRandom++; me._timeout = null;}, this.animationDuration);
+            
+        //     var u = this.url + "?" + this.gifRandom;
+        //     console.log("GR:", u);
+        //     return u;
+        // }
+        if (this.dialogue[this.activeDialogueId].imageId != null)
+        {
+            return this.resources[this.dialogue[this.activeDialogueId].imageId].url;
+        }
+        
+    }; 
 
 /** @function {public Array} ? verifies integrity of quest before publish in Editor.
     */
