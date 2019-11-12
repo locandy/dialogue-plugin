@@ -17,7 +17,7 @@ locandy.player.plugins.Dialogue = function(spot, json)
         // inject localizer service
         this.localizerService = locandy.player.playerMainSingleton.injector.get("localizerService");
 
-        DEBUG_dialogue = this;
+        var DEBUG_dialogue = this;
 
         // dialogue properties
         this.dialogue = json.dialogue;
@@ -500,12 +500,18 @@ locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDia
 {
     this.activeDialogueId = activeDialogueId;
     // tests machen: falls nicht existiert null zuweisen
-    this.imageUrl = locandy.player.playerMainSingleton.resourceResolverService.getUrl(this.resources[this.dialogue[this.activeDialogueId].imageId].uuid); //this.resources[this.dialogue[this.activeDialogueId].imageId].url;
+    if (this.dialogue[this.activeDialogueId].imageId != null && this.resources[dialogue[this.activeDialogueId].imageId].uuid){
+        this.imageUrl = locandy.player.playerMainSingleton.resourceResolverService.getUrl(this.resources[this.dialogue[this.activeDialogueId].imageId].uuid); //this.resources[this.dialogue[this.activeDialogueId].imageId].url;
+    }
+    else 
+    {
+        this.imageId = null;
+    }
     //this.dialogue[this.activeDialogueId].audioId;
     console.log(this);
 
     // execute Sound of next Dialogue
-    if(this.dialogue[this.activeDialogueId].audioId != null || this.dialogue[this.activeDialogueId].audioId != ""){
+    if(this.dialogue[this.activeDialogueId].audioId !== undefined || this.dialogue[this.activeDialogueId].audioId != null){
         // TODO: play sound
         this.executeSound(this.dialogue[this.activeDialogueId].audioId);
     }
@@ -529,7 +535,7 @@ locandy.player.plugins.Dialogue.prototype.executeAnswer = function(answer)
 locandy.player.plugins.Dialogue.prototype.executeSound = function(audioId)
     {
         console.log(this);
-        var sound = this.quest.getResource(audioId);
+        var sound = this.spot.quest.getResource(audioId);
 
         if(sound)
         {
@@ -537,7 +543,7 @@ locandy.player.plugins.Dialogue.prototype.executeSound = function(audioId)
             sound.play();
         }
         else
-            return "ERROR: Missing upload for sound-effect: " + value;
+            return "ERROR: Missing upload for sound-effect: " + audioId;
         // TODO
         // if (answer.effectId != null) {
         //     new locandy.player.Effect(this.spot.quest, answer.effectId).execute();
