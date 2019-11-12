@@ -2,19 +2,21 @@
  Temporary Project. This JS is useless outside the Locandy Platform
 
 # TODO
+  1. Dialogue.js (beta erstellen), DialogueTest.js löschen
+  1. GUI
+    * Options ID-Selektor
+    * (keine horizontale Linie)
+    * Text des Agents
+    * Portrait, Selektor Image
+    * Portrait, Selektor Audio
+    * (keine horizontale Linie)
+    * Answers
+    * + Add Answer
+    * horizontale Linie
+    * ID-TF, Upload Image with ID
+    * .... wie bisher
   1. (Code Kommentieren (alle Variablen besonders transient oder persistent!, komplexe Stellen))
-  1. GUI aufräumen
-     * Zeile 1: Antwort text, - Button
-     * Zeile 2: NEXT dropdown, Effekt Interface
-     * Übersetzungen (i18n Filter): Tags anpassen z.B. {{"Add answer"|i18n:"editor_plugin_dialogue_answer_add"}} und alle verwendeten neuen Tags mit dialogue_* hier auflisten (siehe Neue Übersetzungen) - sonst werden im Deutschen Interface alle Button-Labels falsch angezeigt, wenn das Label nicht existiert wird der englische Text verwendet.
-     * DialogNode löschen Button mit JS confirm()
-     * Neuen Dialog-bereich nach unten verschieben
-     * Audio einbauen
-     * JSON-Buttons in einer zeile
-     * Save-und Reset Funktion einbauen: persist und desist
-  1. Bild des Agents einfügen (siehe Image Plugin), das Bild sollte 1/3 des Bildschirms breit (z.B. CSS: float:left?) sein und der Text den es sagt sollte rechts daneben sein.
-     * Das Agent wird in Zukunft mehrere Bilder haben können (verschiedene Personen oder Stimmungen des Agents) - ob wir das mittels Effekt oder direkt im DialogNode (als Attribut) umschalten, ist noch unentschieden.
-  1. (Agent-Bild (siehe Image-Plugin) -> später UI für hochladen und zuweisen mehrer Bilder)
+     
 
 # Neue Übersetzungen i18n
   * "Upload image"|i18n:"editor_plugin_dialogue_agent_image_upload"
