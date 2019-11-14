@@ -38,7 +38,15 @@
  * DialogueTest.js -> TestDatei: aktuellste Version von Dialogue
  * Dialogue -> Zwischenstand: akuellste lauffähige Version
 
-# Fragen Thomas
+# Fragen Thomas neu
+ * Agent-Bilder:
+   * Man kann Bilder hochladen, aber nicht mehr entfernen! Soll ich eine Funktion zu Löschen einbauen? (würde ich sinnvoll finden - also mit einem Select zum auswählen und einem Button zum bestätigen)
+ * Audio: 
+   * Bezüglich executeSound-Funktion:
+     Wie würde ich auf this.spot.quest.getResource(audioId) in einer Nicht-Prototype-Funktion zugreifen?
+     (ich will dass this ersetzen)
+
+# Fragen Thomas (12.11.)
  * Agent-Bilder: 
    * Grundprinzip von Upload und Speicherung richtig?
    * Soll ein Multi-Upload möglich sein? Nein.
