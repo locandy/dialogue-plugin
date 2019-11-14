@@ -493,34 +493,6 @@ locandy.player.plugins.Dialogue.prototype.executeSound = function(audioId)
             return "ERROR: Missing upload for sound-effect: " + audioId;
     };
     
-
-locandy.player.plugins.Dialogue.prototype.getImageUrl = function()
-    {
-        console.log(this);
-
-        if(false === this.isHidden()) // isHidden returns true if plugin is visible! redisplay animated gifs
-            return "";
-        
-        // if(this.gifRandom !== undefined)
-        // {
-        //     // animated GIFs (not looping) must be restarted when the scope changes or they become visible
-        //     // the only way to do this is to change the URL and force the browser to reload the same image
-        //     // to display the animation again
-        //     var me = this;
-        //     if(!this._timeout)
-        //         this._timeout = setTimeout(function(){ me.gifRandom++; me._timeout = null;}, this.animationDuration);
-            
-        //     var u = this.url + "?" + this.gifRandom;
-        //     console.log("GR:", u);
-        //     return u;
-        // }
-        if (this.dialogue[this.activeDialogueId].imageId != null)
-        {
-            return this.resources[this.dialogue[this.activeDialogueId].imageId].url;
-        }
-        
-    }; 
-
 /** @function {public Array} ? verifies integrity of quest before publish in Editor.
     */
 locandy.player.plugins.Dialogue.prototype.verifyBeforePublish = function()
