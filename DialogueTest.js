@@ -5,6 +5,9 @@ if( locandy === undefined ) var locandy={};
 if( locandy.player === undefined ) locandy.player={};
 if( locandy.player.plugins === undefined ) locandy.player.plugins={};
 
+// variable for debugging
+var DEBUG_dialogue = this;
+
 /** @class locandy.player.plugins.Dialogue
     @extends locandy.player.plugins.Abstract
 	*/
@@ -17,7 +20,7 @@ locandy.player.plugins.Dialogue = function(spot, json)
         // inject localizer service
         this.localizerService = locandy.player.playerMainSingleton.injector.get("localizerService");
 
-        var DEBUG_dialogue = this;
+        DEBUG_dialogue = this;
 
         // dialogue properties
         this.dialogue = json.dialogue;
@@ -26,27 +29,11 @@ locandy.player.plugins.Dialogue = function(spot, json)
 
         this.setActiveDialogue("START");
 
-        // image properties
-        // this.url = null;
-        // this.mimetype = "";
-        // if(this.resources && this.resources.url)
-        // {
-        //     this.url = locandy.player.playerMainSingleton.resourceResolverService.getUrl(this.resources.url.uuid);
-        //     if(this.resources.url.mimetype)
-        //         this.mimetype = this.resources.url.mimetype;
-        // }
+        // for new Image Upload
+        this.imageId = "";
 
-        
-        // if(this.mimetype == "image/gif")
-        // {
-        //     this.gifRandom = 1;
-        //     if(json.animationDuration)
-        //         this.animationDuration = Math.max(1000, json.animationDuration);
-        //     else
-        //         this.animationDuration = 1000;
-        // }
-
-        this.imageId = null;
+        // for upload verification
+        this.lastUploadedImage = "";
     };    
 
 locandy.utilities.inherit(locandy.player.plugins.Dialogue,locandy.player.plugins.Abstract);
@@ -105,12 +92,6 @@ locandy.player.plugins.Dialogue.writeEffectToModel = function(effectModel, effec
             effectModel.effectId = effectId;
         }
     };  
-
-/** @function {static} writeRescourceToModel @inheritdesc */
-locandy.player.plugins.Dialogue.writeRescourceToModel = function(pluginModel,serverResponse)
-    {
-        locandy.player.plugins.Abstract.writeRescourceToModel(pluginModel,serverResponse,"url");
-    };    
 
 /** @function {static} addAnswerToModel */
 locandy.player.plugins.Dialogue.addAnswerToModel = function(pluginModel)
@@ -181,11 +162,15 @@ locandy.player.plugins.Dialogue.removeAnswerFromModel = function(pluginModel,ans
         }        
     };
 
-
+/** @function {static} writeRescourceToModel @inheritdesc */
 locandy.player.plugins.Dialogue.writeRescourceToModel = function(pluginModel, serverResponse)
     {
         locandy.player.plugins.Abstract.writeRescourceToModel(pluginModel, serverResponse, pluginModel.imageId);
-    }
+
+        // clear textarea
+        pluginModel.lastUploadedImage = pluginModel.imageId;
+        pluginModel.imageId = null;
+    }    
 
 
 /** @function {static} getTemplate @inheritdesc */    
@@ -203,11 +188,13 @@ locandy.player.plugins.Dialogue.getTemplate = function()
                         <div style="margin-left:35%"> \
                             <div class="question"> \
                                 <p>{{plugin.dialogue[plugin.activeDialogueId].text}}</p> \
+                                <div class="btn" style="float:right"> \
+                                    <a href="javascript:void(0);" \
+                                        data-button-handler="plugin.executeSound(plugin.dialogue[plugin.activeDialogueId].audioId)"> \
+                                        <span class="icon-play4"></span>\
+                                    </a> \
+                                </div> \
                             </div> \
-                            <a href="javascript:void(0);" \
-                                data-button-handler="playResource(plugin.dialogue[plugin.activeDialogueId].audioId)"> \
-                            <span class="label-for-icon">play</span> \
-                            </a> \
                         </div> \
                     </div> \
                     <div class="answers"> \
@@ -230,7 +217,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                             <option data-ng-repeat="(key, value) in pluginModel.dialogue">{{key}}</option> \
                         </select> \
                     </div> \
-                    <div> \
+                    <div style="overflow:hidden"> \
                         <hr> \
                         <div class="form-group"> \
                             <input \
@@ -239,25 +226,44 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                                 data-ng-model="pluginModel.dialogue[pluginModel.activeDialogueId].text" \
                                 placeholder="{{\'Text Agent\'|i18n:\'editor_plugin_dialogue_agent_text\'}}"> \
                         </div> \
-                        <div style="overflow: hidden"> \
-                            <div style="width:20%; float:left; margin-left:30%"> \
-                                <p>Audio: </p> \
+                        <div> \
+                            <div style="float:left; width:30%"> \
+                                <div class="image"> \
+                                    <div class="thumbnail"> \
+                                        <img data-ng-src="{{pluginModel.resources[pluginModel.dialogue[pluginModel.activeDialogueId].imageId].uuid}}"/> \
+                                    </div> \
+                                </div> \
                             </div> \
-                            <div style="width:30%; float:left"> \
-                                <select data-ng-model="pluginModel.dialogue[pluginModel.activeDialogueId].audioId" class="form-control full-border ng-pristine"> \
-                                    <option data-ng-repeat="(key, value) in mrmResource.resources">{{key}}</option> \
-                                    <option>null</option> \
-                                </select> \
-                            </div> \
-                        </div> \
-                        <div style="overflow: hidden"> \
-                            <div style="width:20%; float:left; margin-left:30%"> \
-                                <p>Image: </p> \
-                            </div> \
-                            <div style="width:30%; float:left"> \
-                                <select data-ng-model="pluginModel.dialogue[pluginModel.activeDialogueId].imageId" class="form-control full-border ng-pristine"> \
-                                    <option data-ng-repeat="(key, value) in pluginModel.resources">{{key}}</option> \
-                                </select> \
+                            <div style="margin-left:35%"> \
+                                <div style="overflow: hidden"> \
+                                    <div style="width:30%; float:left"> \
+                                        <p>Image: </p> \
+                                    </div> \
+                                    <div style="width:50%; float:left"> \
+                                        <select data-ng-model="pluginModel.dialogue[pluginModel.activeDialogueId].imageId" class="form-control full-border ng-pristine"> \
+                                            <option data-ng-repeat="(key, value) in pluginModel.resources">{{key}}</option> \
+                                        </select> \
+                                    </div> \
+                                </div> \
+                                <div style="overflow: hidden; margin-top: 10px"> \
+                                    <div style="width:30%; float:left"> \
+                                        <p>Audio: </p> \
+                                    </div> \
+                                    <div style="width:50%; float:left"> \
+                                        <select data-ng-model="pluginModel.dialogue[pluginModel.activeDialogueId].audioId" class="form-control full-border ng-pristine"> \
+                                            <option data-ng-repeat="(key, value) in mrmResource.resources">{{key}}</option> \
+                                            <option value="" >null</option> \
+                                        </select> \
+                                    </div> \
+                                    <div> \
+                                    <button \
+                                        class="btn btn-fancy btn-medium btn-default" \
+                                        style="float:right" \
+                                        data-button-handler="global.locandy.player.plugins.Dialogue.executeSound(pluginModel.dialogue[pluginModel.activeDialogueId].audioId)">\
+                                        <span class="icon-play4"></span>\
+                                    </button> \
+                                </div> \
+                                </div> \
                             </div> \
                         </div> \
                     </div> \
@@ -364,14 +370,9 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                                     data-is-multiple="imagePluginUploadOptions.multiple"> \
                                     <span class="label-for-icon">{{"Upload"|i18n:"system_label_upload"}}</span> \
                                 </div> \
-                                <small class="connection" data-ng-if="!pluginModel.resources.url"> \
-                                    <span class="icon-notification2 reusable-color-warning"></span> \
-                                    <span class="label-for-icon">{{"No file connected"|i18n:"editor_text_file_not_connected"}}</span> \
-                                </small> \
-                                <small class="connection" data-ng-if="pluginModel.resources.url"> \
+                                <small data-ng-if="(pluginModel.imageId == null) && (pluginModel.resources[pluginModel.lastUploadedImage])"> \
                                     <span class="icon-checkmark reusable-color-success"></span> \
-                                    <span class="label-for-icon">{{"File connected"|i18n:"editor_text_file_connected"}}</span> \
-                                    <img height="32" data-ng-src="{{pluginModel.resources.url.uuid}}"> \
+                                    <span class="label-for-icon">{{"uploaded"|i18n:"todo"}}</span> \
                                 </small> \
                             </div>\
                             <div data-ng-if="pluginModel.resources.url.mimetype==\'image/gif\'" class="form-group"> \
@@ -410,7 +411,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                             </button>\
                         </div> \
                     </div> \
-                </div><div>{{pluginModel.dialogue}}</div>';
+                </div>';
     };
 
 /** @function {public} desist @inheritdesc
