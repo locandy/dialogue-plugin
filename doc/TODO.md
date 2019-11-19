@@ -31,6 +31,7 @@
   *\'Image id\'|i18nP:\'editor_plugin_image_upload_id\'
   * "Upload"|i18n:"editot_plugin_image_upload"
   * "uploaded"|i18n:"editot_plugin_image_uploaded"
+  * "Remove"|i18n:"editor_plugin_image_remove"
   * "Import json"|i18n:"editor_plugin_dialogue_json_import"
   * "Copy json to clipboard"|i18n:"editor_plugin_dialogue_json_export"
 
