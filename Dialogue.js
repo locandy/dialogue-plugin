@@ -6,7 +6,7 @@ if( locandy.player === undefined ) locandy.player={};
 if( locandy.player.plugins === undefined ) locandy.player.plugins={};
 
 // variable for debugging
-var DEBUG_dialogue = this;
+//var DEBUG_dialogue = null;
 
 /** @class locandy.player.plugins.Dialogue
     @extends locandy.player.plugins.Abstract
@@ -20,7 +20,7 @@ locandy.player.plugins.Dialogue = function(spot, json)
         // inject localizer service
         this.localizerService = locandy.player.playerMainSingleton.injector.get("localizerService");
 
-        DEBUG_dialogue = this;
+        //DEBUG_dialogue = this;
 
         // dialogue properties
         this.dialogue = json.dialogue;
@@ -257,7 +257,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                         </div> \
                         <div> \
                             <div style="float:left; width:30%"> \
-                                <div class="image" data-ng-show="pluginModel.dialogue[pluginModel.activeDialogueId].imageId != \'\'"> \
+                                <div class="image" data-ng-show="pluginModel.resources[pluginModel.dialogue[pluginModel.activeDialogueId].imageId]"> \
                                     <div class="thumbnail"> \
                                         <img data-ng-src="{{pluginModel.resources[pluginModel.dialogue[pluginModel.activeDialogueId].imageId].uuid}}"/> \
                                     </div> \
@@ -282,7 +282,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                                     <div style="width:70%; float:left"> \
                                         <select data-ng-model="pluginModel.dialogue[pluginModel.activeDialogueId].audioId" class="form-control full-border ng-pristine"> \
                                             <option data-ng-repeat="(key, value) in mrmResource.resources">{{key}}</option> \
-                                            <option value=null>{"none"|i18n:"editor_plugin_dialogue_audio_none"}}</option> \
+                                            <option value=null>{{"none"|i18n:"editor_plugin_dialogue_audio_none"}}</option> \
                                         </select> \
                                     </div> \
                                     <!--<div> \
