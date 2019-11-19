@@ -19,7 +19,9 @@
 # Neue Übersetzungen i18n
   * \'Text Agent\'|i18n:\'editor_plugin_dialogue_agent_text\'
   * "Image"|i18n:"editor_plugin_dialogue_image_select"
+  * "none"|i18n:"editor_plugin_dialogue_image_none"
   * "Audio"|i18n:"editor_plugin_dialogue_audio_select"
+  * "none"|i18n:"editor_plugin_dialogue_audio_none"
   * "You\'ve not provided any answers for this dialogue yet."|i18n:"editor_plugin_dialogue_no_answers"
   * \'Answer #%s\'|i18nP:\'editor_plugin_dialogue_label_answer\':($index+1)
   * "No effect connected"|i18n:"editor_plugin_dialogue_effect_not_connected"
