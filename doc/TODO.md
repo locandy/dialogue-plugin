@@ -16,20 +16,22 @@
      
 
 # Neue Übersetzungen i18n
-  * "Upload image"|i18n:"editor_plugin_dialogue_agent_image_upload"
-  * "No file connected"|i18n:"editor_plugin_dialogue_file_not_connected"
-  * "File connected"|i18n:"editor_plugin_dialogue_file_connected"
-  * 'Text Agent\'|i18n:\'editor_plugin_dialogue_agent_text\'
+  * \'Text Agent\'|i18n:\'editor_plugin_dialogue_agent_text\'
+  * "Image"|i18n:"editor_plugin_dialogue_image_select"
+  * "Audio"|i18n:"editor_plugin_dialogue_audio_select"
   * "You\'ve not provided any answers for this dialogue yet."|i18n:"editor_plugin_dialogue_no_answers"
-  * 'Answer #%s\'|i18nP:\'editor_plugin_dialogue_label_answer\':($index+1)
+  * \'Answer #%s\'|i18nP:\'editor_plugin_dialogue_label_answer\':($index+1)
   * "No effect connected"|i18n:"editor_plugin_dialogue_effect_not_connected"
   * "Connection corrupted"|i18n:"editor_plugin_dialogue_effect_not_connected_correctly"
   * "Add answer"|i18n:"editor_plugin_dialogue_answer_add"
-  * "New dialogue"|i18n:"editor_plugin_dialogue_add"
+  * \'New dialogue id\'|i18nP:\'editor_plugin_dialogue_new_id\'
+  * "Add"|i18n:"editor_plugin_dialogue_add"
+  * "Add"|i18n:"editor_plugin_image_upload_add"
+  *\'Image id\'|i18nP:\'editor_plugin_image_upload_id\'
+  * "Upload"|i18n:"editot_plugin_image_upload"
+  * "uploaded"|i18n:"editot_plugin_image_uploaded"
   * "Import json"|i18n:"editor_plugin_dialogue_json_import"
   * "Copy json to clipboard"|i18n:"editor_plugin_dialogue_json_export"
-  *  SHARED multiplechoice:
-     * "You\'ve not provided any answers for this plugin yet."|i18n:"editor_plugin_multiplechoice_no_answers"
 
 # Dateien
  * DialogueTest.js -> TestDatei: aktuellste Version von Dialogue
