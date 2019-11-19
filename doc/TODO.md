@@ -1,17 +1,18 @@
 # TODO
   1. Dialogue.js (beta erstellen), DialogueTest.js löschen
   1. GUI
-    * Options ID-Selektor
-    * (keine horizontale Linie)
-    * Text des Agents
-    * Portrait, Selektor Image
-    * Portrait, Selektor Audio
-    * (keine horizontale Linie)
-    * Answers
-    * + Add Answer
-    * horizontale Linie
-    * ID-TF, Upload Image with ID
-    * .... wie bisher
+      * Options ID-Selektor
+      * (keine horizontale Linie)
+      * Text des Agents
+      * Portrait, Selektor Image
+      * Portrait, Selektor Audio
+      * (keine horizontale Linie)
+      * Answers
+      * + Add Answer
+      * horizontale Linie
+      * ID-TF, Upload Image with ID
+      * .... wie bisher
+
   1. (Code Kommentieren (alle Variablen besonders transient oder persistent!, komplexe Stellen))
      
 
