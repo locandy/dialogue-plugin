@@ -39,17 +39,13 @@
   * "Import json"|i18n:"editor_plugin_dialogue_json_import"
   * "Copy json to clipboard"|i18n:"editor_plugin_dialogue_json_export"
 
-# Dateien
- * DialogueTest.js -> TestDatei: aktuellste Version von Dialogue
- * Dialogue -> Zwischenstand: akuellste lauffähige Version
-
 # Fragen Thomas neu
  * Aus Email: Aja, beim Bilderhochladen:  Das kannst du entfernen.... Keine Datei verknüpft?
  * Audio select: null value übergeben
  * Dialog eintfernen/ neuen einfügen: + und - ganz oben als Buttons mit Popup oder hidden div? (einheitliches Format)
- * css? Unschön mit style im html.
- * Edit-oberfläche allgemein. Fehlerbehandlungen
- * Import JSON: Format check?
+ * Zugriff auf css-file? Es ist unschön mit inline-css im html zu arbeiten.
+ * Edit-oberfläche check. Wie soll ich Fehlerbehandlungen einbauen?
+ * Import JSON: Format check? Der input vom textfeld sollte nur imporitert werden, wenn er das richtige Format hat. (Mindestens ein Knoten, richtige Klammersetzung, ...)
  
 
 # Fragen Thomas (14.11.)
