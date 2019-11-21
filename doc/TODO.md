@@ -29,6 +29,8 @@
   * "Add answer"|i18n:"editor_plugin_dialogue_answer_add"
   * \'New dialogue id\'|i18nP:\'editor_plugin_dialogue_new_id\'
   * "Add"|i18n:"editor_plugin_dialogue_add"
+  * "Add"|i18n:"editor_plugin_dialogue_add_btn"
+  * "Remove"|i18n:"editor_plugin_dialogue_remove"
   * "Add"|i18n:"editor_plugin_image_upload_add"
   *\'Image id\'|i18nP:\'editor_plugin_image_upload_id\'
   * "Upload"|i18n:"editot_plugin_image_upload"
@@ -37,11 +39,16 @@
   * "Import json"|i18n:"editor_plugin_dialogue_json_import"
   * "Copy json to clipboard"|i18n:"editor_plugin_dialogue_json_export"
 
-# Dateien
- * DialogueTest.js -> TestDatei: aktuellste Version von Dialogue
- * Dialogue -> Zwischenstand: akuellste lauffähige Version
-
 # Fragen Thomas neu
+ * Aus Email: Aja, beim Bilderhochladen:  Das kannst du entfernen.... Keine Datei verknüpft?
+ * Audio select: null value übergeben
+ * Dialog eintfernen/ neuen einfügen: + und - ganz oben als Buttons mit Popup oder hidden div? (einheitliches Format)
+ * Zugriff auf css-file? Es ist unschön mit inline-css im html zu arbeiten.
+ * Edit-oberfläche check. Wie soll ich Fehlerbehandlungen einbauen?
+ * Import JSON: Format check? Der input vom textfeld sollte nur imporitert werden, wenn er das richtige Format hat. (Mindestens ein Knoten, richtige Klammersetzung, ...)
+ 
+
+# Fragen Thomas (14.11.)
  * Agent-Bilder:
    * Man kann Bilder hochladen, aber nicht mehr entfernen! Soll ich eine Funktion zu Löschen einbauen? (würde ich sinnvoll finden - also mit einem Select zum auswählen und einem Button zum bestätigen)
      * Ja, aber beim Löschen müsste man sicherstellen, dass das Bild nicht im Dialog verwendet wird.
