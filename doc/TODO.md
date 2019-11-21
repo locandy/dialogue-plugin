@@ -44,6 +44,14 @@
  * Dialogue -> Zwischenstand: akuellste lauffähige Version
 
 # Fragen Thomas neu
+ * Audio select: null value übergeben
+ * Dialog eintfernen/ neuen einfügen: + und - ganz oben als Buttons mit Popup oder hidden div? (einheitliches Format)
+ * css? Unschön mit style im html.
+ * Edit-oberfläche allgemein. Fehlerbehandlungen
+ * Import JSON: Format check?
+ 
+
+# Fragen Thomas (14.11.)
  * Agent-Bilder:
    * Man kann Bilder hochladen, aber nicht mehr entfernen! Soll ich eine Funktion zu Löschen einbauen? (würde ich sinnvoll finden - also mit einem Select zum auswählen und einem Button zum bestätigen)
      * Ja, aber beim Löschen müsste man sicherstellen, dass das Bild nicht im Dialog verwendet wird.
