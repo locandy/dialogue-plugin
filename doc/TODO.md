@@ -44,6 +44,7 @@
  * Dialogue -> Zwischenstand: akuellste lauffähige Version
 
 # Fragen Thomas neu
+ * Aus Email: Aja, beim Bilderhochladen:  Das kannst du entfernen.... Keine Datei verknüpft?
  * Audio select: null value übergeben
  * Dialog eintfernen/ neuen einfügen: + und - ganz oben als Buttons mit Popup oder hidden div? (einheitliches Format)
  * css? Unschön mit style im html.
