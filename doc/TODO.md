@@ -50,7 +50,7 @@
  * Wie soll das Dialogue-Skeleton bei neuem Dialog ausschauen? Wikipedia-Beispiel?
  * Test-Dialog (Schlaue Luxe. Wanderausstellung): Wie wird der Dialog in die Umgebung eingabaut/übereingestimmt?
  * Agent-Darstellung mit anderen Komponenten? (Background-Color, Switching, ...) Mehr als 50% vom Display für Agent?
- 
+ * Agent als Plugin nur bei einem Spot. Sollte der Agent nicht alle Spots übergreifen?
 
 # Fragen Thomas (14.11.)
  * Agent-Bilder:
