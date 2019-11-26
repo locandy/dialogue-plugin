@@ -49,7 +49,7 @@
  * console.log(...) im code entfernen? oder sinnvolle Dinge ausgeben?
  * Wie soll das Dialogue-Skeleton bei neuem Dialog ausschauen? Wikipedia-Beispiel?
  * Test-Dialog (Schlaue Luxe. Wanderausstellung): Wie wird der Dialog in die Umgebung eingabaut/übereingestimmt?
- * Inhalt von Zoologie? In Arbeit?
+ * Agent-Darstellung mit anderen Komponenten? (Background-Color, Switching, ...)
  
 
 # Fragen Thomas (14.11.)
