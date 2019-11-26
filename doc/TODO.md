@@ -33,7 +33,6 @@
   * "Add"|i18n:"editor_plugin_image_upload_add"
   *\'Image id\'|i18nP:\'editor_plugin_image_upload_id\'
   * "Upload"|i18n:"editot_plugin_image_upload"
-  * "uploaded"|i18n:"editot_plugin_image_uploaded"
   * "Remove"|i18n:"editor_plugin_image_remove"
   * 'Paste new Dialogue (JSON)\'|i18n:\'editor_plugin_dialogue_json_import_textarea\'
   * "Import json"|i18n:"editor_plugin_dialogue_json_import"
