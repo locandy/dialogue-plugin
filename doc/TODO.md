@@ -19,9 +19,8 @@
 # Neue Übersetzungen i18n
   * \'Text Agent\'|i18n:\'editor_plugin_dialogue_agent_text\'
   * "Image"|i18n:"editor_plugin_dialogue_image_select"
-  * "none"|i18n:"editor_plugin_dialogue_image_none"
+  * "none"|i18n:"editor_plugin_dialogue_select_none"
   * "Audio"|i18n:"editor_plugin_dialogue_audio_select"
-  * "none"|i18n:"editor_plugin_dialogue_audio_none"
   * "You\'ve not provided any answers for this dialogue yet."|i18n:"editor_plugin_dialogue_no_answers"
   * \'Answer #%s\'|i18nP:\'editor_plugin_dialogue_label_answer\':($index+1)
   * "No effect connected"|i18n:"editor_plugin_dialogue_effect_not_connected"
@@ -34,19 +33,25 @@
   * "Add"|i18n:"editor_plugin_image_upload_add"
   *\'Image id\'|i18nP:\'editor_plugin_image_upload_id\'
   * "Upload"|i18n:"editot_plugin_image_upload"
-  * "uploaded"|i18n:"editot_plugin_image_uploaded"
   * "Remove"|i18n:"editor_plugin_image_remove"
+  * 'Paste new Dialogue (JSON)\'|i18n:\'editor_plugin_dialogue_json_import_textarea\'
   * "Import json"|i18n:"editor_plugin_dialogue_json_import"
   * "Copy json to clipboard"|i18n:"editor_plugin_dialogue_json_export"
 
 # Fragen Thomas neu
- * Aus Email: Aja, beim Bilderhochladen:  Das kannst du entfernen.... Keine Datei verknüpft?
- * Audio select: null value übergeben
- * Dialog eintfernen/ neuen einfügen: + und - ganz oben als Buttons mit Popup oder hidden div? (einheitliches Format)
+ * Aus Email: Aja, beim Bilderhochladen:  Das kannst du entfernen.... Keine Datei verknüpft. Wo kommt das vor?
+ * (Audio select: null value übergeben.)
+ * UI
+   * Dialog entfernen/ neuen einfügen: + und - ganz oben als Buttons mit Popup oder hidden div? (einheitliches Format)
+   * Wie soll das Dialogue-Skeleton bei neuem Dialog ausschauen? Wikipedia-Beispiel?
+   * Edit-oberfläche check. (Bsp.: upload check) Wie soll ich Fehlerbehandlungen einbauen?
  * Zugriff auf css-file? Es ist unschön mit inline-css im html zu arbeiten.
- * Edit-oberfläche check. Wie soll ich Fehlerbehandlungen einbauen?
  * Import JSON: Format check? Der input vom textfeld sollte nur imporitert werden, wenn er das richtige Format hat. (Mindestens ein Knoten, richtige Klammersetzung, ...)
- 
+ * console.log(...) im code: sinnvolle Dinge ausgeben?
+ * Test-Dialog (Schlaue Luxe. Wanderausstellung): Wie wird der Dialog in die Umgebung eingabaut/übereingestimmt?
+ * Einbettung:
+   * Agent-Darstellung mit anderen Komponenten? (Background-Color, Switching, ...) Mehr als 50% vom Display für Agent?
+   * Agent als Plugin nur bei einem Spot. Sollte der Agent nicht alle Spots übergreifen?
 
 # Fragen Thomas (14.11.)
  * Agent-Bilder:
