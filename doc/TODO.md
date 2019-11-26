@@ -36,6 +36,7 @@
   * "Upload"|i18n:"editot_plugin_image_upload"
   * "uploaded"|i18n:"editot_plugin_image_uploaded"
   * "Remove"|i18n:"editor_plugin_image_remove"
+  * 'Paste new Dialogue (JSON)\'|i18n:\'editor_plugin_dialogue_json_import_textarea\'
   * "Import json"|i18n:"editor_plugin_dialogue_json_import"
   * "Copy json to clipboard"|i18n:"editor_plugin_dialogue_json_export"
 
@@ -46,6 +47,7 @@
  * Zugriff auf css-file? Es ist unschön mit inline-css im html zu arbeiten.
  * Edit-oberfläche check. Wie soll ich Fehlerbehandlungen einbauen?
  * Import JSON: Format check? Der input vom textfeld sollte nur imporitert werden, wenn er das richtige Format hat. (Mindestens ein Knoten, richtige Klammersetzung, ...)
+ * console.log(...) im code entfernen? oder sinnvolle Dinge ausgeben?
  * Wie soll das Dialogue-Skeleton bei neuem Dialog ausschauen? Wikipedia-Beispiel?
  * Test-Dialog (Schlaue Luxe. Wanderausstellung): Wie wird der Dialog in die Umgebung eingabaut/übereingestimmt?
  * Inhalt von Zoologie? In Arbeit?
