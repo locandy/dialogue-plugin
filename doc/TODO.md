@@ -40,12 +40,15 @@
   * "Copy json to clipboard"|i18n:"editor_plugin_dialogue_json_export"
 
 # Fragen Thomas neu
- * Aus Email: Aja, beim Bilderhochladen:  Das kannst du entfernen.... Keine Datei verknüpft?
- * Audio select: null value übergeben
+ * Aus Email: Aja, beim Bilderhochladen:  Das kannst du entfernen.... Keine Datei verknüpft. Wo kommt das vor?
+ * (Audio select: null value übergeben.)
  * Dialog eintfernen/ neuen einfügen: + und - ganz oben als Buttons mit Popup oder hidden div? (einheitliches Format)
  * Zugriff auf css-file? Es ist unschön mit inline-css im html zu arbeiten.
  * Edit-oberfläche check. Wie soll ich Fehlerbehandlungen einbauen?
  * Import JSON: Format check? Der input vom textfeld sollte nur imporitert werden, wenn er das richtige Format hat. (Mindestens ein Knoten, richtige Klammersetzung, ...)
+ 
+ * Test-Dialog (Schlaue Luxe. Wanderausstellung): Wie wird der Dialog in die Umgebung eingabaut/übereingestimmt?
+ * Inhalt von Zoologie? In Arbeit?
  
 
 # Fragen Thomas (14.11.)
