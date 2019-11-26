@@ -44,7 +44,7 @@
  * (Audio select: null value übergeben.)
  * Dialog eintfernen/ neuen einfügen: + und - ganz oben als Buttons mit Popup oder hidden div? (einheitliches Format)
  * Zugriff auf css-file? Es ist unschön mit inline-css im html zu arbeiten.
- * Edit-oberfläche check. Wie soll ich Fehlerbehandlungen einbauen?
+ * Edit-oberfläche check. (Bsp.: upload check) Wie soll ich Fehlerbehandlungen einbauen?
  * Import JSON: Format check? Der input vom textfeld sollte nur imporitert werden, wenn er das richtige Format hat. (Mindestens ein Knoten, richtige Klammersetzung, ...)
  * console.log(...) im code entfernen? oder sinnvolle Dinge ausgeben?
  * Wie soll das Dialogue-Skeleton bei neuem Dialog ausschauen? Wikipedia-Beispiel?
