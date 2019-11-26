@@ -49,7 +49,7 @@
  * console.log(...) im code entfernen? oder sinnvolle Dinge ausgeben?
  * Wie soll das Dialogue-Skeleton bei neuem Dialog ausschauen? Wikipedia-Beispiel?
  * Test-Dialog (Schlaue Luxe. Wanderausstellung): Wie wird der Dialog in die Umgebung eingabaut/übereingestimmt?
- * Agent-Darstellung mit anderen Komponenten? (Background-Color, Switching, ...)
+ * Agent-Darstellung mit anderen Komponenten? (Background-Color, Switching, ...) Mehr als 50% vom Display für Agent?
  
 
 # Fragen Thomas (14.11.)
