@@ -1,5 +1,8 @@
 # TODO
-  1. Dialogue.js (beta erstellen), DialogueTest.js löschen
+  1. Sound upload: Bei spot (wie image) und nicht über Quest/... 
+     * für dopdown: resources filter auf mimetype
+  1. Audio soll stoppen, wenn plugin.isHidden()
+  1. antwort nur abgeben, wenn Effect ausgeführt wurde (geht noch nicht -> executeEffect hat keinen Rückgabewert)
   1. GUI
       * Options ID-Selektor
       * (keine horizontale Linie)
@@ -12,7 +15,6 @@
       * horizontale Linie
       * ID-TF, Upload Image with ID
       * .... wie bisher
-
   1. (Code Kommentieren (alle Variablen besonders transient oder persistent!, komplexe Stellen))
      
 
@@ -43,16 +45,19 @@
  * (Audio select: null value übergeben.)
  * UI
    * Dialog entfernen/ neuen einfügen: + und - ganz oben als Buttons mit Popup oder hidden div? (einheitliches Format)
-   neben add answer: remove node button (mit popup zur verifizierung
+   neben add answer: remove node button (mit popup zur verifizierung)
    * Wie soll das Dialogue-Skeleton bei neuem Dialog ausschauen? Wikipedia-Beispiel?
+   nur ein Konten mit erklärung als text
    * Edit-oberfläche check. (Bsp.: upload check) Wie soll ich Fehlerbehandlungen einbauen?
- * Zugriff auf css-file? Es ist unschön mit inline-css im html zu arbeiten.
+ * Zugriff auf css-file? Es ist unschön mit inline-css im html zu arbeiten. (später)
  * Import JSON: Format check? Der input vom textfeld sollte nur imporitert werden, wenn er das richtige Format hat. (Mindestens ein Knoten, richtige Klammersetzung, ...)
  * console.log(...) im code: sinnvolle Dinge ausgeben?
  * Test-Dialog (Schlaue Luxe. Wanderausstellung): Wie wird der Dialog in die Umgebung eingabaut/übereingestimmt?
  * Einbettung:
    * Agent-Darstellung mit anderen Komponenten? (Background-Color, Switching, ...) Mehr als 50% vom Display für Agent?
    * Agent als Plugin nur bei einem Spot. Sollte der Agent nicht alle Spots übergreifen?
+
+sound stop on execute answer
 
 # Fragen Thomas (14.11.)
  * Agent-Bilder:
