@@ -29,10 +29,10 @@
   * "No effect connected"|i18n:"editor_plugin_dialogue_effect_not_connected"
   * "Connection corrupted"|i18n:"editor_plugin_dialogue_effect_not_connected_correctly"
   * "Add answer"|i18n:"editor_plugin_dialogue_answer_add"
+  * "Remove node "|i18n:"editor_plugin_dialogue_remove"
   * \'New dialogue id\'|i18nP:\'editor_plugin_dialogue_new_id\'
   * "Add"|i18n:"editor_plugin_dialogue_add"
   * "Add"|i18n:"editor_plugin_dialogue_add_btn"
-  * "Remove"|i18n:"editor_plugin_dialogue_remove"
   * "Add"|i18n:"editor_plugin_image_upload_add"
   *\'Image id\'|i18nP:\'editor_plugin_image_upload_id\'
   * "Upload"|i18n:"editot_plugin_image_upload"
