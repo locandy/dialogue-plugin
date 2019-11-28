@@ -1,4 +1,5 @@
 # TODO
+  1. mit Effects vertraut machen: für Treffen (TestDialog) erklären können
   1. Sound upload: Bei spot (wie image) und nicht über Quest/... 
      * für dopdown: resources filter auf mimetype
   1. Audio soll stoppen, wenn plugin.isHidden()
