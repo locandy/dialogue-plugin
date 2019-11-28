@@ -29,6 +29,7 @@ locandy.player.plugins.Dialogue = function(spot, json)
         // new attribute id
         this.newDialogueId = "";
         this.newImageId = "";
+        this.playingSound = null;
 
         // id to remove attribute from model
         this.removeDialogueId = "";
@@ -561,6 +562,8 @@ locandy.player.plugins.Dialogue.prototype.executeAnswer = function(answer)
             new locandy.player.Effect(this.spot.quest, answer.effectId).execute();
         }
         
+
+
         this.setActiveDialogue(answer.nextId);
     };
 
@@ -568,6 +571,8 @@ locandy.player.plugins.Dialogue.prototype.executeAnswer = function(answer)
 locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDialogueId)
 {
     this.activeDialogueId = activeDialogueId;
+
+
 
     if (this.dialogue[this.activeDialogueId].imageId !== null && this.dialogue[this.activeDialogueId].imageId !== "" && this.resources[this.dialogue[this.activeDialogueId].imageId].uuid){
         this.imageUrl = locandy.player.playerMainSingleton.resourceResolverService.getUrl(this.resources[this.dialogue[this.activeDialogueId].imageId].uuid);
@@ -578,6 +583,12 @@ locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDia
     }
 
     // execute sound of next dialogue
+
+    if (this.playingSound){
+        this.playingSound.pause();
+        this.playingSound = null;
+    }
+
     if(this.dialogue[this.activeDialogueId].audioId !== undefined || this.dialogue[this.activeDialogueId].audioId != null){
         this.executeSound(this.dialogue[this.activeDialogueId].audioId);
     }
@@ -586,12 +597,17 @@ locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDia
 /** @function {public} executeSound */
 locandy.player.plugins.Dialogue.prototype.executeSound = function(audioId)
     {
+
+        
         var sound = this.spot.quest.getResource(audioId);
+
+        this.playingSound = sound;
 
         if(sound)
         {
             locandy.player.plugins.Media.updateCurrentMediaInstance(null);
             sound.play();
+            
         }
         else{
             return "ERROR: Missing upload for sound-effect: " + audioId;
