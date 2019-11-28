@@ -43,6 +43,7 @@
  * (Audio select: null value übergeben.)
  * UI
    * Dialog entfernen/ neuen einfügen: + und - ganz oben als Buttons mit Popup oder hidden div? (einheitliches Format)
+   neben add answer: remove node button (mit popup zur verifizierung
    * Wie soll das Dialogue-Skeleton bei neuem Dialog ausschauen? Wikipedia-Beispiel?
    * Edit-oberfläche check. (Bsp.: upload check) Wie soll ich Fehlerbehandlungen einbauen?
  * Zugriff auf css-file? Es ist unschön mit inline-css im html zu arbeiten.
