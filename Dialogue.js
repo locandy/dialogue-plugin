@@ -29,14 +29,12 @@ locandy.player.plugins.Dialogue = function(spot, json)
         // new attribute id
         this.newDialogueId = "";
         this.newImageId = "";
+        this.newAudioId = "";
         this.playingSound = null;
 
         // id to remove attribute from model
-        this.removeDialogueId = "";
         this.removeImageId = "";
 
-        // last uploaded image id - for upload verification
-        this.lastUploadedImageId = "";
     };
 
 locandy.utilities.inherit(locandy.player.plugins.Dialogue,locandy.player.plugins.Abstract);
@@ -62,41 +60,11 @@ locandy.player.plugins.Dialogue.getSkeleton = function()
             "activeDialogueId": "START",
 	        "dialogue": {
                 "START":{
-                    "text":"You don't look like you're from around here.", 
-                    "audioId":null, 
-                    "imageId":null,
-                    "answers":[
-                        {"text":"I've lived here all my life!", "effectId":null, "nextId":"P1" },
-                        {"text":"I came here from Newton", "effectId":null, "nextId":"P2" }
-                    ]},
-                "P1":{
-                    "text":"Oh really? Then you must know Mr. Bowler.",
-                    "audioId":null, 
-                    "imageId":null,
-                    "answers":[
-                        {"text":"Mr. Bowler is a good friend of mine!", "effectId":null, "nextId":"P3" },
-                        {"text":"Who?", "effectId":null, "nextId":"P4" }
-                    ]},
-                "P2":{
-                    "text":"Newton, eh? I heard there's trouble brewing down there.",
-                    "audioId":null, 
-                    "imageId":null,
-                    "answers":[
-                        {"text":"I haven't heard about any trouble.", "effectId":null, "nextId":"P4" },
-                        {"text":"Did I say Newton? I'm actually from Springville", "effectId":null, "nextId":"P1" }
-                    ]},
-                "P3":{
-                    "text":"You liar! There ain't no Mr. Bowler, I made him up!", 
+                    "text":"Text Agent", 
                     "audioId":null, 
                     "imageId":null,
                     "answers":[]
-                    },
-                "P4":{
-                    "text":"Don't you worry about it. Say do you have something to eat? I'm starving", 
-                    "audioId":null, 
-                    "imageId":null,
-                    "answers":[]
-                    }
+                }
             },
         };
     };
@@ -179,10 +147,17 @@ locandy.player.plugins.Dialogue.removeAnswerFromModel = function(pluginModel,ans
 /** @function {static} writeRescourceToModel @inheritdesc */
 locandy.player.plugins.Dialogue.writeRescourceToModel = function(pluginModel, serverResponse)
     {
-        locandy.player.plugins.Abstract.writeRescourceToModel(pluginModel, serverResponse, pluginModel.newImageId);
+        var newId = null;
+        if (pluginModel.newAudioId != null){
+            newId = pluginModel.newAudioId;
+        } else if (pluginModel.newImageId != null){
+            newId = pluginModel.newImageId;
+        }
+
+        locandy.player.plugins.Abstract.writeRescourceToModel(pluginModel, serverResponse, newId);
 
         // clear textarea
-        pluginModel.lastUploadedImageId = pluginModel.newImageId;
+        pluginModel.newAudioId = null;
         pluginModel.newImageId = null;
     }     
 
@@ -220,8 +195,11 @@ locandy.player.plugins.Dialogue.removeDialogueFromModel = function(pluginModel)
                 }
             }
         }
-
-        delete pluginModel.dialogue[pluginModel.removeDialogueId];
+        if (!(pluginModel.activeDialogueId == "START")){
+            delete pluginModel.dialogue[pluginModel.activeDialogueId];
+            pluginModel.activeDialogueId = "START";
+        }
+        
     }     
     
 /** @function {static} setAudioToNull @inheritdesc */
@@ -246,7 +224,7 @@ locandy.player.plugins.Dialogue.setImageToNull = function(pluginModel)
         if(pluginModel.dialogue[pluginModel.activeDialogueId].imageId === undefined){
             pluginModel.dialogue[pluginModel.activeDialogueId].imageId = null;
         }
-    }    
+    }  
 
     
 /** @function {static} getTemplate @inheritdesc */    
@@ -319,7 +297,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                                         <select required data-ng-model="pluginModel.dialogue[pluginModel.activeDialogueId].imageId" \
                                                 class="form-control full-border ng-pristine" \
                                                 onchange="document.getElementById(\'btnSetImageNull\').click()"> \
-                                            <option data-ng-repeat="(key, value) in pluginModel.resources">{{key}}</option> \
+                                            <option data-ng-repeat="(key, value) in pluginModel.resources" ng-if="value.mimetype==\'image/png\'">{{key}}</option> \
                                             <option selected value="">{{"none"|i18n:"editor_plugin_dialogue_select_none"}}</option> \
                                         </select> \
                                     </div> \
@@ -334,6 +312,20 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                                                 class="form-control full-border ng-pristine"  \
                                                 onchange="document.getElementById(\'btnSetAudioNull\').click()">\
                                             <option data-ng-repeat="(key, value) in mrmResource.resources">{{key}}</option> \
+                                            <option selected value="">{{"none"|i18n:"editor_plugin_dialogue_select_none"}}</option> \
+                                        </select> \
+                                    </div> \
+                                    <button style="display: none" id="btnSetAudioNull" data-button-handler="global.locandy.player.plugins.Dialogue.setAudioToNull(pluginModel)"></button>\
+                                </div> \
+                                <div style="overflow: hidden; margin-top: 10px"> \
+                                    <div style="width:30%; float:left; margin-top:3px;"> \
+                                        <span class="label-for-icon">{{"Test"|i18n:"editor_plugin_dialogue_audio_select"}}</span> \
+                                    </div> \
+                                    <div style="width:70%; float:left"> \
+                                        <select required data-ng-model="pluginModel.dialogue[pluginModel.activeDialogueId].audioId" \
+                                            class="form-control full-border ng-pristine" \
+                                            onchange="document.getElementById(\'btnSetAudioNull\').click()"> \
+                                            <option data-ng-repeat="(key, value) in pluginModel.resources" ng-if="value.mimetype==\'audio/mp3\'">{{key}}</option> \
                                             <option selected value="">{{"none"|i18n:"editor_plugin_dialogue_select_none"}}</option> \
                                         </select> \
                                     </div> \
@@ -407,10 +399,18 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                         <span class="icon-plus-circle2 reusable-color-success"></span> \
                         <span class="label-for-icon">{{"Add answer"|i18n:"editor_plugin_dialogue_answer_add"}}</span> \
                     </button>\
+                    <button \
+                        ng-disabled="pluginModel.activeDialogueId == \'START\'" \
+                        style="float:right" \
+                        class="btn btn-fancy btn-medium btn-default" \
+                        data-button-handler="global.locandy.player.plugins.Dialogue.removeDialogueFromModel(pluginModel)">\
+                        <span class="label-for-icon">{{"Remove section "|i18n:"editor_plugin_dialogue_remove"}}</span> \
+                        <span class="icon-minus-circle2 reusable-color-danger"></span>\
+                    </button> \
                     <hr> \
                     <div> \
-                        <div style="width:20%; float:left; margin-top:3px;"> \
-                            <span class="label-for-icon">{{"Add"|i18n:"editor_plugin_dialogue_add"}}</span> \
+                        <div style="width:35%; float:left; margin-top:3px;"> \
+                            <span class="label-for-icon">{{"Add section:"|i18n:"editor_plugin_dialogue_add"}}</span> \
                         </div> \
                         <div style="float: left; width:30%; margin-right: 10px"> \
                             <textarea \
@@ -428,32 +428,16 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                             </button> \
                         </div> \
                     </div> \
-                    <div> \
-                        <div style="width:20%; float:left; margin-top:3px;"> \
-                            <span class="label-for-icon">{{"Remove"|i18n:"editor_plugin_dialogue_remove"}}</span> \
-                        </div> \
-                        <div style="float: left; width:30%; margin-right: 10px"> \
-                            <select data-ng-model="pluginModel.removeDialogueId" class="form-control full-border ng-pristine"> \
-                                <option data-ng-repeat="(key, value) in pluginModel.dialogue">{{key}}</option> \
-                            </select> \
-                        </div> \
-                        <div> \
-                            <button \
-                                class="btn btn-fancy btn-medium btn-default" \
-                                data-button-handler="global.locandy.player.plugins.Dialogue.removeDialogueFromModel(pluginModel)">\
-                                <span class="icon-minus-circle2 reusable-color-danger"></span>\
-                            </button> \
-                        </div> \
-                    </div> \
                     <hr> \
                     <div style="overflow: hidden"> \
-                        <div style="width:20%; float:left; margin-top:3px;"> \
-                            <span class="label-for-icon">{{"Add"|i18n:"editor_plugin_image_upload_add"}}</span> \
+                        <div style="width:35%; float:left; margin-top:3px;"> \
+                            <span class="label-for-icon">{{"Add image:"|i18n:"editor_plugin_image_upload_add"}}</span> \
                         </div> \
                         <div style="float: left; width:30%; margin-right: 10px"> \
                             <textarea \
                             id="newImageId" class="form-control" rows="1" style="float:left; width=100px" \
                             data-ng-model="pluginModel.newImageId" \
+                            oninput="document.getElementById(\'newAudioId\').value = null" \
                             placeholder="{{\'Image id\'|i18nP:\'editor_plugin_image_upload_id\'}}"/> \
                         </div> \
                         <div \
@@ -470,14 +454,14 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                                     class="upload" \
                                     data-fine-uploader-file-input \
                                     data-is-multiple="imagePluginUploadOptions.multiple"> \
-                                    <span class="label-for-icon">{{"Upload"|i18n:"editot_plugin_image_upload"}}</span> \
+                                    <span class="label-for-icon">{{"Upload"|i18n:"editor_plugin_image_upload"}}</span> \
                                 </div> \
                             </div>\
                         </div> \
                     </div> \
                     <div> \
-                        <div style="width:20%; float:left; margin-top:3px;"> \
-                            <span class="label-for-icon">{{"Remove"|i18n:"editor_plugin_image_remove"}}</span> \
+                        <div style="width:35%; float:left; margin-top:3px;"> \
+                            <span class="label-for-icon">{{"Remove image:"|i18n:"editor_plugin_image_remove"}}</span> \
                         </div> \
                         <div style="float: left; width:30%; margin-right: 10px"> \
                             <select data-ng-model="pluginModel.removeImageId" class="form-control full-border ng-pristine"> \
@@ -490,6 +474,37 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                                 data-button-handler="global.locandy.player.plugins.Dialogue.removeResourceFromModel(pluginModel)">\
                                 <span class="icon-minus-circle2 reusable-color-danger"></span>\
                             </button> \
+                        </div> \
+                    </div> \
+                    <hr> \
+                    <div style="overflow: hidden"> \
+                        <div style="width:35%; float:left; margin-top:3px;"> \
+                            <span class="label-for-icon">{{"Add sound:"|i18n:"editor_plugin_audio_upload_add"}}</span> \
+                        </div> \
+                        <div style="float: left; width:30%; margin-right: 10px"> \
+                            <textarea \
+                            id="newAudioId" class="form-control" rows="1" style="float:left; width=100px" \
+                            data-ng-model="pluginModel.newAudioId" \
+                            oninput="document.getElementById(\'newImageId\').value = null" \
+                            placeholder="{{\'Audio id\'|i18nP:\'editor_plugin_audio_upload_id\'}}"/> \
+                        </div> \
+                        <div \
+                            data-fine-uploader \
+                            data-omit-drop-zone \
+                            data-omit-file-input \
+                            data-fetch-url="uploadFetchUrl" \
+                            data-fine-uploader-options="audioPluginUploadOptions" \
+                            data-fine-uploader-callback-pass-through="pluginModel" \
+                            data-fine-uploader-callback-on-complete="updatePluginResource(fineUploaderCallbackPassThrough,responseJSON)"> \
+                            <div class="form-group">\
+                                <div \
+                                    ng-disabled="pluginModel.newAudioId == null || pluginModel.newAudioId == \'\'"\
+                                    class="upload" \
+                                    data-fine-uploader-file-input \
+                                    data-is-multiple="audioPluginUploadOptions.multiple"> \
+                                    <span class="label-for-icon">{{"Upload"|i18n:"editor_plugin_audio_upload"}}</span> \
+                                </div> \
+                            </div>\
                         </div> \
                     </div> \
                     <hr> \
@@ -559,8 +574,6 @@ locandy.player.plugins.Dialogue.prototype.executeAnswer = function(answer)
             new locandy.player.Effect(this.spot.quest, answer.effectId).execute();
         }
         
-        
-
         this.setActiveDialogue(answer.nextId);
     };
 
