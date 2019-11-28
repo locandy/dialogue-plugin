@@ -24,7 +24,6 @@ locandy.player.plugins.Dialogue = function(spot, json)
         // dialogue properties
         this.dialogue = json.dialogue;
         this.importJsonDialogue = "";
-        this.setActiveDialogue("START");
 
         // new attribute id
         this.newDialogueId = "";
@@ -37,6 +36,20 @@ locandy.player.plugins.Dialogue = function(spot, json)
 
         // last uploaded image id - for upload verification
         this.lastUploadedImageId = "";
+        
+        // This will fire the first time the plugin's DOM is rendered
+        this.isRendered = false;
+        var me = this;
+        var unRegisterEvent=this.spot.quest.scope.$on("plugin_element_rendered",function(event,element){
+
+            // avoid mismatching of plugin/element!
+            if( element.id !== me.id ) return;
+
+            me.setActiveDialogue("START");
+            me.isRendered = true;
+        });
+        
+        // me.setActiveDialogue("START");
     };
 
 locandy.utilities.inherit(locandy.player.plugins.Dialogue,locandy.player.plugins.Abstract);
@@ -97,7 +110,7 @@ locandy.player.plugins.Dialogue.getSkeleton = function()
                     "imageId":null,
                     "answers":[]
                     }
-            },
+            }
         };
     };
 
@@ -252,7 +265,9 @@ locandy.player.plugins.Dialogue.setImageToNull = function(pluginModel)
 /** @function {static} getTemplate @inheritdesc */    
 locandy.player.plugins.Dialogue.getTemplate = function()
     {               
-        return '<div> \
+        return '<div \
+                    id="{{plugin.id}}" \
+                    data-plugin-element-rendered >\
                     <div style="float:left; width:33%; margin-right: 10px"\
                         ng-show="plugin.dialogue[plugin.activeDialogueId].imageId "= null"> \
                         <div class="image"\
@@ -525,7 +540,14 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                 </div>';
     };
 
-    
+locandy.player.plugins.Abstract.prototype.destroy = function()
+    {
+        if (this.playingSound){
+            this.playingSound.stop();
+            this.playingSound = null;
+        }
+    }; 
+        
 /** @function {public} desist @inheritdesc */
 locandy.player.plugins.Dialogue.prototype.persist = function()
     {        
@@ -562,18 +584,15 @@ locandy.player.plugins.Dialogue.prototype.executeAnswer = function(answer)
             new locandy.player.Effect(this.spot.quest, answer.effectId).execute();
         }
         
-
-
         this.setActiveDialogue(answer.nextId);
     };
 
 /** @function {public} setActiveDialogue. updated activeDialogueId and executes sound of next dialogue */
 locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDialogueId)
 {
+    console.log("Dialogue.setActiveDialogue(" + activeDialogueId + ")");
     this.activeDialogueId = activeDialogueId;
-
-
-
+    
     if (this.dialogue[this.activeDialogueId].imageId !== null && this.dialogue[this.activeDialogueId].imageId !== "" && this.resources[this.dialogue[this.activeDialogueId].imageId].uuid){
         this.imageUrl = locandy.player.playerMainSingleton.resourceResolverService.getUrl(this.resources[this.dialogue[this.activeDialogueId].imageId].uuid);
     }
@@ -585,7 +604,7 @@ locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDia
     // execute sound of next dialogue
 
     if (this.playingSound){
-        this.playingSound.pause();
+        this.playingSound.stop();
         this.playingSound = null;
     }
 
@@ -597,8 +616,6 @@ locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDia
 /** @function {public} executeSound */
 locandy.player.plugins.Dialogue.prototype.executeSound = function(audioId)
     {
-
-        
         var sound = this.spot.quest.getResource(audioId);
 
         this.playingSound = sound;
@@ -606,8 +623,11 @@ locandy.player.plugins.Dialogue.prototype.executeSound = function(audioId)
         if(sound)
         {
             locandy.player.plugins.Media.updateCurrentMediaInstance(null);
-            sound.play();
             
+            if(!this.isRendered)
+                sound.autoplay = true;
+            else
+                sound.play();
         }
         else{
             return "ERROR: Missing upload for sound-effect: " + audioId;
