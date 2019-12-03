@@ -37,6 +37,9 @@
   *\'Image id\'|i18nP:\'editor_plugin_image_upload_id\'
   * "Upload"|i18n:"editot_plugin_image_upload"
   * "Remove"|i18n:"editor_plugin_image_remove"
+  * "Add sound:"|i18n:"editor_plugin_audio_upload_add"
+  * 'Audio id\'|i18nP:\'editor_plugin_audio_upload_id\'
+  * "Remove sound:"|i18n:"editor_plugin_sound_remove"
   * 'Paste new Dialogue (JSON)\'|i18n:\'editor_plugin_dialogue_json_import_textarea\'
   * "Import json"|i18n:"editor_plugin_dialogue_json_import"
   * "Copy json to clipboard"|i18n:"editor_plugin_dialogue_json_export"
