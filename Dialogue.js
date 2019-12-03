@@ -269,6 +269,7 @@ locandy.player.plugins.Dialogue.getTemplate = function()
         return '<div \
                     id="{{plugin.id}}" \
                     data-plugin-element-rendered \
+                    style="overflow:hidden" \
                     data-ng-if="plugin.isHidden()">\
                     <div style="float:left; width:33%; margin-right: 10px"\
                         ng-show="plugin.dialogue[plugin.activeDialogueId].imageId "= null"> \
@@ -312,12 +313,13 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                         </select> \
                     </div> \
                     <div style="overflow:hidden"> \
-                        <div class="form-group"> \
-                            <input \
-                                type="text" \
+                        <div> \
+                            <textarea \
+                                rows="2"\
+                                style="margin-bottom:5px" \
                                 class="form-control question" \
                                 data-ng-model="pluginModel.dialogue[pluginModel.activeDialogueId].text" \
-                                placeholder="{{\'Text Agent\'|i18n:\'editor_plugin_dialogue_agent_text\'}}"> \
+                                placeholder="{{\'Text Agent\'|i18n:\'editor_plugin_dialogue_agent_text\'}}"/> \
                         </div> \
                         <div> \
                             <div style="float:left; width:30%; min-height:90px;"> \
@@ -647,7 +649,7 @@ locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDia
         this.playingSound = null;
     }
 
-    if(this.dialogue[this.activeDialogueId].audioId !== undefined || this.dialogue[this.activeDialogueId].audioId != null){
+    if(this.dialogue[this.activeDialogueId].audioId !== null){
         this.executeSound(this.dialogue[this.activeDialogueId].audioId);
     }
 };
@@ -664,7 +666,7 @@ locandy.player.plugins.Dialogue.prototype.executeSound = function(audioId)
             locandy.player.plugins.Media.updateCurrentMediaInstance(null);
             
             if(!this.isRendered)
-                sound.autoplay = true;
+                sound.autoplay = false;
             else
                 sound.play();
         }
