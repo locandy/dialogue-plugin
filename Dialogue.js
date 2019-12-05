@@ -23,6 +23,7 @@ locandy.player.plugins.Dialogue = function(spot, json)
 
         // dialogue properties
         this.dialogue = json.dialogue;
+        this.setActiveDialogue("START");
         this.importJsonDialogue = "";
 
         // new attribute id
@@ -47,7 +48,7 @@ locandy.player.plugins.Dialogue = function(spot, json)
             // avoid mismatching of plugin/element!
             if( element.id !== me.id ) return;
 
-            me.setActiveDialogue("START");
+            //me.setActiveDialogue("START");        // wird sonst beim Plugin-Switchen aufgerufen
             me.isRendered = true;
         });
         
@@ -634,7 +635,7 @@ locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDia
     console.log("Dialogue.setActiveDialogue(" + activeDialogueId + ")");
     this.activeDialogueId = activeDialogueId;
     
-    if (this.dialogue[this.activeDialogueId].imageId !== null && this.dialogue[this.activeDialogueId].imageId !== "" && this.resources[this.dialogue[this.activeDialogueId].imageId].uuid){
+    if (this.dialogue[this.activeDialogueId].imageId !== null && this.dialogue[this.activeDialogueId].imageId !== "" && this.dialogue[this.activeDialogueId].imageId !== undefined){
         this.imageUrl = locandy.player.playerMainSingleton.resourceResolverService.getUrl(this.resources[this.dialogue[this.activeDialogueId].imageId].uuid);
     }
     else 
