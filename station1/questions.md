@@ -6,13 +6,13 @@
        1. In die Beschreibung des Abenteuers (siehe Burghausen), Links gibt es keine.
    * Agent-Bilder:
      * Werden die Agent-Bilder neu gezeichnet?
-       1. Ja es werden ca. 3-5 gezeichnet die derzeitigen sind urheberrechtlöich gechützt und nur zum Testen , es gibt aber nur ein Agent für alle Stationen, sonst wird es zu teuer
+       1. Ja es werden ca. 3-5 gezeichnet die derzeitigen sind urheberrechtlöich geschützt und nur zum Testen , es gibt aber nur ein Agent für alle Stationen, sonst wird es zu teuer
        2. ihr müsst das Drehbuch erstellen und alles definieren
    * Agent-Audio:
      * Können neue Audios von eurem Sprecher erstellt werden?
        1. Ja.
      * Sollen Audios zu allen Texten abgespielt werden? (Wie in der Demoversion: Ötzl)
-       1. Ob ein Text zusätzlich als Audio erscheint können wir später entscheiden, das ist jetzt nicht wichtig. Konzentriert euch auf den Inhalt 
+       1. Ob ein Text zusätzlich als Audio erscheint können wir später entscheiden, das ist jetzt nicht wichtig. Konzentriert euch auf den Inhalt, aja Antworten des Spielers/Users wird nie als Audio gesprochen
    * Spot-Aufteilung:
      * Für jedes Experiment ein Spot? (Und die Spots werden dann verlinkt) oder alles in einem Spot?
        1. Thorsten fragen, aber würde eher meinen je Experiment ein Spot.
