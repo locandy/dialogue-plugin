@@ -3,7 +3,7 @@
      1. Gimp geht, aber Erstellung von Gifs ist sehr aufwändig -> nimm sie von Wikipedia wenn möglich
    * Rechte bei Bildern mit Copyright:
      * Wie bauen wir die Quellen ein?
-       1. In die Beschreiung des Abenteuers (siehe Burghausen), Links gibt es keine.
+       1. In die Beschreibung des Abenteuers (siehe Burghausen), Links gibt es keine.
    * Agent-Bilder:
      * Werden die Agent-Bilder neu gezeichnet?
        1. Ja es werden ca. 3-5 gezeichnet die derzeitigen sind urheberrechtlöich gechützt und nur zum Testen , es gibt aber nur ein Agent für alle Stationen, sonst wird es zu teuer
