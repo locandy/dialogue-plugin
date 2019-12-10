@@ -1,4 +1,4 @@
- # Fragen Thomas:
+ # Fragen Thomas: (10.12. - Gespräch mit Stefanie)
    * Welches Programm benutzt ihr für animierte GIFs? Mit Windows kompatibel? (Frage von Stefanie)
    * Rechte bei Bildern mit Copyright:
      * Wie bauen wir die Quellen ein?
