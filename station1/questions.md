@@ -1,5 +1,6 @@
  # Fragen Thomas: (10.12. - Gespräch mit Stefanie)
    * Welches Programm benutzt ihr für animierte GIFs? Mit Windows kompatibel? (Frage von Stefanie)
+     1. Gimp geht, aber Erstellung von Gifs ist sehr aufwändig -> nimm sie von Wikipedia wenn möglich
    * Rechte bei Bildern mit Copyright:
      * Wie bauen wir die Quellen ein?
        1. In die Beschreiung des Abenteuers (siehe Burghausen), Links gibt es keine.
