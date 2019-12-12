@@ -277,7 +277,7 @@ locandy.player.plugins.Dialogue.getTemplate = function()
                         <div class="image"\
                             data-ng-show="plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId]"\
                             data-ng-class="{visible:plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId]}"> \
-                            <div class="thumbnail"> \
+                            <div class="thumbnail" style="margin-bottom:2px"> \
                                 <img data-ng-src="{{plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId].uuid}}"/> \
                             </div> \
                         </div> \
@@ -293,7 +293,9 @@ locandy.player.plugins.Dialogue.getTemplate = function()
                             <p>{{plugin.dialogue[plugin.activeDialogueId].text}}</p> \
                         </div> \
                     </div> \
-                    <div class="answers"> \
+                </div> \
+                <div> \
+                    <div class="answers" style="padding-top:5px"> \
                         <a href="javascript:void(0);" \
                             data-ng-show="answer.text"  \
                             data-ng-repeat="answer in plugin.dialogue[plugin.activeDialogueId].answers" \
@@ -316,7 +318,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                     <div style="overflow:hidden"> \
                         <div> \
                             <textarea \
-                                rows="2"\
+                                rows="4"\
                                 style="margin-bottom:5px" \
                                 class="form-control question" \
                                 data-ng-model="pluginModel.dialogue[pluginModel.activeDialogueId].text" \
@@ -367,7 +369,6 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                             {{"You\'ve not provided any answers for this dialogue yet."|i18n:"editor_plugin_dialogue_no_answers"}} \
                     </div>\
                     <div \
-                        style="margin-top: 5px"\
                         class="answer form-group row small" \
                         data-ng-if="pluginModel.dialogue[pluginModel.activeDialogueId].answers.length > 0" \
                         data-ng-repeat="answer in pluginModel.dialogue[pluginModel.activeDialogueId].answers"> \
