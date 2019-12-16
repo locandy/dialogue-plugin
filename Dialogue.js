@@ -379,19 +379,19 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                                     data-focus-element="!answer.text" \
                                     placeholder="{{\'Answer #%s\'|i18nP:\'editor_plugin_dialogue_label_answer\':($index+1)}}"> \
                         </div> \
-                        <div style="margin-left:10%"> \
+                        <div style="margin-left:5%"> \
                             <div style="float: left; margin-top:5px;"> \
                                 <span class="icon-arrow-right17"></span> \
                             </div> \
-                            <div style="float:left; width:25%; padding-right:10px"> \
+                            <div style="float:left; width:50%; padding-right:10px"> \
                                 <select data-ng-model="answer.nextId" class="form-control full-border ng-pristine ng-valid ng-touched" \
                                         onchange="document.getElementById(\'btnSetAudioNull\').click()"> \
                                     <option data-ng-repeat="(key, value) in pluginModel.dialogue">{{key}}</option> \
                                     <option selected value="">{{"none"|i18n:"editor_plugin_dialogue_select_none"}}</option> \
                                 </select> \
                             </div> \
-                            <button style="display: none" id="btnSetNextIdNull" data-button-handler="global.locandy.player.plugins.Dialogue.setNextIdToNull(answer)"></button>\
-                            <div> \
+                            <!--<button style="display: none" id="btnSetNextIdNull" data-button-handler="global.locandy.player.plugins.Dialogue.setNextIdToNull(answer)"></button>-->  \
+                            <div style="float:left; margin-left: 5%;"> \
                                 <span \
                                     class="effect" \
                                     data-ng-init="popOverConfig={ \
@@ -413,6 +413,8 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                                     <span class="icon-notification2 reusable-color-danger"></span> \
                                     <span class="label-for-icon">{{"Connection corrupted"|i18n:"editor_plugin_dialogue_effect_not_connected_correctly"}}</span> \
                                 </small> \
+                            </div> \
+                            <div> \
                                 <button \
                                     class="btn btn-fancy btn-medium btn-default" \
                                     style="float:right" \
