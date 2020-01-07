@@ -263,6 +263,34 @@ locandy.player.plugins.Dialogue.setImageToNull = function(pluginModel)
         }
     }  
 
+/** @function {static} cutText @inheritdesc */
+locandy.player.plugins.Dialogue.cutText = function(text)
+    {   
+        if (text.length < 75){
+            return text;
+        }
+        else {
+            var first = text.substring(0, 75);
+            return first;
+        }
+    };
+
+/** @function {static} showText @inheritdesc */
+locandy.player.plugins.Dialogue.showText = function(plugin)
+    {   
+        var text = plugin.dialogue[plugin.activeDialogueId].text;
+
+        document.getElementById("agentText").innerHTML = "<p>" + text + "<button id='hideTextBtn' style='margin-left:2px' data-button-handler='global.locandy.player.plugins.Dialogue.hideText(plugin)'><span class='icon-arrow-up2'></span></button></p>";
+    };
+
+/** @function {static} hideText @inheritdesc */
+locandy.player.plugins.Dialogue.hideText = function(plugin)
+    {   
+        alert("test");
+        var text = plugin.dialogue[plugin.activeDialogueId].text.substring(0,75);
+
+        document.getElementById("agentText").innerHTML = "<p>" + text + "<button id='showTextBtn' style='padding-left:2px' data-button-handler='global.locandy.player.plugins.Dialogue.showText(plugin)'><span class='icon-arrow-down2'></span></button></p>";
+    };
     
 /** @function {static} getTemplate @inheritdesc */    
 locandy.player.plugins.Dialogue.getTemplate = function()
@@ -289,8 +317,24 @@ locandy.player.plugins.Dialogue.getTemplate = function()
                                 <span class="icon-play4"></span>\
                             </a> \
                         </div> \
-                        <div class="question"> \
+                        <!--<div class="question"> \
+                            <details> \
+                                <summary>{{plugin.dialogue[plugin.activeDialogueId].text.substr(0,70)}}</summary> \
+                                <p>{{plugin.dialogue[plugin.activeDialogueId].text.substr(70,plugin.dialogue[plugin.activeDialogueId].text.length)}}</p> \
+                            </details> \
+                        </div>--> \
+                        <!--<div class="question" style="padding: 2px 10px;"> \
+                            <p style="white-space: nowrap; overflow: hidden; text-overflow: clip;"> \
+                                Hier steht ein sehr langer Text \
+                            </p> \
+                        </div>--> \
+                        <!--<div class="question"> \
                             <p>{{plugin.dialogue[plugin.activeDialogueId].text}}</p> \
+                        </div>--> \
+                        <div class="question"> \
+                            <p id="agentText">{{global.locandy.player.plugins.Dialogue.cutText(plugin.dialogue[plugin.activeDialogueId].text)}}<span id="dots">... </span> \
+                                <button id="showText" style="margin-left:2px" data-button-handler="global.locandy.player.plugins.Dialogue.showText(plugin)"><span class="icon-arrow-down2"></span></button> \
+                            </p> \
                         </div> \
                     </div> \
                 </div> \
