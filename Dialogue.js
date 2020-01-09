@@ -37,6 +37,9 @@ locandy.player.plugins.Dialogue = function(spot, json)
         this.removeAudioId = "";
         this.removeResourceId = "";
 
+        this.textVisible = false;
+        this.textToLong = false;
+
         // last uploaded image id - for upload verification
         this.lastUploadedImageId = "";
         
@@ -76,6 +79,8 @@ locandy.player.plugins.Dialogue.getSkeleton = function()
             "section":"contents",
             "type":"Dialogue",
             "activeDialogueId": "START",
+            "textVisible": false,
+            "textToLong": false,
 	        "dialogue": {
                 "START":{
                     "text":"Text Agent", 
@@ -263,14 +268,16 @@ locandy.player.plugins.Dialogue.setImageToNull = function(pluginModel)
         }
     }  
 
+
 /** @function {static} cutText @inheritdesc */
-locandy.player.plugins.Dialogue.cutText = function(text)
+locandy.player.plugins.Dialogue.cutText = function(plugin)
     {   
-        if (text.length < 75){
-            return text;
+        if (plugin.dialogue[plugin.activeDialogueId].text.length < 70){
+            return plugin.dialogue[plugin.activeDialogueId].text;
         }
         else {
-            var first = text.substring(0, 75);
+            var first = plugin.dialogue[plugin.activeDialogueId].text.substring(0, 70);
+            plugin.textToLong = true;
             return first;
         }
     };
@@ -287,10 +294,36 @@ locandy.player.plugins.Dialogue.showText = function(plugin)
 locandy.player.plugins.Dialogue.hideText = function(plugin)
     {   
         alert("test");
-        var text = plugin.dialogue[plugin.activeDialogueId].text.substring(0,75);
+        var text = plugin.dialogue[plugin.activeDialogueId].text.substring(0,70);
 
         document.getElementById("agentText").innerHTML = "<p>" + text + "<button id='showTextBtn' style='padding-left:2px' data-button-handler='global.locandy.player.plugins.Dialogue.showText(plugin)'><span class='icon-arrow-down2'></span></button></p>";
     };
+
+/** @function {static} testF @inheritdesc */
+locandy.player.plugins.Dialogue.testF = function()
+    {   
+        alert("alert");
+        document.getElementById("test").innerHTML = "test2: ";
+        document.getElementById("testBtn").innerHTML="test2";
+    };
+
+/** @function {static} moreLessText @inheritdesc */
+locandy.player.plugins.Dialogue.moreLessText = function(plugin)
+    {
+        
+        if (plugin.textVisible){
+            document.getElementById("agentText").innerHTML = plugin.dialogue[plugin.activeDialogueId].text.substring(0, 70) + "...";
+            document.getElementById("moreLessBtn").innerHTML = "<span class='icon-arrow-down2'></span>"
+            plugin.textVisible = false;
+            console.log(plugin.textVisible);
+        }
+        else {
+            document.getElementById("agentText").innerHTML = plugin.dialogue[plugin.activeDialogueId].text;
+            document.getElementById("moreLessBtn").innerHTML = "<span class='icon-arrow-up2'></span>"
+            plugin.textVisible = true;
+            console.log(plugin.textVisible);
+        }
+    }
     
 /** @function {static} getTemplate @inheritdesc */    
 locandy.player.plugins.Dialogue.getTemplate = function()
@@ -331,10 +364,15 @@ locandy.player.plugins.Dialogue.getTemplate = function()
                         <!--<div class="question"> \
                             <p>{{plugin.dialogue[plugin.activeDialogueId].text}}</p> \
                         </div>--> \
-                        <div class="question"> \
-                            <p id="agentText">{{global.locandy.player.plugins.Dialogue.cutText(plugin.dialogue[plugin.activeDialogueId].text)}}<span id="dots">... </span> \
-                                <button id="showText" style="margin-left:2px" data-button-handler="global.locandy.player.plugins.Dialogue.showText(plugin)"><span class="icon-arrow-down2"></span></button> \
-                            </p> \
+                        <!--<div> \
+                            <p id="test">test: </p><button id="testBtn" data-button-handler="global.locandy.player.plugins.Dialogue.testF()">test<button> \
+                        </div>--> \
+                        <div class="question" data-ng-if="!((plugin.textToLong===true) && (plugin.dialogue[plugin.activeDialogueId].audioId !== null))"> \
+                            <p id="agentText">{{plugin.dialogue[plugin.activeDialogueId].text}}</p> \
+                        </div> \
+                        <div class="question" data-ng-if="(plugin.textToLong===true) && (plugin.dialogue[plugin.activeDialogueId].audioId !== null)"> \
+                            <p id="agentText">{{global.locandy.player.plugins.Dialogue.cutText(plugin)}}...</p> \
+                            <button id="moreLessBtn" style="margin-top:-10px; float:right" data-button-handler="global.locandy.player.plugins.Dialogue.moreLessText(plugin)"><span class="icon-arrow-down2"></span></button> \
                         </div> \
                     </div> \
                 </div> \
@@ -689,6 +727,16 @@ locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDia
     {
         this.imageUrl = null;
     }
+
+    // check it text is too long and set textToLong property
+    if(this.dialogue[activeDialogueId].text.length > 50){
+        this.textToLong = true;
+    }
+    else{
+        this.textToLong = false;
+    }
+    console.log(this.dialogue[activeDialogueId].text + ': ' + this.dialogue[activeDialogueId].text.length);
+    console.log(this.textToLong);
 
     // execute sound of next dialogue
 
