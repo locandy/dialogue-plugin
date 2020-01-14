@@ -38,7 +38,7 @@ locandy.player.plugins.Dialogue = function(spot, json)
         this.removeResourceId = "";
 
         this.textVisible = false;
-        this.textToLong = false;
+        this.textToLong = true;     // TODO: check where to set value
 
         // last uploaded image id - for upload verification
         this.lastUploadedImageId = "";
