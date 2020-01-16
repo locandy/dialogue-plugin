@@ -1,4 +1,5 @@
 # TODO
+  1. More-Less Button wie play Button, rechts
   1. (...) Button zum Aufklappen bei zu langem Text und synchroner Audio einbauen
   1. mit Effects vertraut machen: für Treffen (TestDialog) erklären können
   1. Sound upload: Bei spot (wie image) und nicht über Quest/... 
