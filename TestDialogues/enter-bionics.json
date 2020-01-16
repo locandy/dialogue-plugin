@@ -1,0 +1,103 @@
+{
+  "START": {
+    "text": "Hallo! Lass uns gemeinsam auf eine spannende Reise gehen, auf der wir zusammen die Geheimnisse der Natur erforschen und tolle Experimente durchführen. \nDie Natur ist die beste Erfinderin. Sie hat im Laufe der Jahrmillionen unzählige Mechanismen entwickelt, die dafür sorgen, dass sich Tiere und Pflanzen den verschiedensten Lebensräumen anpassen und dort überleben können. Einige dieser Mechanismen sind auch für den Menschen nutzbar. Viele Wissenschaftler beschäftigen sich tagtäglich damit, die Geheimnisse der Natur zu entschlüsseln und kopieren Prinzipien der Natur, um diese in die Technik umzusetzen.",
+    "audioId": "ufo",
+    "imageId": "prof1",
+    "answers": [
+      {
+        "text": "Weiter",
+        "effectId": null,
+        "nextId": "EINLEITUNG",
+        "$$hashKey": "object:161"
+      }
+    ]
+  },
+  "EINLEITUNG": {
+    "text": "Einen dieser Mechanismen werden wir nun genauer unter die Lupe nehmen: den Lotuseffekt. Viel Spaß bei der ersten Station! \nBei dieser Station lernst du, wie es der Lotuspflanze gelingt sich selbst zu reinigen, welche Vertreter in der Natur diesen Effekt noch nutzen und wie es der Mensch geschafft hat, dieses Prinzip für technische Anwendungen nutzbar zu machen.",
+    "audioId": "ufo",
+    "answers": [
+      {
+        "text": "Los geht's!",
+        "effectId": "scene++",
+        "nextId": "LOTUSBLUME_EINLEITUNG"
+      }
+    ],
+    "imageId": "prof2"
+  },
+  "LOTUSBLUME_EINLEITUNG": {
+    "text": "Hast du schon einmal etwas von der Lotusblume gehört?",
+    "audioId": null,
+    "answers": [
+      {
+        "text": "Ja",
+        "effectId": "S1_LotusblumeJa",
+        "nextId": "LOTUSBLUME_SELBSTREINIGUNG"
+      },
+      {
+        "text": "Nein",
+        "effectId": "S1_LotusblumeNein",
+        "nextId": "LOTUSBLUME_SELBSTREINIGUNG"
+      }
+    ],
+    "imageId": "prof1"
+  },
+  "LOTUSBLUME_SELBSTREINIGUNG": {
+    "text": "Die Lotuspflanze ist in der Lage sich selbst zu reinigen. An den Blättern der Lotosblumen perlt das Wasser einfach ab und spült gleichzeitig den Schmutz fort. Wassertropfen rollen also nach dem Kontakt mit dem Blatt einfach ab und sind nicht in der Lage, das Blatt der Pflanze mit Wasser zu benetzen. Doch wie funktioniert das?",
+    "audioId": null,
+    "answers": [
+      {
+        "text": "Weiter",
+        "effectId": "scene++",
+        "nextId": "LOTUSEFFEKT"
+      }
+    ],
+    "imageId": "prof1"
+  },
+  "LOTUSEFFEKT": {
+    "text": "Das Blatt der Lotusblume verfügt über eine spezielle Oberfläche, die mit zahllosen, winzigen Erhebungen übersäht sind. Diese winzigen Erhebungen werden auch Mikrostrukturen genannt und sind für das menschliche Auge nicht sichtbar sind. Erst der Blick durchs Mikroskop verrät die wahre Gestalt der Blattoberfläche.",
+    "audioId": null,
+    "answers": [
+      {
+        "text": "Ok",
+        "effectId": "scene++",
+        "nextId": "LOTUSEFFEKT_FRAGE1"
+      }
+    ],
+    "imageId": "prof1"
+  },
+  "LOTUSEFFEKT_FRAGE1": {
+    "text": "Hast du bis jetzt alles verstanden?",
+    "audioId": null,
+    "answers": [
+      {
+        "text": "Ja",
+        "effectId": "S1_Lotuseffekt_verstanden",
+        "nextId": "FORTSETZUNG FOLGT"
+      },
+      {
+        "text": "Nein",
+        "effectId": "S1_Lotuseffekt_nichtVerstanden",
+        "nextId": "LOTUSBLUME_SELBSTREINIGUNG"
+      }
+    ],
+    "imageId": "prof3"
+  },
+  "LOTUSEFFEKT_FRAGE2": {
+    "text": "Super! Dann kannst du mir sicher diese Fragen beantworten. \nMultiple choice: Kreuze die korrekten Aussagen an.",
+    "audioId": null,
+    "answers": [
+      {
+        "text": "Fertig!",
+        "effectId": "scene8",
+        "nextId": "FORTSETZUNG FOLGT"
+      }
+    ],
+    "imageId": "prof1"
+  },
+  "FORTSETZUNG FOLGT": {
+    "text": "Blattoberfläche im Detail folgt...",
+    "audioId": null,
+    "answers": [],
+    "imageId": "prof4"
+  }
+}

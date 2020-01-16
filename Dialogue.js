@@ -372,7 +372,7 @@ locandy.player.plugins.Dialogue.getTemplate = function()
                         </div> \
                         <div class="question" data-ng-if="(plugin.textToLong===true) && (plugin.dialogue[plugin.activeDialogueId].audioId !== null)"> \
                             <p id="agentText">{{global.locandy.player.plugins.Dialogue.cutText(plugin)}}...</p> \
-                            <div style="float:left; width: auto;"> \
+                            <div class="btn" style="float:left; width: auto;"> \
                                 <button id="moreLessBtn" style="width:100%" data-button-handler="global.locandy.player.plugins.Dialogue.moreLessText(plugin)"><span class="icon-arrow-down2"></span></button> \
                             </div> \
                         </div> \
