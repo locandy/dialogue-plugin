@@ -38,7 +38,7 @@ locandy.player.plugins.Dialogue = function(spot, json)
         this.removeResourceId = "";
 
         this.textVisible = false;
-        this.textToLong = true;     // TODO: check where to set value
+        //this.textToLong = false;     // TODO: check where to set value
 
         // last uploaded image id - for upload verification
         this.lastUploadedImageId = "";
@@ -80,7 +80,6 @@ locandy.player.plugins.Dialogue.getSkeleton = function()
             "type":"Dialogue",
             "activeDialogueId": "START",
             "textVisible": false,
-            "textToLong": false,
 	        "dialogue": {
                 "START":{
                     "text":"Text Agent", 
@@ -272,14 +271,13 @@ locandy.player.plugins.Dialogue.setImageToNull = function(pluginModel)
 /** @function {static} cutText @inheritdesc */
 locandy.player.plugins.Dialogue.cutText = function(plugin)
     {   
-        if (plugin.dialogue[plugin.activeDialogueId].text.length < 45){
-            return plugin.dialogue[plugin.activeDialogueId].text;
-        }
-        else {
+        // if (plugin.dialogue[plugin.activeDialogueId].text.length < 45){
+        //     return plugin.dialogue[plugin.activeDialogueId].text;
+        // }
+        // else {
             var first = plugin.dialogue[plugin.activeDialogueId].text.substring(0, 45);
-            plugin.textToLong = true;
             return first;
-        }
+        // }
     };
 
 /** @function {static} showText @inheritdesc */
@@ -372,8 +370,8 @@ locandy.player.plugins.Dialogue.getTemplate = function()
                         </div> \
                         <div class="question" data-ng-if="(plugin.textToLong===true) && (plugin.dialogue[plugin.activeDialogueId].audioId !== null)"> \
                             <p id="agentText">{{global.locandy.player.plugins.Dialogue.cutText(plugin)}}...</p> \
-                            <div class="btn" style="float:left; width: auto;"> \
-                                <button id="moreLessBtn" style="width:100%" data-button-handler="global.locandy.player.plugins.Dialogue.moreLessText(plugin)"><span class="icon-arrow-down2"></span></button> \
+                            <div style="float:left; width: auto;"> \
+                                <button class="btn" id="moreLessBtn" style="width:100%" data-button-handler="global.locandy.player.plugins.Dialogue.moreLessText(plugin)"><span class="icon-arrow-down2"></span></button> \
                             </div> \
                         </div> \
                     </div> \
@@ -742,6 +740,7 @@ locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDia
 
     // execute sound of next dialogue
 
+
     if (this.playingSound){
         this.playingSound.stop();
         this.playingSound = null;
@@ -750,23 +749,27 @@ locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDia
     if(this.dialogue[this.activeDialogueId].audioId !== null){
         this.executeSound(this.dialogue[this.activeDialogueId].audioId);
     }
+
+    
 };
 
 /** @function {public} executeSound */
 locandy.player.plugins.Dialogue.prototype.executeSound = function(audioId)
     {
-        var sound = locandy.player.MediaPlayer.factory(audioId, this.resources[audioId]);   //this.spot.quest.getResource(audioId);
+        if (this.resouces[audioId] !== undefined || this.resources[audioId] !== null){
+            var sound = locandy.player.MediaPlayer.factory(audioId, this.resources[audioId]);
 
-        this.playingSound = sound;
-
-        if(sound)
-        {
-            locandy.player.plugins.Media.updateCurrentMediaInstance(null);
-            
-            if(!this.isRendered)
-                sound.autoplay = false;
-            else
-                sound.play();
+            this.playingSound = sound;
+    
+            if(sound)
+            {
+                locandy.player.plugins.Media.updateCurrentMediaInstance(null);
+                
+                if(!this.isRendered)
+                    sound.autoplay = false;
+                else
+                    sound.play();
+            }
         }
         else{
             return "ERROR: Missing upload for sound-effect: " + audioId;
