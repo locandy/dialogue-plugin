@@ -1,4 +1,6 @@
 # TODO
+  1. Wenn Dialog reinkopiert wird: Wenn ressource fehlt muss es richtig angezeigt werden. Id sind leer
+  1. More-Less Button wie play Button, rechts
   1. (...) Button zum Aufklappen bei zu langem Text und synchroner Audio einbauen
   1. mit Effects vertraut machen: für Treffen (TestDialog) erklären können
   1. Sound upload: Bei spot (wie image) und nicht über Quest/... 
