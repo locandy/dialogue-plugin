@@ -1,5 +1,6 @@
 # TODO
   1. Drehbuch im Locandy-System umsetzen
+  1. Forschungsfragen für Mitmachphase zusammenstellen
   1. Wenn Dialog reinkopiert wird: Wenn ressource fehlt muss es richtig angezeigt werden. Id sind leer
   1. More-Less Button wie play Button, rechts -> done
   1. (...) Button zum Aufklappen bei zu langem Text und synchroner Audio einbauen -> done
