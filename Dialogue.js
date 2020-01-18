@@ -313,13 +313,11 @@ locandy.player.plugins.Dialogue.moreLessText = function(plugin)
             document.getElementById("agentText").innerHTML = plugin.dialogue[plugin.activeDialogueId].text.substring(0, 45) + "...";
             document.getElementById("moreLessBtn").innerHTML = "<span class='icon-arrow-down2'></span>"
             plugin.textVisible = false;
-            console.log(plugin.textVisible);
         }
         else {
             document.getElementById("agentText").innerHTML = plugin.dialogue[plugin.activeDialogueId].text;
             document.getElementById("moreLessBtn").innerHTML = "<span class='icon-arrow-up2'></span>"
             plugin.textVisible = true;
-            console.log(plugin.textVisible);
         }
     }
     
@@ -370,7 +368,7 @@ locandy.player.plugins.Dialogue.getTemplate = function()
                         </div> \
                         <div class="question" data-ng-if="(plugin.textToLong===true) && (plugin.dialogue[plugin.activeDialogueId].audioId !== null)"> \
                             <p id="agentText">{{global.locandy.player.plugins.Dialogue.cutText(plugin)}}...</p> \
-                            <div style="float:left; width: auto;"> \
+                            <div style="float:right; width: auto;"> \
                                 <button class="btn" id="moreLessBtn" style="width:100%" data-button-handler="global.locandy.player.plugins.Dialogue.moreLessText(plugin)"><span class="icon-arrow-down2"></span></button> \
                             </div> \
                         </div> \
@@ -720,23 +718,26 @@ locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDia
     console.log("Dialogue.setActiveDialogue(" + activeDialogueId + ")");
     this.activeDialogueId = activeDialogueId;
     
-    if (this.dialogue[this.activeDialogueId].imageId !== null && this.dialogue[this.activeDialogueId].imageId !== "" && this.dialogue[this.activeDialogueId].imageId !== undefined){
-        this.imageUrl = locandy.player.playerMainSingleton.resourceResolverService.getUrl(this.resources[this.dialogue[this.activeDialogueId].imageId].uuid);
+    if (this.dialogue[this.activeDialogueId].imageId !== null 
+        && this.dialogue[this.activeDialogueId].imageId !== ""
+        && this.dialogue[this.activeDialogueId].imageId !== undefined){
+        if (this.resources[this.dialogue[this.activeDialogueId].imageId].uuid !== undefined){
+            this.imageUrl = locandy.player.playerMainSingleton.resourceResolverService.getUrl(this.resources[this.dialogue[this.activeDialogueId].imageId].uuid);
+        }
     }
     else 
     {
         this.imageUrl = null;
     }
 
-    // check it text is too long and set textToLong property
+    // check if text is too long and set textToLong property
     if(this.dialogue[activeDialogueId].text.length > 50){
         this.textToLong = true;
     }
     else{
         this.textToLong = false;
     }
-    console.log(this.dialogue[activeDialogueId].text + ': ' + this.dialogue[activeDialogueId].text.length);
-    console.log(this.textToLong);
+
 
     // execute sound of next dialogue
 
@@ -753,11 +754,13 @@ locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDia
     
 };
 
+
 /** @function {public} executeSound */
 locandy.player.plugins.Dialogue.prototype.executeSound = function(audioId)
     {
-        if (this.resouces[audioId] !== undefined || this.resources[audioId] !== null){
-            var sound = locandy.player.MediaPlayer.factory(audioId, this.resources[audioId]);
+        if (this.resources[audioId] !== undefined &&
+            this.resources[audioId] !== null) {
+            var sound = locandy.player.MediaPlayer.factory(audioId, this.resources[audioId]);   //this.spot.quest.getResource(audioId);
 
             this.playingSound = sound;
     
@@ -770,9 +773,12 @@ locandy.player.plugins.Dialogue.prototype.executeSound = function(audioId)
                 else
                     sound.play();
             }
-        }
-        else{
-            return "ERROR: Missing upload for sound-effect: " + audioId;
+            else{
+                return "ERROR: Sound could not be loaded: " + audioId;
+            }
+        } 
+        else {
+            return "ERROR: Missing upload for audioID: " + audioID;
         }
     };
     
