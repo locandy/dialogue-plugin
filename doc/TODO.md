@@ -1,26 +1,26 @@
 # TODO
+  1. Drehbuch im Locandy-System umsetzen
   1. Wenn Dialog reinkopiert wird: Wenn ressource fehlt muss es richtig angezeigt werden. Id sind leer
-  1. More-Less Button wie play Button, rechts
-  1. (...) Button zum Aufklappen bei zu langem Text und synchroner Audio einbauen
-  1. mit Effects vertraut machen: für Treffen (TestDialog) erklären können
-  1. Sound upload: Bei spot (wie image) und nicht über Quest/... 
+  1. More-Less Button wie play Button, rechts -> done
+  1. (...) Button zum Aufklappen bei zu langem Text und synchroner Audio einbauen -> done
+  1. Sound upload: Bei spot (wie image) und nicht über Quest/...  -> done
      * für dopdown: resources filter auf mimetype
   1. Audio soll stoppen, wenn plugin.isHidden()
   1. antwort nur abgeben, wenn Effect ausgeführt wurde (geht noch nicht -> executeEffect hat keinen Rückgabewert)
-  1. GUI
-      * Options ID-Selektor
-      * (keine horizontale Linie)
-      * Text des Agents
-      * Portrait, Selektor Image
-      * Portrait, Selektor Audio
-      * (keine horizontale Linie)
-      * Answers
-      * + Add Answer
-      * horizontale Linie
-      * ID-TF, Upload Image with ID
-      * .... wie bisher
   1. (Code Kommentieren (alle Variablen besonders transient oder persistent!, komplexe Stellen))
-     
+ 
+# GUI
+  * Options ID-Selektor
+  * (keine horizontale Linie)
+  * Text des Agents
+  * Portrait, Selektor Image
+  * Portrait, Selektor Audio
+  * (keine horizontale Linie)
+  * Answers
+  * + Add Answer
+  * horizontale Linie
+  * ID-TF, Upload Image with ID
+  * .... wie bisher
 
 # Neue Übersetzungen i18n
   * \'Text Agent\'|i18n:\'editor_plugin_dialogue_agent_text\'
