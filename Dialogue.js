@@ -20,6 +20,7 @@ locandy.player.plugins.Dialogue = function(spot, json)
         this.localizerService = locandy.player.playerMainSingleton.injector.get("localizerService");
 
         DEBUG_dialogue = this;
+        this.imageHeight = 150;
 
         // dialogue properties
         this.dialogue = json.dialogue;
@@ -85,6 +86,7 @@ locandy.player.plugins.Dialogue.getSkeleton = function()
                     "text":"Text Agent", 
                     "audioId":null, 
                     "imageId":null,
+                    "imageHeight":null,
                     "answers":[]
                 }
             }
@@ -149,6 +151,8 @@ locandy.player.plugins.Dialogue.addDialogueToModel = function(pluginModel)
             pluginModel.dialogue[pluginModel.newDialogueId] = {
                 "text": null,
                 "audioId": null,
+                "imageId":null,
+                "imageHeight":null,
                 "answers": []};
             pluginModel.newDialogueId = "";
         } else {
@@ -320,6 +324,19 @@ locandy.player.plugins.Dialogue.moreLessText = function(plugin)
             plugin.textVisible = true;
         }
     }
+
+    // old code for agent-image:
+
+    // <div style="float:left; width:33%; margin-right: 10px"\
+    //                     ng-show="plugin.dialogue[plugin.activeDialogueId].imageId "= null"> \
+    //                     <div class="image"\
+    //                         data-ng-show="plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId]"\
+    //                         data-ng-class="{visible:plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId]}"> \
+    //                         <div class="thumbnail" style="margin-bottom:2px"> \
+    //                             <img data-ng-src="{{plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId].uuid}}"> \
+    //                         </div> \
+    //                     </div> \
+    //                 </div> \
     
 /** @function {static} getTemplate @inheritdesc */    
 locandy.player.plugins.Dialogue.getTemplate = function()
@@ -329,14 +346,14 @@ locandy.player.plugins.Dialogue.getTemplate = function()
                     data-plugin-element-rendered \
                     style="overflow:hidden" \
                     data-ng-if="plugin.isHidden()">\
-                    <div style="float:left; width:33%; margin-right: 10px"\
-                        ng-show="plugin.dialogue[plugin.activeDialogueId].imageId "= null"> \
-                        <div class="image"\
-                            data-ng-show="plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId]"\
-                            data-ng-class="{visible:plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId]}"> \
-                            <div class="thumbnail" style="margin-bottom:2px"> \
-                                <img data-ng-src="{{plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId].uuid}}"/> \
-                            </div> \
+                    <div class="image"\
+                        data-ng-show="plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId]"\
+                        data-ng-class="{visible:plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId]}"> \
+                        <div data-ng-if="((plugin.imageHeight === null) || (plugin.imageHeight === \'\'))" class="thumbnail" style="float: left; margin:0px 5px 2px 0px;"> \
+                            <img data-ng-src="{{plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId].uuid}}" height="120px"> \
+                        </div> \
+                        <div data-ng-if="!((plugin.imageHeight === null) || (plugin.imageHeight === \'\'))" class="thumbnail" style="float: left; margin:0px 5px 2px 0px;"> \
+                            <img data-ng-src="{{plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId].uuid}}" height="{{plugin.imageHeight}}"> \
                         </div> \
                     </div> \
                     <div> \
@@ -346,23 +363,6 @@ locandy.player.plugins.Dialogue.getTemplate = function()
                                 <span class="icon-play4"></span>\
                             </a> \
                         </div> \
-                        <!--<div class="question"> \
-                            <details> \
-                                <summary>{{plugin.dialogue[plugin.activeDialogueId].text.substr(0,70)}}</summary> \
-                                <p>{{plugin.dialogue[plugin.activeDialogueId].text.substr(70,plugin.dialogue[plugin.activeDialogueId].text.length)}}</p> \
-                            </details> \
-                        </div>--> \
-                        <!--<div class="question" style="padding: 2px 10px;"> \
-                            <p style="white-space: nowrap; overflow: hidden; text-overflow: clip;"> \
-                                Hier steht ein sehr langer Text \
-                            </p> \
-                        </div>--> \
-                        <!--<div class="question"> \
-                            <p>{{plugin.dialogue[plugin.activeDialogueId].text}}</p> \
-                        </div>--> \
-                        <!--<div> \
-                            <p id="test">test: </p><button id="testBtn" data-button-handler="global.locandy.player.plugins.Dialogue.testF()">test<button> \
-                        </div>--> \
                         <div class="question" data-ng-if="!((plugin.textToLong===true) && (plugin.dialogue[plugin.activeDialogueId].audioId !== null))"> \
                             <p id="agentText">{{plugin.dialogue[plugin.activeDialogueId].text}}</p> \
                         </div> \
@@ -426,6 +426,24 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                                         </select> \
                                     </div> \
                                     <button style="display: none" id="btnSetImageNull" data-button-handler="global.locandy.player.plugins.Dialogue.setImageToNull(pluginModel)"></button>\
+                                </div> \
+                                <div style="overflow: hidden; margin-left: 40%; margin-top: 10px"> \
+                                    <div style="float: left; margin-top:3px"> \
+                                        <span class="icon-arrow-right17"></span> \
+                                    </div> \
+                                    <div style="float:left; margin-top:3px;"> \
+                                        <span class="label-for-icon">{{"Height"|i18n:"editor_plugin_dialogue_image_height"}}</span> \
+                                    </div> \
+                                    <div style="float:right; margin-top:3px;"> \
+                                        <span class="label-for-icon">px</span> \
+                                    </div> \
+                                    <div class="form-group" style="float:right; width:30%"> \
+                                        <input type="number" \
+                                            class="form-control question" \
+                                            data-ng-model="pluginModel.dialogue[pluginModel.activeDialogueId].imageHeight" \
+                                            min="80" max=300"\
+                                            placeholder="150"/> \
+                                    </div> \
                                 </div> \
                                 <div style="overflow: hidden; margin-top: 10px"> \
                                     <div style="width:30%; float:left; margin-top:3px;"> \
@@ -738,9 +756,13 @@ locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDia
         this.textToLong = false;
     }
 
+    // set new imageHeight
+
+    if (!((this.dialogue[this.activeDialogueId].imageHeight == "") || (this.dialogue[this.activeDialogueId].imageHeight == null))) {
+        this.imageHeight = this.dialogue[this.activeDialogueId].imageHeight;
+    }
 
     // execute sound of next dialogue
-
 
     if (this.playingSound){
         this.playingSound.stop();
@@ -781,7 +803,28 @@ locandy.player.plugins.Dialogue.prototype.executeSound = function(audioId)
             return "ERROR: Missing upload for audioID: " + audioID;
         }
     };
-    
+
+/** @function {public} activateOrChangeWatch */
+locandy.player.plugins.Dialogue.prototype.activateOrChangeWatch = function()  // aufrufen wenn this.watchStateId geändert wird (falls änderbar)
+    {
+        if(this._removeWatchF)
+            this._removeWatchF();
+        
+        if(!this.watchStateId)  // watchStateId may be empty, see also SpriteSheet Plugin!
+        {
+            var me=this;
+            var scopeId = "main.quest.stateRegistry." + this.spot.id + ".state." + this.watchStateId;
+            this._removeWatchF = this.spot.quest.scope.$watch(scopeId, function(val){ me.setActiveDialogue(val); console.log("Dialogue Watch fired:", val); });
+        }
+    }
+
+/** @function {public} destroy */
+locandy.player.plugins.Dialogue.prototype.destroy = function()
+    {
+        if(this._removeWatchF)
+            this._removeWatchF();
+    }
+
 /** @function {public Array} ? verifies integrity of quest before publish in Editor. */
 locandy.player.plugins.Dialogue.prototype.verifyBeforePublish = function()
     {
