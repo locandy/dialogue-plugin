@@ -20,7 +20,7 @@ locandy.player.plugins.Dialogue = function(spot, json)
         this.localizerService = locandy.player.playerMainSingleton.injector.get("localizerService");
 
         DEBUG_dialogue = this;
-        this.imageHeight = 150;
+        this.imageHeight = "150px";
 
         // dialogue properties
         this.dialogue = json.dialogue;
@@ -56,6 +56,9 @@ locandy.player.plugins.Dialogue = function(spot, json)
             me.isRendered = true;
         });
         
+        this.watchStateId = "activeDialogueNode"; // Could be set dynamically in Editor or hardwired
+        this.activateOrChangeWatch()
+
         // me.setActiveDialogue("START");
     };
 
@@ -327,17 +330,21 @@ locandy.player.plugins.Dialogue.moreLessText = function(plugin)
 
     // old code for agent-image:
 
-    // <div style="float:left; width:33%; margin-right: 10px"\
-    //                     ng-show="plugin.dialogue[plugin.activeDialogueId].imageId "= null"> \
-    //                     <div class="image"\
-    //                         data-ng-show="plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId]"\
-    //                         data-ng-class="{visible:plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId]}"> \
-    //                         <div class="thumbnail" style="margin-bottom:2px"> \
-    //                             <img data-ng-src="{{plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId].uuid}}"> \
-    //                         </div> \
+
+
+    // <div class="image"\
+    //                     data-ng-show="plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId]"\
+    //                     data-ng-class="{visible:plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId]}"> \
+    //                     <div data-ng-if="((plugin.imageHeight === null) || (plugin.imageHeight === \'\'))" class="thumbnail" style="float: left; margin:0px 5px 2px 0px;"> \
+    //                         <img data-ng-src="{{plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId].uuid}}" height="120px"> \
+    //                     </div> \
+    //                     <div data-ng-if="!((plugin.imageHeight === null) || (plugin.imageHeight === \'\'))" class="thumbnail" style="float: left; margin:0px 5px 2px 0px;" > \
+    //                         <img data-ng-src="{{plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId].uuid}}" height="{{plugin.imageHeight}}"> \
     //                     </div> \
     //                 </div> \
     
+// ng-style="\'{width\':plugin.imageWidth}"
+
 /** @function {static} getTemplate @inheritdesc */    
 locandy.player.plugins.Dialogue.getTemplate = function()
     {               
@@ -346,14 +353,14 @@ locandy.player.plugins.Dialogue.getTemplate = function()
                     data-plugin-element-rendered \
                     style="overflow:hidden" \
                     data-ng-if="plugin.isHidden()">\
-                    <div class="image"\
-                        data-ng-show="plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId]"\
-                        data-ng-class="{visible:plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId]}"> \
-                        <div data-ng-if="((plugin.imageHeight === null) || (plugin.imageHeight === \'\'))" class="thumbnail" style="float: left; margin:0px 5px 2px 0px;"> \
-                            <img data-ng-src="{{plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId].uuid}}" height="120px"> \
-                        </div> \
-                        <div data-ng-if="!((plugin.imageHeight === null) || (plugin.imageHeight === \'\'))" class="thumbnail" style="float: left; margin:0px 5px 2px 0px;"> \
-                            <img data-ng-src="{{plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId].uuid}}" height="{{plugin.imageHeight}}"> \
+                    <div style="float:left; margin-right: 10px" ng-style="{\'width\':plugin.imageHeight}" \
+                        ng-show="plugin.dialogue[plugin.activeDialogueId].imageId "= null"> \
+                        <div class="image"\
+                            data-ng-show="plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId]"\
+                            data-ng-class="{visible:plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId]}"> \
+                            <div class="thumbnail" style="margin-bottom:2px"> \
+                                <img data-ng-src="{{plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId].uuid}}"/> \
+                            </div> \
                         </div> \
                     </div> \
                     <div> \
@@ -434,14 +441,11 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                                     <div style="float:left; margin-top:3px;"> \
                                         <span class="label-for-icon">{{"Height"|i18n:"editor_plugin_dialogue_image_height"}}</span> \
                                     </div> \
-                                    <div style="float:right; margin-top:3px;"> \
-                                        <span class="label-for-icon">px</span> \
-                                    </div> \
                                     <div class="form-group" style="float:right; width:30%"> \
                                         <input type="number" \
                                             class="form-control question" \
                                             data-ng-model="pluginModel.dialogue[pluginModel.activeDialogueId].imageHeight" \
-                                            min="80" max=300"\
+                                            min="80" max="300" \
                                             placeholder="150"/> \
                                     </div> \
                                 </div> \
@@ -758,8 +762,8 @@ locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDia
 
     // set new imageHeight
 
-    if (!((this.dialogue[this.activeDialogueId].imageHeight == "") || (this.dialogue[this.activeDialogueId].imageHeight == null))) {
-        this.imageHeight = this.dialogue[this.activeDialogueId].imageHeight;
+    if ((this.dialogue[this.activeDialogueId].imageHeight !== undefined) && typeof(this.dialogue[this.activeDialogueId].imageHeight) == "string") {
+        this.imageHeight = "" + this.dialogue[this.activeDialogueId].imageHeight + "px";
     }
 
     // execute sound of next dialogue
