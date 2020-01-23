@@ -20,4 +20,4 @@
 
         jq -r .audioContent tts.json > tts.base64
           
-        base64 -D -i synthesize-text.base64 -o synthesize-text.mp3
+        base64 -D -i tts.base64 -o tts.mp3
