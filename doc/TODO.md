@@ -1,4 +1,7 @@
 # TODO
+  1. Google Speech: 
+  https://cloud.google.com/text-to-speech/
+  https://cloud.google.com/text-to-speech/docs/voices
   1. Drehbuch im Locandy-System umsetzen
   1. Forschungsfragen für Mitmachphase zusammenstellen
   1. Wenn Dialog reinkopiert wird: Wenn ressource fehlt muss es richtig angezeigt werden. Id sind leer

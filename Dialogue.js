@@ -57,7 +57,7 @@ locandy.player.plugins.Dialogue = function(spot, json)
         });
         
         this.watchStateId = "activeDialogueNode"; // Could be set dynamically in Editor or hardwired
-        this.activateOrChangeWatch()
+        this.activateOrChangeWatch();
 
         // me.setActiveDialogue("START");
     };
@@ -762,7 +762,7 @@ locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDia
 
     // set new imageHeight
 
-    if ((this.dialogue[this.activeDialogueId].imageHeight !== undefined) && typeof(this.dialogue[this.activeDialogueId].imageHeight) == "string") {
+    if ((this.dialogue[this.activeDialogueId].imageHeight !== undefined) && typeof(this.dialogue[this.activeDialogueId].imageHeight) == "number") {
         this.imageHeight = "" + this.dialogue[this.activeDialogueId].imageHeight + "px";
     }
 
