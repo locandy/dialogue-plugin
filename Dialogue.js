@@ -367,15 +367,15 @@ locandy.player.plugins.Dialogue.getTemplate = function()
                             </div> \
                         </div> \
                     </div> \
-                </div> \
-                <div> \
-                    <div class="answers" style="padding-top:5px"> \
-                        <a href="javascript:void(0);" \
-                            data-ng-show="answer.text"  \
-                            data-ng-repeat="answer in plugin.dialogue[plugin.activeDialogueId].answers" \
-                            data-button-handler="plugin.executeAnswer(answer)"> \
-                        <span class="label-for-icon">{{answer.text}}</span> \
-                        </a> \
+                    <div> \
+                        <div class="answers" style="padding-top:5px"> \
+                            <a href="javascript:void(0);" \
+                                data-ng-show="answer.text"  \
+                                data-ng-repeat="answer in plugin.dialogue[plugin.activeDialogueId].answers" \
+                                data-button-handler="plugin.executeAnswer(answer)"> \
+                            <span class="label-for-icon">{{answer.text}}</span> \
+                            </a> \
+                        </div> \
                     </div> \
                 </div>';
     };
