@@ -329,23 +329,6 @@ locandy.player.plugins.Dialogue.moreLessText = function(plugin)
         }
     }
 
-    // old code for agent-image:
-
-
-
-    // <div class="image"\
-    //                     data-ng-show="plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId]"\
-    //                     data-ng-class="{visible:plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId]}"> \
-    //                     <div data-ng-if="((plugin.imageHeight === null) || (plugin.imageHeight === \'\'))" class="thumbnail" style="float: left; margin:0px 5px 2px 0px;"> \
-    //                         <img data-ng-src="{{plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId].uuid}}" height="120px"> \
-    //                     </div> \
-    //                     <div data-ng-if="!((plugin.imageHeight === null) || (plugin.imageHeight === \'\'))" class="thumbnail" style="float: left; margin:0px 5px 2px 0px;" > \
-    //                         <img data-ng-src="{{plugin.resources[plugin.dialogue[plugin.activeDialogueId].imageId].uuid}}" height="{{plugin.imageHeight}}"> \
-    //                     </div> \
-    //                 </div> \
-    
-// ng-style="\'{width\':plugin.imageWidth}"
-
 /** @function {static} getTemplate @inheritdesc */    
 locandy.player.plugins.Dialogue.getTemplate = function()
     {               
@@ -398,7 +381,7 @@ locandy.player.plugins.Dialogue.getTemplate = function()
 locandy.player.plugins.Dialogue.getEditTemplate = function()
     {
         return '<div> \
-                    <div class="form-group"> \
+                    <div class="form-group" data-ng-init="activeDialogueId=\'START\'"> \
                         <select data-ng-model="activeDialogueId" class="form-control full-border ng-pristine ng-valid ng-touched" > \
                             <option data-ng-repeat="(key, value) in pluginModel.dialogue">{{key}}</option> \
                         </select> \
