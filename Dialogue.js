@@ -718,6 +718,12 @@ locandy.player.plugins.Dialogue.prototype.executeAnswer = function(answer)
             new locandy.player.Effect(this.spot.quest, answer.effectId).execute();
         }
         
+        if(!answer.nextId || this.dialogue[answer.nextId] === undefined)
+        {
+            alert("Dialogue: ERROR: the answer has no next dialogue and is broken (contact the author).");
+            return;
+        }
+        
         this.setActiveDialogue(answer.nextId);
     };
 
