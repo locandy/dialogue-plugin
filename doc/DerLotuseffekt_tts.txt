@@ -1,0 +1,24 @@
+../bin/gtts.sh -k $API_KEY -f start 'Auf? zur ersten Station! Hier werden wir einen ausgeklügelten Trick der Natur genauer unter die Lupe nehmen: den Lotuseffekt. An diesem Beispiel werden wir uns anschauen, wie wasserabweisende Oberflächen funktionieren und wo in der Natursolche Oberflächen zu finden sind. An dieser Station lernst du, wie es der Lotuspflanze gelingt, sich selbst zu reinigen, welche Vertreter in der Natur diesen Effekt noch nutzen und wie es der Mensch geschafft hat, dieses Prinzip für technische Anwendungen nutzbar zu machen. Viel Spaß bei der ersten Station! Los geht’s!'
+
+../bin/gtts.sh -k $API_KEY -f lotuseffekt 'Was ist nun so besonders an dieser Pflanze? Die Lotuspflanze ist in der Lage sich selbst zu reinigen. Wie du bestimmt weiß, brauchen Pflanzen Sonnenlicht, um zu wachsen. Indem die Pflanze ihre Blätter sauber hält, ist sie in der Lage, so viel Sonnenlicht wie möglich einzufangen. An den Blättern der Lotusblumen perlt das Wasser einfach ab und spült gleichzeitig den Schmutz fort. Wassertropfen rollen also nach dem Kontakt mit dem Blatt einfach ab und sind nicht in der Lage, das Blatt der Pflanze mit Wasser zu benetzen. Doch wie funktioniert das?'
+
+../bin/gtts.sh -k $API_KEY -f lotusblume 'Hast du schon einmal etwas von der Lotusblume gehört?'
+
+../bin/gtts.sh -k $API_KEY -f lotusblume_ja 'Perfekt! Dann geht’s direkt weiter zum Lotuseffekt!'
+
+../bin/gtts.sh -k $API_KEY -f lotusblume_nein 'Die Lotusblume (oder auch Lotosblume) gehört zu den Lotusgewächsen und ist eine wasserlebende Pflanze. Die Pflanzenfamilie besteht aus nur zwei Arten, der indischen und der amerikanischen Lotusblume. Aufgrund ihrer selbstreinigenden Eigenschaft ist die Lotusblume weltweit bekannt. In manchen Ländern, wie zum Beispiel Japan, dient die Lotuspflanze als Nahrungsmittel, wobei die Wurzel verzehrt wird.'
+
+../bin/gtts.sh -k $API_KEY -f blattoberflaeche 'Das Blatt der Lotusblume verfügt über eine spezielle Oberfläche, die mit zahllosen, winzigen Erhebungen übersät sind. Diese winzigen Erhebungen werden auch Mikrostrukturen genannt und sind für das menschliche Auge nicht sichtbar sind. Erst der Blick durchs Mikroskop verrät die wahre Gestalt der Blattoberfläche.'
+
+../bin/gtts.sh -k $API_KEY -f kontaktflaeche1 'Sehen wir und die Verringerung der Kontaktfläche zwischen Blattoberfläche und Wassertropfen einmal genauer an. Stell dir vor, ein Wassertropfen fällt auf eine Oberfläche und bleibt an der Stelle liegen.'
+
+../bin/gtts.sh -k $API_KEY -f kontaktflaeche2 'Nun sehen wir uns noch einmal die Oberfläche von einer Lotuspflanze an.'
+
+../bin/gtts.sh -k $API_KEY -f verstanden 'Hast du bis jetzt alles verstanden?'
+../bin/gtts.sh -k $API_KEY -f lotuseffekt ''
+../bin/gtts.sh -k $API_KEY -f lotuseffekt ''
+../bin/gtts.sh -k $API_KEY -f lotuseffekt ''
+../bin/gtts.sh -k $API_KEY -f lotuseffekt ''
+../bin/gtts.sh -k $API_KEY -f lotuseffekt ''
+
+../bin/gtts.sh -k $API_KEY -f lotuseffekt ''
