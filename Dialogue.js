@@ -44,7 +44,7 @@ locandy.player.plugins.Dialogue = function(spot, json)
         // last uploaded image id - for upload verification
         this.lastUploadedImageId = "";
         
-        // This will fire the first time the plugin's DOM is rendered
+        // This will fire the first time the PLAYER plugin's DOM is rendered
         this.isRendered = false;
         var me = this;
         var unRegisterEvent=this.spot.quest.scope.$on("plugin_element_rendered",function(event,element){
@@ -52,8 +52,11 @@ locandy.player.plugins.Dialogue = function(spot, json)
             // avoid mismatching of plugin/element!
             if( element.id !== me.id ) return;
 
-            //me.setActiveDialogue("START");        // wird sonst beim Plugin-Switchen aufgerufen
-            me.isRendered = true;
+            if(me.isRendered === false) // play audio on first rendering of dialogue
+            {
+                me.isRendered = true;
+                me.setActiveDialogue("START");
+            }
         });
         
         this.watchStateId = "activeDialogueNode"; // Could be set dynamically in Editor or hardwired
