@@ -12,7 +12,7 @@ var DEBUG_dialogue = null;
 	*/
 
 /** @constructor {public} Dialogue @inheritdesc */
-locandy.player.plugins.Dialogue = function(spot, json)
+locandy.player.plugins.Dialogue = function(spot, pluginModel)
     {
     	locandy.player.plugins.Abstract.apply(this,arguments);
 
@@ -23,21 +23,10 @@ locandy.player.plugins.Dialogue = function(spot, json)
         this.imageHeight = "150px";
 
         // dialogue properties
-        this.dialogue = json.dialogue;
+        this.dialogue = pluginModel.dialogue;
         this.setActiveDialogue("START");
-        this.importJsonDialogue = "";
-
-        // new attribute id
-        this.newDialogueId = "";
-        this.newImageId = "";
-        this.newAudioId = "";
+        
         this.playingSound = null;
-
-        // id to remove attribute from model
-        this.removeImageId = "";
-        this.removeAudioId = "";
-        this.removeResourceId = "";
-
         this.textVisible = false;
         //this.textToLong = false;     // TODO: check where to set value
 
@@ -78,15 +67,13 @@ locandy.player.plugins.Dialogue.groupLabel = "Tasks";
 locandy.player.plugins.Dialogue.groupTag = "editor_plugin_label_group_tasks";
 
 
-/** @function {static} getSkeleton @inheritdesc */
+/** @function {static} getSkeleton returns a fresh puginModel to be used to construct a new Dialogue inastance. @inheritdesc */
 locandy.player.plugins.Dialogue.getSkeleton = function()
     {
         return {
             "showIf":[],
             "section":"contents",
             "type":"Dialogue",
-            "activeDialogueId": "START",
-            "textVisible": false,
 	        "dialogue": {
                 "START":{
                     "text":"Text Agent", 
@@ -380,7 +367,20 @@ locandy.player.plugins.Dialogue.getTemplate = function()
                 </div>';
     };
 
-/** @function {static} getEditTemplate @inheritdesc */
+/** @function {static} getEditTemplate @inheritdesc
+
+    Editor scope temporary variables declared in this template
+        importJsonDialogue = "";
+        newDialogueId = "";
+        newImageId = "";
+        newAudioId = "";
+
+        // id to remove attribute from model
+        removeImageId = "";
+        removeAudioId = "";
+        removeResourceId = "";
+    */
+    */
 locandy.player.plugins.Dialogue.getEditTemplate = function()
     {
         return '<div> \
