@@ -725,7 +725,7 @@ locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDia
     if (this.dialogue[this.activeDialogueId].imageId !== null 
         && this.dialogue[this.activeDialogueId].imageId !== ""
         && this.dialogue[this.activeDialogueId].imageId !== undefined){
-        if (this.resources[this.dialogue[this.activeDialogueId].imageId].uuid !== undefined){
+        if (this.resources[this.dialogue[this.activeDialogueId].imageId] !== undefined){
             this.imageUrl = locandy.player.playerMainSingleton.resourceResolverService.getUrl(this.resources[this.dialogue[this.activeDialogueId].imageId].uuid);
         }
     }
