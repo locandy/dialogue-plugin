@@ -698,18 +698,6 @@ locandy.player.plugins.Dialogue.prototype.desist = function(storedObject)
         this.activeDialogueId = storedObject.activeDialogueId;
     };
 
-/** @function {public} hideMessage Displays a message between question and answers. */
-locandy.player.plugins.Dialogue.prototype.hideMessage = function()
-    {
-        delete this.message;
-    };
-
-/** @function {public} showMessage Displays a message between question and answers. */
-locandy.player.plugins.Dialogue.prototype.showMessage = function(message)
-    {
-        this.message = message;
-    };
-
 /** @function {public} executeAnswer. performs effect if existing and goes to next dialogue-point */
 locandy.player.plugins.Dialogue.prototype.executeAnswer = function(answer)
     {
