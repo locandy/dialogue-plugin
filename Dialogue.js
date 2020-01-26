@@ -721,16 +721,13 @@ locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDia
     console.log("Dialogue.setActiveDialogue(" + activeDialogueId + ")");
     this.activeDialogueId = activeDialogueId;
     
+    this.imageUrl = null;
     if (this.dialogue[this.activeDialogueId].imageId !== null 
         && this.dialogue[this.activeDialogueId].imageId !== ""
         && this.dialogue[this.activeDialogueId].imageId !== undefined){
         if (this.resources[this.dialogue[this.activeDialogueId].imageId].uuid !== undefined){
             this.imageUrl = locandy.player.playerMainSingleton.resourceResolverService.getUrl(this.resources[this.dialogue[this.activeDialogueId].imageId].uuid);
         }
-    }
-    else 
-    {
-        this.imageUrl = null;
     }
 
     // check if text is too long and set textToLong property
