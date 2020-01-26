@@ -23,12 +23,8 @@ locandy.player.plugins.Dialogue = function(spot, pluginModel)
         this.imageHeight = "150px";
 
         // dialogue properties
-        this.dialogue = pluginModel.dialogue;
-        this.setActiveDialogue("START");
-        
+        this.dialogue = pluginModel.dialogue;        
         this.playingSound = null;
-        this.textVisible = false;
-        //this.textToLong = false;     // TODO: check where to set value
 
         // last uploaded image id - for upload verification
         this.lastUploadedImageId = "";
@@ -265,63 +261,9 @@ locandy.player.plugins.Dialogue.setImageToNull = function(pluginModel, activeDia
         }
     }  
 
-
-/** @function {static} cutText @inheritdesc */
-locandy.player.plugins.Dialogue.cutText = function(plugin)
-    {   
-        // if (plugin.dialogue[plugin.activeDialogueId].text.length < 45){
-        //     return plugin.dialogue[plugin.activeDialogueId].text;
-        // }
-        // else {
-            var first = plugin.dialogue[plugin.activeDialogueId].text.substring(0, 45);
-            return first;
-        // }
-    };
-
-/** @function {static} showText @inheritdesc */
-locandy.player.plugins.Dialogue.showText = function(plugin)
-    {   
-        var text = plugin.dialogue[plugin.activeDialogueId].text;
-
-        document.getElementById("agentText").innerHTML = "<p>" + text + "<button id='hideTextBtn' style='margin-left:2px' data-button-handler='global.locandy.player.plugins.Dialogue.hideText(plugin)'><span class='icon-arrow-up2'></span></button></p>";
-    };
-
-/** @function {static} hideText @inheritdesc */
-locandy.player.plugins.Dialogue.hideText = function(plugin)
-    {   
-        alert("test");
-        var text = plugin.dialogue[plugin.activeDialogueId].text.substring(0,45);
-
-        document.getElementById("agentText").innerHTML = "<p>" + text + "<button id='showTextBtn' style='padding-left:2px' data-button-handler='global.locandy.player.plugins.Dialogue.showText(plugin)'><span class='icon-arrow-down2'></span></button></p>";
-    };
-
-/** @function {static} testF @inheritdesc */
-locandy.player.plugins.Dialogue.testF = function()
-    {   
-        alert("alert");
-        document.getElementById("test").innerHTML = "test2: ";
-        document.getElementById("testBtn").innerHTML="test2";
-    };
-
-/** @function {static} moreLessText @inheritdesc */
-locandy.player.plugins.Dialogue.moreLessText = function(plugin)
-    {
-        
-        if (plugin.textVisible){
-            document.getElementById("agentText").innerHTML = plugin.dialogue[plugin.activeDialogueId].text.substring(0, 45) + "...";
-            document.getElementById("moreLessBtn").innerHTML = "<span class='icon-arrow-down2'></span>"
-            plugin.textVisible = false;
-        }
-        else {
-            document.getElementById("agentText").innerHTML = plugin.dialogue[plugin.activeDialogueId].text;
-            document.getElementById("moreLessBtn").innerHTML = "<span class='icon-arrow-up2'></span>"
-            plugin.textVisible = true;
-        }
-    }
-
 /** @function {static} getTemplate @inheritdesc */    
 locandy.player.plugins.Dialogue.getTemplate = function()
-    {               
+    {
         return '<div \
                     id="{{plugin.id}}" \
                     data-plugin-element-rendered \
@@ -344,13 +286,10 @@ locandy.player.plugins.Dialogue.getTemplate = function()
                                 <span class="icon-play4"></span>\
                             </a> \
                         </div> \
-                        <div class="question" data-ng-if="!((plugin.textToLong===true) && (plugin.dialogue[plugin.activeDialogueId].audioId !== null))"> \
-                            <p id="agentText">{{plugin.dialogue[plugin.activeDialogueId].text}}</p> \
-                        </div> \
-                        <div class="question" data-ng-if="(plugin.textToLong===true) && (plugin.dialogue[plugin.activeDialogueId].audioId !== null)"> \
-                            <p id="agentText">{{global.locandy.player.plugins.Dialogue.cutText(plugin)}}...</p> \
-                            <div style="float:right; width: auto;"> \
-                                <button class="btn" id="moreLessBtn" style="width:100%" data-button-handler="global.locandy.player.plugins.Dialogue.moreLessText(plugin)"><span class="icon-arrow-down2"></span></button> \
+                        <div class="question"> \
+                            <p id="agentText">{{ plugin.textToDisplay }}</p> \
+                            <div style="float:right; width: auto;" data-ng-if="plugin.moreLessOrHidden>0"> \
+                                <button class="btn" id="moreLessBtn" style="width:100%" data-button-handler="plugin.moreLessTextButtonPressed()"><span ng-class="{ \'icon-arrow-down2\': plugin.moreLessOrHidden == 1, \'icon-arrow-up2\': plugin.moreLessOrHidden == 2}"></span></button> \
                             </div> \
                         </div> \
                     </div> \
@@ -379,7 +318,6 @@ locandy.player.plugins.Dialogue.getTemplate = function()
         removeImageId = "";
         removeAudioId = "";
         removeResourceId = "";
-    */
     */
 locandy.player.plugins.Dialogue.getEditTemplate = function()
     {
@@ -698,6 +636,21 @@ locandy.player.plugins.Dialogue.prototype.desist = function(storedObject)
         this.activeDialogueId = storedObject.activeDialogueId;
     };
 
+/** @function {public} moreLessTextButtonPressed shrinks or expands the text displayed. */
+locandy.player.plugins.Dialogue.prototype.moreLessTextButtonPressed = function()
+    {
+        if(this.moreLessOrHidden == 1)
+        {
+            this.moreLessOrHidden = 2;  // expanded
+            this.textToDisplay = this.dialogue[this.activeDialogueId].text;
+        }
+        else
+        {
+            this.moreLessOrHidden = 1;
+            this.textToDisplay = this.dialogue[this.activeDialogueId].text.substring(0, 45) + "...";
+        }
+    };
+    
 /** @function {public} executeAnswer. performs effect if existing and goes to next dialogue-point */
 locandy.player.plugins.Dialogue.prototype.executeAnswer = function(answer)
     {
@@ -731,15 +684,14 @@ locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDia
     }
 
     // check if text is too long and set textToLong property
-    if(this.dialogue[activeDialogueId].text.length > 50){
-        this.textToLong = true;
+    this.textToDisplay = this.dialogue[activeDialogueId].text;
+    if(this.dialogue[this.activeDialogueId].audioId !== null)
+    {
+        this.moreLessOrHidden = 2;
+        this.moreLessTextButtonPressed();  // shrink text
     }
-    else{
-        this.textToLong = false;
-    }
-
+    
     // set new imageHeight
-
     if ((this.dialogue[this.activeDialogueId].imageHeight !== undefined) && typeof(this.dialogue[this.activeDialogueId].imageHeight) == "number") {
         this.imageHeight = "" + this.dialogue[this.activeDialogueId].imageHeight + "px";
     }
@@ -754,8 +706,6 @@ locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDia
     if(this.dialogue[this.activeDialogueId].audioId !== null){
         this.executeSound(this.dialogue[this.activeDialogueId].audioId);
     }
-
-    
 };
 
 
