@@ -778,11 +778,13 @@ locandy.player.plugins.Dialogue.prototype.executeSound = function(audioId)
                     sound.play();
             }
             else{
-                return "ERROR: Sound could not be loaded: " + audioId;
+                alert("ERROR: Sound could not be loaded: " + audioId);
+                return;
             }
         } 
         else {
-            return "ERROR: Missing upload for audioID: " + audioID;
+            alert("ERROR: Missing upload for audioID: " + audioId);
+            return;
         }
     };
 
