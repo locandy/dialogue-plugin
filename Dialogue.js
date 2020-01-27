@@ -642,7 +642,10 @@ locandy.player.plugins.Dialogue.prototype.moreLessTextButtonPressed = function()
             this.textToDisplay = this.dialogue[this.activeDialogueId].text;
             
             if(this.textToDisplay.length < 50)
+            {
+                this.moreLessOrHidden = 0;
                 return; // >>>>>>>>>>>>>>> EXIT >>>>>>>>>>>>>>>>
+            }
             
             var regex = /[*]{2}([^*]*)[*]{2}/g;
             var array = [...this.textToDisplay.matchAll(regex)];
@@ -661,7 +664,15 @@ locandy.player.plugins.Dialogue.prototype.moreLessTextButtonPressed = function()
                 var array = this.textToDisplay.match(regex);
                 
                 if(array.length > 0)
+                {
+                    if(this.textToDisplay.length == array[0].length) // HRRRMPF!
+                    {
+                        this.moreLessOrHidden = 0;
+                        return; // >>>>>>>>>>>>>>> EXIT >>>>>>>>>>>>>>>>
+                    }
+                    
                     this.textToDisplay = array[0] + " ...";
+                }
                 else
                     this.textToDisplay = this.textToDisplay.substring(0,45) + " ...";
             }
@@ -707,6 +718,8 @@ locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDia
         this.moreLessOrHidden = 2;
         this.moreLessTextButtonPressed();  // shrink text
     }
+    else
+        this.moreLessOrHidden = 0;
     
     // set new imageHeight
     if ((this.dialogue[this.activeDialogueId].imageHeight !== undefined) && typeof(this.dialogue[this.activeDialogueId].imageHeight) == "number") {

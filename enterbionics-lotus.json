@@ -1,0 +1,213 @@
+{
+  "START": {
+    "text": "Auf zur ersten Station! Hier werden wir einen ausgeklügelten Trick der Natur genauer unter die Lupe nehmen: den Lotuseffekt. An diesem Beispiel werden wir uns anschauen, wie wasserabweisende Oberflächen funktionieren und wo in der Natur solche Oberflächen zu finden sind. An dieser Station lernst du, wie es der Lotuspflanze gelingt, sich selbst zu reinigen, welche Vertreter in der Natur diesen Effekt noch nutzen und wie es der Mensch geschafft hat, dieses Prinzip für technische Anwendungen nutzbar zu machen. Viel Spaß bei der ersten Station! Los geht’s!",
+    "audioId": "START",
+    "imageId": "enthusiastic",
+    "answers": [
+      {
+        "text": "Ok",
+        "effectId": "scene++",
+        "nextId": "SC1 Lotusblume",
+        "$$hashKey": "object:277"
+      }
+    ],
+    "imageHeight": 100
+  },
+  "SC1 Lotusblume": {
+    "text": "Hast du schon einmal etwas von der Lotusblume gehört?",
+    "audioId": "lotusblume",
+    "imageId": "enthusiastic",
+    "imageHeight": "80px",
+    "answers": [
+      {
+        "text": "Ja",
+        "effectId": "scene++",
+        "nextId": "SC1 Lotusblume Ja",
+        "$$hashKey": "object:298"
+      },
+      {
+        "text": "Nein",
+        "effectId": "scene++",
+        "nextId": "SC1 Lotusblume Nein",
+        "$$hashKey": "object:299"
+      }
+    ]
+  },
+  "SC1 Lotusblume Ja": {
+    "text": "Perfekt! Dann geht’s direkt weiter zum Lotuseffekt!",
+    "audioId": "lotusblume_ja",
+    "imageId": null,
+    "imageHeight": null,
+    "answers": [
+      {
+        "text": "Weiter",
+        "effectId": "scene++",
+        "nextId": "Lotuseffekt",
+        "$$hashKey": "object:304"
+      }
+    ]
+  },
+  "SC1 Lotusblume Nein": {
+    "text": "Die Lotusblume (oder auch Lotosblume) gehört zu den Lotusgewächsen und ist eine wasserlebende Pflanze. Die Pflanzenfamilie besteht aus nur zwei Arten, der indischen und der amerikanischen Lotusblume. Aufgrund ihrer selbstreinigenden Eigenschaft ist die Lotusblume weltweit bekannt. In manchen Ländern, wie zum Beispiel Japan, dient die Lotuspflanze als Nahrungsmittel, wobei die Wurzel verzehrt wird.",
+    "audioId": "lotusblume_nein",
+    "imageId": null,
+    "imageHeight": null,
+    "answers": [
+      {
+        "text": "Weiter",
+        "effectId": "scene++",
+        "nextId": "Lotuseffekt"
+      }
+    ]
+  },
+  "Lotuseffekt": {
+    "text": "Was ist nun so besonders an dieser Pflanze? Die Lotuspflanze ist in der Lage sich selbst zu reinigen. Wie du bestimmt weiß, brauchen Pflanzen Sonnenlicht, um zu wachsen. Indem die Pflanze ihre Blätter sauber hält, ist sie in der Lage, so viel Sonnenlicht wie möglich einzufangen. An den Blättern der Lotusblumen perlt das Wasser einfach ab und spült gleichzeitig den Schmutz fort. Wassertropfen rollen also nach dem Kontakt mit dem Blatt einfach ab und sind nicht in der Lage, das Blatt der Pflanze mit Wasser zu benetzen. Doch wie funktioniert das?",
+    "audioId": "lotuseffekt",
+    "imageId": "enthusiastic",
+    "imageHeight": null,
+    "answers": [
+      {
+        "text": "Ok",
+        "effectId": "scene++",
+        "nextId": "Blattoberfläche",
+        "$$hashKey": "object:307"
+      }
+    ]
+  },
+  "Blattoberfläche": {
+    "text": "Das Blatt der Lotusblume verfügt über eine spezielle Oberfläche, die mit zahllosen, winzigen Erhebungen übersät sind. Diese winzigen Erhebungen werden auch Mikrostrukturen genannt und sind für das menschliche Auge nicht sichtbar sind. Erst der Blick durchs Mikroskop verrät die wahre Gestalt der Blattoberfläche.",
+    "audioId": "blattoberfläche",
+    "imageId": "enthusiastic",
+    "imageHeight": null,
+    "answers": [
+      {
+        "text": "Ok",
+        "effectId": "scene++",
+        "nextId": "Kontaktfläche 1",
+        "$$hashKey": "object:310"
+      }
+    ]
+  },
+  "Kontaktfläche 1": {
+    "text": "Sehen wir und die Verringerung der Kontaktfläche zwischen Blattoberfläche und Wassertropfen einmal genauer an. Stell dir vor, ein Wassertropfen fällt auf eine Oberfläche und bleibt an der Stelle liegen.",
+    "audioId": "kontaktflaeche1",
+    "imageId": "enthusiastic",
+    "imageHeight": null,
+    "answers": [
+      {
+        "text": "Ok",
+        "effectId": "scene++",
+        "nextId": "Kontaktfläche 2",
+        "$$hashKey": "object:314"
+      }
+    ]
+  },
+  "Kontaktfläche 2": {
+    "text": "Nun sehen wir uns noch einmal die Oberfläche von einer Lotuspflanze an.",
+    "audioId": "kontaktfläche2",
+    "imageId": "enthusiastic",
+    "imageHeight": null,
+    "answers": [
+      {
+        "text": "Weiter",
+        "effectId": "scene++",
+        "nextId": "SC2 Hydrophobie_Test",
+        "$$hashKey": "object:318"
+      }
+    ]
+  },
+  "SC2 Hydrophobie_Test": {
+    "text": "Hast du bis jetzt alles verstanden?",
+    "audioId": "verstanden",
+    "imageId": null,
+    "imageHeight": null,
+    "answers": [
+      {
+        "text": "Ja",
+        "effectId": "S1_Lotuseffekt_verstanden",
+        "nextId": "SC2.1",
+        "$$hashKey": "object:322"
+      },
+      {
+        "text": "Nein",
+        "effectId": "scene3",
+        "nextId": "Lotuseffekt",
+        "$$hashKey": "object:323"
+      }
+    ]
+  },
+  "SC2.1": {
+    "text": "Mikrostrukturen können mit dem menschlichen Auge ohne Hilfsmittel erkannt werden..",
+    "audioId": null,
+    "imageId": null,
+    "imageHeight": null,
+    "answers": [
+      {
+        "text": "Richtig",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:329"
+      },
+      {
+        "text": "Falsch",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:330"
+      }
+    ]
+  },
+  "SC2.2": {
+    "text": "Mikrostrukturen sind kleine Erhebungen der Blattoberfläche.",
+    "audioId": null,
+    "imageId": null,
+    "imageHeight": null,
+    "answers": [
+      {
+        "text": "Richtig",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Falsch",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  },
+  "SC2.3": {
+    "text": "Durch die Mikrostrukturen hat der Wassertropfen viel Kontakt zur Blattoberfläche, deshalb rollt er ab.",
+    "audioId": null,
+    "imageId": null,
+    "imageHeight": null,
+    "answers": [
+      {
+        "text": "Richtig",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Falsch",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  },
+  "SC2.4": {
+    "text": "Hydrophobe Oberflächen ziehen Wasser an.",
+    "audioId": null,
+    "imageId": null,
+    "imageHeight": null,
+    "answers": [
+      {
+        "text": "Richtig",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Falsch",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  }
+}
