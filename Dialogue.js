@@ -646,8 +646,33 @@ locandy.player.plugins.Dialogue.prototype.moreLessTextButtonPressed = function()
         }
         else
         {
-            this.moreLessOrHidden = 1;
-            this.textToDisplay = this.dialogue[this.activeDialogueId].text.substring(0, 45) + "...";
+            this.moreLessOrHidden = 1;  // short text
+            this.textToDisplay = this.dialogue[this.activeDialogueId].text;
+            
+            if(this.textToDisplay.length < 50)
+                return; // >>>>>>>>>>>>>>> EXIT >>>>>>>>>>>>>>>>
+            
+            var regex = /[*]{2}([^*]*)[*]{2}/g;
+            var array = [...this.textToDisplay.matchAll(regex)];
+            
+            if(array.length > 0)
+            {
+                this.textToDisplay = "";
+                for(var i=0; i<array.length; i++)
+                    this.textToDisplay += array[i][1] + " ";
+                
+                this.textToDisplay += " ...";
+            }
+            else
+            {
+                var regex = /[^.?!]*./;
+                var array = this.textToDisplay.match(regex);
+                
+                if(array.length > 0)
+                    this.textToDisplay = array[0] + " ...";
+                else
+                    this.textToDisplay = this.textToDisplay.substring(0,45) + " ...";
+            }
         }
     };
     
