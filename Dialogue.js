@@ -97,7 +97,7 @@ locandy.player.plugins.Dialogue.addAnswerToModel = function(pluginModel, activeD
             "text": "",
             "effectId": null,
             "nextId": null,
-        })
+        });
     };
 
 /** @function {static} importJsonDialogueToModel */
@@ -346,10 +346,10 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                             </div> \
                             <div style="margin-left:35%;"> \
                                 <div style="overflow: hidden"> \
-                                    <div style="width:30%; float:left; margin-top:3px;"> \
+                                    <div style="width:50%; float:left; margin-top:3px;"> \
                                         <span class="label-for-icon">{{"Image Id"|i18n:"editor_plugin_dialogue_image_select"}}</span> \
                                     </div> \
-                                    <div style="width:70%; float:left"> \
+                                    <div style="width:50%; float:left"> \
                                         <select required data-ng-model="pluginModel.dialogue[activeDialogueId].imageId" \
                                                 class="form-control full-border ng-pristine" \
                                                 onchange="document.getElementById(\'btnSetImageNull\').click()"> \
@@ -359,14 +359,11 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                                     </div> \
                                     <button style="display: none" id="btnSetImageNull" data-button-handler="global.locandy.player.plugins.Dialogue.setImageToNull(pluginModel, activeDialogueId)"></button>\
                                 </div> \
-                                <div style="overflow: hidden; margin-left: 40%; margin-top: 10px"> \
-                                    <div style="float: left; margin-top:3px"> \
-                                        <span class="icon-arrow-right17"></span> \
+                                <div style="overflow: hidden; margin-top:10px;"> \
+                                    <div style="float:left; width:50%"> \
+                                        <span class="label-for-icon">{{"Image Height"|i18n:"editor_plugin_dialogue_image_height"}}</span> \
                                     </div> \
-                                    <div style="float:left; margin-top:3px;"> \
-                                        <span class="label-for-icon">{{"Height"|i18n:"editor_plugin_dialogue_image_height"}}</span> \
-                                    </div> \
-                                    <div class="form-group" style="float:right; width:30%"> \
+                                    <div class="form-group" style="float:right; width:50%"> \
                                         <input type="number" \
                                             class="form-control question" \
                                             data-ng-model="pluginModel.dialogue[activeDialogueId].imageHeight" \
@@ -375,10 +372,10 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                                     </div> \
                                 </div> \
                                 <div style="overflow: hidden; margin-top: 10px"> \
-                                    <div style="width:30%; float:left; margin-top:3px;"> \
+                                    <div style="width:50%; float:left;"> \
                                         <span class="label-for-icon">{{"Audio Id"|i18n:"editor_plugin_dialogue_audio_select"}}</span> \
                                     </div> \
-                                    <div style="width:70%; float:left"> \
+                                    <div style="width:50%; float:left"> \
                                         <select data-ng-model="pluginModel.dialogue[activeDialogueId].audioId"\
                                                 class="form-control full-border ng-pristine"  \
                                                 onchange="document.getElementById(\'btnSetAudioNull\').click()">\
