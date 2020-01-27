@@ -32,7 +32,7 @@ locandy.player.plugins.Dialogue = function(spot, pluginModel)
         // This will fire the first time the PLAYER plugin's DOM is rendered
         this.isRendered = false;
         var me = this;
-        var unRegisterEvent=this.spot.quest.scope.$on("plugin_element_rendered",function(event,element){
+        this._unregisterRenderedF=this.spot.quest.scope.$on("plugin_element_rendered",function(event,element){
 
             // avoid mismatching of plugin/element!
             if( element.id !== me.id ) return;
@@ -612,14 +612,6 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                 </div>';
     };
 
-locandy.player.plugins.Abstract.prototype.destroy = function()
-    {
-        if (this.playingSound){
-            this.playingSound.stop();
-            this.playingSound = null;
-        }
-    }; 
-        
 /** @function {public} desist @inheritdesc */
 locandy.player.plugins.Dialogue.prototype.persist = function()
     {        
@@ -780,8 +772,16 @@ locandy.player.plugins.Dialogue.prototype.activateOrChangeWatch = function()  //
 /** @function {public} destroy */
 locandy.player.plugins.Dialogue.prototype.destroy = function()
     {
+        if (this.playingSound){
+            this.playingSound.stop();
+            this.playingSound = null;
+        }
+        
         if(this._removeWatchF)
             this._removeWatchF();
+        
+        if(this._unregisterRenderedF)
+            this._unregisterRenderedF();
     }
 
 /** @function {public Array} ? verifies integrity of quest before publish in Editor. */
