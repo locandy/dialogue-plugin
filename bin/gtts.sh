@@ -49,6 +49,7 @@ while getopts k:f:l:g:v:i:p:r: OPT; do
             echo "$0 -m encode as mp3 directly by Google (quality sucks!)"
             echo "$0 -l de-de -v de-DE-Wavenet-B -g MALE"
             echo "$0 -k API_KEY -i test.ssml "
+            exit 1
             ;;
     esac
 done
@@ -71,8 +72,14 @@ if [ -z ${SSML_FILE+x} ]; then
     INPUT="{ 'text':'$1' }"
 else
     echo "Reading SSML from file: " $SSML_FILE
-    INPUT=$(jq -Rs '{ "ssml": . }' <$SSML_FILE)  
+    
+    INPUT=$(sed 's/[.]\{4\}/<break time="1500ms"\/>/g; s/[.]\{3\}/<break time="1000ms"\/>/g; s/[.]\{2\}/<break time="500ms"\/>/g' <$SSML_FILE)
+    INPUT=$(echo "$INPUT" | sed 's/[*]\{2\}//g;')  # remove markdown bold
+    INPUT=$(echo "$INPUT" | jq -Rs '{ "ssml": . }')    
 fi
+
+#echo "$INPUT"
+#exit 0
 
 DATA="{ 'input':$INPUT,
         'voice':{'languageCode':'$LANG', 'name':'$VOICE', 'ssmlGender':'$GENDER'},
