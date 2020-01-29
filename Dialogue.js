@@ -686,7 +686,7 @@ locandy.player.plugins.Dialogue.prototype.executeAnswer = function(answer)
         
         if(!answer.nextId || this.dialogue[answer.nextId] === undefined)
         {
-            alert("Dialogue: ERROR: the answer has no next dialogue and is broken (contact the author).");
+            alert("Dialogue: ERROR: the answer has no next dialogue and is broken (contact the author). Author: If this is intentional, set the next dialogue to this dialogue's ID!");
             return;
         }
         
