@@ -679,18 +679,20 @@ locandy.player.plugins.Dialogue.prototype.moreLessTextButtonPressed = function()
 /** @function {public} executeAnswer. performs effect if existing and goes to next dialogue-point */
 locandy.player.plugins.Dialogue.prototype.executeAnswer = function(answer)
     {
-        // execute effect
-        if (answer.effectId != null) {
-            new locandy.player.Effect(this.spot.quest, answer.effectId).execute();
-        }
-        
         if(!answer.nextId || this.dialogue[answer.nextId] === undefined)
         {
             alert("Dialogue: ERROR: the answer has no next dialogue and is broken (contact the author). Author: If this is intentional, set the next dialogue to this dialogue's ID!");
             return;
         }
         
-        this.setActiveDialogue(answer.nextId);
+        // execute effect
+        if (answer.effectId != null) {
+            var me = this;
+            new locandy.player.Effect(this.spot.quest, answer.effectId).execute({}, 
+                function() { me.setActiveDialogue(answer.nextId); });
+        }
+        else
+            this.setActiveDialogue(answer.nextId);
     };
 
 /** @function {public} setActiveDialogue. updated activeDialogueId and executes sound of next dialogue */
