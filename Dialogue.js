@@ -39,15 +39,20 @@ locandy.player.plugins.Dialogue = function(spot, pluginModel)
 
             if(me.isRendered === false) // play audio on first rendering of dialogue
             {
+                setTimeout(function(){ me.setActiveDialogue("START"); me.spot.quest.angularApply(); }, 100);
+                    // delay autoplay a bit until scope settles, user has some time
                 me.isRendered = true;
-                me.setActiveDialogue("START");
             }
-        });
+            
+            var scope = angular.element(element).scope();
+            // listen to $destroy from scope for getting notification
+            // when plugin element's dom gets removed from screen, as 
+            // we have to stop the depending media player instance then!
+            // THIS FIRES 2 TIMES also on creation of the scope!
+            scope.$on('$destroy',function(){ me.stopAudio(); }); });
         
         this.watchStateId = "activeDialogueNode"; // Could be set dynamically in Editor or hardwired
         this.activateOrChangeWatch();
-
-        // me.setActiveDialogue("START");
     };
 
 locandy.utilities.inherit(locandy.player.plugins.Dialogue,locandy.player.plugins.Abstract);
@@ -623,6 +628,16 @@ locandy.player.plugins.Dialogue.prototype.persist = function()
 locandy.player.plugins.Dialogue.prototype.desist = function(storedObject)
     {
         this.setActiveDialogue(storedObject.activeDialogueId);
+    };
+
+/** @function {public} stopAudio stops Audio if scope gets destroves .... see constructor */
+locandy.player.plugins.Dialogue.prototype.stopAudio = function()
+    {
+        if(this.playingSound)
+        {
+            this.playingSound.stop();
+            this.playingSound = null;
+        }    
     };
 
 /** @function {public} moreLessTextButtonPressed shrinks or expands the text displayed. */
