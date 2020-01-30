@@ -330,7 +330,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                     <div style="overflow:hidden"> \
                         <div> \
                             <textarea \
-                                rows="4"\
+                                rows="6"\
                                 style="margin-bottom:5px" \
                                 class="form-control question" \
                                 data-ng-model="pluginModel.dialogue[activeDialogueId].text" \
