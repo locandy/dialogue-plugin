@@ -622,7 +622,7 @@ locandy.player.plugins.Dialogue.prototype.persist = function()
 /** @function {public} persist @inheritdesc */
 locandy.player.plugins.Dialogue.prototype.desist = function(storedObject)
     {
-        this.activeDialogueId = storedObject.activeDialogueId;
+        this.setActiveDialogue(storedObject.activeDialogueId);
     };
 
 /** @function {public} moreLessTextButtonPressed shrinks or expands the text displayed. */
