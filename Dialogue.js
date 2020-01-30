@@ -288,7 +288,7 @@ locandy.player.plugins.Dialogue.getTemplate = function()
                         </div> \
                         <div class="question"> \
                             <div id="agentText" data-compile-markdown="plugin.textToDisplay"></div> \
-                            <div style="float:right; width: auto;" data-ng-if="plugin.moreLessOrHidden>0"> \
+                            <div style="float:right; width: auto; margin-bottom:3px;" data-ng-if="plugin.moreLessOrHidden>0"> \
                                 <button class="btn" id="moreLessBtn" style="width:100%" data-button-handler="plugin.moreLessTextButtonPressed()"><span ng-class="{ \'icon-arrow-down2\': plugin.moreLessOrHidden == 1, \'icon-arrow-up2\': plugin.moreLessOrHidden == 2}"></span></button> \
                             </div> \
                         </div> \
