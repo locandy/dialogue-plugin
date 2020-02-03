@@ -9,6 +9,7 @@ GENDER="MALE"
 VOICE="de-DE-Wavenet-B"
 PITCH="0"
 RATE="1"
+DEBUG=0
 
 while getopts k:f:l:g:v:i:p:r: OPT; do
     case $OPT in
@@ -73,7 +74,7 @@ if [ -z ${SSML_FILE+x} ]; then
 else
     echo "Reading SSML from file: " $SSML_FILE
     
-    INPUT=$(sed 's/[.]\{4\}/<break time="1500ms"\/>/g; s/[.]\{3\}/<break time="1000ms"\/>/g; s/[.]\{2\}/<break time="500ms"\/>/g' <$SSML_FILE)
+    INPUT=$(sed 's/[.]\{4\}/<break time="1200ms"\/>/g; s/[.]\{3\}/<break time="800ms"\/>/g; s/[.]\{2\}/<break time="400ms"\/>/g' <$SSML_FILE)
     INPUT=$(echo "$INPUT" | sed 's/[*]\{2\}//g;')  # remove markdown bold
     INPUT=$(echo "$INPUT" | jq -Rs '{ "ssml": . }')    
 fi
@@ -98,16 +99,20 @@ jq -r .audioContent $FILE_NAME.json > $FILE_NAME.base64
 # BASE64 DECODING
 base64 -D -i $FILE_NAME.base64 -o $FILE_NAME.$OUTEXT
 
+rm $FILE_NAME-post.json
 rm $FILE_NAME.base64
+if [ $DEBUG -lt 1 ] ; then rm $FILE_NAME.json ; fi
 
 # Google's MP3 encodinbg sucks (ringing), we have to do it ourselves
 if [ "$OUTEXT" == "wav" ]; then
     # -ac 1 ... is MONO should do for TTS, not good for audio-effects - needs -ac 2 for STEREO
-    ffmpeg -i $FILE_NAME.wav -vn -ac 1 -aq 5 -ar 22050 -f mp3 $FILE_NAME.mp3
+    # rm -f $FILE_NAME.mp3
+    ffmpeg -hide_banner -loglevel panic -i $FILE_NAME.wav -vn -ac 1 -aq 5 -ar 22050 -f mp3 $FILE_NAME.mp3
+    if [ $DEBUG -lt 1 ] ; then rm $FILE_NAME.wav ; fi
 fi
 
 # EXAMPLES ...
 
-# ../bin/gtts.sh -k $API_KEY -p -5 -r 0.9 -i maxaccident.ssml 
+# ../bin/gtts.sh -k $GOOGLE_TTS_API_KEY -p -5 -r 0.9 -i maxaccident.ssml 
 
 # bin/gtts.sh API_KEY tts 'Auf? zur ersten Station! Hier werden wir einen ausgeklügelten Trick der Natur genauer unter die Lupe nehmen: den Lotuseffekt. An diesem Beispiel werden wir uns anschauen, wie wasserabweisende Oberflächen funktionieren und wo in der Natursolche Oberflächen zu finden sind. An dieser Station lernst du, wie es der Lotuspflanze gelingt, sich selbst zu reinigen, welche Vertreter in der Natur diesen Effekt noch nutzen und wie es der Mensch geschafft hat, dieses Prinzip für technische Anwendungen nutzbar zu machen. Viel Spaß bei der ersten Station! Los geht’s!'
