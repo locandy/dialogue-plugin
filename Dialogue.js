@@ -29,10 +29,11 @@ locandy.player.plugins.Dialogue = function(spot, pluginModel)
         // last uploaded image id - for upload verification
         this.lastUploadedImageId = "";
         
-        // This will fire the first time the PLAYER plugin's DOM is rendered
+        // This will fire the first time the PLAYER plugin's DOM is rendered (also works for editor dom)
         this.isRendered = false;
         var me = this;
-        this._unregisterRenderedF=this.spot.quest.scope.$on("plugin_element_rendered",function(event,element){
+        this._unregisterRenderedF=this.spot.quest.scope.$on("plugin_element_rendered",function(event,element)
+        {
 
             // avoid mismatching of plugin/element!
             if( element.id !== me.id ) return;
@@ -49,7 +50,8 @@ locandy.player.plugins.Dialogue = function(spot, pluginModel)
             // when plugin element's dom gets removed from screen, as 
             // we have to stop the depending media player instance then!
             // THIS FIRES 2 TIMES also on creation of the scope!
-            scope.$on('$destroy',function(){ me.stopAudio(); }); });
+            scope.$on('$destroy',function(){ me.stopAudio(); });
+        });
         
         this.watchStateId = "activeDialogueNode"; // Could be set dynamically in Editor or hardwired
         this.activateOrChangeWatch();
