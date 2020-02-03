@@ -549,7 +549,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                                 <button \
                                     class="btn btn-fancy btn-medium btn-default" \
                                     data-button-handler="global.locandy.player.plugins.Dialogue.pasteResource(pluginModel)">\
-                                    <span class="icon-copy reusable-color-danger"></span>\
+                                    <span class="icon-copy"></span>\
                                 </button> \
                             </div>\
                         </div> \
@@ -572,7 +572,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                             <button \
                                 class="btn btn-fancy btn-medium btn-default" \
                                 data-button-handler="global.locandy.player.plugins.Dialogue.copyResource(pluginModel, removeImageId)">\
-                                <span class="icon-copy reusable-color-danger"></span>\
+                                <span class="icon-copy"></span>\
                             </button> \
                         </div> \
                     </div> \
@@ -646,7 +646,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                             <button \
                                 class="btn btn-fancy btn-medium btn-default" \
                                 data-button-handler="global.locandy.player.plugins.Dialogue.exportJsonDialogueToClipboard(pluginModel)"> \
-                                <span class="icon-plus-circle2 reusable-color-success"></span> \
+                                <span class="icon-copy reusable-color-success"></span> \
                                 <span class="label-for-icon">{{"Copy json to clipboard"|i18n:"editor_plugin_dialogue_json_export"}}</span> \
                             </button>\
                         </div> \
