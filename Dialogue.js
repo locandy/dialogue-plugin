@@ -67,7 +67,6 @@ locandy.player.plugins.Dialogue.groupLabel = "Tasks";
 /** @prop {static} groupTag @inheritdesc */
 locandy.player.plugins.Dialogue.groupTag = "editor_plugin_label_group_tasks";
 
-
 /** @function {static} getSkeleton returns a fresh puginModel to be used to construct a new Dialogue inastance. @inheritdesc */
 locandy.player.plugins.Dialogue.getSkeleton = function()
     {
@@ -181,28 +180,57 @@ locandy.player.plugins.Dialogue.writeRescourceToModel = function(pluginModel, se
         pluginModel.newImageId = null;
     }     
 
+/** @prop {static} resourceClipboad copy and paste an image or audio between dialogue instances */
+locandy.player.plugins.Dialogue.resourceClipboad = null;
+
+/** @function {static} copyResource copy an image or audio between dialogue instances */
+locandy.player.plugins.Dialogue.copyResource = function(pluginModel, resourceId)
+    {
+        locandy.player.plugins.Dialogue.resourceClipboad = null;
+        var resourceMap = pluginModel.resources[resourceId];
+        if(resourceMap)
+            locandy.player.plugins.Dialogue.resourceClipboad = [ resourceId, {'uuid':resourceMap.uuid, 'keyid':resourceMap.keyid, 'mimetype':resourceMap.mimetype}];
+        else
+            alert("Resource Clipboard: Nothing to copy!");
+    };
+    
+/** @function {static} pasteResource copy an image or audio between dialogue instances */
+locandy.player.plugins.Dialogue.pasteResource = function(pluginModel)
+    {
+        var rc = locandy.player.plugins.Dialogue.resourceClipboad;
+        
+        if(rc && rc[0] && rc[1].mimetype)
+        {
+            if(pluginModel.resources[rc[0]] !== undefined)
+                alert("Resource Clipboard: resource already exists: "+rc[0]);
+            else
+                locandy.player.plugins.Abstract.writeRescourceToModel(pluginModel, rc[1], rc[0]);
+        }
+        else
+            alert("Resource Clipboard: Nothing to paste!");
+    };
+    
 /** @function {static} removeResourceFromModel @inheritdesc */
-locandy.player.plugins.Dialogue.removeResourceFromModel = function(pluginModel)
+locandy.player.plugins.Dialogue.removeResourceFromModel = function(pluginModel, removeResourceId)
     {
         if(pluginModel.resources === undefined || pluginModel.resources === null)
         {
             pluginModel.resources = {};
         }
 
-        delete pluginModel.resources[pluginModel.removeResourceId];
+        delete pluginModel.resources[removeResourceId];
     }    
 
 /** @function {static} removeImageFromModel @inheritdesc */
-locandy.player.plugins.Dialogue.removeImageFromModel = function(pluginModel){
+locandy.player.plugins.Dialogue.removeImageFromModel = function(pluginModel, removeImageId){
     // if image-resource is used in dialogue set reference to null
     for (var key in pluginModel.dialogue){
-        if (pluginModel.dialogue[key].imageId === pluginModel.removeImageId){
+        if (pluginModel.dialogue[key].imageId === removeImageId){
             pluginModel.dialogue[key].imageId = null;
         }
     }
 
-    pluginModel.removeResourceId = pluginModel.removeImageId;
-    locandy.player.plugins.Dialogue.removeResourceFromModel(pluginModel);
+    locandy.player.plugins.Dialogue.removeResourceFromModel(pluginModel, removeImageId);
 }
 
 /** @function {static} removeAudioFromModel @inheritdesc */
@@ -214,8 +242,7 @@ locandy.player.plugins.Dialogue.removeAudioFromModel = function(pluginModel){
         }
     }
 
-    pluginModel.removeResourceId = pluginModel.removeAudioId;
-    locandy.player.plugins.Dialogue.removeResourceFromModel(pluginModel);
+    locandy.player.plugins.Dialogue.removeResourceFromModel(pluginModel, pluginModel.removeAudioId);
 }
 
 /** @function {static} removeDialogueFromModel @inheritdesc */
@@ -267,7 +294,7 @@ locandy.player.plugins.Dialogue.setImageToNull = function(pluginModel, activeDia
     }  
 
 /** @function {static} getTemplate @inheritdesc */    
-locandy.player.plugins.Dialogue.getTemplate = function()
+locandy.player.plugins.Dialogue.getTemplate = function(scope)
     {
         return '<div \
                     id="{{plugin.id}}" \
@@ -324,8 +351,9 @@ locandy.player.plugins.Dialogue.getTemplate = function()
         removeAudioId = "";
         removeResourceId = "";
     */
-locandy.player.plugins.Dialogue.getEditTemplate = function()
+locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
     {
+        // console.log(scope); defined: activeDialogueId: "START" but pluginModel is not; hmmm
         return '<div> \
                     <div class="form-group" data-ng-init="activeDialogueId=\'START\'"> \
                         <select data-ng-model="activeDialogueId" class="form-control full-border ng-pristine ng-valid ng-touched" > \
@@ -516,6 +544,11 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                                     data-is-multiple="imagePluginUploadOptions.multiple"> \
                                     <span class="label-for-icon">{{"Upload"|i18n:"editor_plugin_image_upload"}}</span> \
                                 </div> \
+                                <button \
+                                    class="btn btn-fancy btn-medium btn-default" \
+                                    data-button-handler="global.locandy.player.plugins.Dialogue.pasteResource(pluginModel)">\
+                                    <span class="icon-copy reusable-color-danger"></span>\
+                                </button> \
                             </div>\
                         </div> \
                     </div> \
@@ -524,15 +557,20 @@ locandy.player.plugins.Dialogue.getEditTemplate = function()
                             <span class="label-for-icon">{{"Remove image:"|i18n:"editor_plugin_image_remove"}}</span> \
                         </div> \
                         <div style="float: left; width:30%; margin-right: 10px"> \
-                            <select data-ng-model="pluginModel.removeImageId" class="form-control full-border ng-pristine"> \
+                            <select data-ng-model="removeImageId" class="form-control full-border ng-pristine"> \
                                 <option data-ng-repeat="(key, value) in pluginModel.resources" ng-if="value.mimetype==\'image/png\'">{{key}}</option> \
                             </select> \
                         </div> \
                         <div> \
                             <button \
                                 class="btn btn-fancy btn-medium btn-default" \
-                                data-button-handler="global.locandy.player.plugins.Dialogue.removeImageFromModel(pluginModel)">\
+                                data-button-handler="global.locandy.player.plugins.Dialogue.removeImageFromModel(pluginModel, removeImageId)">\
                                 <span class="icon-minus-circle2 reusable-color-danger"></span>\
+                            </button> \
+                            <button \
+                                class="btn btn-fancy btn-medium btn-default" \
+                                data-button-handler="global.locandy.player.plugins.Dialogue.copyResource(pluginModel, removeImageId)">\
+                                <span class="icon-copy reusable-color-danger"></span>\
                             </button> \
                         </div> \
                     </div> \
@@ -809,7 +847,7 @@ locandy.player.plugins.Dialogue.prototype.destroy = function()
         
         if(this._unregisterRenderedF)
             this._unregisterRenderedF();
-    }
+    };
 
 /** @function {public Array} ? verifies integrity of quest before publish in Editor. */
 locandy.player.plugins.Dialogue.prototype.verifyBeforePublish = function()
