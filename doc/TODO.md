@@ -2,10 +2,11 @@
   1. Google Speech: 
   https://cloud.google.com/text-to-speech/
   https://cloud.google.com/text-to-speech/docs/voices
-  1. Drehbuch im Locandy-System umsetzen
+  1. Bugs beheben
+  1. Items in Quiz 2 richtig stellen
+  1. Audio soll mit Button angehalten werden können.
   1. Forschungsfragen für Mitmachphase zusammenstellen
   1. Wenn Dialog reinkopiert wird: Wenn ressource fehlt muss es richtig angezeigt werden. Id sind leer
-  1. More-Less Button wie play Button, rechts -> done
   1. (...) Button zum Aufklappen bei zu langem Text und synchroner Audio einbauen -> done
   1. Sound upload: Bei spot (wie image) und nicht über Quest/...  -> done
      * für dopdown: resources filter auf mimetype
