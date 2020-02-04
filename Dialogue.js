@@ -165,22 +165,18 @@ locandy.player.plugins.Dialogue.removeAnswerFromModel = function(pluginModel, an
         }        
     };
 
-/** @function {static} writeRescourceToModel @inheritdesc */
-locandy.player.plugins.Dialogue.writeRescourceToModel = function(pluginModel, serverResponse)
+/** @function {static} writeRescourceToModel @inheritdesc called by LocationController::updatePluginResource() (via fine-uploader directive) it consumes pluginModel.type to resolve this function */
+locandy.player.plugins.Dialogue.writeRescourceToModel = function(specialStruct, serverResponse)
     {
-        var newId = null;
-        if (pluginModel.newAudioId != null){
-            newId = pluginModel.newAudioId;
-        } else if (pluginModel.newImageId != null){
-            newId = pluginModel.newImageId;
-        }
-
-        locandy.player.plugins.Abstract.writeRescourceToModel(pluginModel, serverResponse, newId);
-
-        // clear textarea
-        pluginModel.newAudioId = null;
-        pluginModel.newImageId = null;
-    }     
+        var newId = specialStruct.rid;
+        
+        // sanity check ... we cannot replace a sound of the same name with an image, and ...
+        // a slow upload may hit the same id if the user retries
+        if(specialStruct.pluginModel.resources[newId] !== undefined)
+            alert("Upload: a resource with the name " + newId + " already exists, delete it first to overwrite!");
+        else
+            locandy.player.plugins.Abstract.writeRescourceToModel(specialStruct.pluginModel, serverResponse, newId);
+    }
 
 /** @prop {static} resourceClipboad copy and paste an image or audio between dialogue instances */
 locandy.player.plugins.Dialogue.resourceClipboad = null;
@@ -204,7 +200,7 @@ locandy.player.plugins.Dialogue.pasteResource = function(pluginModel)
         if(rc && rc[0] && rc[1].mimetype)
         {
             if(pluginModel.resources[rc[0]] !== undefined)
-                alert("Resource Clipboard: resource already exists: "+rc[0]);
+                alert("Resource Clipboard:  a resource with the name " + rc[0] + " already exists, delete it first to overwrite!");
             else
                 locandy.player.plugins.Abstract.writeRescourceToModel(pluginModel, rc[1], rc[0]);
         }
@@ -356,6 +352,13 @@ locandy.player.plugins.Dialogue.getTemplate = function(scope)
 locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
     {
         // console.log(scope); defined: activeDialogueId: "START" but pluginModel is not; hmmm
+        
+        // Fine Uploader Directive
+        // Here we need to pass an extra parameter throught fine uploader. This is really tricky!
+        // So we create a pseudo puginModel (LocationController::updatePluginResource consumes pluginModel.type !) 
+        // with the extra parameter ... This is the only correct way to deal with async upload.
+        // data-fine-uploader-callback-pass-through="{ \'pluginModel\':pluginModel, \'type\':pluginModel.type, \'rid\':newAudioId }"
+        
         return '<div> \
                     <div class="form-group" data-ng-init="activeDialogueId=\'START\'"> \
                         <select data-ng-model="activeDialogueId" class="form-control full-border ng-pristine ng-valid ng-touched" > \
@@ -526,8 +529,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                         <div style="float: left; width:30%; margin-right: 10px"> \
                             <textarea \
                             id="newImageId" class="form-control" rows="1" style="float:left; width=100px" \
-                            data-ng-model="pluginModel.newImageId" \
-                            oninput="document.getElementById(\'newAudioId\').value = null" \
+                            data-ng-model="newImageId" \
                             placeholder="{{\'Image id\'|i18nP:\'editor_plugin_image_upload_id\'}}"/> \
                         </div> \
                         <div \
@@ -536,11 +538,11 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                             data-omit-file-input \
                             data-fetch-url="uploadFetchUrl" \
                             data-fine-uploader-options="imagePluginUploadOptions" \
-                            data-fine-uploader-callback-pass-through="pluginModel" \
+                            data-fine-uploader-callback-pass-through="{ \'pluginModel\':pluginModel, \'type\':pluginModel.type, \'rid\':newImageId }" \
                             data-fine-uploader-callback-on-complete="updatePluginResource(fineUploaderCallbackPassThrough,responseJSON)"> \
                             <div class="form-group">\
                                 <div \
-                                    ng-disabled="readOnly || pluginModel.newImageId == null || pluginModel.newImageId == \'\'"\
+                                    ng-disabled="readOnly || newImageId == null || newImageId == \'\'"\
                                     class="upload" \
                                     data-fine-uploader-file-input \
                                     data-is-multiple="imagePluginUploadOptions.multiple"> \
@@ -584,8 +586,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                         <div style="float: left; width:30%; margin-right: 10px"> \
                             <textarea \
                             id="newAudioId" class="form-control" rows="1" style="float:left; width=100px" \
-                            data-ng-model="pluginModel.newAudioId" \
-                            oninput="document.getElementById(\'newImageId\').value = null" \
+                            data-ng-model="newAudioId" \
                             placeholder="{{\'Audio id\'|i18nP:\'editor_plugin_audio_upload_id\'}}"/> \
                         </div> \
                         <div \
@@ -594,11 +595,11 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                             data-omit-file-input \
                             data-fetch-url="uploadFetchUrl" \
                             data-fine-uploader-options="audioPluginUploadOptions" \
-                            data-fine-uploader-callback-pass-through="pluginModel" \
+                            data-fine-uploader-callback-pass-through="{ \'pluginModel\':pluginModel, \'type\':pluginModel.type, \'rid\':newAudioId }" \
                             data-fine-uploader-callback-on-complete="updatePluginResource(fineUploaderCallbackPassThrough,responseJSON)"> \
                             <div class="form-group">\
                                 <div \
-                                    ng-disabled="readOnly || pluginModel.newAudioId == null || pluginModel.newAudioId == \'\'"\
+                                    ng-disabled="readOnly || newAudioId == null || newAudioId == \'\'"\
                                     class="upload" \
                                     data-fine-uploader-file-input \
                                     data-is-multiple="audioPluginUploadOptions.multiple"> \
