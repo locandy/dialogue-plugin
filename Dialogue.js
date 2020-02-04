@@ -540,7 +540,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                             data-fine-uploader-callback-on-complete="updatePluginResource(fineUploaderCallbackPassThrough,responseJSON)"> \
                             <div class="form-group">\
                                 <div \
-                                    ng-disabled="pluginModel.newImageId == null || pluginModel.newImageId == \'\'"\
+                                    ng-disabled="readOnly || pluginModel.newImageId == null || pluginModel.newImageId == \'\'"\
                                     class="upload" \
                                     data-fine-uploader-file-input \
                                     data-is-multiple="imagePluginUploadOptions.multiple"> \
@@ -598,7 +598,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                             data-fine-uploader-callback-on-complete="updatePluginResource(fineUploaderCallbackPassThrough,responseJSON)"> \
                             <div class="form-group">\
                                 <div \
-                                    ng-disabled="pluginModel.newAudioId == null || pluginModel.newAudioId == \'\'"\
+                                    ng-disabled="readOnly || pluginModel.newAudioId == null || pluginModel.newAudioId == \'\'"\
                                     class="upload" \
                                     data-fine-uploader-file-input \
                                     data-is-multiple="audioPluginUploadOptions.multiple"> \
