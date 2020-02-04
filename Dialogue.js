@@ -78,7 +78,7 @@ locandy.player.plugins.Dialogue.getSkeleton = function()
             "type":"Dialogue",
 	        "dialogue": {
                 "START":{
-                    "text":"Text Agent", 
+                    "text":"Hello creator! What should I say now?", 
                     "audioId":null, 
                     "imageId":null,
                     "imageWidth":null,
@@ -347,7 +347,6 @@ locandy.player.plugins.Dialogue.getTemplate = function(scope)
         // id to remove attribute from model
         removeImageId = "";
         removeAudioId = "";
-        removeResourceId = "";
     */
 locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
     {
@@ -368,7 +367,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                     <div style="overflow:hidden"> \
                         <div> \
                             <textarea \
-                                ng-style="{\'height\':(pluginModel.dialogue[activeDialogueId].text.length/56*24+12) + \'px\'}"\
+                                ng-style="{\'height\':(pluginModel.dialogue[activeDialogueId].text.length/56*24+24) + \'px\'}"\
                                 style="margin-bottom:5px" \
                                 class="form-control question" \
                                 data-ng-model="pluginModel.dialogue[activeDialogueId].text" \
