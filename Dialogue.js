@@ -388,7 +388,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                                         <select required data-ng-model="pluginModel.dialogue[activeDialogueId].imageId" \
                                                 class="form-control full-border ng-pristine" \
                                                 onchange="document.getElementById(\'btnSetImageNull\').click()"> \
-                                            <option data-ng-repeat="(key, value) in pluginModel.resources" ng-if="value.mimetype==\'image/png\'">{{key}}</option> \
+                                            <option data-ng-repeat="(key, value) in pluginModel.resources"  ng-if="value.mimetype==\'image/png\' || \'image/jpeg\' || \'image/gif\'">{{key}}</option> \
                                             <option selected value="">{{"none"|i18n:"editor_plugin_dialogue_select_none"}}</option> \
                                         </select> \
                                     </div> \
@@ -560,7 +560,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                         </div> \
                         <div style="float: left; width:30%; margin-right: 10px"> \
                             <select data-ng-model="removeImageId" class="form-control full-border ng-pristine"> \
-                                <option data-ng-repeat="(key, value) in pluginModel.resources" ng-if="value.mimetype==\'image/png\'">{{key}}</option> \
+                                <option data-ng-repeat="(key, value) in pluginModel.resources" ng-if="value.mimetype==\'image/png\' || \'image/jpeg\' || \'image/gif\'">{{key}}</option> \
                             </select> \
                         </div> \
                         <div> \
