@@ -55,6 +55,8 @@ locandy.player.plugins.Dialogue = function(spot, pluginModel)
         
         this.watchStateId = "activeDialogueNode"; // Could be set dynamically in Editor or hardwired
         this.activateOrChangeWatch();
+        
+        this.nodeVisited = {};
     };
 
 locandy.utilities.inherit(locandy.player.plugins.Dialogue,locandy.player.plugins.Abstract);
@@ -84,7 +86,8 @@ locandy.player.plugins.Dialogue.getSkeleton = function()
                     "imageWidth":null,
                     "answers":[]
                 }
-            }
+            },
+            "resources": {}
         };
     };
 
@@ -172,7 +175,7 @@ locandy.player.plugins.Dialogue.writeRescourceToModel = function(specialStruct, 
         
         // sanity check ... we cannot replace a sound of the same name with an image, and ...
         // a slow upload may hit the same id if the user retries
-        if(specialStruct.pluginModel.resources[newId] !== undefined)
+        if(specialStruct.pluginModel.resources !== undefined && specialStruct.pluginModel.resources[newId] !== undefined)
             alert("Upload: a resource with the name " + newId + " already exists, delete it first to overwrite!");
         else
             locandy.player.plugins.Abstract.writeRescourceToModel(specialStruct.pluginModel, serverResponse, newId);
@@ -368,7 +371,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                         <div> \
                             <textarea \
                                 ng-style="{\'height\':(pluginModel.dialogue[activeDialogueId].text.length/56*24+24) + \'px\'}"\
-                                style="margin-bottom:5px" \
+                                style="margin-bottom:5px min-height:96px" \
                                 class="form-control question" \
                                 data-ng-model="pluginModel.dialogue[activeDialogueId].text" \
                                 placeholder="{{\'Text Agent\'|i18n:\'editor_plugin_dialogue_agent_text\'}}"/> \
@@ -787,7 +790,13 @@ locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDia
         this.playingSound = null;
     }
 
-    if(this.dialogue[this.activeDialogueId].audioId !== null){
+    if(this.nodeVisited[activeDialogueId] === undefined) // never
+        this.nodeVisited[activeDialogueId]=1;
+    else
+        this.nodeVisited[activeDialogueId]++;
+    
+    if(this.dialogue[this.activeDialogueId].audioId !== null && this.nodeVisited[activeDialogueId] <= 1)
+    {
         this.executeSound(this.dialogue[this.activeDialogueId].audioId);
     }
 };
