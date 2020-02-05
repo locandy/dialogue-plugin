@@ -818,7 +818,7 @@ locandy.player.plugins.Dialogue.prototype.executeSound = function(audioId)
                 if(!this.isRendered)
                     sound.autoplay = false;
                 else
-                    sound.play();
+                    sound.playExclusive();
             }
             else{
                 alert("ERROR: Sound could not be loaded: " + audioId);
