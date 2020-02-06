@@ -268,7 +268,7 @@ locandy.player.plugins.Dialogue.removeDialogueFromModel = function(pluginModel, 
             activeDialogueId = "START";
         }
         
-    }     
+    }
     
 /** @function {static} setAudioToNull @inheritdesc */
 locandy.player.plugins.Dialogue.setAudioToNull = function(pluginModel, activeDialogueId)
@@ -504,7 +504,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                     </button> \
                     <hr> \
                     <div> \
-                        <div style="width:35%; float:left; margin-top:3px;"> \
+                        <div style="width:33%; float:left; margin-top:3px;"> \
                             <span class="label-for-icon">{{"Add section:"|i18n:"editor_plugin_dialogue_add"}}</span> \
                         </div> \
                         <div style="float: left; width:30%; margin-right: 10px"> \
@@ -525,7 +525,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                     </div> \
                     <hr> \
                     <div style="overflow: hidden"> \
-                        <div style="width:35%; float:left; margin-top:3px;"> \
+                        <div style="width:33%; float:left; margin-top:3px;"> \
                             <span class="label-for-icon">{{"Add image:"|i18n:"editor_plugin_image_upload_add"}}</span> \
                         </div> \
                         <div style="float: left; width:30%; margin-right: 10px"> \
@@ -544,7 +544,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                             data-fine-uploader-callback-on-complete="updatePluginResource(fineUploaderCallbackPassThrough,responseJSON)"> \
                             <div class="form-group">\
                                 <div \
-                                    ng-disabled="readOnly || newImageId == null || newImageId == \'\'"\
+                                    ng-disabled="readOnly || (pluginModel.resources[newImageId] !== undefined) || newImageId == null || newImageId == \'\'"\
                                     class="upload" \
                                     data-fine-uploader-file-input \
                                     data-is-multiple="imagePluginUploadOptions.multiple"> \
@@ -559,7 +559,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                         </div> \
                     </div> \
                     <div> \
-                        <div style="width:35%; float:left; margin-top:3px;"> \
+                        <div style="width:33%; float:left; margin-top:3px;"> \
                             <span class="label-for-icon">{{"Remove image:"|i18n:"editor_plugin_image_remove"}}</span> \
                         </div> \
                         <div style="float: left; width:30%; margin-right: 10px"> \
@@ -582,7 +582,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                     </div> \
                     <hr> \
                     <div style="overflow: hidden"> \
-                        <div style="width:35%; float:left; margin-top:3px;"> \
+                        <div style="width:33%; float:left; margin-top:3px;"> \
                             <span class="label-for-icon">{{"Add sound:"|i18n:"editor_plugin_audio_upload_add"}}</span> \
                         </div> \
                         <div style="float: left; width:30%; margin-right: 10px"> \
@@ -601,7 +601,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                             data-fine-uploader-callback-on-complete="updatePluginResource(fineUploaderCallbackPassThrough,responseJSON)"> \
                             <div class="form-group">\
                                 <div \
-                                    ng-disabled="readOnly || newAudioId == null || newAudioId == \'\'"\
+                                    ng-disabled="readOnly || (pluginModel.resources[newAudioId] !== undefined) || newAudioId == null || newAudioId == \'\'"\
                                     class="upload" \
                                     data-fine-uploader-file-input \
                                     data-is-multiple="audioPluginUploadOptions.multiple"> \
@@ -611,7 +611,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                         </div> \
                     </div> \
                     <div> \
-                        <div style="width:35%; float:left; margin-top:3px;"> \
+                        <div style="width:33%; float:left; margin-top:3px;"> \
                             <span class="label-for-icon">{{"Remove sound:"|i18n:"editor_plugin_sound_remove"}}</span> \
                         </div> \
                         <div style="float: left; width:30%; margin-right: 10px"> \
