@@ -138,9 +138,6 @@ locandy.player.plugins.Dialogue.exportJsonDialogueToClipboard = function(pluginM
         document.body.removeChild(copyElement);
     };
 
-
-    
-
 /** @function {static} addDialogueToModel */
 locandy.player.plugins.Dialogue.addDialogueToModel = function(pluginModel)
     {
@@ -154,7 +151,7 @@ locandy.player.plugins.Dialogue.addDialogueToModel = function(pluginModel)
                 "answers": []};
             pluginModel.newDialogueId = "";
         } else {
-            alert("Id is alredy used");
+            alert("ID is alredy used. Please choose another, or delete the section first.");
         }
     };  
 
@@ -173,13 +170,26 @@ locandy.player.plugins.Dialogue.writeRescourceToModel = function(specialStruct, 
     {
         var newId = specialStruct.rid;
         
+        // add extension to separate images and audios with the same name
+        var ext="";
+        switch(serverResponse.mimetype)
+        {
+            case "image/jpeg": newId += ".jpg"; break;
+            case "image/png": newId += ".png"; break;
+            case "image/gif": newId += ".gif"; break;
+            case "audio/mp3": newId += ".mp3"; break;
+        };
+        
         // sanity check ... we cannot replace a sound of the same name with an image, and ...
         // a slow upload may hit the same id if the user retries
         if(specialStruct.pluginModel.resources !== undefined && specialStruct.pluginModel.resources[newId] !== undefined)
+        {
             alert("Upload: a resource with the name " + newId + " already exists, delete it first to overwrite!");
-        else
-            locandy.player.plugins.Abstract.writeRescourceToModel(specialStruct.pluginModel, serverResponse, newId);
-    }
+            return;
+        }
+        
+        locandy.player.plugins.Abstract.writeRescourceToModel(specialStruct.pluginModel, serverResponse, newId+ext);
+    };
 
 /** @prop {static} resourceClipboad copy and paste an image or audio between dialogue instances */
 locandy.player.plugins.Dialogue.resourceClipboad = null;
@@ -544,7 +554,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                             data-fine-uploader-callback-on-complete="updatePluginResource(fineUploaderCallbackPassThrough,responseJSON)"> \
                             <div class="form-group">\
                                 <div \
-                                    ng-disabled="readOnly || (pluginModel.resources[newImageId] !== undefined) || newImageId == null || newImageId == \'\'"\
+                                    ng-disabled="readOnly || (pluginModel.resources[newImageId+\'.png\'] !== undefined) || (pluginModel.resources[newImageId+\'.jpg\'] !== undefined) || (pluginModel.resources[newImageId+\'.gif\'] !== undefined) || newImageId == null || newImageId == \'\'"\
                                     class="upload" \
                                     data-fine-uploader-file-input \
                                     data-is-multiple="imagePluginUploadOptions.multiple"> \
@@ -601,7 +611,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                             data-fine-uploader-callback-on-complete="updatePluginResource(fineUploaderCallbackPassThrough,responseJSON)"> \
                             <div class="form-group">\
                                 <div \
-                                    ng-disabled="readOnly || (pluginModel.resources[newAudioId] !== undefined) || newAudioId == null || newAudioId == \'\'"\
+                                    ng-disabled="readOnly || (pluginModel.resources[newAudioId+\'.mp3\'] !== undefined) || newAudioId == null || newAudioId == \'\'"\
                                     class="upload" \
                                     data-fine-uploader-file-input \
                                     data-is-multiple="audioPluginUploadOptions.multiple"> \
@@ -863,8 +873,11 @@ locandy.player.plugins.Dialogue.prototype.destroy = function()
 /** @function {public Array} ? verifies integrity of quest before publish in Editor. */
 locandy.player.plugins.Dialogue.prototype.verifyBeforePublish = function()
     {
-        for (var d in this.dialogue){
-            if (d.text.trim() === "" || d.text === null){
+        for (var d in this.dialogue)
+        {
+            var node = this.dialogue[d];
+            if (node.text === null || node.text.trim() === "")
+            {
                 return "editor_warn_dialogueTexts_need_not_be_empty_or_null";
             }
         }
