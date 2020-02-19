@@ -122,7 +122,7 @@ locandy.player.plugins.Dialogue.importJsonDialogueToModel = function(pluginModel
     {
         alert("Dialogue Parese Error in JSON Spec!\nPlease delete JSON or fix it!\n" + e);
     }
-    pluginModel.importJsonDialogue = "";
+    //importJsonDialogue = "";
 };
 
 /** @function {static} exportJsonDialogueToClipboard */
@@ -656,15 +656,15 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                         <textarea \
                             class="form-control" \
                             rows="3" \
-                            data-ng-model="pluginModel.importJsonDialogue" \
+                            data-ng-model="importJsonDialogue" \
                             placeholder="{{\'Paste new Dialogue (JSON)\'|i18n:\'editor_plugin_dialogue_json_import_textarea\'}}"/> \
                     </div> \
                     <div style="overflow: hidden"> \
                         <div style="float:left"> \
                             <button \
-                                ng-disabled="pluginModel.importJsonDialogue == null || pluginModel.importJsonDialogue == \'\'" \
+                                ng-disabled="importJsonDialogue == null || importJsonDialogue == \'\'" \
                                 class="btn btn-fancy btn-medium btn-default" \
-                                data-button-handler="global.locandy.player.plugins.Dialogue.importJsonDialogueToModel(pluginModel, pluginModel.importJsonDialogue)"> \
+                                data-button-handler="global.locandy.player.plugins.Dialogue.importJsonDialogueToModel(pluginModel, importJsonDialogue)"> \
                                 <span class="icon-plus-circle2 reusable-color-success"></span> \
                                 <span class="label-for-icon">{{"Import json"|i18n:"editor_plugin_dialogue_json_import"}}</span> \
                             </button>\
@@ -685,7 +685,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
 locandy.player.plugins.Dialogue.prototype.persist = function()
     {        
         var storedObject = {
-            activeDialogueId: this.activeDialogueId
+            activeDialogueId: this.activeDialogueId,
         };
 
         return storedObject;
