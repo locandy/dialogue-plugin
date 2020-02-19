@@ -165,6 +165,13 @@ locandy.player.plugins.Dialogue.removeAnswerFromModel = function(pluginModel, an
         }        
     };
 
+/** @function {public void} moveAnswerUp */
+locandy.player.plugins.Dialogue.moveAnswerUp = function(pluginModel, answerId)
+    {
+        var index = pluginModel.dialogue[pluginModel.activeDialogueId].answers.indexOf(answerId);
+        locandy.utilities.moveArrayItem(pluginModel.dialogue[pluginModel.activeDialogueId].answers, index, index-1 );
+    };
+
 /** @function {static} writeRescourceToModel @inheritdesc called by LocationController::updatePluginResource() (via fine-uploader directive) it consumes pluginModel.type to resolve this function */
 locandy.player.plugins.Dialogue.writeRescourceToModel = function(specialStruct, serverResponse)
     {
@@ -488,10 +495,17 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                                     <span class="label-for-icon">{{"Connection corrupted"|i18n:"editor_plugin_dialogue_effect_not_connected_correctly"}}</span> \
                                 </small> \
                             </div> \
-                            <div> \
+                            <div style="float:right;"> \
                                 <button \
                                     class="btn btn-fancy btn-medium btn-default" \
-                                    style="float:right" \
+                                    data-ng-class="{\'disabled\':$first}" \
+                                    data-button-handler="global.locandy.player.plugins.Dialogue.moveAnswerUp(pluginModel, answer)">\
+                                    <span class="icon-arrow-up5"></span> \
+                                </button> \
+                            </div> \
+                            <div style="float:right; margin-right:3px;"> \
+                                <button \
+                                    class="btn btn-fancy btn-medium btn-default" \
                                     data-button-handler="global.locandy.player.plugins.Dialogue.removeAnswerFromModel(pluginModel, answer, activeDialogueId)">\
                                     <span class="icon-minus-circle2 reusable-color-danger"></span>\
                                 </button> \
@@ -762,6 +776,7 @@ locandy.player.plugins.Dialogue.prototype.executeAnswer = function(answer)
         else
             this.setActiveDialogue(answer.nextId);
     };
+
 
 /** @function {public} setActiveDialogue. updated activeDialogueId and executes sound of next dialogue */
 locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDialogueId)
