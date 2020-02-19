@@ -1,4 +1,9 @@
-# Fragen:
+# Fragen neu:
+- scope-Variable -> Wie kann ich eine Temporäre Scope-Variable in einer Funktion setzen? 
+   - Zeile 125: Die Variable importJsonDialogue soll am Ende der Funktion auf "" gesetzt werden.
+- play-Button -> Wollen wir, dass das Audio auch gestoppt werden soll? Also dass sich während dem abspielen der Button vom play-icon zum pause-icon ändert?
+
+# Fragen alt:
 -  Quiz1 -> das Inventar wird nicht richtig mit 0 initialisiert: Weißt du was ich falsch gemacht habe?
    -  Wenn man antwortet kommt eine Fehlermeldung, dass es noch nicht initialisiert ist und mit 0 initialisiert wird.
    -  Es funktioniert also prinzipiell, aber die Fehlermeldung soll nicht kommen.
