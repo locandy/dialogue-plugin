@@ -110,14 +110,14 @@ locandy.player.plugins.Dialogue.addAnswerToModel = function(pluginModel, activeD
     };
 
 /** @function {static} importJsonDialogueToModel */
-locandy.player.plugins.Dialogue.importJsonDialogueToModel = function(pluginModel, json)
+locandy.player.plugins.Dialogue.importJsonDialogueToModel = function(pluginModel, inputs)
 {
     try
     {
-        if(json != "") { // empty value
-            pluginModel.dialogue = angular.fromJson(json);
+        if(inputs.importJsonDialogue != "") { // empty value
+            pluginModel.dialogue = angular.fromJson(inputs.importJsonDialogue);
         }
-        //importJsonDialogue = "";
+        inputs.importJsonDialogue = "";
     }
     catch(e)
     {
@@ -139,17 +139,17 @@ locandy.player.plugins.Dialogue.exportJsonDialogueToClipboard = function(pluginM
     };
 
 /** @function {static} addDialogueToModel */
-locandy.player.plugins.Dialogue.addDialogueToModel = function(pluginModel, newDialogueId)
+locandy.player.plugins.Dialogue.addDialogueToModel = function(pluginModel, inputs)
     {
         // check if key is already used
-        if (!(newDialogueId in pluginModel.dialogue)){
-            pluginModel.dialogue[newDialogueId] = {
+        if (!(inputs.newDialogueId in pluginModel.dialogue)){
+            pluginModel.dialogue[inputs.newDialogueId] = {
                 "text": null,
                 "audioId": null,
                 "imageId":null,
                 "imageWidth":null,
                 "answers": []};
-            //newDialogueId = "";
+                inputs.newDialogueId = "";
         } else {
             alert("ID is alredy used. Please choose another, or delete the section first.");
         }
@@ -534,14 +534,14 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                         <div style="float: left; width:30%; margin-right: 10px"> \
                             <textarea \
                             id="newDialogueId" class="form-control" rows="1" style="float:left; width=100px" \
-                            data-ng-model="newDialogueId" \
+                            data-ng-model="inputs.newDialogueId" \
                             placeholder="{{\'New dialogue id\'|i18nP:\'editor_plugin_dialogue_new_id\'}}"/> \
                         </div> \
                         <div> \
                             <button \
-                            ng-disabled="newDialogueId == null || newDialogueId == \'\'" \
+                            ng-disabled="inputs.newDialogueId == null || inputs.newDialogueId == \'\'" \
                             class="btn btn-fancy btn-medium btn-default" \
-                            data-button-handler="global.locandy.player.plugins.Dialogue.addDialogueToModel(pluginModel, newDialogueId)">\
+                            data-button-handler="global.locandy.player.plugins.Dialogue.addDialogueToModel(pluginModel, inputs)">\
                             <span class="icon-plus-circle2 reusable-color-success"></span> \
                             <span class="label-for-icon">{{"Add"|i18n:"editor_plugin_dialogue_add_btn"}}</span> \
                             </button> \
@@ -656,15 +656,15 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                         <textarea \
                             class="form-control" \
                             rows="3" \
-                            data-ng-model="importJsonDialogue" \
+                            data-ng-model="inputs.importJsonDialogue" \
                             placeholder="{{\'Paste new Dialogue (JSON)\'|i18n:\'editor_plugin_dialogue_json_import_textarea\'}}"/> \
                     </div> \
                     <div style="overflow: hidden"> \
                         <div style="float:left"> \
                             <button \
-                                ng-disabled="importJsonDialogue == null || importJsonDialogue == \'\'" \
+                                ng-disabled="inputs.importJsonDialogue == null || inputs.importJsonDialogue == \'\'" \
                                 class="btn btn-fancy btn-medium btn-default" \
-                                data-button-handler="global.locandy.player.plugins.Dialogue.importJsonDialogueToModel(pluginModel, importJsonDialogue)"> \
+                                data-button-handler="global.locandy.player.plugins.Dialogue.importJsonDialogueToModel(pluginModel, inputs)"> \
                                 <span class="icon-plus-circle2 reusable-color-success"></span> \
                                 <span class="label-for-icon">{{"Import json"|i18n:"editor_plugin_dialogue_json_import"}}</span> \
                             </button>\
