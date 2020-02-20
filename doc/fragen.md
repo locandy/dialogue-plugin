@@ -1,6 +1,8 @@
 # Fragen neu:
-- scope-Variable -> Wie kann ich eine Temporäre Scope-Variable in einer Funktion setzen? 
-   - Zeile 125: Die Variable importJsonDialogue soll am Ende der Funktion auf "" gesetzt werden.
+- temporäre Variablen -> Durch die Änderung von globalen zu lokalen Variablen, kann ich die Variablen in den Funktionen nicht mehr setzen. Bsp. hab ich die Variablen auf "" gesetzt, damit die Felder nach dem Button-Klick wieder leer sind:
+   - Zeile 120 (importJsonDialogue)
+   - Zeile 152 (newDialogueId)
+  Hast du eine Idee, wie ich das machen könnte?
 - play-Button -> Wollen wir, dass das Audio auch gestoppt werden soll? Also dass sich während dem abspielen der Button vom play-icon zum pause-icon ändert?
 
 # Fragen alt:
