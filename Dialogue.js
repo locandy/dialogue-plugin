@@ -23,7 +23,7 @@ locandy.player.plugins.Dialogue = function(spot, pluginModel)
         this.imageWidth = "150px";
 
         // dialogue properties
-        this.dialogue = pluginModel.dialogue;        
+        this.dialogue = pluginModel.dialogue;       
         this.playingSound = null;
 
         // last uploaded image id - for upload verification
@@ -117,12 +117,12 @@ locandy.player.plugins.Dialogue.importJsonDialogueToModel = function(pluginModel
         if(json != "") { // empty value
             pluginModel.dialogue = angular.fromJson(json);
         }
+        //importJsonDialogue = "";
     }
     catch(e)
     {
         alert("Dialogue Parese Error in JSON Spec!\nPlease delete JSON or fix it!\n" + e);
     }
-    //importJsonDialogue = "";
 };
 
 /** @function {static} exportJsonDialogueToClipboard */
@@ -139,17 +139,17 @@ locandy.player.plugins.Dialogue.exportJsonDialogueToClipboard = function(pluginM
     };
 
 /** @function {static} addDialogueToModel */
-locandy.player.plugins.Dialogue.addDialogueToModel = function(pluginModel)
+locandy.player.plugins.Dialogue.addDialogueToModel = function(pluginModel, newDialogueId)
     {
         // check if key is already used
-        if (!(pluginModel.newDialogueId in pluginModel.dialogue)){
-            pluginModel.dialogue[pluginModel.newDialogueId] = {
+        if (!(newDialogueId in pluginModel.dialogue)){
+            pluginModel.dialogue[newDialogueId] = {
                 "text": null,
                 "audioId": null,
                 "imageId":null,
                 "imageWidth":null,
                 "answers": []};
-            pluginModel.newDialogueId = "";
+            //newDialogueId = "";
         } else {
             alert("ID is alredy used. Please choose another, or delete the section first.");
         }
@@ -252,15 +252,15 @@ locandy.player.plugins.Dialogue.removeImageFromModel = function(pluginModel, rem
 }
 
 /** @function {static} removeAudioFromModel @inheritdesc */
-locandy.player.plugins.Dialogue.removeAudioFromModel = function(pluginModel){
+locandy.player.plugins.Dialogue.removeAudioFromModel = function(pluginModel, removeAudioId){
     // if audio-resource is used in dialogue set reference to null
     for (var key in pluginModel.dialogue){
-        if (pluginModel.dialogue[key].audioId === pluginModel.removeAudioId){
+        if (pluginModel.dialogue[key].audioId === removeAudioId){
             pluginModel.dialogue[key].audioId = null;
         }
     }
 
-    locandy.player.plugins.Dialogue.removeResourceFromModel(pluginModel, pluginModel.removeAudioId);
+    locandy.player.plugins.Dialogue.removeResourceFromModel(pluginModel, removeAudioId);
 }
 
 /** @function {static} removeDialogueFromModel @inheritdesc */
@@ -466,7 +466,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                             </div> \
                             <div style="float:left; width:50%; padding-right:10px"> \
                                 <select data-ng-model="answer.nextId" class="form-control full-border ng-pristine ng-valid ng-touched" \
-                                        onchange="document.getElementById(\'btnSetAudioNull\').click()"> \
+                                        onchange="document.getElementById(\'btnSetNextIdNull\').click()"> \
                                     <option data-ng-repeat="(key, value) in pluginModel.dialogue">{{key}}</option> \
                                     <option selected value="">{{"none"|i18n:"editor_plugin_dialogue_select_none"}}</option> \
                                 </select> \
@@ -534,14 +534,14 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                         <div style="float: left; width:30%; margin-right: 10px"> \
                             <textarea \
                             id="newDialogueId" class="form-control" rows="1" style="float:left; width=100px" \
-                            data-ng-model="pluginModel.newDialogueId" \
+                            data-ng-model="newDialogueId" \
                             placeholder="{{\'New dialogue id\'|i18nP:\'editor_plugin_dialogue_new_id\'}}"/> \
                         </div> \
                         <div> \
                             <button \
-                            ng-disabled="pluginModel.newDialogueId == null || pluginModel.newDialogueId == \'\'" \
+                            ng-disabled="newDialogueId == null || newDialogueId == \'\'" \
                             class="btn btn-fancy btn-medium btn-default" \
-                            data-button-handler="global.locandy.player.plugins.Dialogue.addDialogueToModel(pluginModel)">\
+                            data-button-handler="global.locandy.player.plugins.Dialogue.addDialogueToModel(pluginModel, newDialogueId)">\
                             <span class="icon-plus-circle2 reusable-color-success"></span> \
                             <span class="label-for-icon">{{"Add"|i18n:"editor_plugin_dialogue_add_btn"}}</span> \
                             </button> \
@@ -639,14 +639,14 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                             <span class="label-for-icon">{{"Remove sound:"|i18n:"editor_plugin_sound_remove"}}</span> \
                         </div> \
                         <div style="float: left; width:30%; margin-right: 10px"> \
-                            <select data-ng-model="pluginModel.removeAudioId" class="form-control full-border ng-pristine"> \
+                            <select data-ng-model="removeAudioId" class="form-control full-border ng-pristine"> \
                                 <option data-ng-repeat="(key, value) in pluginModel.resources" ng-if="value.mimetype==\'audio/mp3\'">{{key}}</option> \
                             </select> \
                         </div> \
                         <div> \
                             <button \
                                 class="btn btn-fancy btn-medium btn-default" \
-                                data-button-handler="global.locandy.player.plugins.Dialogue.removeAudioFromModel(pluginModel)">\
+                                data-button-handler="global.locandy.player.plugins.Dialogue.removeAudioFromModel(pluginModel, removeAudioId)">\
                                 <span class="icon-minus-circle2 reusable-color-danger"></span>\
                             </button> \
                         </div> \
