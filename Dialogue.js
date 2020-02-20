@@ -196,6 +196,8 @@ locandy.player.plugins.Dialogue.writeRescourceToModel = function(specialStruct, 
         }
         
         locandy.player.plugins.Abstract.writeRescourceToModel(specialStruct.pluginModel, serverResponse, newId+ext);
+        specialStruct.inputs.newImageId = "";
+        specialStruct.inputs.newAudioId = "";
     };
 
 /** @prop {static} resourceClipboad copy and paste an image or audio between dialogue instances */
@@ -358,12 +360,13 @@ locandy.player.plugins.Dialogue.getTemplate = function(scope)
 
 /** @function {static} getEditTemplate @inheritdesc
 
-    Editor scope temporary variables declared in this template
+    Editor scope temporary variables declared in inputs in this template
+    inputs = [
         importJsonDialogue = "";
         newDialogueId = "";
         newImageId = "";
         newAudioId = "";
-
+    ]
         // id to remove attribute from model
         removeImageId = "";
         removeAudioId = "";
@@ -555,7 +558,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                         <div style="float: left; width:30%; margin-right: 10px"> \
                             <textarea \
                             id="newImageId" class="form-control" rows="1" style="float:left; width=100px" \
-                            data-ng-model="newImageId" \
+                            data-ng-model="inputs.newImageId" \
                             placeholder="{{\'Image id\'|i18nP:\'editor_plugin_image_upload_id\'}}"/> \
                         </div> \
                         <div \
@@ -564,11 +567,11 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                             data-omit-file-input \
                             data-fetch-url="uploadFetchUrl" \
                             data-fine-uploader-options="imagePluginUploadOptions" \
-                            data-fine-uploader-callback-pass-through="{ \'pluginModel\':pluginModel, \'type\':pluginModel.type, \'rid\':newImageId }" \
+                            data-fine-uploader-callback-pass-through="{ \'pluginModel\':pluginModel, \'type\':pluginModel.type, \'rid\':inputs.newImageId, \'inputs\':inputs }" \
                             data-fine-uploader-callback-on-complete="updatePluginResource(fineUploaderCallbackPassThrough,responseJSON)"> \
                             <div class="form-group">\
                                 <div \
-                                    ng-disabled="readOnly || (pluginModel.resources[newImageId+\'.png\'] !== undefined) || (pluginModel.resources[newImageId+\'.jpg\'] !== undefined) || (pluginModel.resources[newImageId+\'.gif\'] !== undefined) || newImageId == null || newImageId == \'\'"\
+                                    ng-disabled="readOnly || (pluginModel.resources[inputs.newImageId+\'.png\'] !== undefined) || (pluginModel.resources[inputs.newImageId+\'.jpg\'] !== undefined) || (pluginModel.resources[inputs.newImageId+\'.gif\'] !== undefined) || inputs.newImageId == null || inputs.newImageId == \'\'"\
                                     class="upload" \
                                     data-fine-uploader-file-input \
                                     data-is-multiple="imagePluginUploadOptions.multiple"> \
@@ -612,7 +615,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                         <div style="float: left; width:30%; margin-right: 10px"> \
                             <textarea \
                             id="newAudioId" class="form-control" rows="1" style="float:left; width=100px" \
-                            data-ng-model="newAudioId" \
+                            data-ng-model="inputs.newAudioId" \
                             placeholder="{{\'Audio id\'|i18nP:\'editor_plugin_audio_upload_id\'}}"/> \
                         </div> \
                         <div \
@@ -621,11 +624,11 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                             data-omit-file-input \
                             data-fetch-url="uploadFetchUrl" \
                             data-fine-uploader-options="audioPluginUploadOptions" \
-                            data-fine-uploader-callback-pass-through="{ \'pluginModel\':pluginModel, \'type\':pluginModel.type, \'rid\':newAudioId }" \
+                            data-fine-uploader-callback-pass-through="{ \'pluginModel\':pluginModel, \'type\':pluginModel.type, \'rid\':inputs.newAudioId, \'inputs\':inputs}" \
                             data-fine-uploader-callback-on-complete="updatePluginResource(fineUploaderCallbackPassThrough,responseJSON)"> \
                             <div class="form-group">\
                                 <div \
-                                    ng-disabled="readOnly || (pluginModel.resources[newAudioId+\'.mp3\'] !== undefined) || newAudioId == null || newAudioId == \'\'"\
+                                    ng-disabled="readOnly || (pluginModel.resources[inputs.newAudioId+\'.mp3\'] !== undefined) || inputs.newAudioId == null || inputs.newAudioId == \'\'"\
                                     class="upload" \
                                     data-fine-uploader-file-input \
                                     data-is-multiple="audioPluginUploadOptions.multiple"> \
