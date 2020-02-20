@@ -1,8 +1,5 @@
 # Fragen neu:
-- temporäre Variablen -> Durch die Änderung von globalen zu lokalen Variablen, kann ich die Variablen in den Funktionen nicht mehr setzen. Bsp. hab ich die Variablen auf "" gesetzt, damit die Felder nach dem Button-Klick wieder leer sind:
-   - Zeile 120 (importJsonDialogue)
-   - Zeile 152 (newDialogueId)
-  Hast du eine Idee, wie ich das machen könnte?
+- nach Image- und Audio-Upload soll das Id-Feld geleert werden. Aufruf läuft aber über updatePluginResource().
 - play-Button -> Wollen wir, dass das Audio auch gestoppt werden soll? Also dass sich während dem abspielen der Button vom play-icon zum pause-icon ändert?
 
 # Fragen alt:
