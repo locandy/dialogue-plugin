@@ -1,5 +1,4 @@
 # Fragen neu:
-- nach Image- und Audio-Upload soll das Id-Feld geleert werden. Aufruf läuft aber über updatePluginResource().
 - play-Button -> Wollen wir, dass das Audio auch gestoppt werden soll? Also dass sich während dem abspielen der Button vom play-icon zum pause-icon ändert?
 
 # Fragen alt:
