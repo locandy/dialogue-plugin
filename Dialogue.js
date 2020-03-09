@@ -467,7 +467,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                             <div style="float: left; margin-top:5px;"> \
                                 <span class="icon-arrow-right17"></span> \
                             </div> \
-                            <div style="float:left; width:50%; padding-right:10px"> \
+                            <div style="float:left; padding-right:10px"> \
                                 <select data-ng-model="answer.nextId" class="form-control full-border ng-pristine ng-valid ng-touched" \
                                         onchange="document.getElementById(\'btnSetNextIdNull\').click()"> \
                                     <option data-ng-repeat="(key, value) in pluginModel.dialogue">{{key}}</option> \
@@ -534,11 +534,11 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                         <div style="width:33%; float:left; margin-top:3px;"> \
                             <span class="label-for-icon">{{"Add section:"|i18n:"editor_plugin_dialogue_add"}}</span> \
                         </div> \
-                        <div style="float: left; width:30%; margin-right: 10px"> \
-                            <textarea \
-                            id="newDialogueId" class="form-control" rows="1" style="float:left; width=100px" \
-                            data-ng-model="inputs.newDialogueId" \
-                            placeholder="{{\'New dialogue id\'|i18nP:\'editor_plugin_dialogue_new_id\'}}"/> \
+                        <div style="float: left; width:33%; margin-right: 10px"> \
+                            <input  type="text" \
+                                id="newDialogueId" class="form-control" rows="1" style="float:left; width=100px" \
+                                data-ng-model="inputs.newDialogueId" \
+                                placeholder="{{\'New dialogue id\'|i18nP:\'editor_plugin_dialogue_new_id\'}}"/> \
                         </div> \
                         <div> \
                             <button \
@@ -555,11 +555,11 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                         <div style="width:33%; float:left; margin-top:3px;"> \
                             <span class="label-for-icon">{{"Add image:"|i18n:"editor_plugin_image_upload_add"}}</span> \
                         </div> \
-                        <div style="float: left; width:30%; margin-right: 10px"> \
-                            <textarea \
-                            id="newImageId" class="form-control" rows="1" style="float:left; width=100px" \
-                            data-ng-model="inputs.newImageId" \
-                            placeholder="{{\'Image id\'|i18nP:\'editor_plugin_image_upload_id\'}}"/> \
+                        <div style="float: left; width:33%; margin-right: 10px"> \
+                            <input  type="text" \
+                                id="newImageId" class="form-control" rows="1" style="float:left; width=100px" \
+                                data-ng-model="inputs.newImageId" \
+                                placeholder="{{\'Image id\'|i18nP:\'editor_plugin_image_upload_id\'}}"/> \
                         </div> \
                         <div \
                             data-fine-uploader \
@@ -589,7 +589,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                         <div style="width:33%; float:left; margin-top:3px;"> \
                             <span class="label-for-icon">{{"Remove image:"|i18n:"editor_plugin_image_remove"}}</span> \
                         </div> \
-                        <div style="float: left; width:30%; margin-right: 10px"> \
+                        <div style="float: left; width:33%; margin-right: 10px"> \
                             <select data-ng-model="removeImageId" class="form-control full-border ng-pristine"> \
                                 <option data-ng-repeat="(key, value) in pluginModel.resources" ng-if="value.mimetype==\'image/png\' || value.mimetype==\'image/jpeg\' || value.mimetype==\'image/gif\'">{{key}}</option> \
                             </select> \
@@ -612,11 +612,11 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                         <div style="width:33%; float:left; margin-top:3px;"> \
                             <span class="label-for-icon">{{"Add sound:"|i18n:"editor_plugin_audio_upload_add"}}</span> \
                         </div> \
-                        <div style="float: left; width:30%; margin-right: 10px"> \
-                            <textarea \
-                            id="newAudioId" class="form-control" rows="1" style="float:left; width=100px" \
-                            data-ng-model="inputs.newAudioId" \
-                            placeholder="{{\'Audio id\'|i18nP:\'editor_plugin_audio_upload_id\'}}"/> \
+                        <div style="float: left; width:33%; margin-right: 10px"> \
+                            <input  type="text" \
+                                id="newAudioId" class="form-control" rows="1" style="float:left; width=100px" \
+                                data-ng-model="inputs.newAudioId" \
+                                placeholder="{{\'Audio id\'|i18nP:\'editor_plugin_audio_upload_id\'}}"/> \
                         </div> \
                         <div \
                             data-fine-uploader \
@@ -641,7 +641,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                         <div style="width:33%; float:left; margin-top:3px;"> \
                             <span class="label-for-icon">{{"Remove sound:"|i18n:"editor_plugin_sound_remove"}}</span> \
                         </div> \
-                        <div style="float: left; width:30%; margin-right: 10px"> \
+                        <div style="float: left; width:33%; margin-right: 10px"> \
                             <select data-ng-model="removeAudioId" class="form-control full-border ng-pristine"> \
                                 <option data-ng-repeat="(key, value) in pluginModel.resources" ng-if="value.mimetype==\'audio/mp3\'">{{key}}</option> \
                             </select> \
