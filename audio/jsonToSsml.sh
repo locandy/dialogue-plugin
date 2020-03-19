@@ -14,6 +14,8 @@ printf '%s\n' "${node_list[@]}"
 # create for each node text a ssml-file
 for node in ${node_list[@]} ; do 
     echo "<speak>" > $node.ssml
-    jq -r ".$node.text" test.json >> $node.ssml
+    jq -r ".$node.text" $1 >> $node.ssml
     echo "</speak>" >> $node.ssml
 done
+
+
