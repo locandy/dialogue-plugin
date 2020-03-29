@@ -1,0 +1,453 @@
+{
+  "START": {
+    "text": "Die NASA hat angerufen, sie brauchen unsere Hilfe!",
+    "audioId": null,
+    "imageId": "fanatisch-gross.png",
+    "imageWidth": 120,
+    "answers": [
+      {
+        "text": "Sie brauchen Hilfe beim Entwurf eines neuen Satelliten.",
+        "effectId": "S2_START_aw1",
+        "nextId": "nasa_message",
+        "$$hashKey": "object:392"
+      },
+      {
+        "text": "Ein Asteroid rast auf die Erde zu und wir müssen ihn abwehren.",
+        "effectId": "S2_START_aw2",
+        "nextId": "nasa_message",
+        "$$hashKey": "object:393"
+      },
+      {
+        "text": "Darf ich etwa ins Weltall?",
+        "effectId": "S2_START_aw3",
+        "nextId": "nasa_message",
+        "$$hashKey": "object:394"
+      }
+    ]
+  },
+  "nasa_message": {
+    "text": "Die NASA hat das Problem, dass der neue Spionagesatellit zu viel Energie braucht. Die Solarsegel sind einfach zu klein! Sie haben aber zu wenig Platz in der Rakete, um sie als ein Stück in den Weltraum zu schießen. Die Ingenieure der NASA haben uns aus diesem Grund gebeten ein Solarsegel für ihren Satelliten zu entwerfen! Hast du schon eine Idee, was wir tun können?",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Wir schicken einen Stapel mit Solarpanelen hoch und lassen ihn von Astronauten montieren.",
+        "effectId": "S2_nasa_message_aw1",
+        "nextId": "nasa_message",
+        "$$hashKey": "object:930"
+      },
+      {
+        "text": "Bauen wir eine größere Rakete, die genug Platz hat.",
+        "effectId": "S2_nasa_message_aw2",
+        "nextId": "nasa_message",
+        "$$hashKey": "object:931"
+      },
+      {
+        "text": "Ich muss mehr über unser Problem wissen! Ich habe Fragen!",
+        "effectId": "scene2",
+        "nextId": "nasa_message_questions",
+        "$$hashKey": "object:932"
+      },
+      {
+        "text": "Falten wir ihn doch einfach zusammen, dann braucht er nicht so viel Platz!",
+        "effectId": "S2_nasa_message_aw4",
+        "nextId": "nasa_message_questions",
+        "$$hashKey": "object:933"
+      }
+    ]
+  },
+  "nasa_message_questions": {
+    "text": "Was für Fragen hast du?",
+    "audioId": null,
+    "imageId": "neutral.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Wie ist ein herkömmliches Solarsegel aufgebaut?",
+        "effectId": "S2_nasa_message_questions_aw1",
+        "nextId": "nasa_message_questions",
+        "$$hashKey": "object:559"
+      },
+      {
+        "text": "Wie viel Platz ist in der Rakete?",
+        "effectId": "S2_nasa_message_questions_aw2",
+        "nextId": "nasa_message_questions",
+        "$$hashKey": "object:560"
+      },
+      {
+        "text": "Wie groß ist das Solarsegel?",
+        "effectId": "S2_nasa_message_questions_aw3",
+        "nextId": "nasa_message_questions",
+        "$$hashKey": "object:561"
+      },
+      {
+        "text": "Welche Spannung brauchen wir?",
+        "effectId": "S2_nasa_message_questions_aw4",
+        "nextId": "nasa_message_questions",
+        "$$hashKey": "object:562"
+      },
+      {
+        "text": "Mir raucht der Kopf! Wie geht es weiter?",
+        "effectId": "S2_nasa_message_questions_aw5",
+        "nextId": "experiment_materials",
+        "$$hashKey": "object:563"
+      }
+    ]
+  },
+  "experiment_materials": {
+    "text": "Dann lass uns mal gemeinsam einen Prototypen bauen. Zeig mal was du drauf hast! Besorge einen DIN A4 Papierbogen, ein Messinstrument für Längen, eine Schere, einen Bleistift und den Deckel einer Spraydose mit ca. 4,6 Zentimeter Durchmesser. Das ist unser Modell für den Frachtraum der Rakete.",
+    "audioId": null,
+    "imageId": "belehrt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Welches Messinstrument meinst du?",
+        "effectId": "S2_experiment_materials_aw1",
+        "nextId": "experiment_materials",
+        "$$hashKey": "object:1472"
+      },
+      {
+        "text": "Ich finde keinen Bleistift.",
+        "effectId": "S2_experiment_materials_aw2",
+        "nextId": "experiment_materials",
+        "$$hashKey": "object:1473"
+      },
+      {
+        "text": "Ich habe alles! Lass uns loslegen!",
+        "effectId": null,
+        "nextId": "normal_folding",
+        "$$hashKey": "object:1474"
+      }
+    ]
+  },
+  "normal_folding": {
+    "text": "Die NASA hat uns vorgegeben, dass wir ungefähr 21 x 29 Meter [A4 21 x 29,7] Solarfläche brauchen. Wir arbeiten im Maßstab 1:100. Unsere Solarpanele müssen in die Rakete passen, also kleiner als ein Kreis mit 4,6 Meter Durchmesser sein. Mit dem pythagoräischen Lehrsatz kannst du jetzt die maximale Seitenlänge eines Panels ausrechnen, damit unser Stapel in die Rakete passt. Rechne das genauer aus und runde auf 1 oder 2 Kommastellen! Miss die Seitenlängen und notiere alle Zahlen im Laborjournal.",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Ich mag nicht rechnen. Wie groß ist die maximale Seitenlänge eines Panels?",
+        "effectId": "S2_normal_folding_aw1",
+        "nextId": "normal_folding",
+        "$$hashKey": "object:1481"
+      },
+      {
+        "text": "Wieviel ist 3m im Maßstab 1:100?",
+        "effectId": "S2_normal_folding_aw2",
+        "nextId": "normal_folding",
+        "$$hashKey": "object:1482"
+      },
+      {
+        "text": "Wieviel sind 4,6 m im Maßstab 1:100?",
+        "effectId": "S2_normal_folding_aw3",
+        "nextId": "normal_folding",
+        "$$hashKey": "object:1483"
+      },
+      {
+        "text": "Wieviel ist 1 cm am Plan im Maßstab 1:100?",
+        "effectId": "S2_normal_folding_aw4",
+        "nextId": "normal_folding",
+        "$$hashKey": "object:1484"
+      },
+      {
+        "text": "Ich hab die Lösung!",
+        "effectId": null,
+        "nextId": "prototyp_quadrat",
+        "$$hashKey": "object:1485"
+      }
+    ]
+  },
+  "prototyp_quadrat": {
+    "text": "Super! Wir können also quadratische Panele mit 3,25 Meter Seitenlänge in die Rakete packen. Notiere wie viele Quadratmeter ein Panel hat. Nimm jetzt das DIN A4 Blatt und teile es in Quadrate und versuche so viele Solarpanele wie möglich aus dem Blatt Papier zu bekommen. Zeichne dazu alle 3,25 Zentimeter eine Linie mit dem Bleistift ein. Am Rand bleiben zu kleine Rechtecke übrig. Schneide die ab. ** Wieviele quadratische Panele passen auf das Blatt? **",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Ich habe 44 quadratische Panele",
+        "effectId": "S2_prototyp_quadrat_aw1",
+        "nextId": "prototyp_quadrat",
+        "$$hashKey": "object:1499"
+      },
+      {
+        "text": "Ich habe 48 quadratische Panele",
+        "effectId": "S2_prototyp_quadrat_aw2",
+        "nextId": "prototyp_quadrat",
+        "$$hashKey": "object:1500"
+      },
+      {
+        "text": "Ich habe 54 quadratische Panele",
+        "effectId": null,
+        "nextId": "prototyp_falten",
+        "$$hashKey": "object:1501"
+      },
+      {
+        "text": "Ich habe 58 quadratische Panele",
+        "effectId": "S2_prototyp_quadrat_aw4",
+        "nextId": "prototyp_quadrat",
+        "$$hashKey": "object:1502"
+      }
+    ]
+  },
+  "prototyp_falten": {
+    "text": "So jetzt müssen wir das nur noch falten. Zuerst wie eine Ziehharmonika der Länge nach, dann der Breite nach bis nur noch ein Quadrat übrig bleibt. ** Wie viele Quadratmeter hat ein Solarpanel? **",
+    "audioId": null,
+    "imageId": "belehrt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "10,5625",
+        "effectId": null,
+        "nextId": "prototyp_lösung",
+        "$$hashKey": "object:1511"
+      }
+    ]
+  },
+  "prototyp_lösung": {
+    "text": "Also so sollte dein Modell aussehen: es ist 19,5 Zentimeter breit und 29,25 Zentimeter lang und hat Linien alle 3,25 Zentimeter. Jedes Quadrat das du am Papier eingezeichnet hast ist ein Panel im Maßstab 1:100 mit 10,5625 Quadratmeter und Seitenlänge 3,25 m.",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Schicken wir die Lösung an die Nasa!",
+        "effectId": "S2_prototyp_lösung_aw1",
+        "nextId": "prototyp_finale",
+        "$$hashKey": "object:1514"
+      }
+    ]
+  },
+  "prototyp_finale": {
+    "text": "Hallo Herr Professor Unfall! Wir haben uns ihre Lösung angesehen! Aber da gibt es folgende Probleme: Euer Panel kann nur entfaltet werden wenn wir 2 Entfaltungsmotoren mit schicken, einen auf der Längsseite und einen zweiten auf der Breitseite.  Die können nicht einmal zugleich arbeiten, sondern erst der eine dann der andere. Das müssen wir vermeiden! Das hat alles zu viel Gewicht! Ein Motor und ein Gestänge muss reichen. Immerhin wird die Entfaltung auch nur einmal durchgeführt. Wir wollen ja nicht 2 Motoren als Weltraummüll zurück lassen.",
+    "audioId": null,
+    "imageId": null,
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Gibt es andere Möglichkeiten als Faltung?",
+        "effectId": "S2_prototyp_finale_aw1",
+        "nextId": "prototyp_finale",
+        "$$hashKey": "object:1517"
+      },
+      {
+        "text": "Wir brauchen eine Lösung aus der Bionik!",
+        "effectId": "S2_prototyp_finale_aw2",
+        "nextId": "miura_beispiele_aus_der_natur",
+        "$$hashKey": "object:1518"
+      }
+    ]
+  },
+  "miura_beispiele_aus_der_natur": {
+    "text": "Also in der Natur gibt es folgende Beispiele: Die Buchenknospe enthält ein gefaltetes Blatt und entfaltet es. Auch Insekten nutzen Faltungen, um ihre Flügel zu verstauen, wenn sie gerade nicht fliegen. Eine andere Technik haben die  Japaner erfunden. Die sind Meister im Papierfalten, das nennen sie Origami. Was soll ich dir erklären?",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Zeig mir Beispiele aus der Natur",
+        "effectId": "S2_miura_beispiele_aus_der_natur_link",
+        "nextId": "miura_beispiele_aus_der_natur",
+        "$$hashKey": "object:955"
+      },
+      {
+        "text": "Erklär mir die Buchenknospe",
+        "effectId": "scene5",
+        "nextId": "leaf_bud",
+        "$$hashKey": "object:956"
+      },
+      {
+        "text": "Erklär mir Origami",
+        "effectId": "scene4",
+        "nextId": "origami",
+        "$$hashKey": "object:957"
+      },
+      {
+        "text": "Wir verwenden die Buchenknospen-Version",
+        "effectId": "S2_miura_beispiele_aus_der_natur_aw4",
+        "nextId": "miura_beispiele_aus_der_natur",
+        "$$hashKey": "object:958"
+      },
+      {
+        "text": "Wir sollten Origami verwenden",
+        "effectId": null,
+        "nextId": "miura_folding",
+        "$$hashKey": "object:959"
+      }
+    ]
+  },
+  "origami": {
+    "text": "Der Begriff \"Origami\" kommt aus dem Japanischen und bedeutet übersetzt \"gefaltetes Papier\" - \"Oru\" bedeutet \"Falten\" und \"Kami\" bedeutet \"Papier\". Die Kunst des Papierfaltens ist wahrscheinlich zuerst im alten China entstanden gelangte von dort aus nach Japan.  Aus einem einzigen Blatt Papier entstehen dabei Figuren, die auf bestimmte Weise gefaltet werden, wie zum Beispiel die Grundfiguren Kranich und Frosch. Je nach Komplexität können Origami-Figuren zwei- oder dreidimensional sein. Die wichtigste Regel beim Falten ist, dass keine Schere und kein Klebstoff verwendet werden dürfen!",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Okay, hab verstanden!",
+        "effectId": "scene0",
+        "nextId": "miura_beispiele_aus_der_natur",
+        "$$hashKey": "object:1546"
+      },
+      {
+        "text": "Kann ich mir anschauen, wie man einen Kranich faltet?",
+        "effectId": "S2_origami_link",
+        "nextId": "miura_beispiele_aus_der_natur",
+        "$$hashKey": "object:1547"
+      }
+    ]
+  },
+  "leaf_bud": {
+    "text": "Buchenblätter sind erstaunlich! Wenn neue Blattknospen an einer Buche wachsen, sind die Blätter in der Knospe schon komplett angelegt. Sie müssen nur noch entfaltet werden und etwas wachsen. Man kann sich kaum vorstellen, dass ein ganzes Blatt in solch einer kleinen Knospe Platz hat. Wie geht das? Um das zu schaffen, verwenden Buchenblätter eine geniales Faltsystem. Die Blätter haben eine Mittelader, von dieser gehen links und recht Seitenadern im Winkel von 60° ab. Wenn die Mittelader wächst, wachsen zeitgleich die Seitenadern und das Blatt entfaltet sich!",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Verstanden, lass uns fortfahren!",
+        "effectId": "scene0",
+        "nextId": "miura_beispiele_aus_der_natur",
+        "$$hashKey": "object:1533"
+      }
+    ]
+  },
+  "miura_folding": {
+    "text": "Also Origami soll es sein. Allerdings können wir mit Figuren und Papierfliegern wenig anfangen. Wir brauchen eine spezielle Faltung für Solarsegel. Eine technische Faltung. Da kenne ich nur einen, der helfen kann! Mein Kollege Koryo Miura aus Japan.",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Schreiben wir ihm eine Email",
+        "effectId": "scene6",
+        "nextId": "miura_email",
+        "$$hashKey": "object:1343"
+      }
+    ]
+  },
+  "miura_email": {
+    "text": "Email aus Japan! Miura schreibt: “Lieber Kollege Unfall! Ich habe dein Problem analysiert. Ich glaube ich kann dir helfen. Vor einigen Jahren habe ich die Miura-Ori Faltung erfunden. Ich glaube das ist genau was du suchst. Schau dir die Anhänge und Links durch. Ich hoffe du findest dort was du suchst. Liebe Grüße, Koryo Miura.”",
+    "audioId": null,
+    "imageId": null,
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Video öffnen",
+        "effectId": "S2_miura_folding_help_link",
+        "nextId": "miura_email",
+        "$$hashKey": "object:1564"
+      },
+      {
+        "text": "PDF öffnen",
+        "effectId": "S2_miura_email_link",
+        "nextId": "miura_email",
+        "$$hashKey": "object:1565"
+      },
+      {
+        "text": "Ich schaffs nicht, hilf mir bitte.",
+        "effectId": "scene7",
+        "nextId": "miura_folding_help",
+        "$$hashKey": "object:1566"
+      },
+      {
+        "text": "Fertig, funktioniert super!",
+        "effectId": "scene8",
+        "nextId": "miura_ende",
+        "$$hashKey": "object:1567"
+      },
+      {
+        "text": "Habs! Und was soll uns das bringen?",
+        "effectId": "scene0",
+        "nextId": "miura_folding_mad",
+        "$$hashKey": "object:1568"
+      }
+    ]
+  },
+  "miura_folding_mad": {
+    "text": "Was meinst du damit, was soll das bringen?! Du wirst doch wohl einen Unterschied zwischen den beiden Faltungen bemerkt haben! Versuch es noch mal!",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Okay, habs verstanden",
+        "effectId": null,
+        "nextId": "miura_email",
+        "$$hashKey": "object:3499"
+      },
+      {
+        "text": "Ich schaffs nicht, hilf mir bitte",
+        "effectId": "scene7",
+        "nextId": "miura_folding_help",
+        "$$hashKey": "object:3500"
+      }
+    ]
+  },
+  "miura_folding_help": {
+    "text": "Im Video wird nochmal die Faltung erklärt. Ab Minute 20 wird der komplizierte Schritt noch einmal gezeigt. Englisch kannst du ja fließend.",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Jetzt klappt es!",
+        "effectId": "scene8",
+        "nextId": "miura_ende",
+        "$$hashKey": "object:2009"
+      },
+      {
+        "text": "Ich krieg es immer noch nicht hin.",
+        "effectId": "S2_miura_folding_help_aw2",
+        "nextId": "miura_folding_help",
+        "$$hashKey": "object:2010"
+      },
+      {
+        "text": "Ich spreche keine Englisch.",
+        "effectId": "S2_miura_folding_help_aw3",
+        "nextId": "miura_folding_help",
+        "$$hashKey": "object:2011"
+      }
+    ]
+  },
+  "miura_ende": {
+    "text": "Toll gemacht! Zum Vergleich hast du hier noch einmal die animierte Faltung.",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Lass uns fortfahren!",
+        "effectId": "scene0",
+        "nextId": "lab_journal",
+        "$$hashKey": "object:4740"
+      }
+    ]
+  },
+  "lab_journal": {
+    "text": "Vergiss nicht, alle Ergebnisse in das Laborjournal einzutragen!",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Erledigt!",
+        "effectId": null,
+        "nextId": "ENDE",
+        "$$hashKey": "object:5396"
+      },
+      {
+        "text": "Hab vergessen wie",
+        "effectId": "S2_lab_journal_link",
+        "nextId": "lab_journal",
+        "$$hashKey": "object:5397"
+      }
+    ]
+  },
+  "ENDE": {
+    "text": null,
+    "audioId": null,
+    "imageId": null,
+    "imageWidth": null,
+    "answers": []
+  }
+}
