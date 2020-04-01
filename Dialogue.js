@@ -729,8 +729,8 @@ locandy.player.plugins.Dialogue.prototype.moreLessTextButtonPressed = function()
                 return; // >>>>>>>>>>>>>>> EXIT >>>>>>>>>>>>>>>>
             }
             
-            var regex = /[*]{2}([^*]*)[*]{2}/g;
-            var array = [...this.textToDisplay.matchAll(regex)];
+            var regex = /[*]{2}([^*]*)[*]{2}/g;  // match all bold sections!
+            var array = Array.from(this.textToDisplay.matchAll(regex));
             
             if(array.length > 0)
             {
@@ -742,7 +742,7 @@ locandy.player.plugins.Dialogue.prototype.moreLessTextButtonPressed = function()
             }
             else
             {
-                var regex = /[^.?!]*./;
+                var regex = /[^.?!]*./;  // match 1st sentence
                 var array = this.textToDisplay.match(regex);
                 
                 if(array.length > 0)
