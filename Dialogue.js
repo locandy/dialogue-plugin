@@ -140,7 +140,7 @@ locandy.player.plugins.Dialogue.exportJsonDialogueToClipboard = function(pluginM
     };
 
 /** @function {static} addDialogueToModel */
-locandy.player.plugins.Dialogue.addDialogueToModel = function(pluginModel, inputs)
+locandy.player.plugins.Dialogue.addDialogueToModel = function(pluginModel, inputs, editorScope)
     {
         // check if key is already used
         if (!(inputs.newDialogueId in pluginModel.dialogue)){
@@ -150,7 +150,9 @@ locandy.player.plugins.Dialogue.addDialogueToModel = function(pluginModel, input
                 "imageId":null,
                 "imageWidth":null,
                 "answers": []};
-                inputs.newDialogueId = "";
+                
+            editorScope.activeDialogueId = inputs.newDialogueId;
+            inputs.newDialogueId = "";
         } else {
             alert("ID is alredy used. Please choose another, or delete the section first.");
         }
@@ -268,7 +270,7 @@ locandy.player.plugins.Dialogue.removeAudioFromModel = function(pluginModel, rem
 }
 
 /** @function {static} removeDialogueFromModel @inheritdesc */
-locandy.player.plugins.Dialogue.removeDialogueFromModel = function(pluginModel, activeDialogueId)
+locandy.player.plugins.Dialogue.removeDialogueFromModel = function(pluginModel, editorScope)
     {
         if(pluginModel.dialogue === undefined || pluginModel.dialogue === null)
         {
@@ -284,9 +286,9 @@ locandy.player.plugins.Dialogue.removeDialogueFromModel = function(pluginModel, 
             }
         }
         
-        if (!(activeDialogueId == "START")){
-            delete pluginModel.dialogue[activeDialogueId];
-            // has no effect here! activeDialogueId = "START";
+        if (!(editorScope.activeDialogueId == "START")){
+            delete pluginModel.dialogue[editorScope.activeDialogueId];
+            editorScope.activeDialogueId = "START";
         }
         
     }
@@ -362,13 +364,14 @@ locandy.player.plugins.Dialogue.getTemplate = function(scope)
 
 /** @function {static} getEditTemplate @inheritdesc
 
-    Editor scope temporary variables declared in inputs in this template
-    inputs = [
+    Editor scope temporary variables declared in inputs in this template.
+    The editor-scope isFinite this in the template context and can be passed from the template to a function that needs to update the sate of the scope. 
+    inputs = {
         importJsonDialogue = "";
         newDialogueId = "";
         newImageId = "";
         newAudioId = "";
-    ]
+    }
         // id to remove attribute from model
         removeImageId = "";
         removeAudioId = "";
@@ -527,7 +530,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                         ng-disabled="activeDialogueId == \'START\'" \
                         style="float:right" \
                         class="btn btn-fancy btn-medium btn-default" \
-                        data-button-handler="global.locandy.player.plugins.Dialogue.removeDialogueFromModel(pluginModel, activeDialogueId)">\
+                        data-button-handler="global.locandy.player.plugins.Dialogue.removeDialogueFromModel(pluginModel, this)">\
                         <span class="label-for-icon">{{"Remove section "|i18n:"editor_plugin_dialogue_remove"}}</span> \
                         <span class="icon-minus-circle2 reusable-color-danger"></span>\
                     </button> \
@@ -546,7 +549,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                             <button \
                             ng-disabled="inputs.newDialogueId == null || inputs.newDialogueId == \'\'" \
                             class="btn btn-fancy btn-medium btn-default" \
-                            data-button-handler="global.locandy.player.plugins.Dialogue.addDialogueToModel(pluginModel, inputs)">\
+                            data-button-handler="global.locandy.player.plugins.Dialogue.addDialogueToModel(pluginModel, inputs, this)">\
                             <span class="icon-plus-circle2 reusable-color-success"></span> \
                             <span class="label-for-icon">{{"Add"|i18n:"editor_plugin_dialogue_add_btn"}}</span> \
                             </button> \
