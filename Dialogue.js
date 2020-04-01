@@ -166,10 +166,11 @@ locandy.player.plugins.Dialogue.removeAnswerFromModel = function(pluginModel, an
     };
 
 /** @function {public void} moveAnswerUp */
-locandy.player.plugins.Dialogue.moveAnswerUp = function(pluginModel, answerId)
+locandy.player.plugins.Dialogue.moveAnswerUp = function(pluginModel, activeDialogueId, answer)
     {
-        var index = pluginModel.dialogue[pluginModel.activeDialogueId].answers.indexOf(answerId);
-        locandy.utilities.moveArrayItem(pluginModel.dialogue[pluginModel.activeDialogueId].answers, index, index-1 );
+        var index = pluginModel.dialogue[activeDialogueId].answers.indexOf(answer);
+        console.log("index:" + index);
+        locandy.utilities.moveArrayItem(pluginModel.dialogue[activeDialogueId].answers, index, index-1 );
     };
 
 /** @function {static} writeRescourceToModel @inheritdesc called by LocationController::updatePluginResource() (via fine-uploader directive) it consumes pluginModel.type to resolve this function */
@@ -502,7 +503,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                                 <button \
                                     class="btn btn-fancy btn-medium btn-default" \
                                     data-ng-class="{\'disabled\':$first}" \
-                                    data-button-handler="global.locandy.player.plugins.Dialogue.moveAnswerUp(pluginModel, answer)">\
+                                    data-button-handler="global.locandy.player.plugins.Dialogue.moveAnswerUp(pluginModel, activeDialogueId, answer)">\
                                     <span class="icon-arrow-up5"></span> \
                                 </button> \
                             </div> \
