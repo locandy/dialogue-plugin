@@ -56,6 +56,7 @@ locandy.player.plugins.Dialogue = function(spot, pluginModel)
         this.watchStateId = "activeDialogueNode"; // Could be set dynamically in Editor or hardwired
         this.activateOrChangeWatch();
         
+        this.activeDialogueId = "START";
         this.nodeVisited = {};
     };
 
@@ -284,7 +285,7 @@ locandy.player.plugins.Dialogue.removeDialogueFromModel = function(pluginModel, 
         
         if (!(activeDialogueId == "START")){
             delete pluginModel.dialogue[activeDialogueId];
-            activeDialogueId = "START";
+            // has no effect here! activeDialogueId = "START";
         }
         
     }
@@ -785,7 +786,11 @@ locandy.player.plugins.Dialogue.prototype.executeAnswer = function(answer)
 locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDialogueId)
 {
     console.log("Dialogue.setActiveDialogue(" + activeDialogueId + ")");
-    this.activeDialogueId = activeDialogueId;
+    
+    if(this.dialogue[activeDialogueId] === undefined) // safety after removeNode etc.
+        this.activeDialogueId = "START"; // cannot be removed
+    else
+        this.activeDialogueId = activeDialogueId;
     
     this.imageUrl = null;
     if (this.dialogue[this.activeDialogueId].imageId !== null 
