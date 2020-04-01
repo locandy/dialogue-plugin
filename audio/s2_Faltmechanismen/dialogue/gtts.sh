@@ -5,8 +5,8 @@
 CODEC="LINEAR16";
 OUTEXT="wav"
 LANG="de-de"
-GENDER="FEMALE"
-VOICE="de-DE-Wavenet-A"
+GENDER="MALE"
+VOICE="de-DE-Wavenet-B"
 PITCH="0"
 RATE="1"
 DEBUG=0
