@@ -1,0 +1,426 @@
+{
+  "START": {
+    "text": "Wir brauchen Drohnen! Lautlose Drohnen mit Kamera und Mikrofon! Ganz kleine! Wir bauen Prototypen! Bist du dabei? Dann schnapp dein Laborjournal für deine Notizen und los geht’s!",
+    "audioId": null,
+    "imageId": "fanatisch-groß.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Wofür brauchen wir Drohnen?",
+        "effectId": "S3_START_aw1",
+        "nextId": "START",
+        "$$hashKey": "object:275"
+      },
+      {
+        "text": "Wie kann ich dir helfen?",
+        "effectId": null,
+        "nextId": "collect_ideas",
+        "$$hashKey": "object:276"
+      },
+      {
+        "text": "Coole Sache! Bin dabei!",
+        "effectId": null,
+        "nextId": "collect_ideas",
+        "$$hashKey": "object:277"
+      },
+      {
+        "text": "Was für Prototypen sollen das sein?",
+        "effectId": "S3_START_aw4",
+        "nextId": "collect_ideas",
+        "$$hashKey": "object:278"
+      }
+    ]
+  },
+  "collect_ideas": {
+    "text": "Hast du schon Ideen wie wir das machen können? Vielleicht kann man sich im Tier- und Pflanzenreich inspirieren lassen...",
+    "audioId": null,
+    "imageId": "fragt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Wir haben doch schon Flugzeuge. Wofür müssen wir etwas Neues erfinden?",
+        "effectId": "S3_collect_ideas_aw1",
+        "nextId": "collect_ideas",
+        "$$hashKey": "object:287"
+      },
+      {
+        "text": "Adler segeln oft lange in Kreisen um Beute zu suchen.",
+        "effectId": null,
+        "nextId": "eagle",
+        "$$hashKey": "object:288"
+      },
+      {
+        "text": "Die Samen vom Ahornbaum haben Flügel.",
+        "effectId": "S3_collect_ideas_aw3",
+        "nextId": "zanonia_introduction",
+        "$$hashKey": "object:289"
+      },
+      {
+        "text": "Mir fällt nichts ein!",
+        "effectId": "S3_collect_ideas_aw4",
+        "nextId": "zanonia_introduction",
+        "$$hashKey": "object:290"
+      }
+    ]
+  },
+  "eagle": {
+    "text": "Ja das stimmt, Adler kreisen wirklich lange in der Luft und halten nach Beute ausschau. Aber solche Vögel nutzen doch vor allem Winde um lange in der Luft zu bleiben! Unsere Drohnen sollen in großer Höhe fliegen können, um nicht vom Feind entdeckt zu werden. Wir dürfen nicht abhängig von Aufwinden sein! Unsere Drohne muss unter allen Bedingungen starten können!",
+    "audioId": null,
+    "imageId": "belehrt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Ja stimmt, wir sollten etwas anderes versuchen!",
+        "effectId": null,
+        "nextId": "zanonia_introduction"
+      },
+      {
+        "text": "Alles klar!",
+        "effectId": null,
+        "nextId": "zanonia_introduction"
+      }
+    ]
+  },
+  "zanonia_introduction": {
+    "text": "Eines ist klar: Wir brauchen Flügel oder eine Tragfläche, die sehr lange gleiten kann! … Jetzt ist es mir eingefallen: Ich habe mal von Zanonia-Samen irgendwo in Asien gehört. Die sollen weite Strecken segeln können.",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Zanonia-Samen? Hab ich noch nie gehört. Erzähl mir mehr!",
+        "effectId": null,
+        "nextId": "zanonia_macrocarpa",
+        "$$hashKey": "object:299"
+      },
+      {
+        "text": "Kenn ich schon!",
+        "effectId": "S3_zanonia_introduction_aw2",
+        "nextId": "zanonia_macrocarpa",
+        "$$hashKey": "object:300"
+      }
+    ]
+  },
+  "zanonia_macrocarpa": {
+    "text": "In meinem Lexikon steht, dass die Zanonia macrocarpa oder auch synonym Alsomitra macrocarpa ein tropisches Kürbisgewächs ist, das im südostasiatischen Raum vorkommt. Wenn Latein für Dich Spanisch klingt, kannst Du auch Java-Gurke dazu sagen. Die Pflanze klammert sich an andere Pflanzen wie zum Beispiel Urwaldbäume, umschlingt diese und wächst an ihnen hoch, wie eine Liane. Dabei wird sie 30 - 50 m lang und bildet kürbisartige Früchte aus, in denen die Samen heranreifen.",
+    "audioId": null,
+    "imageId": "erklärt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Wie sieht die Pflanze aus?",
+        "effectId": "S3_zanonia_macrocarpa_aw1_link",
+        "nextId": "zanonia_macrocarpa",
+        "$$hashKey": "object:305"
+      },
+      {
+        "text": "Wo ist denn Südostasien?",
+        "effectId": "S3_zanonia_macrocarpa_aw2",
+        "nextId": "zanonia_macrocarpa",
+        "$$hashKey": "object:306"
+      },
+      {
+        "text": "Wie soll ein Kürbis bei unserem Problem helfen?",
+        "effectId": "S3_zanonia_marcocarpa_aw3",
+        "nextId": "zanonia_seed",
+        "$$hashKey": "object:307"
+      }
+    ]
+  },
+  "zanonia_seed": {
+    "text": "Wenn die Früchte der Pflanze reif sind, brechen sie auf und entlassen Hunderte von Flugsamen, um sich zu vermehren. Diese Samen können außergewöhnlich gut gleiten und zwar mehrere hundert Meter weit!",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Warum müssen die Samen so weit fliegen?",
+        "effectId": "S3_zanonia_seed_aw1",
+        "nextId": "zanonia_seed",
+        "$$hashKey": "object:314"
+      },
+      {
+        "text": "Wie funktioniert das?",
+        "effectId": "S3_zanonia_seed_aw2",
+        "nextId": "zanonia_seed",
+        "$$hashKey": "object:315"
+      },
+      {
+        "text": "Na gut, was hat uns diese Entdeckung nun gebracht?",
+        "effectId": "scene2",
+        "nextId": "flight_history",
+        "$$hashKey": "object:316"
+      }
+    ]
+  },
+  "flight_history": {
+    "text": "Diese Pflanze, besser gesagt ihre Samen, haben dem Mensch nur mal so eben das Fliegen beigebracht! Durch ihre tollen Eigenschaften wurden bereits viele verschiedene Pflanzen und Pflanzensamen zum Vorbild für frühe Flugkünste. Leonardo da Vinci zeichnete bereits im 15. Jhdt. erste Entwürfe von Flugmaschinen, später folgte Otto Lilienthal mit den selbstgebauten Flügelschlagapparat. Aber erst durch Ignaz Etrich wurden im Jahr 1904 die Flugobjekte verbessert. Er war der erste, der die Konstruktionsart von Zanonia Samen zum Bau einer Flugmaschine nutzte ... den Nurflügler. Alles Erfindungen, die von der Natur abgeschaut wurden!",
+    "audioId": null,
+    "imageId": "belehrt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Wer ist Leonardo da Vinci nochmal?",
+        "effectId": "S3_flight_history_aw1",
+        "nextId": "da_vinci",
+        "$$hashKey": "object:323"
+      },
+      {
+        "text": "Zeig mir den Flügelschlagapparat!",
+        "effectId": "S3_flight_history_aw2",
+        "nextId": "flight_history",
+        "$$hashKey": "object:324"
+      },
+      {
+        "text": "Was ist ein Nurflügler?",
+        "effectId": "scene4",
+        "nextId": "flying_wing",
+        "$$hashKey": "object:325"
+      },
+      {
+        "text": "Klingt spannend, wie können wir das testen?",
+        "effectId": "scene0",
+        "nextId": "prototyp_intro",
+        "$$hashKey": "object:326"
+      }
+    ]
+  },
+  "da_vinci": {
+    "text": "Er lebte von 1452 bis 1519 in Italien und gilt als einer der größten Erfinder aller Zeiten. Einige sagen sogar, er sei der Vater der Bionik! Er hat einen großen Beitrag zur frühen bionischen Forschung beigetragen und beschäftigte sich unter anderem, wie bereits erwähnt, mit Thema Fliegen! Er entwarf erste Fallschirme, Fluggeräte nach dem Hubschrauber-Prinzip und noch weitere Flugmaschinen!",
+    "audioId": null,
+    "imageId": "erklärt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Wie haben die Flugmaschinen ausgesehen?",
+        "effectId": "S3_da_vinci_aw1",
+        "nextId": "da_vinci",
+        "$$hashKey": "object:335"
+      },
+      {
+        "text": "Klingt ja spannend, erzähl mir mehr vom “Vater der Bionik”!",
+        "effectId": "S3_da_vinci_aw2_link",
+        "nextId": "da_vinci",
+        "$$hashKey": "object:336"
+      },
+      {
+        "text": "Okay!",
+        "effectId": null,
+        "nextId": "flight_history",
+        "$$hashKey": "object:337"
+      }
+    ]
+  },
+  "flying_wing": {
+    "text": "Diese Flugmaschinen bestehen hauptsächlich aus Flügeln beziehungsweise Tragflächen. Ein Rumpf ist nicht vorhanden. Genau wie bei den Zanonia Samen!",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Zanonia Samen können also aufgrund ihrer Bauweise lange gleiten, was sie zum Vorbild für Flugmaschinen machte?",
+        "effectId": "S3_flying_wing_aw1",
+        "nextId": "prototyp_intro"
+      }
+    ]
+  },
+  "prototyp_intro": {
+    "text": "Lass uns einen Prototypen für unsere Drohnen auf Basis der Zanonia Samen bauen! Schnapp dir die Zanonia-Vorlage, eine Schere und die Pattafix-Klebestreifen!",
+    "audioId": null,
+    "imageId": "fanatisch-groß.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Hab alles!",
+        "effectId": null,
+        "nextId": "instruction"
+      },
+      {
+        "text": "Vorlage öffnen",
+        "effectId": "S3_prototyp_intro_aw2_link",
+        "nextId": null
+      }
+    ]
+  },
+  "instruction": {
+    "text": "Nimm die Vorlage, auf der die Form der Samen abgebildet sind, und schneide eine Form aus. Nimm als nächstes ein ganz kleines Stück von der Patafixklebemasse, nicht größer als der Radiergummi an deinem Bleistift! Du kannst alternativ auch eine andere Knetmasse verwenden, die klebt aber nicht so gut. Damit gestaltest Du den Kern des Samens! Forme dazu die Masse zu einer Kugel und rolle sie dann kurz zwischen den Fingern, damit die Kugel zu einer kurzen, länglichen Wurst wird.. Klebe die Masse anschließend auf die gekennzeichnete Fläche auf die eben ausgeschnittene Form. Drücke sie dazu leicht an, dass die Masse abgeflacht wird, wie beim echten Samen! Was glaubst du was passiert, wenn wir den Prototyp gleich fliegen lassen?",
+    "audioId": null,
+    "imageId": "erklärt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Er fällt zu Boden wie ein Stein.",
+        "effectId": "S3_instruction_aw1",
+        "nextId": "instruction"
+      },
+      {
+        "text": "Er fliegt propellerartig zu Boden, wie ein Ahornsamen.",
+        "effectId": "S3_instruction_aw2",
+        "nextId": "test"
+      },
+      {
+        "text": "Er kann weit gleiten, wie der Zanonia-Samen!",
+        "effectId": "S3_instruction_aw3",
+        "nextId": "test"
+      }
+    ]
+  },
+  "test": {
+    "text": "Nun, da wir den Prototypen gebaut haben, müssen wir vor dem Experiment auch testen, ob er funktioniert! Halte den Gleiter sachte zwischen Daumen und Zeigefinger und lasse ihn auf Brusthöhe los. Aber nicht anschubsen, einfach loslassen!",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Er fällt doch wie ein Stein zu Boden...",
+        "effectId": "S3_test_aw1",
+        "nextId": "test"
+      },
+      {
+        "text": "Ich glaube ich habe etwas falsch gemacht. Erklär mir bitte nochmal was ich machen muss.",
+        "effectId": null,
+        "nextId": "instruction"
+      },
+      {
+        "text": "Super, der Prototyp gleitet und funktioniert!",
+        "effectId": null,
+        "nextId": "intro_glide_ratio"
+      }
+    ]
+  },
+  "intro_glide_ratio": {
+    "text": "Da der Prototyp nun einsatzfähig ist, können wir ein Experiment damit anstellen und unsere Hypothese überprüfen! Um eine hohe Gleitleistung zu erzielen, sollten das Sinken des Gleiters und die zurückgelegte Strecke in einem guten Verhältnis zueinander stehen. Anders ausgedrückt, man stellt die Flugweite der Fallhöhe gegenüber. Dieses Verhältnis wird auch als Gleitzahl bezeichnet.",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Das klingt kompliziert, kannst du mir helfen?",
+        "effectId": "S3_intro_glide_ratio_aw1",
+        "nextId": "ratio_explain"
+      },
+      {
+        "text": "Was muss ich tun?",
+        "effectId": null,
+        "nextId": "exp_glide_ratio"
+      }
+    ]
+  },
+  "ratio_explain": {
+    "text": "Hier hast du eine Grafik.",
+    "audioId": null,
+    "imageId": "belehrt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Habs verstanden! Auf zum Experiment!",
+        "effectId": null,
+        "nextId": "exp_glide_ratio"
+      },
+      {
+        "text": "Habs noch nicht verstanden!",
+        "effectId": "S3_ratio_explain_aw2",
+        "nextId": "ratio_explain"
+      }
+    ]
+  },
+  "exp_glide_ratio": {
+    "text": "Lass den Gleiter nun auf dieselbe Weise fliegen wie zuvor, aber bestimme diesmal die Gleitzahl! Merk dir genau den Ort, an dem du stehst. Schnapp dir das Rollmeter und einen Assistenten oder eine Assistentin. Sie oder er soll dir bei der Messung der Flughöhe helfen. Messt dazu vom Boden einen Meter in die Höhe, genau an der Stelle, wo du stehst! Nimm die Startposition ein! Platziere dazu den Gleiter genau in ein einem Meter Höhe, orientiert euch dazu am Maßband! Lass den Gleiter los! Nachdem er gelandet ist, kannst du nun mit dem Rollmeter die Flugweite bestimmen. Berechne nun die Gleitzahl und trage alle Zahlen in dein Laborjournal ein! Versuch danach dasselbe, was passiert, wenn du die Flughöhe veränderst! Berechne auch die Gleitbahnen!",
+    "audioId": null,
+    "imageId": "erklärt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Wie messe ich die Flugweite?",
+        "effectId": "S3_exp_glide_ratio_aw1",
+        "nextId": "exp_glide_ratio"
+      },
+      {
+        "text": "Wie merke ich mir am besten den Startpunkt?",
+        "effectId": "S3_exp_glide_ratio_aw2",
+        "nextId": "exp_glide_ratio"
+      },
+      {
+        "text": "Bitte noch einmal die Erklärung zur Berechnung!",
+        "effectId": "S3_exp_glide_ratio_aw3",
+        "nextId": "ratio_explain"
+      },
+      {
+        "text": "Wie kann ich die Gleitbahn berechnen?",
+        "effectId": "S3_exp_glide_ratio_aw4",
+        "nextId": "exp_glide_ratio"
+      },
+      {
+        "text": "Zeig mir Vergleichszahlen zur Gleitzahl!",
+        "effectId": "S3_exp_glide_ratio_aw5",
+        "nextId": "exp_glide_ratio"
+      },
+      {
+        "text": "Wie kann ich ich die Gleitleistung verbessern?",
+        "effectId": "S3_exp_glide_ratio_aw6",
+        "nextId": "intro_optimize"
+      }
+    ]
+  },
+  "intro_optimize": {
+    "text": "Es gibt mehrere Möglichkeiten, um die Gleitleistung zu verbessern.",
+    "audioId": null,
+    "imageId": "erklärt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Formoptimierung",
+        "effectId": "S3_intro_optimize_aw1",
+        "nextId": "intro_optimize"
+      },
+      {
+        "text": "Gewichtsanpassung",
+        "effectId": "S3_intro_optimize_aw2",
+        "nextId": "intro_optimize"
+      },
+      {
+        "text": "Strömungswiderstand verringern",
+        "effectId": "S3_intro_optimize_aw3",
+        "nextId": "intro_optimize"
+      },
+      {
+        "text": "Hab beides ausprobiert! Lass uns fortfahren!",
+        "effectId": "scene0",
+        "nextId": "challenge"
+      }
+    ]
+  },
+  "challenge": {
+    "text": "Nun bist du ja bereits Experte im Gleitflug! Schnapp dir deinen Prototypen und trete gegen deine MitschülerInnen in einem Wettkampf an. Falls du gerade keine Mitschüler bei dir hast, könnt ihr auch übers Smartphone eine Videochallenge veranstalten. Wer gleitet wohl am weitesten?",
+    "audioId": null,
+    "imageId": "fanatisch-groß.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Weiter geht’s!",
+        "effectId": null,
+        "nextId": "protocol"
+      }
+    ]
+  },
+  "protocol": {
+    "text": "Vergiss nicht alles genau in deinem Laborjournal zu protokollieren! Welche Gleitzahl hast du am Anfang erzielt? Wie hat die Gleithöhe die Gleitweite beeinflusst? Wie hat sich die Optimierungen des Gleitfliegers ausgewirkt? Hat etwas gar nicht funktioniert?",
+    "audioId": null,
+    "imageId": "belehrt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Hab alles eingetragen!",
+        "effectId": null,
+        "nextId": "END"
+      }
+    ]
+  },
+  "END": {
+    "text": "Super! Nun müssen wir nur noch die Drohnen fertigen lassen. Aber mit unseren Ergebnissen und dem Laborjournal, sollte dies nicht mehr so schwer sein.  Dieser Trick des von der Natur abgeschauten Gleitfluges wird nicht nur bei Nurflüglern angewandt. Es gibt einen Stratosphärengleiter, der nach diesem Prinzip funktioniert und auch Gleitfallschirme werden nach diesem Konzept gebaut. Sogar die Drachen, die man an einer Schnur steigen lassen kann, sind vom Zanonia-Samen abgeschaut. Ich hoffe, du hast was gelernt, bis zum nächsten Experiment!",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": []
+  }
+}
