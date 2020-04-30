@@ -395,7 +395,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                     <div style="overflow:hidden"> \
                         <div> \
                             <textarea \
-                                ng-style="{\'height\':(pluginModel.dialogue[editorActiveDialogueId].text.length/56*24+24) + \'px\'}"\
+                                ng-style="{\'height\':(pluginModel.dialogue[editorActiveDialogueId].text.length/56*12+24) + \'px\'}"\
                                 style="margin-bottom:5px min-height:96px" \
                                 class="form-control question" \
                                 data-ng-model="pluginModel.dialogue[editorActiveDialogueId].text" \

@@ -1,0 +1,412 @@
+{
+  "START": {
+    "text": "He du! Warst du schon mal in Dubai? Du weißt schon, dort wo sie eine palmenartige Insel im Meer aufgeschüttet haben! Die haben da auch riesige Gebäude. Das höchste dieser Gebäude heißt “Burj Khalifa” und ist 828 m hoch! Das ist derzeit sogar das höchste Gebäude der ganzen Welt, mit riesigen Fensterfronten! Was glaubst du, wie sie da wohl die Fenster putzen?",
+    "audioId": null,
+    "imageId": "erklärt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Gar nicht.",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:407"
+      },
+      {
+        "text": "Sie fliegen mit Helikoptern dran und putzen dann mit Teleskop-Wischmops.",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:408"
+      },
+      {
+        "text": "Mit Gondel,, die an Seilen hängen.",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:409"
+      },
+      {
+        "text": "Das machen doch heute alles Roboter…",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:410"
+      }
+    ]
+  },
+  "problem": {
+    "text": "Genau! Die Fensterreiniger in Dubai müssen sich immer langwierig abseilen, um die Fenster der Hochhäuser zu putzen. Stell dir vor, die müssen über 800 m über dem Boden an einem Seil hängen. Das ist echt unheimlich! Mein Kollege hat da einen Gecko beobachtet, der einfach auf Glas senkrecht klettert und Insekten jagt. Er hat vorgeschlagen für die Fensterputzer spezielle Handschuhe und Schuhe zu konstruieren, damit sie ohne Seil und Gondel senkrecht am Glas hinauf können um zu putzen. Die Gondeln wackeln im Wind manchmal heftig, da wäre es schon toll, wenn man sich besser festhalten könnte. Und ganz nebenbei, ist Klettern ja auch für Menschen ein interessanter Sport.",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Wie macht der Gecko das?",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Genau wie Spiderman!",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Sind Gondeln nicht zum Skifahren da?",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  },
+  "gecko_intro": {
+    "text": "Geckos sind erstaunliche Tiere, die sogar auf Glas überkopf laufen können, um ihren Feinden zu entwischen oder um selbst Insekten zu jagen, die sich am Glas den Kopf angehauen haben und verwirrt herum sitzen. Geckos besitzen auf ihren Fußsohlen und ihren sehr breiten Zehen sogenannte Haftlamellen, die die Oberfläche des Fußes vergrößern. Du hast bestimmt schon einmal von Oberflächenvergrößerung gehört oder?",
+    "audioId": null,
+    "imageId": "erklärt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Das ist doch beim menschlichen Darm auch so!",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Was bringt eine große Fußsohle?",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Kann ich die Haftlamellen sehen?",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  },
+  "gecko_hair": {
+    "text": "Der eigentliche Trick, mit dem sich Geckos an der Wand festhalten können, sind unzählige kleine Härchen, die auf diesen Haftlamellen sitzen. Diese kleinen Härchen spalten sich am Ende in noch kleinere Härchen auf, die dann am Ende platt sind. Und dadurch, dass die Fußsohle durch die Lamellen vergrößert ist, haben noch mehr Härchen Platz!",
+    "audioId": null,
+    "imageId": "erklärt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Wie sollen Haare beim Haften helfen?",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Wieso spalten sich die Härchen noch einmal?",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Hast du eine Mikroskopaufnahme von den Hafthärchen?",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  },
+  "concept_adherence": {
+    "text": "Die Härchen verbiegen sich bei Kontakt mit dem Untergrund und bilden Millionen von Kontaktpunkten, von denen jeder eine kleine Last tragen kann. Durch die große Anzahl der Härchen ist der Gecko so in der Lage, zwischen seinen Füßchen und der Oberfläche Haftkräfte zu nutzen - die sogenannten Van-der-Waals-Kräfte. Früher dachte man, nur diese Kräfte seien für die Haftung vom Gecko an Oberflächen verantwortlich. Nun hat man entdeckt, dass vor allem elektrostatische Ladungen dafür verantwortlich sind, dass Geckos an der Decke kleben! Durch das Fließen von Elektronen zwischen Geckofuß und Oberfläche kommt es zur sogenannten “Kontaktelektrizität”. Dabei kommt es zur Ladungstrennung, also plus (+) und minus (-).",
+    "audioId": null,
+    "imageId": "erklärt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Was jetzt? Klebt der Gecko fest oder haftet er?",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Was sind Elektronen?",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Was sind Van-der-Waals-Kräfte?",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Was genau versteht man unter Kontaktelektrizität?",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Mir raucht der Kopf! Es verklebt mir schon die Gedanken. Erzähl mir mal so richtig unnützes Wissen, einen  Fun Fact!",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Also hat der Gecko eine Art “trockene” Superhaftkraft entwickelt, die ohne Kleber funktioniert und nicht permanent haftet, sondern sich auch wieder loslösen lässt?",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  },
+  "liability": {
+    "text": "Nein, er klebt nicht im engeren Sinne mit Klebstoff, er haftet. Um beim Laufen nicht an der Wand kleben zu bleiben, rollt er den Fuß ab und bewirkt somit eine Winkelveränderung der Hafthärchen, wodurch sich diese wieder ablösen. So muss er nicht alle Härchen gleichzeitig entfernen. Das würde ihm viel zu schwer fallen, da die Haftkräfte extrem stark sind. So gelingt es ihm, den angehafteten Fuß blitzschnell wieder loszulösen, dies ist vor allem beim Beutefang oder der Flucht vor Feinden wichtig.",
+    "audioId": null,
+    "imageId": "erklärt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Ich kann mir das nicht vorstellen, hast du da ein Beispiel?",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Kann ich die rollenden Zehen sehen?",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Wieso nimmt der Gecko keinen Kleber wie die Stubenfliege?",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Alles klar!",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  },
+  "intro_enlargement": {
+    "text": "Bevor wir zur Elektrizität übergehen, lass uns zuerst in der Praxis ansehen, wie das Prinzip der Oberflächenvergrößerung funktioniert! Hol dir dazu ein Blatt DIN A4 Papier, eine Schere, einen Stift und ein Lineal!",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Was muss ich tun?",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  },
+  "exp_enlargement1": {
+    "text": "Lege das Blatt hochkant vor dir ab. Beschrifte die vier Seiten des Blattes mit Buchstaben. Beginne dabei mit der linken langen Seite mit dem Buchstaben “A” und fahre im Uhrzeigersinn mit “B”, “C” und “D” fort. Du hast nun jeweils zwei lange Seiten mit den Buchstaben “A” und “C” und zwei kurze mit den Buchstaben “B” und “D”. Miss die Seiten ab und trage die Länge aller 4 Seiten in Zentimeter auf eine Kommastelle genau in dein Laborjournal ein, am besten schreibst du sie untereinander. Nun zähle die Seitenlängen zusammen und berechne so den Umfang des Blattes, das hier stellvertretend für eine Oberfläche steht. Welches Ergebnis erhältst du?",
+    "audioId": null,
+    "imageId": "fanatisch-groß.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "102 cm",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "101,4 cm",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Ich erhalte ein anderes Ergebnis.",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  },
+  "exp_enlargement2": {
+    "text": "Nun dreh das Blatt um und bestimme genau die Mitte der langen Seiten. Markiere diese jeweils mit einem Punkt. Ziehe eine Linie und verbinde die zwei Punkte. Teile das Blatt an dieser Linie. Beschrifte nun alle Seiten wieder mit Buchstaben. Da du nun mehr Seiten zur Verfügung hast musst du die Buchstaben “A” bis “H” verwenden. Beschrifte die Seiten wie am Bild. Nun messemiss alle Seitenlängen erneut ab und trage sie wieder in Zentimeter auf eine Kommastelle genau in dein Laborjournal ein. Berechne auch hier wieder den Umfang, indem du alle Maße zusammenzählst! Welches Ergebnis erhältst du?",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "143,2 cm",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "14850 cm",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Ich erhalte ein anderes Ergebnis.",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  },
+  "enlargement_end": {
+    "text": "Berechne nun noch um wieviele Prozent sich die “Oberfläche” des Blattes vergrößert hat!",
+    "audioId": null,
+    "imageId": "erklärt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Kannst du mir bitte helfen?",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Ich hab das richtige Ergebnis!",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  },
+  "materials": {
+    "text": "Nun auf zum nächsten Experiment! Wir gehen über zur Elektrizität! Hol dir zwei Luftballons und ein Mikrofasertuch.",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Ich hab alles!",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Was ist ein Mikrofasertuch?",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Ich habe kein Mikrofasertuch.",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  },
+  "instruction_balloon": {
+    "text": "Nimm die Luftballons und blase sie auf. Nachher ordentlich verknoten! Nimm anschließend das Mikrofasertuch und reibe es schnell an einem Luftballon. Was glaubst du passiert?",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Der Luftballon wird sauber.",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Der Luftballon wird elektrostatisch aufgeladen.",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Das quietscht ganz fürchterlich.",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  },
+  "experiment_balloons": {
+    "text": "Lege den Ballon auf eine Tischplatte. Nimm nun den zweiten Ballon und lade diesen auch auf. Lege ihn neben den ersten Ballon und versuche sie nahe aneinander zu bringen. Was passiert?",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Nichts.",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Die Ballone stoßen sich ab!",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  },
+  "static_electricity": {
+    "text": "Durch die Reibungselektrizität werden also Ladungen getrennt. Ich hab dir ja vorher erklärt, was Kontaktelektrizität ist. Die Reibungselektrizität gehört auch dazu und bildet einen Spezialfall der Kontaktelektrizität. Aber was passiert da genau? Sieh dir dieses kurze Video an, da ist das Phänomen genau erklärt!",
+    "audioId": null,
+    "imageId": "fanatisch-groß.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Link öffnen!",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Hab es angesehen, weiter geht’s!",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  },
+  "experiment_hair": {
+    "text": "Versuche nun den Luftballon an deinen Haaren zu reiben. Ziehe den Ballon nun langsam ein paar Zentimeter vom Kopf weg und beobachte was passiert.",
+    "audioId": null,
+    "imageId": "erklärt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Nichts.",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Die Haare werden vom Ballon angezogen!",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  },
+  "concept_hair": {
+    "text": "Durch das Reiben des Ballons an den Haaren passiert auch wieder Ladungstrennung, wie du es im Video gesehen hast! Beim Reiben wandern Elektronen, die eine negative Ladung haben, von den Haaren zum Ballon. Dadurch, dass in den Haaren nun weniger Elektronen vorhanden sind, also weniger negative Ladung, wird die Ladung der Haare positiv. Beim Ballon verhält es sich genau umgekehrt. Hier wandern die Elektronen hin, der Ballon wird also negativ aufgeladen. Wie wir ja bereits wissen, ziehen sich die unterschiedlichen Ladungen dann an und die Haare bleiben am Ballon kleben. Dieses Phänomen hast du sicher schon kennengelernt. Das tritt auch auf, wenn du im Winter deine Wollmütze abziehst. Du hast nun also je ein Beispiel für Ladungsanziehung und Ladungsabstoßung kennengelernt. Trage alle Beobachtungen, die du gemacht hast, in dein Laborjournal ein!",
+    "audioId": null,
+    "imageId": "erklärt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Was sind noch mal Elektronen?",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Hab alles eingetragen und  verstanden! Wie kann man dieses Phänomen aus der Natur nützen?",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Ich habe vorher das Video übersprungen, kannst du mir noch einmal genau erklären, wie das funktioniert?",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  },
+  "applications_intro": {
+    "text": "Für die industrielle Anwendung ist das Haftprinzip des Geckos besonders interessant, da die Haftkraft extrem stark ist und sich vor allem wieder lösen lässt. Es spielen auch noch weitere Vorteile eine Rolle: die Haftung benötigt keine zusätzliche Energiequelle. Bei einem Saugnapf-Prinzip muss unter Energieverbrauch Luft entzogen werden, es muss ein Unterdruck angelegt und für eine gewisse Zeit gehalten werden. Das Gecko-Prinzip benötigt keine zusätzliche Energiequelle und funktioniert ohne Vakuum. Ein weiterer Vorteil ist, dass der Geckofuß aufgrund seiner ”trockenen” Haftkraft keine Rückstände auf Oberflächen hinterlässt. Somit könnte diese Technologie bei industriellen Greifarmen eingesetzt werden, die empfindliche Teile anheben müssen, wie zum Beispiel Automobilteile, Displays oder Halbleitermaterialien mit hochempfindlichen Oberflächen. Wie am Anfang erwähnt, wird auch bereits ein kletternder Gecko-Roboter entwickelt, der vielfältige Einsatzmöglichkeiten bietet. Eine weitere Entwicklung ist das Gecko-Klebefolie.",
+    "audioId": null,
+    "imageId": "erklärt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Hast du ein Bild vom Geckogreifer und dem Gecko-Roboter?",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Erzähl mir mehr von der Gecko-Klebefolie!",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Alles klar!",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  },
+  "gecko_tape": {
+    "text": "Die spezielle Gecko-Folie namens Gecko®-Tape ist eine ultradünne Silikonfolie und haftet dank der Van-der-Waals-Anziehungskräften auf glatten, unebenen, rutschigen und feuchten Oberflächen, sogar auf Menschenhaut. Die Haftkraft beruht genau wie beim Gecko auf Mikrostrukturen, die wie Hafthärchen wirken, und elektrischen Ladungen. Deshalb kann die Folie rückstandslos entfernt und wiederverwendet werden. Genau dieselben Eigenschaften wie der Geckofuß also! Die Folie klebt so stark, dass ein 20 cm x 20 cm kleines Stück das Gewicht eines Menschen trägt! Dabei ist die Folie nur 0,34 Millimeter dünn und auf einem cm² befinden sich 29000 mikroskopisch kleine Strukturen, die die Hafthärchen ersetzen.",
+    "audioId": null,
+    "imageId": "fanatisch-groß.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Okay!",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  },
+  "END": {
+    "text": "Das hast du wieder super gemeistert! Nun haben wir das Wissen, um einen Hafthandschuh zu entwickeln und die Fensterreiniger damit auszustatten. Damit können sie sich nun freier bewegen und müssen nicht mehr in diese wackligen Gondeln steigen. Sicherheitshalber verwenden wir aber trotzdem zusätzlich ein Sicherungsseil. Ich hoffe, du hattest Spaß an der Station! Bis zum nächsten Experiment, bei dem wir wieder gemeinsam die Natur erforschen!",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": []
+  }
+}
