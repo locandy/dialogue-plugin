@@ -1,0 +1,399 @@
+{
+  "START": {
+    "text": "He du! Ich könnte deine Hilfe gebrauchen! Ein bekannter Architekt und guter Kollege von mir will eine neue, extrem lange Brücke bauen. Die Brücke sollte möglichst wenig Material benötigen, aber dennoch sehr stabil sein. Im Optimalfall soll sie zusätzlich möglichst rasch gebaut werden können.",
+    "audioId": null,
+    "imageId": "fanatisch-groß.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Wozu brauchen wir eine Brücke?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:502"
+      },
+      {
+        "text": "Es gibt doch schon genug Ideen für den Brückenbau!",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:529"
+      },
+      {
+        "text": "Klar, bin dabei! Los geht’s!",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:557"
+      }
+    ]
+  },
+  "problem": {
+    "text": "Da gibt es noch ein Problem: Die Brücke darf keine Stützpfeiler besitzen, wie man das von herkömmlichen Brücken kennt, da wir sie universell einsetzen möchten, egal wie tief der Fluss oder die Schlucht ist. Wir wollen in der Lage sein, alles zu überbrücken! Ich habe eine Idee! Wir nützen Konstruktionsbionik!",
+    "audioId": null,
+    "imageId": "erklärt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Was ist Konstruktionsbionik?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:646"
+      },
+      {
+        "text": "Kannst du mir Beispiele für Konstruktionsbionik zeigen?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:659"
+      },
+      {
+        "text": "Habe verstanden! Wie können wir die Konstruktionsbionik nützen?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:688"
+      }
+    ]
+  },
+  "bambus_intro": {
+    "text": "Ich habe einmal gehört, dass die Bambuspflanze extrem schnell wächst und gleichzeitig sehr stabil ist. Diese Eigenschaften würden sich doch perfekt für unsere Zwecke eignen, was sagst du dazu?",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Pandas fressen Bambus, stimmt das?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:3111"
+      },
+      {
+        "text": "Wie groß wird die Bambuspflanze?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:3159"
+      },
+      {
+        "text": "Warum ist Bambus so stabil?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:3189"
+      }
+    ]
+  },
+  "bambus": {
+    "text": "Die Bambuspflanze gehört zur Familie der Süßgräser. Eine Besonderheit am Bambus ist, dass er extrem schnell wächst, teilweise bis zu 1 Meter am Tag! Er wird also extrem hoch, ist dabei aber schmäler als ein Baum. Der Bambushalm ist eine Röhre, er spart also durch sein „leeres Innenleben“ viel Material ein, das er dazu verwenden kann, besonders hoch zu wachsen und seine Wände besonders stark zu verholzen.",
+    "audioId": null,
+    "imageId": "erklärt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Der Bambus ist ein Gras?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:3295"
+      },
+      {
+        "text": "Wo wächst Bambus?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:3327"
+      },
+      {
+        "text": "Was heißt verholzen?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:3358"
+      },
+      {
+        "text": "Warum knickt der Bambus nicht ein, wenn er dünn aber extrem hoch ist?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:3389"
+      },
+      {
+        "text": "Hast du gewusst, dass...",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:3437"
+      }
+    ]
+  },
+  "con_lightconstruct": {
+    "text": "Durch seinen ausgeklügelten Bauplan verbindet Bambus extreme Härte mit hoher Elastizität und geringem Gewicht - er verwendet die sogenannte Leichtbauweise. Ganz so leer ist das Innenleben des Bambus nun doch nicht. Wenn der Stamm ein komplett hohles Rohr wäre, würde jeder seitliche Druck, wie zum Beispiel Wind, dazu führen, dass sich das Rohr es zuerst oval verformt und dann komplett abflacht. Dadurch würde der Bambus tatsächlich knicken. Der Bambushalm muss also seine runde Form behalten, um stabil zu bleiben. Dazu hat er einen ausgeklügelten Knickschutz entwickelt. Lies dir dazu die Erklärung unten durch.",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Ich habe es nicht ganz verstanden. Kannst du mir ein Beispiel nennen?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:3525"
+      },
+      {
+        "text": "Wir verwenden also den Bambus als Vorbild für den Brückenbau, da dieser materialsparend, leicht, stabil und gleichzeitig elastisch gebaut ist?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:3592"
+      },
+      {
+        "text": "Ich bin ein Technikfreak! Erzähl mir mehr Details über die physikalischen Eigenschaften des Bambus!",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:3624"
+      },
+      {
+        "text": "Zeig mir mehr coole Beispiele für die Leichtbauweise!",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:3673"
+      },
+      {
+        "text": "Super Sache!",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:3705"
+      }
+    ]
+  },
+  "materials": {
+    "text": "Lass uns gemeinsam einen Prototyp entwerfen! Du benötigst folgende Materialien: ein Blatt DIN A4-Papier, ein Stück Karton, Heißkleber, eine Schere, vier Gummibänder, ein Lineal und einen Zirkel.",
+    "audioId": null,
+    "imageId": "fanatisch-groß.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Hab alles!",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:3794"
+      },
+      {
+        "text": "Ich habe keinen Zirkel.",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:3811"
+      },
+      {
+        "text": "Ich habe keine Heißklebepistole.",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:3861"
+      }
+    ]
+  },
+  "bamb_exp1": {
+    "text": "Miss mit dem Lineal die Mitte Mitte der Längsseite des Blattes aus und kennzeichne diese mit einem kleinen Strich. Mache diese Markierung am Rand des Blattes. Nun miss oben und unten am Blatt einen Zentimeter ab und kennzeichne diese Stelle ebenfalls mit einem Strich. Rolle nun das Blatt über die Längsseite locker zu einer Röhre zusammen. Befestige die Röhre, indem du vier Gummibänder herumwickelst, zwei in der Mitte und zwei jeweils am Rand. Mit diesem Schritt wird die Bambusrolle leicht vorgeformt.",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Fertig!",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:4525"
+      }
+    ]
+  },
+  "bamb_exp2": {
+    "text": "Nimm als nächstes den Zirkel und zeichne drei Kreise mit einem Durchmesser von 3 cm auf das Stück Karton. Schneide die Kreise aus. Das waren die Vorbereitungsarbeiten, nun lass uns den Prototypen zusammenkleben.",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Auf zum nächsten Schritt!",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:4619"
+      }
+    ]
+  },
+  "bamb_exp3": {
+    "text": "Entferne die Gummibänder wieder von der Papierrolle. Nimm dir die Kartonkreise und bestreiche sie rundherum mit dem Kleber. Du kannst auch Heißkleber verwenden, aber sei vorsichtig und verbrenne dir dabei nicht die Finger! Stelle die Kartonkreise nun auf jeweils eine Markierung, die du ganz am Anfang auf dem Blatt ausgemessen hast. Rolle das Blatt wieder zu einer Röhre zusammen, aber sei vorsichtig, die Kartonscheiben dürfen dabei nicht umfallen. Nachdem du das Blatt zusammengerollt hast, klebst du am besten auch die abstehende Längsseite des Blattes noch an der Röhre fest. Befestige die Konstruktion wieder mit den Gummibändern. Nun muss die Konstruktion gut trocknen.",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Der Kleber ist vollständig trocken!",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:4708"
+      },
+      {
+        "text": "Wie lange muss der Kleber aushärten?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:4745"
+      },
+      {
+        "text": "Ich hab was falsch gemacht. Kannst du mir das ganze bitte nochmal von Anfang an erklären?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:4798"
+      }
+    ]
+  },
+  "measure_intro": {
+    "text": "Wenn der Kleber fest ist, können wir die Stabilität des Prototyp testen! Leicht und materialsparend ist unsere selbstgebaute Rolle bereits, nun lass uns herausfinden, ob sie auch stabil ist. Dazu führen wir einen Belastbarkeitstest durch. Als erstes müssen wir noch eine kleine Konstruktion für unseren Versuch bauen. Lies dir dazu den Text unten durch!",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Weiter geht’s!",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:4890"
+      }
+    ]
+  },
+  "measure": {
+    "text": "Nimm den Prototyp und lege ihn über zwei Stuhllehnen, wie du es auf dem  Bild erkennen kannst. Befestige dein soeben konstruiertes Trägerschiffchen mit dem Faden an die selbstgebaute Bambusrolle. Bitte achte darauf, dass der Faden exakt an der Stelle hängt, wo du die Zwischenwand in die Röhre eingebaut hast. Nun kannst du nach und nach mehr Gewichte, wie zum Beispiel Münzen oder kleine Kieselsteine, in das Schiffchen legen und überprüfen, wie viel Masse dein Prototyp trägt. Wenn dein Prototyp die Last nicht mehr aushält, nimmst du deine Gewichte und bestimmst die Masse mitsamt des Schiffchens mit einer Küchenwaage.",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Ich habe kein Geld.",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:4980"
+      },
+      {
+        "text": "Ich habe keine Küchenwaage.",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:5019"
+      },
+      {
+        "text": "Warum “Masse” und nicht “Gewicht”?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:5074"
+      },
+      {
+        "text": "Bin fertig!",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:5112"
+      },
+      {
+        "text": "Kannst du mir nochmal die Anleitung für das Trägerschiffchen zeigen?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:5150"
+      }
+    ]
+  },
+  "bamb_measure": {
+    "text": "Na, wieviel Masse trägt dein dein Prototyp? Trage den Wert in dein Laborjournal ein und vergleiche diesen mit deinen MitschülerInnen.",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Ich habe nicht herausgefunden, wie viel Münzen wiegen.",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:5245"
+      },
+      {
+        "text": "Bei mir hat es nicht funktioniert.",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:5285"
+      },
+      {
+        "text": "Ich brauche die Anleitung nochmal!",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:5324"
+      },
+      {
+        "text": "Hat alles geklappt. Kannst du mir Vergleichszahlen zeigen?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:5363"
+      }
+    ]
+  },
+  "results": {
+    "text": "Ich habe das Experiment eben auch gemacht und habe folgende Resultate erhalten. Ich habe es nicht geschafft, das Trägerschiffchen mit so vielen Münzen aufzufüllen, dass die Rolle knickt! Obwohl ich 300 g Münzen eingefüllt habe, das Schiffchen an sich wiegt nur 5 g. Da keiner so viel Kleingeld einfach so rumliegen hat, habe ich mir was neues überlegt und mir große Steine zur Hilfe genommen. Die Papierrolle ist erst unter einer Last von 1135 g geknickt! Ich habe dasselbe Experiment dann noch mit einem etwas dickeren Bastelpapier durchgeführt, dabei knickte der Prototyp erst bei unglaublichen 3734 g. Wiederhole den Versuch auch mit Bastelpapier und vergleiche die Ergebnisse der Tragkraft der unterschiedlichen Papierstärken.",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Hast du Bilder von dem Versuch mit der Kopierpapierrolle?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:5493"
+      },
+      {
+        "text": "Hast du Bilder von dem Versuch mit der Bastelpapierrolle?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:5534"
+      },
+      {
+        "text": "Okay, weiter geht’s!",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:5591"
+      }
+    ]
+  },
+  "exp_end": {
+    "text": "Gut gemacht! Wir könnten nun zum Beispiel zwei dieser Prototypen nebeneinander legen und oben drauf Bretter montieren, sodass die Brücke begehbar wird. Wir benötigen durch die hohe Stabilität auch bei langen Brücken keine Stützpfeiler! Wir können die genaue Belastbarkeit der Brücke in diesem Experiment nicht berechnen, da hierfür extrem komplizierte Formeln benötigt werden. Die vom Guinness Buch der Rekorde haben sehr kritische Physiker als Juroren, die werden das schon ausrechnen. Eine Brückenkonstruktion wird nämlich durch verschiedene Kräfte beansprucht. Du kannst dir aber sicher vorstellen, dass diese Art von Konstruktion sehr stabil ist, wie du im Experiment gesehen hast. Wir haben also einen sehr guten Ansatz für ein neues Brückendesign geschaffen!",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Wovon ist die Belastbarkeit einer Brücke abhängig?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:5684"
+      },
+      {
+        "text": "Super Sache! Wofür kann man Bambus noch einsetzen?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:5726"
+      }
+    ]
+  },
+  "applications": {
+    "text": "Bambus ist nachhaltig und vielseitig einsatzfähig. Er wird verwendet als Lebensmittel, Baustoff, für die Gartengestaltung, für den Bau von Gebrauchsgegenständen und  Instrumenten, sogar Waffen werden aus Bambus konstruiert. Dank der tollen Eigenschaften von Bambus werden in Asien sogar Hochhäuser mit Hilfe von Bambusgerüsten hochgezogen. Weitere Beispiel sind unter anderem Bambusfahrräder, Bambusparkett und Bambusbiomassetreibstoff.",
+    "audioId": null,
+    "imageId": null,
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Was ist Biomassetreibstoff?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:5824"
+      },
+      {
+        "text": "Warum ist Bambus ein nachhaltiger Rohstoff?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:5850"
+      },
+      {
+        "text": "Alles klar!",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:5892"
+      }
+    ]
+  },
+  "END": {
+    "text": "Das ist ja wieder toll gelaufen! Nun kann ich meinem Freund den Prototyp zukommen lassen, der kann dann sofort mit dem Brückenbau loslegen! Bis zum nächsten Mal!",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": []
+  }
+}
