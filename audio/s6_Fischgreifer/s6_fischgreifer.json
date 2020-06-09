@@ -1,0 +1,443 @@
+{
+  "START": {
+    "text": "Gut, dass du da bist! Ich brauche deine Hilfe! Wir wollen einen Assistenzroboter für Operationen entwerfen. Medizinisches Personal ist teuer und zur Zeit überlastet. Assistenzroboter mit Feingefühl könnten den Chirurgen bei Operationen helfen. Damit er nicht empfindliche Körperteile verletzt, brauchen wir einen speziellen Greifer, der Objekte mit höchster Vorsicht bewegen kann.",
+    "audioId": null,
+    "imageId": "fanatisch-groß.png",
+    "imageWidth": 120,
+    "answers": [
+      {
+        "text": "Wie kann ich helfen?",
+        "effectId": "S6_START_aw1",
+        "nextId": "START",
+        "$$hashKey": "object:261"
+      },
+      {
+        "text": "Lass uns loslegen!",
+        "effectId": null,
+        "nextId": "problem",
+        "$$hashKey": "object:262"
+      }
+    ]
+  },
+  "problem": {
+    "text": "In der Industrie werden oft Roboter eingesetzt, um Dinge zu transportieren, einzubauen und zu verladen. Roboterarme sind aus Metall und packen beim Greifen fest zu. Meist bewegen sie sich ruckartig und unflexibel. Beim Greifen von hochsensiblen Dingen wie Glühbirnen kann man keine herkömmlichen Roboterarme verwenden, da sie unsere empfindlichen Teile beschädigen können! Außerdem haben unsere Teile verschiedene Formen, der Greifer sollte sich anpassen können - also adaptiv sein.",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Wir können sie Roboterarme mit teurer Sensorik ausstatten!",
+        "effectId": "S6_problem_aw1",
+        "nextId": "problem"
+      },
+      {
+        "text": "Wir brauchen ein Tier oder eine Pflanze mit besonderen Greifarmen als Inspiration.",
+        "effectId": null,
+        "nextId": "collect_ideas"
+      },
+      {
+        "text": "Mir fällt nichts ein, womit wir unser Problem lösen könnten.",
+        "effectId": "S6_problem_aw3",
+        "nextId": "problem"
+      }
+    ]
+  },
+  "collect_ideas": {
+    "text": "Bingo! Wir suchen ein Tier, das uns bei unserem Problem weiterhelfen kann! Unser gesuchtes Tier hat aber nicht einmal Arme im eigentlichen Sinne.",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Wie soll uns ein Tier ohne Arme helfen einen Greifer zu entwickeln?",
+        "effectId": null,
+        "nextId": "fish_intro"
+      },
+      {
+        "text": "Ich habs: Chamäleons fangen doch ihre Beute mit einer Zunge als Greifwerkzeug!",
+        "effectId": "S6_collect_ideas_aw2",
+        "nextId": "collect_ideas"
+      },
+      {
+        "text": "Mir fällt kein Tier ohne Arme ein.",
+        "effectId": "S6_collect_ideas_aw3",
+        "nextId": "collect_ideas"
+      }
+    ]
+  },
+  "fish_intro": {
+    "text": "Im Jahr 1997 hat ein Wissenschaftler namens Leif Kniese beim Angeln eine aufregende Entdeckung gemacht. Er nahm einen Fisch in die Hand und drückte mit dem Daumen gegen seine Flosse. Dabei hat er etwas Bemerkenswertes entdeckt! Unser gesuchtes Tier ist also ein Fisch!",
+    "audioId": null,
+    "imageId": "fanatisch-groß.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Was hat er bemerkt?",
+        "effectId": null,
+        "nextId": "intro_concept"
+      },
+      {
+        "text": "Ich würde keinen Fisch angreifen. Können die nicht beißen?",
+        "effectId": "S6_fish_intro_aw2",
+        "nextId": "fish_intro"
+      }
+    ]
+  },
+  "intro_concept": {
+    "text": "Stell dir vor, du hältst einen Fisch in der Hand, so wie im Bild. Wenn du jetzt mit deinem Daumen gegen die Flosse drückst, was glaubst du, wo sich die Flosse hin bewegt?",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Die Flosse biegt sich in die Richtung, in die sie der Finger drückte.",
+        "effectId": "S6_intro_concept_aw1",
+        "nextId": "intro_concept1"
+      },
+      {
+        "text": "Die Flosse bog sich gegen die Druckrichtung des Daumens.",
+        "effectId": "S6_intro_concept_aw2",
+        "nextId": "intro_concept1"
+      }
+    ]
+  },
+  "intro_concept1": {
+    "text": "Die Fischflosse bog sich also um seinen Finger herum, statt vom Finger weg. Das kam ihm seltsam vor, da man genau das Gegenteil erwarten würde und daraufhin untersuchte er die Anatomie der Flosse genauer. Sie analysierten den Struktur-Funktionszusammenhang der Schwanzflosse und stellten fest, dass das Geheimnis der Fischflosse in des Flossenstrahlen steckt.",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Was heißt Anatomie?",
+        "effectId": "S6_intro_concept1_aw1",
+        "nextId": "intro_concept1"
+      },
+      {
+        "text": "Was sind Flossenstrahlen?",
+        "effectId": null,
+        "nextId": "con_flipper"
+      }
+    ]
+  },
+  "con_flipper": {
+    "text": "Flossenstrahlen sind die knöchernen Strukturen, die die Flosse in Form halten. Sie bestehen jeweils aus zwei knorpeligen Längsstrahlen, die durch elastisches Bindegewebe verbunden sind. Dieser Aufbau führt dazu, dass sich bei der Schwimmbewegung die Strahlen bei Belastung gegeneinander verschieben und sich die Flosse schlussendlich in die unerwartete Richtung bewegt. Du hast diese Strahlen bestimmt schon einmal gesehen, sie sorgen dafür, dass die Flosse von Fischen oft so zerfranst aussehen.",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Hab verstanden!",
+        "effectId": null,
+        "nextId": "con_finray1"
+      },
+      {
+        "text": "Erzähl mir mehr Details!",
+        "effectId": "S6_con_flipper_aw2",
+        "nextId": "con_flipper"
+      }
+    ]
+  },
+  "con_finray1": {
+    "text": "Sieh dir dieses Video an, ich kann dir doch nicht alles vorkauen! Da wird genau erklärt, was die Fischflosse so besonders macht.",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Habe es gesehen, weiter geht’s!",
+        "effectId": null,
+        "nextId": "con_finray2"
+      }
+    ]
+  },
+  "con_finray2": {
+    "text": "Die Schwanzflossen von Knochenfischen biegen sich bei Druckbelastung also nicht wie erwartet von der Druckkraft weg, sondern krümmen sich in Richtung der Druckkraft. Diese Eigenschaft erlaubt Fischen eine hocheffiziente Kraftübertragung auf das umgebende Wasser. Die Schwanzflosse nimmt, wenn der Fisch sich durch Schlagen des Schwanzes fortbewegt, eine kellenförmige Gestalt an, man nennt das auch eine konkave Gestalt.",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Und was bringt das alles?",
+        "effectId": null,
+        "nextId": "con_finray3"
+      },
+      {
+        "text": "Was bedeutet konkav?",
+        "effectId": "S6_con_finray2_aw2",
+        "nextId": "con_finray2"
+      }
+    ]
+  },
+  "con_finray3": {
+    "text": "Die Schwanzflosse schließt dabei eine kleine Menge Wasser ein. Dieses Wasservolumen wird in weiterer Folge nach hinten beschleunigt, dadurch bewegt sich der Fisch nach vorne. Die anpassungsfähige Form der Schwanzflosse ist der Grund für die gute Kraftübertragung. Der Fisch nutzt diesen Effekt der Flosse also zum Schwimmen. Sieht so aus, als hätten wir die Lösung für unser Problem! Wir bauen einen Greifer, der dieselben Eigenschaften hat wie die Fischflosse!",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Unser Greifer ist adaptiv womit er sich an verschiedenste Formen sachte anschmiegen kann.",
+        "effectId": "S6_con_finray3_aw1",
+        "nextId": "con_finray3"
+      },
+      {
+        "text": "Hast du noch weitere Informationen?",
+        "effectId": "S6_con_finray3_aw2",
+        "nextId": "con_finray3"
+      },
+      {
+        "text": "Hast du noch ein cooles Fisch-Video?",
+        "effectId": "S6_con_finray3_aw3",
+        "nextId": "con_finray3"
+      },
+      {
+        "text": "Wie sollen wir mit EINER Flosse etwas greifen?",
+        "effectId": "S6_con_finray3_aw4",
+        "nextId": "con_finray3"
+      },
+      {
+        "text": "Alles klar! Wie geht's weiter?",
+        "effectId": null,
+        "nextId": "prototyp"
+      }
+    ]
+  },
+  "prototyp": {
+    "text": "Da du nun so einiges über die Anatomie der Fische weißt, könnten wir einen Greiferprototyp nach dem Fischflossenmodell zu bauen! Technisch ausgedrückt benötigen wir ein spitzwinkliges Dreieck als Grundelement, das aus biegeelastischen Seiten aufgebaut ist. Diese werden durch gelenkig mit den beiden Seitenteilen verbundene Streben auf Abstand gehalten. Hierdurch entsteht eine dem zweistrahligen Grundelement der Knochenfischflosse nachempfundene Struktur mit den gleichen Verformungseigenschaften wie die Schwanzflosse der Fische. Bist du dabei?",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Ja klar! Los geht’s!",
+        "effectId": null,
+        "nextId": "materials"
+      },
+      {
+        "text": "Ich hab keine Lust.",
+        "effectId": "S6_prototyp_aw2",
+        "nextId": "prototyp"
+      },
+      {
+        "text": "Bitte mach mal langsamer! Hast du eine Schritt-für-Schritt-Anleitung?",
+        "effectId": null,
+        "nextId": "materials"
+      }
+    ]
+  },
+  "materials": {
+    "text": "Besorge dir ein Blatt DIN-A4 Papier, am besten Fotokarton, ein Lineal, einen Bleistift, eine Schere, Kleber, ein Stück Karton und ein Heftgerät. Du kannst Heißkleber oder auch Flüssigkleber verwenden.",
+    "audioId": null,
+    "imageId": "fanatisch-groß.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Hab alles, lass uns loslegen!",
+        "effectId": null,
+        "nextId": "exp_draw"
+      },
+      {
+        "text": "Was ist Fotokarton?",
+        "effectId": "S6_materials_aw2",
+        "nextId": "materials"
+      }
+    ]
+  },
+  "exp_draw": {
+    "text": "Schritt 1: Zeichne 4 Streifen auf den Fotokarton, die 3 x 20 cm groß sind. Dann benötigen wir noch jeweils zwei Rechtecke mit den den Größen: 3 x 4,5 cm, 3 x 4,0 cm, 3 x 3,5 cm, 3 x 3 cm, 3 x 2,5 cm, 3 x 2 cm.",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Wie muss ich die Formen am Blatt anordnen?",
+        "effectId": "S6_exp_draw_aw1",
+        "nextId": "exp_draw"
+      },
+      {
+        "text": "Erledigt!",
+        "effectId": null,
+        "nextId": "exp_stripes"
+      }
+    ]
+  },
+  "exp_stripes": {
+    "text": "Sehr gut! Auf zu Schritt 2! Nun müssen die Streifen in weitere Abschnitte unterteilt werden. Miss von der kurzen Seite des Streifens 5 cm nach oben und mach über die gesamte Breite eine Markierung. Wenn du die Streifen am Blatt nebeneinander gezeichnet hast, kannst du alle vier Streifen gleichzeitig unterteilen. Teile den oberen Teil des Streifens in gleich große Rechtecke. Da musst du wohl mal etwas rechnen und grübeln, ich lasse dir einen Augenblick Zeit. Dieser Schritt muss dann auch noch bei den restlichen drei Streifen gemacht werden.",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Ich hab’s!",
+        "effectId": null,
+        "nextId": "exp_rectangle"
+      },
+      {
+        "text": "Ich schaffe es nicht.",
+        "effectId": "S6_exp_stripes_aw2",
+        "nextId": "exp_stripes"
+      }
+    ]
+  },
+  "exp_rectangle": {
+    "text": "Schritt 3: Zeichne nun bei jedem Rechteck einen parallelen Strich zur 3 cm langen Kante. Der Strich sollte einen Abstand von 0,5 cm zur Kante haben. Mach dies auf der linken und rechten Seite aller Rechtecke. Am Bild kannst du die Markierung als gestrichelte Linie sehen.",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Fertig!",
+        "effectId": null,
+        "nextId": "exp_cut"
+      }
+    ]
+  },
+  "exp_cut": {
+    "text": "Schritt 4: Schneide alle Streifen und Rechtecke aus. Aber Vorsicht, schneide die Formen nur an den Linien aus, die du im Schritt 1 gezeichnet hast! Wenn du das erledigt hast, kannst du bei allen Rechtecken die Kanten an den gestrichelten Linien umfalten.",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Fertig!",
+        "effectId": null,
+        "nextId": "exp_glue"
+      }
+    ]
+  },
+  "exp_glue": {
+    "text": "Schritt 5: Nimm für den nächsten Schritt den Kleber zur Hand. Lege einen Streifen vor dir ab, sodass das 5 cm Stück nach links zeigt. Klebe nun in aufsteigender Größenordnung je ein Rechteck mit dem Falz auf eine Markierung, so wie du es im Bild siehst. Achte darauf, dass die Oberkante der Rechtecke genau an der Linie liegt. Diese Rechtecke bilden die Querstreben unseres Prototypen. Auf den folgenden Bildern siehst du blau markierte Flächen, da muss überall Kleber hin! Wiederhole diesen Schritt auch mit einem zweiten Streifen.",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Lass uns fortfahren!",
+        "effectId": null,
+        "nextId": "exp_glue1"
+      }
+    ]
+  },
+  "exp_glue1": {
+    "text": "Schritt 6: Nun haben wir es gleich geschafft! Die Querstreben haben wir platziert, nun benötigen wir noch eine Längsstrebe, um den Flossenstrahl zu vollenden. Trage dazu bei beiden Flossenstrahlen auf dem linken Ende und auf allen Falzen der Rechtecke noch Kleber auf, so wie du es am Foto siehst. Klebe dann den zweiten Streifen darauf.",
+    "audioId": null,
+    "imageId": "fanatisch-groß.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Alles erledigt!",
+        "effectId": null,
+        "nextId": "exp_stitch"
+      }
+    ]
+  },
+  "exp_stitch": {
+    "text": "Schritt 7: Knicke die überstehenden Enden bei beiden Flossenstrahlen um und befestige sie mit dem Heftgerät.",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Ich hab’s!",
+        "effectId": null,
+        "nextId": "exp_cardboard"
+      }
+    ]
+  },
+  "exp_cardboard": {
+    "text": "Schritt 8: nimm dir das Stück Karton und die Schere. Schneide aus dem Karton ein Rechteck aus, das 3 x 12 cm groß ist und markiere die Mitte mit einem Strich. Knicke das Stück Karton an der Mittellinie und hefte es so wie du es am Bild siehst an die zwei Flossenstrahlen. Die Knickrichtung des Kartons muss so ausgerichtet sein, dass sich die zwei Strahlen beim zusammendrücken aufeinander zubewegen. Fertig ist das Musterbauteil!",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Was ist ein Musterbauteil?",
+        "effectId": "S6_exp_cardboard_aw1",
+        "nextId": "exp_cardboard"
+      },
+      {
+        "text": "Was nun?",
+        "effectId": null,
+        "nextId": "wait"
+      }
+    ]
+  },
+  "wait": {
+    "text": "Der Prototyp muss nun gut aushärten. Übertrage in der Zwischenzeit die Maße für den Bauplan in dein Laborjournal. Du kannst auch eine Skizze dazu anfertigen im Falle, dass du den bionischen Greifer wieder einmal basteln willst.",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Ich brauche die komplette Anleitung noch einmal.",
+        "effectId": null,
+        "nextId": "exp_draw"
+      },
+      {
+        "text": "Der Kleber ist ausgehärtet!",
+        "effectId": null,
+        "nextId": "exp_try"
+      },
+      {
+        "text": "Was mache ich solange?",
+        "effectId": "S6_wait_aw3",
+        "nextId": "wait"
+      }
+    ]
+  },
+  "exp_try": {
+    "text": "Sehr gut! Nun kannst du den Prototyp testen! Versuche mit dem Greifer verschiedene Dinge einzuklemmen. Probiere dabei verschiedene Formen und Größen aus. Du kannst dabei beobachten, wie sich der Greifer sanft an Gegenstände anpasst. Tausche dich danach mit deinen Mitschüler*innen aus, wie es dir bei dem Experiment ergangen ist und welche Einsatzmöglichkeiten euch noch für solche Greifer einfallen. Notiere die Ergebnisse anschließend in deinem Laborjournal.",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Alles klar!",
+        "effectId": null,
+        "nextId": "patent"
+      }
+    ]
+  },
+  "patent": {
+    "text": "Wir haben unseren Prototyp aus Papier gebaut, aber das sogenannte Flossenstrahl-Prinzip kann man auch mit anderen Materialien umsetzen, wie zum Beispiel Holz, Papier, leichtem Kunststoff und  Gummi. Bioniker habe sich die Nutzung dieser Idee für technische Erfindungen patentieren lassen und wurde unter dem Namen Fin Ray Effect® geschützt.",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Was ist ein Patent?",
+        "effectId": "S6_patent_aw1",
+        "nextId": "patent"
+      },
+      {
+        "text": "Wo kann man diesen Effekt noch einsetzen?",
+        "effectId": null,
+        "nextId": "application"
+      }
+    ]
+  },
+  "application": {
+    "text": "Wie du gesehen hast, kann man mit dem Fin Ray Effect® bionische Greifer machen, die sensible Bauteile, aber auch Glühbirnen, Obst und Eier unbeschadet greifen können. Es gibt aber auch noch viele weitere Anwendungsmöglichkeiten. Zum Beispiel gibt es Ansätze, in Zukunft ganze Schiffsschrauben durch den Flossenantrieb zu ersetzen, da diese nur einen Bruchteil der Energie benötigen würden. Weiters denkbar wären Sessel, die sich der Wirbelsäule anpassen, Bürsten mit denen man in schwer erreichbare Ecken gelangt und es gibt sogar einen speziellen Auswringer für Wischmops, der 30 % höhere Auswringleistung hat als herkömmliche Geräte.",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Hast du weitere Beispiele für bionische Greifer?",
+        "effectId": "S6_application_aw1",
+        "nextId": null
+      },
+      {
+        "text": "Hab verstanden!",
+        "effectId": null,
+        "nextId": "END"
+      }
+    ]
+  },
+  "END": {
+    "text": "Das hat ja wieder sehr gut geklappt! Ich werde unseren Prototypen gleich einem Kollegen zukommen lassen, der sich um den weiteren Entwicklungsprozess des Roboterarms kümmern wird. Unser Greifer könnte neben unserem Anwendungszweck auch in anderen Branchen verwendet werden. Man denke nur an filigrane Produktionsschritte beim Bewegen von empfindlichen Teilen. Ich hoffe, dir hat es auch so viel Spaß gemacht wie mir. Bis bald, wir sehen uns!",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": []
+  }
+}
