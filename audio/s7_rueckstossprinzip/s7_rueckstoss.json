@@ -1,0 +1,620 @@
+{
+  "START": {
+    "text": "Hallo! Gut, dass du gerade reinschaust! Ein Kollege von mir hat angerufen, er ist Meeresbiologe und braucht einen Assistenten für sein Vorhaben! Wir müssen ein U-Boot bauen! Hilfst du uns?",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": 120,
+    "answers": [
+      {
+        "text": "Wozu braucht er ein U-Boot?",
+        "effectId": "S7_START_aw1",
+        "nextId": "START",
+        "$$hashKey": "object:300"
+      },
+      {
+        "text": "Ja klar, auf geht’s!",
+        "effectId": null,
+        "nextId": "problem",
+        "$$hashKey": "object:301"
+      },
+      {
+        "text": "Es gibt doch schon U-Boote.",
+        "effectId": null,
+        "nextId": "problem",
+        "$$hashKey": "object:302"
+      },
+      {
+        "text": "Warum weiß man so wenig über den Lebensraum Meer?",
+        "effectId": "S7_START_aw4",
+        "nextId": "START",
+        "$$hashKey": "object:303"
+      }
+    ]
+  },
+  "problem": {
+    "text": "as Problem ist, dass mein Kollege sehr lange unterwegs sein wird, ich glaube er hat sogar gesagt, er will ein ganzes Jahr auf Forschungsreise gehen! Wir brauchen also ein U-Boot, das nur sehr wenig Energie benötigt, ansonsten müsste er ja immer wieder einen Hafen aufsuchen und für Energienachschub sorgen!",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Lass und überlegen, wie wir das Problem lösen können!",
+        "effectId": null,
+        "nextId": "consider",
+        "$$hashKey": "object:2762"
+      },
+      {
+        "text": "Ein U-Boot mit atomarem Antrieb kann monatelang unter Wasser bleiben!",
+        "effectId": "S7_problem_aw2",
+        "nextId": "problem",
+        "$$hashKey": "object:2763"
+      },
+      {
+        "text": "Wie werden U-Boote angetrieben?",
+        "effectId": "S7_problem_aw3_link",
+        "nextId": null,
+        "$$hashKey": "object:2764"
+      },
+      {
+        "text": "Wie funktioniert ein U-Boot?",
+        "effectId": "S7_problem_aw4_link",
+        "nextId": null,
+        "$$hashKey": "object:2765"
+      }
+    ]
+  },
+  "consider": {
+    "text": "Was glaubst du, wäre eine gute Lösung?",
+    "audioId": null,
+    "imageId": "fragt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Wir schauen uns mal an, welche Fortbewegungsmethoden Unterwassertiere nutzen.",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:3013"
+      },
+      {
+        "text": "Wie wäre es mit einer herkömmlichen Schiffsschraube?",
+        "effectId": "S7_consider_aw2",
+        "nextId": null,
+        "$$hashKey": "object:3014"
+      },
+      {
+        "text": "Ein Elektroantrieb könnte die Lösung sein.",
+        "effectId": "S7_consider_aw3",
+        "nextId": null,
+        "$$hashKey": "object:3015"
+      }
+    ]
+  },
+  "collect_ideas": {
+    "text": "Gute Idee! Mein Kollege, der Meeresbiologe, hat mal erwähnt, dass es Unterwassertiere gibt, die sich sehr energieeffizient fortbewegen können.",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Wir könnten die Fischflosse als Vorbild verwenden.",
+        "effectId": "S7_collect_ideas_aw1_link",
+        "nextId": null,
+        "$$hashKey": "object:3202"
+      },
+      {
+        "text": "Der Meeresstrudelwurm könnte eine Lösung bieten.",
+        "effectId": "S7_collect_ideas_aw2_link",
+        "nextId": null,
+        "$$hashKey": "object:3203"
+      },
+      {
+        "text": "Rochen sind auch gute Schwimmer.",
+        "effectId": "S7_collect_ideas_aw3_link",
+        "nextId": null,
+        "$$hashKey": "object:3204"
+      },
+      {
+        "text": "Schauen wir uns mal an, wie der Oktopus das macht.",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:3205"
+      },
+      {
+        "text": "Ich kenne mich da zuwenig aus. Hilf mir bitte!",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:3206"
+      }
+    ]
+  },
+  "intro_thrust": {
+    "text": "Wie du siehst, wird an diesem Thema schon kräftig geforscht und es gibt mehrere Lösungsansätze, die von der Natur inspiriert sind. Lass uns mal die Option mit dem Oktopus genauer betrachten.",
+    "audioId": null,
+    "imageId": "neutral.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Warum ist der Oktopus so besonders?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:3486"
+      },
+      {
+        "text": "Was heißt Oktopus?",
+        "effectId": "S7_intro_thrust_aw2",
+        "nextId": null,
+        "$$hashKey": "object:3487"
+      },
+      {
+        "text": "Oktopusse sind Tintenfische, oder?",
+        "effectId": "S7_intro_thrust_aw3",
+        "nextId": null,
+        "$$hashKey": "object:3488"
+      },
+      {
+        "text": "Alles klar! Weiter gehts.",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:3489"
+      }
+    ]
+  },
+  "octopus": {
+    "text": "Oktopusse bzw. generell Tintenfische sind aus mehreren Gründen ganz besondere Tiere. Sie sind extrem schlau, haben menschenähnliche Augen und drei Herzen. Sie tragen ihre Füße am Kopf und können ihre Farbe schlagartig ändern. Außer einem messerscharfen, vogelähnlichen Schnabel besitzen sie keine harten Teile. Manche Tintenfische können zur Fortpflanzung ein Bein abwerfen, dieses begattet dann das Weibchen. Zur Fortbewegung nutzen sie ein “Düsentriebwerk”. Zu guter Letzt natürlich noch die namensgebende Tinte, die sie versprühen können, um Feinden zu entwischen.",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Kann ich den Schnabel sehen?",
+        "effectId": "S7_octopus_aw1_link",
+        "nextId": null,
+        "$$hashKey": "object:3706"
+      },
+      {
+        "text": "Was meinst du mit Düsentriebwerk?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:3707"
+      },
+      {
+        "text": "Erzähl mir mehr coole Dinge über den Tintenfische!",
+        "effectId": "S7_octopus_aw3_link",
+        "nextId": null,
+        "$$hashKey": "object:3708"
+      }
+    ]
+  },
+  "concept_thrust": {
+    "text": "Damit ist eine Art Unterwasserraketenantrieb gemeint. In der Fachsprache nennen die Wissenschaftler das auch “Rückstoßprinzip”. Tintenfische haben einen sack-ähnlichen Körper, der im Inneren hohl ist. Diesen hohlen Raum nennt man Mantelhöhle. Zur Fortbewegung füllt der Tintenfisch die Mantelhöhle mit Wasser und verschließt sie mit einem Ringmuskel.",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Was macht er dann mit dem “Wasserbauch”?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:3887"
+      },
+      {
+        "text": "Das kann ich mir nicht vorstellen.",
+        "effectId": "S7_concept_thrust_aw2",
+        "nextId": null,
+        "$$hashKey": "object:3888"
+      }
+    ]
+  },
+  "concept_thrust1": {
+    "text": "Der Tintenfisch hat eine eingebaute Düse, die nun zum Einsatz kommt. Diese Düse ist eine verschließbare Öffnung und wird Trichterorgan oder Sipho genannt. Wenn die Mantelhöhle mit Wasser gefüllt ist, presst der Tintenfisch das Wasser mit Muskelkraft aus dem geöffneten Sipho, der nun wie eine Düse wirkt. Der Tintenfisch stößt sich im Wasser vom Wasser ab und bewegt sich mit hoher Geschwindigkeit in die Gegenrichtung.",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Wie schnell kann der Tintenfisch werden?",
+        "effectId": "S7_concept_thrust1_aw1_link",
+        "nextId": null,
+        "$$hashKey": "object:3994"
+      },
+      {
+        "text": "Wird das Trichterorgan ausschließlich zur Fortbewegung verwendet?",
+        "effectId": "S7_concept_thrust1_aw2",
+        "nextId": null,
+        "$$hashKey": "object:3995"
+      },
+      {
+        "text": "Der Oktopus kann sich also sehr energieeffizient und auch lautlos fortbewegen?",
+        "effectId": "S7_concept_thrust1_aw3",
+        "nextId": null,
+        "$$hashKey": "object:3996"
+      }
+    ]
+  },
+  "prototyp": {
+    "text": "Lass uns einen Prototyp für das U-Boot bauen, der auch entsprechend dem Rückstoßprinzip energiesparend funktioniert!",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Wie soll das gehen, ich habe keinen Swimming-Pool?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:4207"
+      },
+      {
+        "text": "Hast du nicht auch etwas von Quallen erwähnt?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:4208"
+      },
+      {
+        "text": "Ja klar, los geht’s!",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:4209"
+      }
+    ]
+  },
+  "jellyfish": {
+    "text": "Genau! Quallen verwenden auch das Rückstoßprinzip zur Fortbewegung! ForscherInnen haben die Muskelmasse von Fischen und Quallen verglichen und herausgefunden, dass Quallen bezogen auf ihre Körpermasse mit nur 1 % Muskelmasse auskommen, bei Fischen sind es hingegen 50 %. Dadurch, dass Quallen auch nur einen geringen Teil des Körpers beim Schwimmen bewegen, können sie dann noch mehr Energie sparen!",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Verstanden!",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:4321"
+      },
+      {
+        "text": "Das klingt spannend! Ich will mehr Information haben!",
+        "effectId": "S7_jellyfish_aw2_link",
+        "nextId": null,
+        "$$hashKey": "object:4322"
+      },
+      {
+        "text": "Zeig mir ein Video von einem Quallenroboter!",
+        "effectId": "S7_jellyfish_aw3_link",
+        "nextId": null,
+        "$$hashKey": "object:4323"
+      }
+    ]
+  },
+  "water_air": {
+    "text": "Da wir keine Riesenbadewanne zur Verfügung haben, machen wir das Experiment einfach in der Luft! Weißt du, dass Fliegen in der Luft so ähnlich ist, wie Schwimmen im Wasser? Nur das Umgebungsmedium ist ein anderes. Stell dir einen im Wasser gleitenden Rochen vor. Dann stell dir einen in der Luft gleitenden Adler vor. Natürlich haben die beiden Tiere unterschiedliche Bauweisen, durch die sie an das entsprechende Medium angepasst sind, aber da gibt es doch Ähnlichkeiten!",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Verstanden! Auf zum Experiment!",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:4498"
+      },
+      {
+        "text": "Kannst du mir das ganz genau erklären?",
+        "effectId": "S7_water_air_aw2",
+        "nextId": null,
+        "$$hashKey": "object:4499"
+      },
+      {
+        "text": "Was ist ein Medium?",
+        "effectId": "S7_water_air_aw3",
+        "nextId": null,
+        "$$hashKey": "object:4500"
+      }
+    ]
+  },
+  "materials": {
+    "text": "Besorge dir folgende Materialien: eine 10 m lange Schnur, Paketband, zwei dickere Strohhalme, eine Schere, eine größere Kerze, zwei Luftballons, zwei Wäscheklammern und einen Meterstab.",
+    "audioId": null,
+    "imageId": "fanatisch-groß.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Welche Schnur?",
+        "effectId": "S7_materials_aw1",
+        "nextId": null,
+        "$$hashKey": "object:4679"
+      },
+      {
+        "text": "Hab alles!",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:4680"
+      }
+    ]
+  },
+  "step1_exp": {
+    "text": "Schritt 1: Blase den Luftballon prall auf, aber Vorsicht, nicht zu viel, er soll ja nicht platzen! Verschließe den Ballon mit der Wäscheklammer, sodass keine Luft entweicht. Am besten verzwirbelst du das Ende des Ballons, bevor du die Klammer befestigt. Bitte keinen Knoten in den Ballon machen, sonst funktioniert unser Experiment nicht!",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Ich hab’s!",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  },
+  "step2_exp": {
+    "text": "Schritt 2: Falls du Garn für das Experiment verwendest, kommt jetzt die Kerze zum Einsatz. Diesen Schritt kannst du überspringen, falls du Drachen- oder Angelschnur zu Hause gefunden hast. Zieh den Garn um die Kerze, wie du es am Bild erkennen kannst,  sodass die Schnur mit Wachs bedeckt wird. Die Kerze sollte nachher richtige Einschnitte von der Schnur aufweisen.",
+    "audioId": null,
+    "imageId": "neutral.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Erledigt!",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  },
+  "step3_exp": {
+    "text": "Schritt 3: Schneide zwei 13 cm lange Stücke vom geraden Teil der Strohhalme ab. Nimm danach die Schnur zur Hand und fädle sie durch die Strohhalmteile.",
+    "audioId": null,
+    "imageId": "neutral.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Erledigt!",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  },
+  "step4_exp": {
+    "text": "Schritt 3: Suche dir einen Ort, wo du die Schnur spannen kannst. Nicht zu hoch, denn du musst sie noch gut erreichen können! Zur Not kannst du auch zwei weitere Personen bitten, je eine Ende der Schnur festzuhalten.",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Schnur wurde montiert!",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  },
+  "step5_exp": {
+    "text": "Schritt 4: Schiebe beide Strohhalmteile an jeweils ein Ende der Schnur. Such dir einen Teil davon aus, nimm das Paketband und befestige den Ballon an diesem Strohhalmteil. Er muss dabei nach unten hängen und du musst auch auf die Richtung achten, wie du den Ballon anklebst! Die Wäscheklammer muss zum nahen Ende der Schnur zeigen. Schau dir dazu das Bild an.",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Luftballon festgeklebt!",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  },
+  "step6_exp": {
+    "text": "Nun kannst du den Ballon fliegen lassen! Geh noch einmal sicher, dass er an einem Ende der Schnur positioniert ist. Dann entferne die Wäscheklammer! Der Ballon saust aufgrund des Rückstoßprinzips der Schnur entlang!",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Es funktioniert nicht!",
+        "effectId": "S7_step6_exp_aw1",
+        "nextId": null,
+        "$$hashKey": "object:4786"
+      },
+      {
+        "text": "Bitte zeig mir die Anleitung noch einmal von vorne.",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:4787"
+      },
+      {
+        "text": "Funktioniert einwandfrei!",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:4788"
+      },
+      {
+        "text": "Wozu der zweite Strohhalmteil?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:4789"
+      }
+    ]
+  },
+  "exp_ideas": {
+    "text": "Der zweite Strohhalmteil ist dafür gedacht, dass du einen zweiten Ballon in entgegengesetzter Richtung aufhängen kannst, sodass die Ballone gegeneinander fliegen! Überleg dir mit deinen Klassenkamerad*innen Experimente und trage in dein Laborjournal ein, wie du diese durchgeführt hast und welche Ergebnisse du erhalten hast.",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Ich habe keine Ideen, hilf mir.",
+        "effectId": "S7_exp_ideas_aw1",
+        "nextId": null,
+        "$$hashKey": "object:4961"
+      },
+      {
+        "text": "Wie komme ich zu den Ergebnissen?",
+        "effectId": "S7_exp_ideas_aw2",
+        "nextId": null,
+        "$$hashKey": "object:4962"
+      },
+      {
+        "text": "Habe experimentiert und eingetragen!",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:4963"
+      }
+    ]
+  },
+  "applications": {
+    "text": "Ich bin begeistert, das hast du toll gemacht! Du hast also gesehen, dass das Rückstoßprinzip auch in der Luft funktioniert!",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Also könnte man damit auch ein Flugzeug antreiben?",
+        "effectId": "S7_applications_aw1",
+        "nextId": null,
+        "$$hashKey": "object:5138"
+      },
+      {
+        "text": "Also könnte man damit auch eine Rakete antreiben?",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:5139"
+      },
+      {
+        "text": "Also könnte man damit auch ein Segelboot antreiben?",
+        "effectId": "S7_applications_aw3",
+        "nextId": null,
+        "$$hashKey": "object:5140"
+      }
+    ]
+  },
+  "rocket": {
+    "text": "Genau! Für Weltraumraketen nützt man ebenfalls das Rückstoßprinzip.",
+    "audioId": null,
+    "imageId": "fanatisch-groß.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Aber funktioniert das? Im Meer kann man sich vom Wasser abstoßen, aber der Weltraum ist ein luftleerer Raum, da kann sich die Rakete nirgendwo abstoßen?",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Klingt aufregend! Das Rückstoßprinzip ist sehr vielseitig anwendbar!",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  },
+  "newton": {
+    "text": "Das ist das tolle am Rückstoßprinzip! Diese Fortbewegungsart ist unabhängig vom umgebenden Medium. Isaac Newton hat eine Gesetz formuliert, und zwar das nach ihm benannte dritte newtonsche Gesetz. Dieses besagt, dass jede Kraft (F) eine gleich große Gegenkraft erzeugt, deren Richtung der ersten Kraft entgegengesetzt ist (F1 = -F2). Einfach ausgedrückt: Jeder Aktion  folgt eine Reaktion.",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Die Rakete kann sich also selbst beschleunigen?",
+        "effectId": "S7_newton_aw1",
+        "nextId": null,
+        "$$hashKey": "object:5315"
+      },
+      {
+        "text": "Wer war Isaac Newton noch einmal?",
+        "effectId": "S7_newton_aw2_link",
+        "nextId": null,
+        "$$hashKey": "object:5316"
+      },
+      {
+        "text": "Verstanden!",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:5317"
+      }
+    ]
+  },
+  "netwon1": {
+    "text": "Das Triebwerk einer Rakete beschleunigt durch Druckkraft Treibstoffteilchen auf eine hohe Geschwindigkeit (Aktion) und stößt diese entgegen der gewünschten Flugrichtung aus. Dadurch entsteht in Flugrichtung eine gleich große Kraft, welche ihrerseits die Rakete beschleunigt (Reaktion). Raumfahrzeuge sind also von der Umgebung unabhängig, da sie die Masse, also den Treibstoff, an dem sie sich abstoßen, selbst mitführen.",
+    "audioId": null,
+    "imageId": "neutral.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Ich hab das nicht ganz verstanden. Kannst du mir dazu ein Video zeigen?",
+        "effectId": "S7_netwon1_aw1_link",
+        "nextId": null,
+        "$$hashKey": "object:5496"
+      },
+      {
+        "text": "Verstanden!",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:5497"
+      },
+      {
+        "text": "Ich will mal Physiker*in werden. Erzähl mir mehr Details!",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:5498"
+      }
+    ]
+  },
+  "impulse": {
+    "text": "Du hast es so gewollt, hier die Details! Anstatt mit der Kraft werde ich es aber mit dem Impuls erklären. Jeder bewegte Körper besitzt einen Impuls, den er bei Stößen oder durch andere Wechselwirkungen (also Kräfte zwischen den Körpern) ganz oder teilweise auf andere Körper übertragen kann. Der Impuls (p) ist definiert als Masse (m) mal Geschwindigkeit (v). \n**p = m * v **\nBeim Rückstoß wirken zwei entgegengesetzte Impulse, die nach dem Impulserhaltungssatz gleich groß sein müssen, aber entgegengesetzte Richtungen haben. Deshalb kommt in der folgenden Gleichung ein Minuszeichen vor. \n**m1 * v1 = - m2 * v2**",
+    "audioId": null,
+    "imageId": "belehrt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Was bedeutet das für die Rakete?",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Genug Details!",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  },
+  "impulse1": {
+    "text": "Für die Rakete bedeutet dies folgendes: die geringe Masse des explodierenden Treibstoffgases bewegt sich mit hoher Geschwindigkeit in die entgegengesetzte Richtung der Rakete, welche über eine große Masse verfügt, und daher nur eine geringe Geschwindigkeit bekommt. Bei einem Raketenstart wird z.B. der verbrannte Treibstoff dauernd mit etwa 10-facher Schallgeschwindigkeit ausgestoßen, während die Rakete eher gemütlich abhebt.",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Jetzt wird es mir zu heftig, ich will zurück!",
+        "effectId": null,
+        "nextId": null
+      },
+      {
+        "text": "Ich will es noch genauer wissen!",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  },
+  "impulse2": {
+    "text": "Sie dir die Formel vom Impulserhaltungssatz noch einmal an: \n**m1 * v1 = - m2 * v2**\nBei der Aktion (Treibstoffgas wird ausgestoßen) auf der linken Seite der Formel ist die Masse klein, da es sich um ein Gas handelt, dafür die Geschwindigkeit groß. Das bedeutet, dass auf der rechten Seite der Formel das Gegenteil der Fall sein muss. So ist es auch! Bei der Reaktion (Rakete beschleunigt) ist die Masse groß (die Rakete wiegt viel) und die Geschwindigkeit daher klein, aber auch entgegengesetzt.",
+    "audioId": null,
+    "imageId": "neutral.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Langweilig, das kenn ich doch alles schon!",
+        "effectId": "S7_impulse2_aw1",
+        "nextId": null,
+        "$$hashKey": "object:5637"
+      },
+      {
+        "text": "Verstanden!",
+        "effectId": null,
+        "nextId": null,
+        "$$hashKey": "object:5638"
+      },
+      {
+        "text": "Ich bin jetzt komplett verwirrt.",
+        "effectId": "S7_impulse2_aw3",
+        "nextId": null,
+        "$$hashKey": "object:5639"
+      }
+    ]
+  },
+  "END": {
+    "text": "Das hast du super gemacht! Nun weißt du ja bestens Bescheid über das Rückstoßprinzip! Ich werde gleich meinen Kollegen anrufen und ihm unseren Entwurf für das U-Boot senden, der wird begeistert sein! Vielleicht treffen wir uns ja eines Tages auf einer Forschungsreise! Mach’s gut!",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": []
+  }
+}
