@@ -189,6 +189,7 @@ locandy.player.plugins.Dialogue.writeRescourceToModel = function(specialStruct, 
             case "image/png": newId += ".png"; break;
             case "image/gif": newId += ".gif"; break;
             case "audio/mp3": newId += ".mp3"; break;
+            case "audio/mpeg": newId += ".mp3"; break;
         };
         
         // sanity check ... we cannot replace a sound of the same name with an image, and ...
@@ -315,7 +316,13 @@ locandy.player.plugins.Dialogue.setImageToNull = function(pluginModel, editorAct
         if(pluginModel.dialogue[editorActiveDialogueId].imageId === undefined){
             pluginModel.dialogue[editorActiveDialogueId].imageId = null;
         }
-    }  
+    };
+    
+/** @function {static} HTML Helper function */
+locandy.player.plugins.Dialogue.autoresizeTextArea = function(event, htmlElement)
+    {
+        htmlElement.style.height = htmlElement.scrollHeight+"px";
+    };
 
 /** @function {static} getTemplate @inheritdesc */    
 locandy.player.plugins.Dialogue.getTemplate = function(scope)
@@ -395,7 +402,8 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                     <div style="overflow:hidden"> \
                         <div> \
                             <textarea \
-                                ng-style="{\'height\':(pluginModel.dialogue[editorActiveDialogueId].text.length/56*12+24) + \'px\'}"\
+                                onfocus="locandy.player.plugins.Dialogue.autoresizeTextArea(event, this)"\
+                                onscroll="locandy.player.plugins.Dialogue.autoresizeTextArea(event, this)"\
                                 style="margin-bottom:5px min-height:96px" \
                                 class="form-control question" \
                                 data-ng-model="pluginModel.dialogue[editorActiveDialogueId].text" \
@@ -444,7 +452,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                                         <select data-ng-model="pluginModel.dialogue[editorActiveDialogueId].audioId"\
                                                 class="form-control full-border ng-pristine"  \
                                                 onchange="document.getElementById(\'btnSetAudioNull\').click()">\
-                                                <option data-ng-repeat="(key, value) in pluginModel.resources" ng-if="value.mimetype==\'audio/mp3\'">{{key}}</option> \
+                                                <option data-ng-repeat="(key, value) in pluginModel.resources" ng-if="value.mimetype==\'audio/mp3\' || value.mimetype==\'audio/mpeg\'">{{key}}</option> \
                                                 <option selected value="">{{"none"|i18n:"editor_plugin_dialogue_select_none"}}</option> \
                                         </select> \
                                     </div> \
@@ -648,7 +656,7 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                         </div> \
                         <div style="float: left; width:33%; margin-right: 10px"> \
                             <select data-ng-model="removeAudioId" class="form-control full-border ng-pristine"> \
-                                <option data-ng-repeat="(key, value) in pluginModel.resources" ng-if="value.mimetype==\'audio/mp3\'">{{key}}</option> \
+                                <option data-ng-repeat="(key, value) in pluginModel.resources" ng-if="value.mimetype==\'audio/mp3\' || value.mimetype==\'audio/mpeg\'">{{key}}</option> \
                             </select> \
                         </div> \
                         <div> \
@@ -855,7 +863,7 @@ locandy.player.plugins.Dialogue.prototype.executeSound = function(audioId)
                 if(!this.isRendered)
                     sound.autoplay = false;
                 else
-                    sound.playExclusive();
+                    sound.playExclusive( { playAudioWhenScreenIsLocked:true } );
             }
             else{
                 alert("ERROR: Sound could not be loaded: " + audioId);
