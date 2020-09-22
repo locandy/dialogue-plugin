@@ -417,12 +417,11 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                                     <div style="width:50%; float:left"> \
                                         <select required data-ng-model="pluginModel.dialogue[editorActiveDialogueId].imageId" \
                                                 class="form-control full-border ng-pristine" \
-                                                onchange="document.getElementById(\'btnSetImageNull\').click()"> \
+                                                onchange="global.locandy.player.plugins.Dialogue.setImageToNull(pluginModel, editorActiveDialogueId)"> \
                                             <option data-ng-repeat="(key, value) in pluginModel.resources"  ng-if="value.mimetype==\'image/png\' || value.mimetype==\'image/jpeg\' || value.mimetype==\'image/gif\'">{{key}}</option> \
                                             <option selected value="">{{"none"|i18n:"editor_plugin_dialogue_select_none"}}</option> \
                                         </select> \
                                     </div> \
-                                    <button style="display: none" id="btnSetImageNull" data-button-handler="global.locandy.player.plugins.Dialogue.setImageToNull(pluginModel, editorActiveDialogueId)"></button>\
                                 </div> \
                                 <div style="overflow: hidden; margin-top:10px;"> \
                                     <div style="float:left; width:50%"> \
@@ -443,12 +442,11 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                                     <div style="width:50%; float:left"> \
                                         <select data-ng-model="pluginModel.dialogue[editorActiveDialogueId].audioId"\
                                                 class="form-control full-border ng-pristine"  \
-                                                onchange="document.getElementById(\'btnSetAudioNull\').click()">\
+                                                onchange="global.locandy.player.plugins.Dialogue.setAudioToNull(pluginModel, editorActiveDialogueId)">\
                                                 <option data-ng-repeat="(key, value) in pluginModel.resources" ng-if="value.mimetype==\'audio/mp3\'">{{key}}</option> \
                                                 <option selected value="">{{"none"|i18n:"editor_plugin_dialogue_select_none"}}</option> \
                                         </select> \
                                     </div> \
-                                    <button style="display: none" id="btnSetAudioNull" data-button-handler="global.locandy.player.plugins.Dialogue.setAudioToNull(pluginModel, editorActiveDialogueId)"></button>\
                                 </div> \
                             </div> \
                         </div> \
