@@ -1,0 +1,223 @@
+{
+  "START": {
+    "text": "Hallo! Bist du ein Neuer hier auf unserer Schule für hochbegabte Genies? **Ich bin Professor Doktor Doktor Max Unfall.** transdisziplinärer Forscher aller Fachrichtungen; zuständig für das Überschreiten von Disziplingrenzen mittels gesellschaftlich-politischen und wissenschaftlich-analytischen Entscheidungs und Problemlösungsprozessen. Du bist also mein neuer Assistent für gefährliche Experimente! **Heute zeige ich dir was Bionik ist. Bionik befasst sich mit Lösungen, die die Natur in Millionen Jahren entwickelt hat.**",
+    "audioId": null,
+    "imageId": "fanatisch-groß.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Also Evolution, Darwin und so. Das kenne ich!",
+        "effectId": "S0_START_aw1",
+        "nextId": "history",
+        "$$hashKey": "object:174"
+      },
+      {
+        "text": "Geht es um Erfindungen der Natur?",
+        "effectId": "S0_START_aw2",
+        "nextId": "history",
+        "$$hashKey": "object:175"
+      }
+    ]
+  },
+  "history": {
+    "text": "Als die Ursuppe vor 3,8 Milliarden Jahren die ersten organischen Moleküle ausgespuckt hat, begann die Evolution des Lebens. Über Millionen Jahre haben sich aus diesen winzigen Molekülen die wundersamsten Tier- und Pflanzenarten entwickelt. **Die lange Entwicklungsarbeit brachte erstaunliche Erfindungen der Natur zum Vorschein.** Manche Lebewesen vollbringen wahre Kunststücke, um in der Natur zu überleben. Hast du dich schon einmal gefragt, wie ein Gecko kopfüber an der Wand laufen kann?",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Was ist die Ursuppe?",
+        "effectId": "S0_history_aw1",
+        "nextId": "history",
+        "$$hashKey": "object:489"
+      },
+      {
+        "text": "Wie klebt der Gecko an der Wand?",
+        "effectId": null,
+        "nextId": "example_gecko",
+        "$$hashKey": "object:490"
+      },
+      {
+        "text": "Was sind organische Moleküle?",
+        "effectId": "S0_history_aw3",
+        "nextId": "history",
+        "$$hashKey": "object:491"
+      },
+      {
+        "text": "Also das “Bio” von Bionik kommt von Biologie, aber wofür steht das “nik”?",
+        "effectId": null,
+        "nextId": "bionics_term",
+        "$$hashKey": "object:492"
+      }
+    ]
+  },
+  "example_gecko": {
+    "text": "Wir Menschen können einen Gummi-Gecko mit Superkleber an die Wand kleben. Der wird dort aber ziemlich fest picken bleiben bis man ihn wieder herunter stemmt. **Ein echter Gecko kann aber einfach an der Decke kleben und weiter gehen. Das Geheimnis wie er das macht, wollen wir lüften!**",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Wie groß wird ein Gecko?",
+        "effectId": "S0_example_gecko_aw1",
+        "nextId": "example_gecko",
+        "$$hashKey": "object:707"
+      },
+      {
+        "text": "Wie gut pickt ein Gecko?",
+        "effectId": "S0_example_gecko_aw2",
+        "nextId": "example_gecko",
+        "$$hashKey": "object:708"
+      },
+      {
+        "text": "Also wollen wir lernen wie der Gecko pickt?",
+        "effectId": "S0_example_gecko_aw3",
+        "nextId": "history",
+        "$$hashKey": "object:709"
+      }
+    ]
+  },
+  "bionics_term": {
+    "text": "**Technik! Der Begriff Bionik setzt sich aus den Begriffen „Biologie“ und „Technik“ zusammen.** Wissenschaftler dieser Disziplin erforschen dabei die Erfindungen der Natur, um diese dann für den Menschen nutzbar zu machen. Sie wollen von der Natur lernen und dieses Wissen nutzen, um technische Probleme zu lösen. **Man muss nur Spinnenseide ansehen, die hat extreme Eigenschaften, die wir enträtseln wollen.**",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Was kann Spinnenseide besonderes?",
+        "effectId": null,
+        "nextId": "spider_silk",
+        "$$hashKey": "object:738"
+      },
+      {
+        "text": "Hast du einen Link über Bionik?",
+        "effectId": "S0_bionics_term_link",
+        "nextId": "bionics_term",
+        "$$hashKey": "object:739"
+      },
+      {
+        "text": "Wie lernt ein Bioniker am besten von der Natur?",
+        "effectId": null,
+        "nextId": "bionic_scientist_analyses_nature",
+        "$$hashKey": "object:740"
+      }
+    ]
+  },
+  "spider_silk": {
+    "text": "**Spinnenseide ist eine besonders coole Erfindung der Natur.** Forscher versuchen seit vielen Jahren dieses Naturprodukt künstlich herzustellen. Warum? **Spinnenseide ist ultraleicht, elastisch wie Gummi und trotzdem fester als Stahl.** Sie ist vollständig biologisch abbaubar und noch dazu wasserfest. Das Problem ist: wir können sie nicht herstellen. Das können nur die Spinnen, aber wir wollen auch spinnen können. Wir brauchen Spinnenseile wie sie der Superheld verwendet! Wie heisst der nochmal ...?",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Wirklich fester als Stahl?",
+        "effectId": "S0_spider_silk_aw1",
+        "nextId": "spider_silk",
+        "$$hashKey": "object:1904"
+      },
+      {
+        "text": "Welche Anwendungen?",
+        "effectId": "S0_spider_silk_aw2",
+        "nextId": "spider_silk",
+        "$$hashKey": "object:1905"
+      },
+      {
+        "text": "Wie wird Spinnenseide technisch hergestellt?",
+        "effectId": "S0_spider_silk_aw3",
+        "nextId": "spider_silk",
+        "$$hashKey": "object:1906"
+      },
+      {
+        "text": "Also wollen wir lernen, wie man ein leichtes aber trotzdem superkräftiges Seil herstellt?",
+        "effectId": "S0_spider_silk_aw4",
+        "nextId": "bionics_term",
+        "$$hashKey": "object:1907"
+      }
+    ]
+  },
+  "bionic_scientist_analyses_nature": {
+    "text": "**Eine Bionikerin beobachtet unglaubliche Problemlösungen der Natur. Sie analysiert die Natur und versucht sie in einem technischen Produkt anzuwenden.** Die Natur hat zum Beispiel viele verschiedene Lösungen zum Fliegen entwickelt. Da gibt es Samen die gleiten, Vögel die flattern, Samen die Fallschirme verwenden und Samen die rotieren. Alle Lösungen haben Vorteile und Nachteile. Die wollen Bioniker verstehen, analysieren und lernen.",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Was haben wir von Vögeln gelernt?",
+        "effectId": "S0_bionic_scientist_analyses_nature_aw1",
+        "nextId": "bionic_scientist_analyses_nature",
+        "$$hashKey": "object:4908"
+      },
+      {
+        "text": "Aha! Bionik analysiert die Natur und lernt davon. Wie geht man da vor?",
+        "effectId": null,
+        "nextId": "instructions",
+        "$$hashKey": "object:4909"
+      }
+    ]
+  },
+  "instructions": {
+    "text": "Also da gibt es zwei Möglichkeiten: Entweder hat man ein technisches Problem und sucht eine Lösung in der Natur, oder man schaut sich die Natur an und stellt eine Hypothese auf wie die Natur das wohl machen kann. So arbeiten Bioniker! **Um echte Forschung zu betreiben, musst du natürlich dein Laborjournal ausfüllen und alle Ergebnisse gut dokumentieren**, aber das brauch‘ ich einem Genie wie dir wahrscheinlich nicht erklären!",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Was ist ein Laborjournal?",
+        "effectId": null,
+        "nextId": "lab_journal",
+        "$$hashKey": "object:5326"
+      },
+      {
+        "text": "Ins Laborjournal schreibe ich Datum, Uhrzeit und Messwerte?",
+        "effectId": "S0_instructions_aw2",
+        "nextId": "instructions",
+        "$$hashKey": "object:5327"
+      },
+      {
+        "text": "Was ist der Sinn eines Laborjournals?",
+        "effectId": "S0_instructions_aw3",
+        "nextId": "instructions",
+        "$$hashKey": "object:5328"
+      },
+      {
+        "text": "Was ist eine Hypothese?",
+        "effectId": "S0_instructions_aw4",
+        "nextId": "instructions",
+        "$$hashKey": "object:5329"
+      },
+      {
+        "text": "Ok. Ich werde jede Zahl, jede Uhrzeit und alle meine Beobachtungen im Laborjournal notieren!",
+        "effectId": null,
+        "nextId": "exp_choice",
+        "$$hashKey": "object:5330"
+      }
+    ]
+  },
+  "lab_journal": {
+    "text": "Ach herrje, was hab ich mir da angetan... Frag mal lieber Wikipedia.",
+    "audioId": null,
+    "imageId": "sprachlos.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Kann ich den Link bitte haben?",
+        "effectId": null,
+        "nextId": "lab_journal",
+        "$$hashKey": "object:5477"
+      },
+      {
+        "text": "Habs mir durchgelesen. Alles klar!",
+        "effectId": null,
+        "nextId": "instructions",
+        "$$hashKey": "object:5478"
+      }
+    ]
+  },
+  "exp_choice": {
+    "text": "Ich glaube du weisst jetzt alles um Experimente durchzuführen. Wir gehen dann immer so vor, dass wir ein technisches Problem bekommen. Dann suchen wir eine Lösung in der Natur, überlegen uns eine Hypothese wie das ganze funktioniert und machen Experimente. Dadurch versuchen wir zu verstehen wie die Natur das ganze macht und vielleicht können wir ein Produkt entwickeln oder eine technische Lösung erfinden. DAS IST BIONIK! Wähle jetzt ein Problem und scanne den QR-Code oder gib den Geheimcode ein!",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": []
+  }
+}

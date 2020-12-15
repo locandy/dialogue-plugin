@@ -97,7 +97,7 @@ curl -H "X-Goog-Api-Key: ${GOOGLE_API_KEY}" \
 jq -r .audioContent $FILE_NAME.json > $FILE_NAME.base64
 
 # BASE64 DECODING
-base64 -D -i $FILE_NAME.base64 -o $FILE_NAME.$OUTEXT
+base64 -d -i $FILE_NAME.base64 > $FILE_NAME.$OUTEXT
 
 rm $FILE_NAME-post.json
 rm $FILE_NAME.base64
@@ -112,13 +112,6 @@ if [ "$OUTEXT" == "wav" ]; then
 fi
 
 # EXAMPLES ...
-
-#id_list="START LOTUSBLUME_EINLEITUNG";
-#for node in $id_list ; do 
-#    echo "<speak>" > $node.ssml
-#    jq -r ".$node.text" enter-bionics.json >> $node.ssml
-#    echo "</speak>" >> $node.ssml
-#done
 
 # ../bin/gtts.sh -k $GOOGLE_TTS_API_KEY -p -5 -r 0.9 -i maxaccident.ssml 
 

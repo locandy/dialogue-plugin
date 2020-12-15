@@ -1,0 +1,49 @@
+{
+  "START": {
+    "text": "Der Direktor vom Schmetterlingshaus hat angerufen. Sie haben ein Problem. Der Wärter muss jedesmal alle **Schmetterlinge einsammeln** bevor sie die Blumen spritzen,** damit sie nicht nass werden.** Und die lassen sich natürlich nicht so gerne einsammeln! Er hat mich gebeten das Problem zu lösen. **Also. Hole die Schachtel mit den Experimenten und nimm das H2O raus.**",
+    "audioId": "water_experiment",
+    "imageId": null,
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Ich finde kein H2O in der Schachtel?",
+        "effectId": "D1-H2O",
+        "nextId": "1.1 water_experiment",
+        "$$hashKey": "object:308"
+      },
+      {
+        "text": "Ich hab es.",
+        "effectId": "D1-Pipette",
+        "nextId": "1.2 hypothesis",
+        "$$hashKey": "object:309"
+      }
+    ]
+  },
+  "1.2 hypothesis": {
+    "text": "Der Direktor vom  Schmetterlingshaus hat uns schon unsere erste **Hypothese** geliefert: **\"Schmetterlinge werden im Regen nass!\"** Wir werden eine Schmetterlingstrocknungsanlage für Schmetterlingshäuser konstruieren und reich werden! Sowas braucht jedes Haus! Jeder braucht sowas! Das wird ein Bestseller!",
+    "audioId": "wex_hypothesis",
+    "imageId": null,
+    "imageWidth": null,
+    "answers": []
+  },
+  "1.3 wex_butterfly": {
+    "text": "Gut. Du denkst mit! Wie gehen wir weiter vor?",
+    "audioId": "wex_butterfly",
+    "imageId": null,
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Wir machen den Schmetterlingsflügel nass. Wir tropfen Wasser drauf!",
+        "effectId": "D1-FlügelNass",
+        "nextId": "1.3 hypothesis",
+        "$$hashKey": "object:314"
+      },
+      {
+        "text": "Als Wissenschaftler stellen eine zuerst eine Hypothese auf!",
+        "effectId": null,
+        "nextId": "1.3 hypothesis",
+        "$$hashKey": "object:315"
+      }
+    ]
+  }
+}

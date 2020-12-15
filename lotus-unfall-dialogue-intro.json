@@ -1,0 +1,54 @@
+{
+  "START": {
+    "text": "Hallo! Bist du ein Neuer hier auf unserer Schule für hochbegabte Genies? **Ich bin Professor Doktor Doktor Max Unfall.** transdisziplinärer Forscher aller Fachrichtungen; zuständig für das Überschreiten von Disziplingrenzen mittels gesellschaftlich-politischen und wissenschaftlich-analytischen Entscheidungs und Problemlösungsprozessen. **Du bist also mein neuer Assistent für gefährliche Experimente! Bist du bereit anzufangen?**",
+    "audioId": "start",
+    "imageId": null,
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Wo ist die Schutzausrüstung?",
+        "effectId": null,
+        "nextId": "choose_experiment",
+        "$$hashKey": "object:142"
+      },
+      {
+        "text": "Was muss ich denn tun?",
+        "effectId": null,
+        "nextId": "choose_experiment",
+        "$$hashKey": "object:143"
+      },
+      {
+        "text": "Sicher! Ich zünde gleich das Haus an!",
+        "effectId": null,
+        "nextId": "choose_experiment",
+        "$$hashKey": "object:144"
+      }
+    ]
+  },
+  "choose_experiment": {
+    "text": "Also! ... Folgende Experimente stehen da an: Ich hab ein **Experiment mit Wasser,** ein **Experiment mit Feuer,** eines **mit Lineal** und eines für Dummköpfe!",
+    "audioId": "choose_experiment",
+    "imageId": null,
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Ich will was nass machen, überfluten!",
+        "effectId": "scene1",
+        "nextId": "choose_experiment",
+        "$$hashKey": "object:175"
+      },
+      {
+        "text": "Ich will Hitze, Feuer UND Explosionen!",
+        "effectId": null,
+        "nextId": "",
+        "$$hashKey": "object:176"
+      },
+      {
+        "text": "Ich will messen, forschen und verstehen!",
+        "effectId": null,
+        "nextId": "",
+        "$$hashKey": "object:177"
+      }
+    ]
+  }
+}

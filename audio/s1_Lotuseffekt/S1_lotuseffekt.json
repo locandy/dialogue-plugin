@@ -1,0 +1,412 @@
+{
+  "START": {
+    "text": "He du! Wäre doch cool einen absolut wasserfesten Anzug zu haben? Dann könnte man stundenlang durch den Regen spazieren, ohne dass man nass wird. Kannst du mir helfen, einen solchen Anzug zu entwickeln?",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": 120,
+    "answers": [
+      {
+        "text": "Was muss ich tun?",
+        "effectId": "scene++",
+        "nextId": "lotus_intro",
+        "$$hashKey": "object:621"
+      },
+      {
+        "text": "Ja klar, los geht’s!",
+        "effectId": "scene++",
+        "nextId": "lotus_intro",
+        "$$hashKey": "object:622"
+      }
+    ]
+  },
+  "lotus_intro": {
+    "text": "Hast du schon einmal etwas von der Lotusblume gehört?",
+    "audioId": null,
+    "imageId": "fragt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Ja!",
+        "effectId": "S1_lotus_intro_aw1",
+        "nextId": "lotuseffect"
+      },
+      {
+        "text": "Nein!",
+        "effectId": "scene0",
+        "nextId": "lotusflower"
+      }
+    ]
+  },
+  "lotusflower": {
+    "text": "Die Lotusblume (oder auch Lotosblume) gehört zu den Lotusgewächsen und ist eine wasserlebende Pflanze. Die Pflanzenfamilie besteht aus nur zwei Arten, der indischen und der amerikanischen Lotusblume. Aufgrund ihrer selbstreinigenden Eigenschaft ist die Lotusblume weltweit bekannt. In manchen Ländern, wie zum Beispiel in Japan, dient die Wurzel der Lotuspflanze als Nahrungsmittel.",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Was ist nun so besonders an dieser Pflanze?",
+        "effectId": "scene2",
+        "nextId": "lotuseffect"
+      },
+      {
+        "text": "Erzähl mir mehr Details!",
+        "effectId": "S1_lotusflower_aw2_link",
+        "nextId": "lotusflower"
+      },
+      {
+        "text": "Okay, weiter geht’s!",
+        "effectId": "scene2",
+        "nextId": "lotuseffect"
+      }
+    ]
+  },
+  "lotuseffect": {
+    "text": "Die Lotuspflanze kann sich selbst reinigen. Wie du bestimmt weißt, brauchen Pflanzen Sonnenlicht, um zu wachsen. Indem die Pflanze ihre Blätter sauber hält, ist sie in der Lage, so viel Sonnenlicht wie möglich einzufangen. An den Blättern der Lotusblumen perlt das Wasser einfach ab und spült gleichzeitig den Schmutz fort. Wassertropfen rollen also nach dem Kontakt mit dem Blatt einfach ab und somit ist es ihnen nicht möglich, das Blatt der Pflanze mit Wasser zu benetzen. Diesen Effekt nennt man Lotuseffekt.",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Wie funktioniert das?",
+        "effectId": "scene0",
+        "nextId": "leaf"
+      },
+      {
+        "text": "Was machen die Pflanzen mit dem Sonnenlicht?",
+        "effectId": "S1_lotuseffect_aw2_link",
+        "nextId": "lotuseffect"
+      }
+    ]
+  },
+  "leaf": {
+    "text": "Das Blatt der Lotusblume verfügt über eine spezielle Oberfläche, die mit zahllosen, winzigen Erhebungen übersät ist. Diese winzigen Erhebungen werden auch Mikrostrukturen genannt und sind für das menschliche Auge nicht sichtbar. Erst der Blick durchs Mikroskop verrät die wahre Gestalt der Blattoberfläche.",
+    "audioId": null,
+    "imageId": "neutral.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Wozu dienen die Mikrostrukturen?",
+        "effectId": "scene3",
+        "nextId": "hydro_concept"
+      },
+      {
+        "text": "Was bedeutet “mikro”?",
+        "effectId": "S1_leaf_aw2",
+        "nextId": "leaf"
+      }
+    ]
+  },
+  "hydro_concept": {
+    "text": "Die Mikrostrukturen sorgen dafür, dass ein aufliegender Wassertropfen kaum Kontakt zur Blattoberfläche bekommt, deshalb rollt er ab, anstatt das Blatt zu benetzen. Dies bedeutet, dass der Wassertropfen, je nach Ausprägung der Mikrostrukturen, eine Kugelform behält. Solche wasserabweisenden Oberflächen werden auch als „hydrophob“ bezeichnet. Dieses Wort setzt sich aus dem Altgriechischen hýdor „Wasser“ sowie phóbos „Furcht“ zusammen und heißt wortwörtlich übersetzt wassermeidend. Es beschreibt die Unbenetzbarkeit einer Oberfläche mit Wasser. Hydrophobe Oberflächen werden also mithilfe von Mikro- oder noch kleineren Nanostrukturen erzeugt. Zusätzlich zur Struktur weisen Oberflächen oft noch wasserabweisende Substanzen, wie zum Beispiel Wachse, auf.",
+    "audioId": null,
+    "imageId": "neutral.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Wie groß ist ein Nanometer?",
+        "effectId": "S1_hydro_concept_aw1",
+        "nextId": "hydro_concept"
+      },
+      {
+        "text": "Was ist das Gegenteil von hydrophob?",
+        "effectId": "S1_hydro_concept_aw2",
+        "nextId": "hydro_concept"
+      },
+      {
+        "text": "Hab verstanden!",
+        "effectId": "scene4",
+        "nextId": "contact1"
+      }
+    ]
+  },
+  "contact1": {
+    "text": "Sehen wir uns die Verringerung der Kontaktfläche zwischen Blattoberfläche und Wassertropfen einmal genauer an. Stell dir vor, ein Wassertropfen fällt auf eine Oberfläche und bleibt an derselben Stelle liegen.",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Was passiert, wenn ein Tropfen Wasser auf eine Oberfläche ohne Mikrostrukturen fällt?",
+        "effectId": "scene5",
+        "nextId": "contact2"
+      },
+      {
+        "text": "Okay, das kann ich mir gut vorstellen!",
+        "effectId": "scene5",
+        "nextId": "contact2"
+      }
+    ]
+  },
+  "contact2": {
+    "text": "Fällt der Wassertropfen auf eine glatte Oberfläche ohne Mikrostrukturen oder Wachse, verändert er seine Form und entfernt sich von der Kugelgestalt, er wird also abgeflacht. Zoomen wir mal näher ran. Der graue Untergrund stellt eine glatte Oberfläche dar. Die Kontaktfläche zwischen Wassertropfen und Oberfläche ist rot dargestellt, der Wassertropfen ist blau gefärbt.",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Was passiert, wenn ein Tropfen Wasser auf eine Oberfläche mit Mikrostrukturen fällt?",
+        "effectId": "scene6",
+        "nextId": "contact3"
+      },
+      {
+        "text": "Verstanden!",
+        "effectId": "scene6",
+        "nextId": "contact3"
+      }
+    ]
+  },
+  "contact3": {
+    "text": "Wenn ein Tropfen Wasser auf eine strukturierte Oberfläche fällt, kann dieser durch die unzähligen kleinen Erhebungen und die zusätzliche Wachsschicht nicht am Blatt anhaften und es somit nicht benetzen. Die extrem verkleinerte Kontaktfläche zwischen Wassertropfen und Blatt und die Oberflächenspannung des Wassers sorgen dafür, dass der Tropfen annähernd seine Kugelgestalt behält.",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Hab verstanden!",
+        "effectId": "scene0",
+        "nextId": "angle1"
+      },
+      {
+        "text": "Wie funktioniert die Oberflächenspannung des Wassers?",
+        "effectId": "S1_contact3_aw2_link",
+        "nextId": "contact3"
+      },
+      {
+        "text": "Woher weiß man, ob eine Oberfläche hydrophob ist?",
+        "effectId": "scene0",
+        "nextId": "angle1"
+      }
+    ]
+  },
+  "angle1": {
+    "text": "Um zu bestimmen, ob eine Oberfläche wasserabweisend (=hydrophob) oder wasserliebend (=hydrophil) ist, muss man herausfinden, wie sich der Wassertropfen nach dem Kontakt mit der Oberfläche verhält. Dazu misst man den Kontaktwinkel zwischen Wassertropfen und Blattoberfläche.",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Was ist der Kontaktwinkel?",
+        "effectId": "scene7",
+        "nextId": "angle2"
+      },
+      {
+        "text": "Was sagt dieser Winkel über eine Oberfläche aus?",
+        "effectId": "scene7",
+        "nextId": "angle2"
+      }
+    ]
+  },
+  "angle2": {
+    "text": "Der Kontaktwinkel wird mit dem griechischen Großbuchstaben Theta Θ bezeichnet, im Bild unten ist er in rot dargestellt. Beträgt dieser Winkel zwischen 0-90° wird die Oberfläche als hydrophil bezeichnet. Beträgt der Winkel 90° handelt es sich um eine hydrophobe Oberfläche. Wenn der Winkel mehr als 90° beträgt, wird die Oberfläche als superhydrophob (=extrem wasserabweisend) bezeichnet. Bei einem Kontaktwinkel von mehr als 160° spricht man dann vom Lotuseffekt.",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Den Kontaktwinkel kenne ich bereits! Zeig mir Details und komplizierte Formeln zur Berechnung!",
+        "effectId": "S1_angle2_aw1_link",
+        "nextId": "angle2"
+      },
+      {
+        "text": "Hab verstanden! Wenn wir also eine Oberfläche finden, die unbenetzbar ist, könnten wir einen absolut wasserdichten Anzug herstellen!",
+        "effectId": "scene0",
+        "nextId": "prototyp"
+      }
+    ]
+  },
+  "prototyp": {
+    "text": "Genau! Wir nutzen dazu die Technik der Lotuspflanze! Da ich gerade keine Lotuspflanze zur Hand habe, machen wir uns auf die Suche nach anderen Oberflächen, die denselben Effekt aufweisen! Lass uns herausfinden, welche Materialien sich für unser Vorhaben gut eignen würden und sich ähnlich wasserabweisend verhalten wie ein Lotusblatt!",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Lass uns loslegen!",
+        "effectId": "scene8",
+        "nextId": "materials"
+      },
+      {
+        "text": "Welche Materialien muss ich besorgen?",
+        "effectId": "scene8",
+        "nextId": "materials"
+      }
+    ]
+  },
+  "materials": {
+    "text": "Hol dir eine Pipette, ein Stück unbehandeltes Holz, ein Blatt DIN-A4 Papier, eine Wachsmalkreide, ein Geodreieck, ein kleines Gefäß mit Wasser, eine Schere und ein Blatt von einem Brokkoli oder Frauenmantel. Ich teste statt der Pflanzen einen Schmetterlingsflügel!",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Hab alles!",
+        "effectId": "scene10",
+        "nextId": "exp1_1"
+      },
+      {
+        "text": "Ich habe keine Pipette.",
+        "effectId": "S1_materials_aw2",
+        "nextId": "materials"
+      },
+      {
+        "text": "Was ist Frauenmantel?",
+        "effectId": "S1_materials_aw3",
+        "nextId": "materials"
+      },
+      {
+        "text": "Ich habe keinen Kohl und auch keinen Frauenmantel.",
+        "effectId": "S1_materials_aw4",
+        "nextId": "materials"
+      }
+    ]
+  },
+  "exp1_1": {
+    "text": "Schneide aus dem Blatt Papier zwei kleine Kärtchen aus, die ca. 8 x 5 cm groß ist. Male auf einem Kärtchen einen Bereich mit Wachsmalkreide an, so wie du es am Bild erkennen kannst. Drücke die Wachsmalkreide dabei fest ans Papier, sodass eine richtige Schicht entsteht. Lege dann alle zu testenden Materialien nebeneinander hin.",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Lass uns fortfahren!",
+        "effectId": "scene11",
+        "nextId": "exp1_2"
+      }
+    ]
+  },
+  "exp1_2": {
+    "text": "Nimm nun das Wasser und die Pipette und tropfe auf alle Materialien einen Tropfen Wasser. Beobachte, was passiert.",
+    "audioId": null,
+    "imageId": "neutral.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Die Wassertropfen verhalten sich unterschiedlich.",
+        "effectId": "scene0",
+        "nextId": "exp2"
+      },
+      {
+        "text": "Mir fällt nichts auf.",
+        "effectId": "S1_exp1_2_aw2",
+        "nextId": "exp1_2"
+      }
+    ]
+  },
+  "exp2": {
+    "text": "Genau! Versuche nun einen Tipp abzugeben, welche Oberfläche welche Eigenschaft hat. Sieh dir dazu den Kontaktwinkel der Tropfen an. Schreibe deine Einschätzung ins Laborjournal!",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Ich brauche deine Hilfe!",
+        "effectId": "scene12",
+        "nextId": "help"
+      },
+      {
+        "text": "Hab’s notiert!",
+        "effectId": "scene13",
+        "nextId": "check"
+      }
+    ]
+  },
+  "help": {
+    "text": "Hier siehst du noch einmal das Schema vom Kontaktwinkel und die Einteilung der Oberflächen.\nWenn der Kontaktwinkel kleiner als 90° ist, nennt man die Oberfläche hydrophil. Beträgt der Winkel genau 90° spricht man von einer hydrophoben Oberfläche. Kontaktwinkel über 90° weisen auf superhydrophobe Oberflächen hin. Ab sehr hohen Kontaktwinkeln von 160° spricht man dann vom Lotuseffekt.",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Verstanden!",
+        "effectId": "scene0",
+        "nextId": "exp2"
+      },
+      {
+        "text": "Ich will mehr wissen. Zeig mir den Artikel über den Kontaktwinkel bei Wikipedia.",
+        "effectId": "S1_help_aw2_link",
+        "nextId": "help"
+      }
+    ]
+  },
+  "check": {
+    "text": "Hier kannst du mit dem Geodreieck noch einmal nachmessen.",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Hab’s gemessen!",
+        "effectId": "scene0",
+        "nextId": "resolve"
+      }
+    ]
+  },
+  "resolve": {
+    "text": "Das Papier und das Holz haben hydrophile Oberflächen, das mit Wachsmalkreide beschichtete Papier ist hydrophob und der Schmetterlingsflügel, der Kohl und der Frauenmantel weisen eine superhydrophobe, unbenetzbare Oberfläche auf! Hast du alles richtig erraten und nachgeprüft?",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Kann ich noch einmal das Bild zum Nachmessen haben?",
+        "effectId": "scene13",
+        "nextId": "check"
+      },
+      {
+        "text": "Hab alles verstanden, gibt es noch weitere Beispiele in der Natur?",
+        "effectId": "scene15",
+        "nextId": "exam_bug"
+      },
+      {
+        "text": "Zeig mir bitte den Schmetterlingsflügelversuch!",
+        "effectId": "scene14",
+        "nextId": "exam_butterfly"
+      }
+    ]
+  },
+  "exam_butterfly": {
+    "text": "Ich habe dasselbe Experiment mit verschiedenen Schmetterlingsflügeln durchgeführt und herausgefunden, dass dieser ebenfalls eine superhydrophobe Oberfläche besitzt. Der Flügel ist mit Nanostrukturen übersät und besitzt zusätzlich noch eine Wachsschicht. Sogar Honig rinnt einfach so von der Oberfläche ab! Mit einem Taschentuch kann ein Wassertropfen ganz leicht vom Flügel entfernt werden. Der Flügel ist danach wieder komplett trocken.",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Verstanden!",
+        "effectId": "scene0",
+        "nextId": "resolve"
+      }
+    ]
+  },
+  "exam_bug": {
+    "text": "Neben der Lotusblume und dem Schmetterling gibt es noch weitere Beispiele für superhydrophobe Oberflächen aus der Natur. In der Namib-Wüste an der Westküste Südafrikas lebt ein kleiner Überlebenskünstler. Es ist ein kleiner schwarzer Käfer, der nur wenige Zentimeter groß ist, und einen unglaublich raffinierten Trick entwickelt hat, um in der heißen, trockenen Wüste zu überleben. Dieser Käfer hat Forscher sogar dazu inspiriert eine bionische Fassadenfarbe zu entwickeln! Sieh dir dazu das Video an.",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Hab’s gesehen!",
+        "effectId": "scene16",
+        "nextId": "applications"
+      }
+    ]
+  },
+  "applications": {
+    "text": "Es gibt viele verschiedene Möglichkeiten, wie der Lotuseffekt in der Technik eingesetzt werden kann, von Fassadenfarbe bis zu selbstreinigenden Glasscheiben und sogar unbeschmutzbaren Hemden nutzen diesen Effekt. Sieh dir dazu folgenden Artikel an.",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Hab’s gesehen!",
+        "effectId": "scene16",
+        "nextId": "END"
+      }
+    ]
+  },
+  "END": {
+    "text": "Ich hoffe du hattest Spaß beim Experimentieren! Das hast du sehr gut gemacht! Die Ergebnisse können wir nutzen, um weiter an unserem wasserdichten Anzug zu forschen! Bis zum nächsten Experiment!",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": []
+  }
+}
