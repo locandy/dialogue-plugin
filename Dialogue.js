@@ -20,7 +20,7 @@ locandy.player.plugins.Dialogue = function(spot, pluginModel)
         this.localizerService = locandy.player.playerMainSingleton.injector.get("localizerService");
 
         DEBUG_dialogue = this;
-        this.imageWidth = "150px";
+        this.imageWidth = "33%"; // stored as number in model <100 means percent otherwise px
 
         // dialogue properties
         this.dialogue = pluginModel.dialogue;       
@@ -439,8 +439,8 @@ locandy.player.plugins.Dialogue.getEditTemplate = function(scope)
                                         <input type="number" \
                                             class="form-control question" \
                                             data-ng-model="pluginModel.dialogue[editorActiveDialogueId].imageWidth" \
-                                            min="80" max="280" \
-                                            placeholder="150"/> \
+                                            min="10" max="300" \
+                                            placeholder="33"/> \
                                     </div> \
                                 </div> \
                                 <div style="overflow: hidden; margin-top: 10px"> \
@@ -823,7 +823,8 @@ locandy.player.plugins.Dialogue.prototype.setActiveDialogue = function(activeDia
     
     // set new imageWidth
     if ((this.dialogue[this.activeDialogueId].imageWidth !== undefined) && typeof(this.dialogue[this.activeDialogueId].imageWidth) == "number") {
-        this.imageWidth = "" + this.dialogue[this.activeDialogueId].imageWidth + "px";
+        var width = this.dialogue[this.activeDialogueId].imageWidth;
+        this.imageWidth = "" + width + (width<100 ? "%" : "px");
     }
 
     // execute sound of next dialogue
@@ -915,4 +916,3 @@ locandy.player.plugins.Dialogue.prototype.verifyBeforePublish = function()
             }
         }
     };
-
