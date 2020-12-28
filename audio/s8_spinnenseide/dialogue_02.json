@@ -1,0 +1,16 @@
+{
+  "START": {
+    "text": "Super! Du bist ja sehr begabt im Experimentieren.",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": 120,
+    "answers": [
+      {
+        "text": "Cool. Was machen wir als nächstes?",
+        "effectId": null,
+        "nextId": "START",
+        "$$hashKey": "object:757"
+      }
+    ]
+  }
+}

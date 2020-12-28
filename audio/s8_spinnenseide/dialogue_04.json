@@ -1,0 +1,16 @@
+{
+  "START": {
+    "text": "Na ja! Da habe ich mir ehrlich gesagt schon mehr erwartet.",
+    "audioId": null,
+    "imageId": "sprachlos.png",
+    "imageWidth": 120,
+    "answers": [
+      {
+        "text": "Was machen wir als nächstes?",
+        "effectId": null,
+        "nextId": "START",
+        "$$hashKey": "object:817"
+      }
+    ]
+  }
+}

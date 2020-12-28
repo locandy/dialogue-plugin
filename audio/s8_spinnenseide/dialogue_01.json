@@ -1,0 +1,187 @@
+{
+  "START": {
+    "text": "Hi! Hast du schon von unserem neuen Forscher gehört? Gabriel hat uns beim Wettbewerb mit seinen Experimenten überzeugt und ein neues aufregendes Thema vorgeschlagen. Er erforscht die Eigenschaften von Spinnenseide und hat spannende Entdeckungen gemacht. Laut Experten auf diesem Gebiet ist ein nur Daumen-dickes Spinnenseide-Seil geeignet, um eine Boeing 747 im Landeanflug abzubremsen. Unglaublich oder? Wir brauchen nun deine Hilfe beim Erforschen dieses besonderen Materials.",
+    "audioId": null,
+    "imageId": "fanatisch-groß.png",
+    "imageWidth": 120,
+    "answers": [
+      {
+        "text": "Klingt spannend. Bin dabei!",
+        "effectId": null,
+        "nextId": "spiderSilk_explanation",
+        "$$hashKey": "object:336"
+      },
+      {
+        "text": "Spinnenseide? Meinst du Spinnennetze?",
+        "effectId": "S8_START_aw2",
+        "nextId": "START",
+        "$$hashKey": "object:337"
+      },
+      {
+        "text": "Was ist denn daran so besonders?",
+        "effectId": null,
+        "nextId": "spiderSilk_explanation",
+        "$$hashKey": "object:338"
+      }
+    ]
+  },
+  "spiderSilk_explanation": {
+    "text": "Spinnenseide ist, mechanisch gesehen, das belastbarste uns bekannte Material. Dieses wurde in 300 Millionen Jahren Evolution perfektioniert und stellt alle bisherigen Fasern in den Schatten.",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Welche Eigenschaften besitzt Spinnenseide noch?",
+        "effectId": "S8_spiderSilk_explanation_aw1",
+        "nextId": "experiment_introduction"
+      },
+      {
+        "text": "Man könnte es doch sammeln, oder nicht? Wir züchten einfach Spinnen.",
+        "effectId": null,
+        "nextId": "spiderSilk_problem_collecting"
+      }
+    ]
+  },
+  "spiderSilk_problem_collecting": {
+    "text": "Nein, leider ist es nicht möglich Spinnen in großen Mengen zu züchten. Sie sind Kannibalen und würden sich bei Platzmangel gegenseitig auffressen. Daher kann Spinnenseide nur sehr begrenzt auf natürliche Weise gewonnen werden.",
+    "audioId": null,
+    "imageId": "neutral.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Alles klar! Hab verstanden.",
+        "effectId": null,
+        "nextId": "experiment_introduction"
+      }
+    ]
+  },
+  "experiment_introduction": {
+    "text": "Bevor wir Experimente machen können, müssen wir erst einmal Versuchsobjekte finden. Suche in deiner Umgebung nach Spinnennetzen. Wenn es Frühling oder Sommer ist, hast du gute Chancen im Garten oder auf Wiesen welche zu finden. Behandle die Spinnen vorsichtig, dass du nicht gebissen wirst. Die meisten Spinnen im deutschsprachigen Raum sind übrigens für den Menschen ungefährlich, aber pass trotzdem auf. Wenn du ein oder am besten mehrere Spinnennetze ausfindig machen konntest, sag mir Bescheid.",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Hab welche gefunden!",
+        "effectId": null,
+        "nextId": "exp_skizze_01"
+      },
+      {
+        "text": "Leider hab ich keine finden können. Hier ist alles zu sauber.",
+        "effectId": null,
+        "nextId": "experiment_introduction_fail"
+      }
+    ]
+  },
+  "experiment_introduction_fail": {
+    "text": "Das klingt aber nach einer schwachen Ausrede! Spinnennetze gibt es überall. Such nochmal im Keller, im Garten, bei Holzhaufen oder in deinem Zimmer.",
+    "audioId": null,
+    "imageId": "sprachlos.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Ok. Hab’ jetzt welche gefunden.",
+        "effectId": "S8_experiment_introduction_fail_aw1",
+        "nextId": "exp_skizze_01"
+      },
+      {
+        "text": "Ich habe wirklich nichts gefunden, auch beim zweiten Versuch.",
+        "effectId": "S8_experiment_introduction_fail_aw2",
+        "nextId": "exp_skizze_01"
+      }
+    ]
+  },
+  "exp_skizze_01": {
+    "text": "Sieh dir zuerst den Aufbau der Netze an und fertige in deinem Laborjournal eine Skizze davon an. Untersuche auch, ob es Unterschiede zu anderen Netzen gibt und vielleicht findest du ja raus, welche Spinne das Netz gebaut hat.",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Erledigt!",
+        "effectId": null,
+        "nextId": "exp_skizze_02"
+      },
+      {
+        "text": "Ich habe Probleme beim Erkennen des Aufbaus.",
+        "effectId": "S8_exp_skizze_01_aw2",
+        "nextId": "exp_skizze_01"
+      }
+    ]
+  },
+  "exp_skizze_02": {
+    "text": "Welche Formen haben deine gezeichneten Netze?",
+    "audioId": null,
+    "imageId": "fragt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Trichter",
+        "effectId": "S8_exp_skizze_02_aw1",
+        "nextId": "exp_skizze_02"
+      },
+      {
+        "text": "Radnetz",
+        "effectId": "S8_exp_skizze_02_aw2",
+        "nextId": "exp_skizze_02"
+      },
+      {
+        "text": "Unregelmäßiges Raumnetz",
+        "effectId": "S8_exp_skizze_02_aw3",
+        "nextId": "exp_skizze_02"
+      },
+      {
+        "text": "Baldachinnetz",
+        "effectId": "S8_exp_skizze_02_aw4",
+        "nextId": "exp_skizze_02"
+      },
+      {
+        "text": "Gehen wir weiter zum nächsten Schritt.",
+        "effectId": null,
+        "nextId": "exp_try"
+      }
+    ]
+  },
+  "exp_try": {
+    "text": "Nun gut, jetzt wird es spannender. Ich hoffe, du hast keine Arachnophobie! Führe einige Experimente an dem Netz durch: Greif es an! Überprüfe, ob sich alle Fäden des Spinnennetzes gleich anfühlen oder ob du Unterschiede erkennen kannst. Häng’ was hinein! Sei nicht zu zimperlich und vergiss nicht in deinem Laborjournal deine Vorgehensweise, Ergebnisse und Beobachtungen gut zu dokumentieren.",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Was ist denn, wenn die Spinne rauskommt, weil sich das Netz bewegt?",
+        "effectId": "S8_exp_try_aw1",
+        "nextId": "exp_try"
+      },
+      {
+        "text": "Wie viele Experimente soll ich machen?",
+        "effectId": "S8_exp_try_aw2",
+        "nextId": "exp_try"
+      },
+      {
+        "text": "Ich hab keine Lust das Netz anzufassen.",
+        "effectId": "S8_exp_try_aw3",
+        "nextId": "exp_try"
+      },
+      {
+        "text": "Fertig!",
+        "effectId": null,
+        "nextId": "exp_observations"
+      }
+    ]
+  },
+  "exp_observations": {
+    "text": "Prima! Hier nun ein kleines Quiz. Mal schauen, wie genau du beobachtet hast.",
+    "audioId": null,
+    "imageId": "fragt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Fertig. Machen wir weiter.",
+        "effectId": null,
+        "nextId": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "START": {
+    "text": "Nun wird es etwas genauer! Fangen wir mit den Berechnungen und dem Messen der physikalischen Werte an: Wir wollen die Aussage eines YouTube-Videos überprüfen, dass eine Boeing 747 mit einem daumen-dicken Spinnenseide-Seil gestoppt werden kann. Kannst du mir bitte ausrechnen, ob es dafür wirklich ein nur Daumen-dickes Seil braucht? Ich habe schon einige Informationen zu den Versuchsobjekten gefunden, wie du unten lesen kannst. Übrigens will ich den Radius (r) und nicht den Durchmesser (d) als Ergebnis.",
+    "audioId": null,
+    "imageId": "fanatisch.png",
+    "imageWidth": 120,
+    "answers": [
+      {
+        "text": "Was bedeutet V ?",
+        "effectId": "S8_experiment_calculation_aw1",
+        "nextId": "START",
+        "$$hashKey": "object:381"
+      },
+      {
+        "text": "Hab die Lösung!",
+        "effectId": "S8_experiment_calculation_aw2",
+        "nextId": "experiment_calculation_results",
+        "$$hashKey": "object:382"
+      },
+      {
+        "text": "Was bedeutet L ?",
+        "effectId": "S8_experiment_calculation_aw3",
+        "nextId": "START",
+        "$$hashKey": "object:383"
+      },
+      {
+        "text": "Ich weiß nicht, was ich machen soll.",
+        "effectId": null,
+        "nextId": "experiment_calculation_help",
+        "$$hashKey": "object:384"
+      }
+    ]
+  },
+  "experiment_calculation_help": {
+    "text": "Da wir die Werte für m, v und B kennen, solltest du bei der 1. Formel in der Lage sein, das Volumen (V) zu berechnen. Dieses gibt an, welche Menge an Spinnenseide benötigt wird, um die Bewegungsenergie der Boeing vollständig aufzunehmen. Mit der 2. Formel wird diese Menge dann dem Volumen eines zylinderförmigen Seils gleichgesetzt.",
+    "audioId": null,
+    "imageId": "neutral.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Hast du noch einen Tipp?",
+        "effectId": "S8_experiment_calculation_help_aw1",
+        "nextId": "experiment_calculation_help"
+      },
+      {
+        "text": "Gut, ich denke ich habs jetzt geschafft.",
+        "effectId": "S8_experiment_calculation_help_aw2",
+        "nextId": "experiment_calculation_results"
+      },
+      {
+        "text": "Ich schaff es einfach nicht.",
+        "effectId": "S8_experiment_calculation_help_aw3",
+        "nextId": "experiment_calculation_help"
+      }
+    ]
+  },
+  "experiment_calculation_results": {
+    "text": "Wie groß muss also der Radius des Spinnenseide-Seils in cm sein, um die Boeing 747 abzubremsen? Runde bitte auf eine ganze Zahl.",
+    "audioId": null,
+    "imageId": null,
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "10 cm",
+        "effectId": "S8_experiment_calculation_results_aw1",
+        "nextId": "experiment_calculation_learnt"
+      },
+      {
+        "text": "3 cm",
+        "effectId": "S8_experiment_calculation_results_aw2",
+        "nextId": "START"
+      },
+      {
+        "text": "20 cm",
+        "effectId": "S8_experiment_calculation_results_aw3",
+        "nextId": "experiment_calculation_learnt"
+      },
+      {
+        "text": "16 cm",
+        "effectId": "S8_experiment_calculation_results_aw4",
+        "nextId": "experiment_calculation_results"
+      },
+      {
+        "text": "Ich glaube ich muss mir nochmal die Angabe anschauen.",
+        "effectId": null,
+        "nextId": "START"
+      }
+    ]
+  },
+  "experiment_calculation_learnt": {
+    "text": "Super! Was haben wir also gelernt?",
+    "audioId": null,
+    "imageId": "zufrieden.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Die Aussage, dass man mit einem daumen-dicken Spinnenseide-Seil eine Boeing stoppen kann, ist falsch.",
+        "effectId": null,
+        "nextId": "compare_to_video"
+      },
+      {
+        "text": "Man sollte Angaben in solchen Werbevideos nicht unkritisch glauben.",
+        "effectId": null,
+        "nextId": "compare_to_video"
+      },
+      {
+        "text": "Bin mir nicht sicher, was das bedeuten soll.",
+        "effectId": null,
+        "nextId": "compare_to_video"
+      }
+    ]
+  },
+  "compare_to_video": {
+    "text": "Da wir keine Informationen über die Annahmen im Video haben, können wir das auch nicht als idealiserte Werbeaussage aufdecken. Es könnte zum Beispiel sein, dass ihr Seil nicht 100 Meter, sondern 3 km lang ist. Dann würde auch ein Daumen-dickes Seil diese Last aushalten. Jedoch wurden die Ergebnisse sehr dramatisch dargestellt, um das Interesse des Zuschauers zu wecken.",
+    "audioId": null,
+    "imageId": "erklaert.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Alles klar!",
+        "effectId": null,
+        "nextId": "spidersilk_concept"
+      }
+    ]
+  },
+  "spidersilk_concept": {
+    "text": "Ich hoffe du hast alles übersichtlich in deinem Laborjournal dokumentiert! Sieh dir nun das folgende Video an, um Spinnenseide noch genauer kennenzulernen.",
+    "audioId": null,
+    "imageId": "belehrt.png",
+    "imageWidth": null,
+    "answers": [
+      {
+        "text": "Hab es mir angeschaut!",
+        "effectId": null,
+        "nextId": "END"
+      }
+    ]
+  },
+  "END": {
+    "text": "Text des Agents Du hast noch nicht genug und möchtest weitere Experimente mit Spinnenseide durchführen? Die Universität Innsbruck bietet hierfür einen spannenden Workshop an. Da werden wir uns zum Beispiel die Wespenspinne und Gartenkreuzspinne näher anschauen und weitere Experimente mit ihren Netzen durchführen.",
+    "audioId": null,
+    "imageId": "fanatisch-groß.png",
+    "imageWidth": null,
+    "answers": []
+  }
+}

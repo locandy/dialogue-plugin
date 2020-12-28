@@ -1,0 +1,16 @@
+{
+  "START": {
+    "text": "Das war ja ganz ok. Man muss beim Experimentieren sehr auf die Details achten.",
+    "audioId": null,
+    "imageId": "neutral.png",
+    "imageWidth": 120,
+    "answers": [
+      {
+        "text": "Was machen wir als nächstes?",
+        "effectId": null,
+        "nextId": "START",
+        "$$hashKey": "object:787"
+      }
+    ]
+  }
+}
