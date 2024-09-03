@@ -4,12 +4,16 @@
 
 CODEC="LINEAR16";
 OUTEXT="wav"
+
+# https://cloud.google.com/text-to-speech/docs/voices
 LANG="de-de"
 GENDER="MALE"
-VOICE="de-DE-Wavenet-B"
+VOICE="de-DE-Neural2-D"
+
 PITCH="0"
 RATE="1"
-DEBUG=0
+
+DEBUG=1
 
 while getopts k:f:l:g:v:i:p:r: OPT; do
     case $OPT in
@@ -94,12 +98,13 @@ curl -H "X-Goog-Api-Key: ${GOOGLE_API_KEY}" \
           --data-binary "@$FILE_NAME-post.json" "https://texttospeech.googleapis.com/v1/text:synthesize" > $FILE_NAME.json
 
 # JSON DECODING
-jq -r .audioContent $FILE_NAME.json > $FILE_NAME.base64
+# 2024: another missing tool: jq -r .audioContent $FILE_NAME.json > $FILE_NAME.base64
+cat $FILE_NAME.json | grep 'audioContent' | sed 's|audioContent| |' | tr -d '\n ":{},' > $FILE_NAME.base64
 
 # BASE64 DECODING
 base64 -D -i $FILE_NAME.base64 -o $FILE_NAME.$OUTEXT
 
-rm $FILE_NAME-post.json
+#rm $FILE_NAME-post.json
 rm $FILE_NAME.base64
 if [ $DEBUG -lt 1 ] ; then rm $FILE_NAME.json ; fi
 
